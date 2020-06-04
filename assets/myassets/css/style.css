@@ -1,0 +1,27 @@
+#loading {
+ border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#haraptunggu {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	text-indent: 100%;
+	background: black url('../img/harap_tunggu.gif') no-repeat center;
+	z-index: 1;
+	opacity: 0.8;
+	background-size: 15%;
+}
