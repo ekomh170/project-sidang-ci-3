@@ -70,26 +70,26 @@
 
     <!-- Sweet Alert -->
     <script type="text/javascript">
-    <?php if (!$this->uri->segment('3') == "Dashboard") { ?>
-      const flashData = $('.flash-data').data('flashdata');
-
-      if (flashData) {
-        Swal.fire({
-          icon: 'success',
-          title: "<?= $judul2 ?>",
-          text: "Berhasil " + flashData,
-          showConfirmButton: true,
-        });
-      }
-    <?php } ?>
-
-    <?php if ($this->uri->segment('3') == "Dashboard") { ?>
+    <?php if ($this->uri->segment('1') != "Dashboard") { ?>
       const flashData = $('.flash-data').data('flashdata');
 
       if (flashData) {
         Swal.fire({
           icon: 'success',
           title: "<?= $judul ?>",
+          text: "Berhasil " + flashData,
+          showConfirmButton: true,
+        });
+      }
+    <?php } ?>
+
+    <?php if ($this->uri->segment('1') == "Dashboard") { ?>
+      const flashData = $('.flash-data').data('flashdata');
+
+      if (flashData) {
+        Swal.fire({
+          icon: 'success',
+          title: "<?= $judul2 ?>",
           text: "Berhasil " + flashData,
           showConfirmButton: true,
         });

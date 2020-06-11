@@ -28,7 +28,7 @@
                     <tbody>
                         <?php foreach ($role as $rl) : ?>
                             <tr>
-                                <td><?= $rl->id; ?></td>
+                                <td><?= ++$offset; ?></td>
                                 <td><?= $rl->role; ?></td>
                                 <td class="text-center">
                                     <a href="<?= base_url(); ?>Role/roleAccess/<?= $rl->id; ?>"><button type="button" class="btn btn-warning btn-circle"><i class="fas fa-fw fa-lock"></i></button></a> <b>|</b>

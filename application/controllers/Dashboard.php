@@ -12,8 +12,8 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$data['judul']    = 'Dashboard';
-		$data['judul2']     = 'Login Berhasil';
+		$data['judul']     = 'Dashboard';
+		$data['judul2']    = 'Login Berhasil';
 		$data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['mahasiswa'] = $this->Dashboard_model->hitungJumlahMahasiswa();
 		$data['dosen']     = $this->Dashboard_model->hitungJumlahDosen();

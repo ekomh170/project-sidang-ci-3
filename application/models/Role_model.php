@@ -6,11 +6,12 @@ class Role_model extends CI_Model
 	{
 		$this->db->select('user_role.id, user_role.role');
 		$this->db->from('user_role');
-		// $this->db->where('user_role.id =', 1);
+		$this->db->where('user_role.id !=', 1);
 
 		if ($cari_rl != '') {
 			$this->db->like('id', $cari_rl);
 			$this->db->or_like('role', $cari_rl);
+			$this->db->where('user_role.id !=', 1);
 		}
 
 		$this->db->limit($limit, $offset);
@@ -22,11 +23,12 @@ class Role_model extends CI_Model
 	{
 		$this->db->select('count(*) as allcount');
 		$this->db->from('user_role');
-		// $this->db->where('user_role.id =', 1);
+		$this->db->where('user_role.id !=', 1);
 
 		if ($cari_rl != '') {
 			$this->db->like('id', $cari_rl);
 			$this->db->or_like('role', $cari_rl);
+			$this->db->where('user_role.id !=', 1);
 		}
 
 		$query = $this->db->get();
