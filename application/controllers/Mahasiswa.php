@@ -43,9 +43,6 @@ class Mahasiswa extends CI_Controller
 		$data['offset'] = $this->uri->segment(3);
 		$data['join']   = $this->Mahasiswa_model->getMahasiswa($limit, $offset, $text_mhs);
 		$data['krs']    = $this->db->get('krs_detail')->result();
-
-
-
 		//PENUTUP PAGINATION
 
 		$this->load->view('templates/tb_header', $data);

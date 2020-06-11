@@ -5,7 +5,6 @@
     </div>
     <div class="sidebar-brand-text mx-3">Siadafa</div>
   </a>
-
   <hr class="sidebar-divider">
 
   <!-- query Menu-->
@@ -48,36 +47,7 @@
       <?php endforeach ?>
 
     <?php endforeach; ?>
-
-    <?php if ($this->session->userdata('id_role') == "2") { ?>
-      <li class="nav-item">
-        <a class="nav-link pb-1" href="<?= base_url('JadwalMhs/') . $this->session->userdata('id_jurusan'); ?>">
-          <i class="fas fa-fw fa-clipboard-list"></i>
-          <span><b>Jadwal Mata Kuliah</b></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link pb-1" href="<?= base_url('KrsDetailMhs/') . $this->session->userdata('id_krs'); ?>">
-          <i class="fas fa-fw fa-clipboard-list"></i>
-          <span><b>Hasil Penilaian Mahasiswa</b></span></a>
-      </li>
-    <?php } ?>
-
-    <?php if ($this->session->userdata('id_role') == "3") { ?>
-      <li class="nav-item">
-        <a class="nav-link pb-1" href="<?= base_url('JadwalDsn/') . $this->session->userdata('id_dosen'); ?>">
-          <i class="fas fa-fw fa-clipboard-list"></i>
-          <span><b>Jadwal Mengajar</b></span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link pb-1" href="<?= base_url('KrsDetailDsn/') . $this->session->userdata('id_dosen'); ?>">
-          <i class="fas fa-fw fa-clipboard-list"></i>
-          <span><b>Penilaian Mahasiswa</b></span></a>
-      </li>
-    <?php } ?>
-
     <?php if ($this->session->userdata('id_role') == "1") { ?>
-
       <li class="nav-item">
         <a class="nav-link collapsed pb-1" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-table"></i>
@@ -101,7 +71,6 @@
           </div>
         </div>
       </li>
-
       <li class="nav-item">
         <a class="nav-link collapsed pb-1" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-folder"></i>
@@ -121,25 +90,18 @@
         </div>
       </li>
     <?php } ?>
-
-
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url('Dokumentasi'); ?>">
         <i class="fas fa-fw fa-book"></i>
         <span><b>Dokumentasi</b></span></a>
     </li>
-
-
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url('Auth/logout'); ?>">
         <i class="fas fa-fw fa-sign-out-alt"></i>
         <span><b>Keluar</b></span></a>
     </li>
-
     <hr class="sidebar-divider d-none d-md-block">
-
     <div class="text-center d-none d-md-inline">
       <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
 </ul>
