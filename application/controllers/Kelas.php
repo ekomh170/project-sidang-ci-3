@@ -29,7 +29,7 @@ class Kelas extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/Kelas/index';
+		$config['base_url']    = base_url().'Kelas/index';
 		$config['total_rows']  = $this->Kelas_model->CountAllkelas($text_kls);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;

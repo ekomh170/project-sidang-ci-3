@@ -29,7 +29,7 @@ class Sub extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/Sub/index';
+		$config['base_url']    = base_url().'Sub/index';
 		$config['total_rows']  = $this->Sub_model->CountAllSub($text_sub);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;

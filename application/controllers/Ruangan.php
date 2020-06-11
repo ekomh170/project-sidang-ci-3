@@ -30,7 +30,7 @@ class Ruangan extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/Ruangan/index';
+		$config['base_url']    = base_url().'Ruangan/index';
 		$config['total_rows']  = $this->Ruangan_model->CountAllRuangan($text_rgn);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;

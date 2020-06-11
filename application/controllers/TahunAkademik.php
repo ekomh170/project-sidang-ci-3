@@ -29,7 +29,7 @@ class TahunAkademik extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/TahunAkademik/index';
+		$config['base_url']    = base_url().'TahunAkademik/index';
 		$config['total_rows']  = $this->TahunAkademik_model->CountAllTahunAkademik($text_ta);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;

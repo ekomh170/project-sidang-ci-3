@@ -30,7 +30,7 @@ class KrsDetail extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/KrsDetail/index';
+		$config['base_url']    = base_url().'KrsDetail/index';
 		$config['total_rows']  = $this->KrsDetail_model->CountAllKrsDetail($text_krs);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;

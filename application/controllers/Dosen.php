@@ -31,7 +31,7 @@ class Dosen extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/Dosen/index';
+		$config['base_url']    = base_url(). 'Dosen/index';
 		$config['total_rows']  = $this->Dosen_model->CoutAllDosen($text_dosen);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;

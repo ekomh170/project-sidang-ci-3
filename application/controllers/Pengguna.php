@@ -29,7 +29,7 @@ class Pengguna extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = 'http://localhost/db-mahasiswa-ci/Pengguna/index';
+		$config['base_url']    = base_url().'Pengguna/index';
 		$config['total_rows']  = $this->Pengguna_model->CountAllPengguna($text_usr);
 		$config['per_page']    = $limit;
 		$config['num_links']   = 3;
