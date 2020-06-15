@@ -87,6 +87,8 @@ class Nilai extends CI_Controller
 
 		$id            = decrypt_url($id_nilai);
 		$data['data']  = $this->Tambahan_model->UbahNilaiMhsForm($id);
+		$data['inputSelect']  = $this->Nilai_model->inputSelectDataKrsDetail($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		// getdatamhs
 		$ls = $this->Tambahan_model->UbahNilaiMhsForm($id);

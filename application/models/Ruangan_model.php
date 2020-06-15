@@ -87,6 +87,17 @@ class Ruangan_model extends CI_Model
 		return $this->db->get_where('tb_ruangan', ['id_ruangan' => $id_ruangan])->row_array();
 	}
 
+	public function inputSelectDataRuangan($id_ruangan)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_ruangan');
+		$this->db->join('tb_ruangan_jenis', 'tb_ruangan.id_jenis_ruangan = tb_ruangan_jenis.id_jenis_ruangan', 'left');
+
+		$this->db->where('id_ruangan', $id_ruangan);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function UbahDataRuangan()
 	{
 		$data = [

@@ -4,7 +4,7 @@ class Jurusan_model extends CI_Model
 {
 	public function GetDataJurusan($limit, $offset, $cari_jrs = '')
 	{
-		$this->db->select('tb_jurusan.id_jurusan, tb_jurusan.nama_jurusan, tb_fakultas.nama_fakultas, tb_jenjang_pendidikan.nama_jp');
+		$this->db->select('tb_jurusan.id_jurusan, tb_jurusan.nama_jurusan, tb_fakultas.nama_fakultas, tb_jenjang_pendidikan.nama_jp, tb_jenjang_pendidikan.nama_lengkap_jp');
 		$this->db->from('tb_jurusan');
 		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_jurusan.id_fakultas', 'left');
 		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');
@@ -89,6 +89,18 @@ class Jurusan_model extends CI_Model
 	public function IdentitasDataJurusan($id_jurusan)
 	{
 		return $this->db->get_where('tb_jurusan', ['id_jurusan' => $id_jurusan])->row_array();
+	}
+
+	public function inputSelectDataJurusan($id_jurusan)
+	{
+	    $this->db->select('*');
+		$this->db->from('tb_jurusan');
+		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_jurusan.id_fakultas', 'left');
+		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');
+		$this->db->where('tb_jurusan.id_jurusan', $id_jurusan);
+
+		$query = $this->db->get();
+		return $query->row_array();
 	}
 
 	public function CariDataJurusan()

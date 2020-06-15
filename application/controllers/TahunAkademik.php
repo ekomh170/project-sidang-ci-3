@@ -86,6 +86,7 @@ class TahunAkademik extends CI_Controller
 
 		$id = decrypt_url($id_tahun_akademik);
 		$data['TahunAkademik'] = $this->TahunAkademik_model->IdentitasDataTahunAkademik($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		$this->form_validation->set_rules('nama_tahun_akademik', 'Nama Tahun Akademik', 'required');
 		$this->form_validation->set_rules('semester', 'Semester', 'required');

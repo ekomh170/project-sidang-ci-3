@@ -41,6 +41,7 @@ class Fakultas extends CI_Controller
 		$data['user']        = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['offset']      = $this->uri->segment(3);
 		$data['tb_fakultas'] = $this->Fakultas_model->GetDataFakultas($limit, $offset, $text_fks);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		$this->load->view('templates/tb_header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -86,6 +87,7 @@ class Fakultas extends CI_Controller
 
 		$id = decrypt_url($id_fakultas);
 		$data['tb_fakultas'] = $this->Fakultas_model->IdentitasDataFakultas($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		$this->form_validation->set_rules('nama_fakultas', 'Nama Fakultas', 'required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required');

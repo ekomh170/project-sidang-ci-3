@@ -167,4 +167,16 @@ class Nilai_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function inputSelectDataKrsDetail($id)
+	{
+	    $this->db->select('*');
+		$this->db->from('tb_nilai');
+		$this->db->join('krs_detail', 'tb_nilai.id_krs = krs_detail.id_krs', 'left');
+		$this->db->join('tb_dosen', 'krs_detail.id_dosen = tb_dosen.id_dosen', 'left');
+		$this->db->where('tb_nilai.id_nilai', $id);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 }

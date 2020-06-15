@@ -236,4 +236,15 @@ class KrsDetail_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function inputSelectDataKrsDetail($id_krs)
+	{
+	 	 $this->db->select('*');
+		$this->db->from('krs_detail');
+		$this->db->join('tb_dosen', 'tb_dosen.id_dosen = krs_detail.id_dosen', 'left');
+		$this->db->where('krs_detail.id_krs', $id_krs);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 }

@@ -10,7 +10,6 @@ class Dosen extends CI_Controller
 		$this->load->model('Dosen_model');
 	}
 
-
 	public function index($offset = NULL)
 	{
 		$text_dosen = "";
@@ -22,7 +21,6 @@ class Dosen extends CI_Controller
 				$text_dosen = $this->session->userdata('cari_dosen');
 			}
 		}
-
 
 		//UNTUK PAGINATION SAMPAI  --->--->  TULISAN PENUTUP PAGINATION
 		$limit = 5;
@@ -38,7 +36,6 @@ class Dosen extends CI_Controller
 
 		//initialize
 		$pagination = $this->pagination->initialize($config);
-
 
 		$data['judul']      = 'Data Dosen';
 		$data['user']       = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -59,6 +56,8 @@ class Dosen extends CI_Controller
 	{
 		$data['judul'] = 'Form Tambah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->order_by('nama_matkul', 'asc');
 		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
 
 		$this->form_validation->set_rules('nama_dosen', 'Nama', 'required');
@@ -114,7 +113,10 @@ class Dosen extends CI_Controller
 
 		$id = decrypt_url($id_dosen);
 		$data['tb_dosen'] = $this->Dosen_model->IdentitasDataDosen($id);
+		$data['inputSelect'] = $this->Dosen_model->InfoDataDetail($id);
+		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
+		$this->db->order_by('nama_matkul', 'asc');
 		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
 
 		$this->form_validation->set_rules('nama_dosen', 'Nama', 'required');

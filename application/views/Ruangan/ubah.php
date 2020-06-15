@@ -13,10 +13,14 @@
           <label for="id_jenis_ruangan"><b>Jenis Ruangan :</b></label>
           <select class="form-control" id="id_jenis_ruangan" name="id_jenis_ruangan">
             <option value="">--Pilih Ruangan--</option>
+            <?php if ($inputSelect['id_jenis_ruangan']) { ?>
+              <option selected value="<?= $inputSelect['id_jenis_ruangan'] ?>"><?= $inputSelect['id_jenis_ruangan'] ?></option>
+            <?php } ?>
             <?php foreach ($jenis_ruangan as $value) { ?>
+              <?php if($value->id_jenis_ruangan != $inputSelect['id_jenis_ruangan']) ?>
               <?php if ($value->status == "AKTIF") { ?>
                 <option value="<?= $value->id_jenis_ruangan ?>"><?= $value->nama_jr ?></option>
-            <?php }
+              <?php }
             } ?>
           </select>
           <small class="form-text text-danger"><b><u><?= form_error('id_jenis_ruangan') ?></u></b></small>
@@ -40,19 +44,24 @@
           <label for="id_jenis_ruangan"><b>Status :</b></label>
           <select class="form-control" id="status" name="status">
             <option value="">--Pilih Status--</option>
-            <option value="Aktif">Aktif</option>
-            <option value="Tidak Aktif">Tidak Aktif</option>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
-        </div>
-        <br><br>
-        <span style="float: left;">
-          <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
+            <?php if ($ruangan['status']) { ?>
+              <option selected value="<?= $ruangan['status'] ?>"><?= $ruangan['status'] ?></option>
+            <?php } ?>
+            <?php foreach ($inputSelectStatus as $status => $data) { ?>
+              <?php if ($data != $ruangan['status']) { ?>
+                <option value="<?= $data ?>"><?= $data ?></option>
+              <?php } } ?>
+            </select>
+            <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
+          </div>
+          <br><br>
+          <span style="float: left;">
+            <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
+          </span>
+        </form>
+        <span style="float: right">
+          <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Ruangan/index'); ?>">Kembali</a></button>
         </span>
-      </form>
-      <span style="float: right">
-        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Ruangan/index'); ?>">Kembali</a></button>
-      </span>
+      </div>
     </div>
   </div>
-</div>

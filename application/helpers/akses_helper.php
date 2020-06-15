@@ -14,7 +14,7 @@ function cek_login_role()
 	$ci = get_instance();
 
 	if (!$ci->session->userdata('email')) {
-		redirect('Dashboard');
+		redirect('Auth/index');
 	} else {
 		$id_role = $ci->session->userdata('id_role');
 		$menu = $ci->uri->segment(1);

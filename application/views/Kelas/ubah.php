@@ -13,28 +13,37 @@
           <label for="id_ruangan"><b>Nama Ruang :</b></label>
           <select class="form-control" id="id_ruangan" name="id_ruangan">
             <option value="">--Pilih Ruang--</option>
-            <?php foreach ($ruangan as $value) { ?>
-              <option value="<?= $value->id_ruangan ?>"><?= $value->nama_ruangan ?></option>
+            <?php if ($inputSelect['id_ruangan']) { ?>
+              <option selected value="<?= $inputSelect['id_ruangan']?>"><?= $inputSelect['nama_ruangan']?></option>
             <?php } ?>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('id_ruangan') ?></u></b></small>
+            <?php foreach ($ruangan as $value) { ?>
+              <?php if ($value->id_ruangan != $inputSelect['id_ruangan']) { ?>
+                <option value="<?= $value->id_ruangan ?>"><?= $value->nama_ruangan ?></option>
+              <?php } } ?>
+            </select>
+            <small class="form-text text-danger"><b><u><?= form_error('id_ruangan') ?></u></b></small>
+          </div>
+          <div class="form-group">
+            <label for="status"><b>Status:</b></label>
+            <select class="form-control" id="status" name="status">
+              <option value="">--Pilih Status--</option>
+              <?php if ($inputSelectStatus['status']) { ?>
+                <option selected value="<?= $tb_kelas['status']?>"><?= $tb_kelas['status']?></option>
+              <?php } ?>
+              <?php foreach ($inputSelectStatus as $status => $data) { ?>
+                <?php if ($data != $tb_kelas['status']) { ?>
+                  <option value="<?= $data ?>"><?= $data ?></option>
+                <?php } } ?>          
+              </select>
+              <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
+            </div>
+            <span style="float: left;">
+              <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
+            </span>
+          </form>
+          <span style="float: right;">
+            <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('kelas/index'); ?>">Kembali</a></button>
+          </span>
         </div>
-        <div class="form-group">
-          <label for="status"><b>Status:</b></label>
-          <select class="form-control" id="status" name="status">
-            <option value="">--Pilih Status--</option>
-            <option value="Aktif">Aktif</option>
-            <option value="Tidak Aktif">Tidak Aktif</option>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
-        </div>
-        <span style="float: left;">
-          <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
-        </span>
-      </form>
-      <span style="float: right;">
-        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('kelas/index'); ?>">Kembali</a></button>
-      </span>
+      </div>
     </div>
-  </div>
-</div>

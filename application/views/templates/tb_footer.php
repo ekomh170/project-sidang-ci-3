@@ -1,100 +1,104 @@
+  </div>
+  <footer class="bg-white sticky-footer">
+    <div class="container my-auto">
+      <div class="h1 text-center my-auto copyright text-dark"><span>Copyright : Eko Muchamad Haryono</span></div>
     </div>
+  </footer>
+</div>
 
-    </div>
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
 
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-danger" id="exampleModalLabel">Apakah Anda Ingin Keluar?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body text-danger"><b>Anda Ingin Keluar?? Tekan Yes</b></div>
-          <div class="modal-footer">
-            <a class="btn btn-danger" href="<?= base_url('Auth/logout'); ?>">Yes</a>
-            <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">No</button>
-          </div>
-        </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalLabel">Apakah Anda Ingin Keluar?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body text-danger"><b>Anda Ingin Keluar?? Tekan Yes</b></div>
+      <div class="modal-footer">
+        <a class="btn btn-danger" href="<?= base_url('Auth/logout'); ?>">Yes</a>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">No</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url('assets/templates/'); ?>vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url('assets/templates/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="<?= base_url('assets/templates/'); ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/templates/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('assets/templates/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="<?= base_url('assets/templates/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('assets/templates/'); ?>js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="<?= base_url('assets/templates/'); ?>js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?= base_url('assets/templates/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url('assets/templates/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="<?= base_url('assets/templates/'); ?>js/demo/datatables-demo.js"></script>
+<!-- Page level plugins -->
+<script src="<?= base_url('assets/templates/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/templates/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('assets/templates/'); ?>js/demo/datatables-demo.js"></script>
 
-    <!-- Sweet Alret 2-->
-    <script src="<?= base_url('assets/templates/'); ?>vendor/sweetalret2/dist/sweetalert2.min.js"></script>
-    <!-- Sweet Alert 2-->
+<!-- Sweet Alret 2-->
+<script src="<?= base_url('assets/templates/'); ?>vendor/sweetalret2/dist/sweetalert2.min.js"></script>
+<!-- Sweet Alert 2-->
 
-    <!-- Js-->
-    <script src="<?= base_url('assets/myassets/'); ?>js/realodpage.js"></script>
-    <script src="<?= base_url('assets/myassets/'); ?>js/loadscreen.js"></script>
-    <!-- Js-->
+<!-- Js-->
+<script src="<?= base_url('assets/myassets/'); ?>js/realodpage.js"></script>
+<script src="<?= base_url('assets/myassets/'); ?>js/loadscreen.js"></script>
+<!-- Js-->
 
-    <script>
-      $('.form-check-input').on('click', function() {
-        const roleId = $(this).data('role');
-        const menuId = $(this).data('menu');
+<script>
+  $('.form-check-input').on('click', function() {
+    const roleId = $(this).data('role');
+    const menuId = $(this).data('menu');
 
-        $.ajax({
-          url: "<?= base_url('role/changeAccess'); ?>",
-          type: "post",
-          data: {
-            roleId: roleId,
-            menuId: menuId
-          },
-          success: function() {
-            document.location.href = "<?= base_url('Role/roleAccess/'); ?>" + roleId;
-          }
-        });
+    $.ajax({
+      url: "<?= base_url('role/changeAccess'); ?>",
+      type: "post",
+      data: {
+        roleId: roleId,
+        menuId: menuId
+      },
+      success: function() {
+        document.location.href = "<?= base_url('Role/roleAccess/'); ?>" + roleId;
+      }
+    });
 
+  });
+</script>
+
+<!-- Sweet Alert -->
+<script type="text/javascript">
+  <?php if ($this->uri->segment('1') != "Dashboard") { ?>
+    const flashData = $('.flash-data').data('flashdata');
+
+    if (flashData) {
+      Swal.fire({
+        icon: 'success',
+        title: "<?= $judul ?>",
+        text: "Berhasil " + flashData,
+        showConfirmButton: true,
       });
-    </script>
+    }
+  <?php } ?>
 
-    <!-- Sweet Alert -->
-    <script type="text/javascript">
-    <?php if ($this->uri->segment('1') != "Dashboard") { ?>
-      const flashData = $('.flash-data').data('flashdata');
+  <?php if ($this->uri->segment('1') == "Dashboard") { ?>
+    const flashData = $('.flash-data').data('flashdata');
 
-      if (flashData) {
-        Swal.fire({
-          icon: 'success',
-          title: "<?= $judul ?>",
-          text: "Berhasil " + flashData,
-          showConfirmButton: true,
-        });
-      }
-    <?php } ?>
-
-    <?php if ($this->uri->segment('1') == "Dashboard") { ?>
-      const flashData = $('.flash-data').data('flashdata');
-
-      if (flashData) {
-        Swal.fire({
-          icon: 'success',
-          title: "<?= $judul2 ?>",
-          text: "Berhasil " + flashData,
-          showConfirmButton: true,
-        });
-      }
-    <?php } ?>
+    if (flashData) {
+      Swal.fire({
+        icon: 'success',
+        title: "<?= $judul2 ?>",
+        text: "Berhasil " + flashData,
+        showConfirmButton: true,
+      });
+    }
+  <?php } ?>
 
       //Tombol Hapus 
       $('.tombol-hapus').on('click', function(e) {
@@ -150,4 +154,4 @@
     </script>
     <!-- Waktu -->
   </body>
-</html>
+  </html>

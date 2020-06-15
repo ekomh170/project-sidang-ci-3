@@ -51,7 +51,7 @@
       </div>
       <div class="form-group">
         <div class="row">
-          <legend class="col-form-label col-sm-2 pt-0"><b>Jenis Kelamin :</b></legend>
+          <legend class="col-form-label col-sm-2 pt-0 text-weight-bold">Jenis Kelamin :</legend>
         </div>
         <div class="col-sm-10">
           <div class="form-check">

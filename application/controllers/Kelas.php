@@ -53,6 +53,7 @@ class Kelas extends CI_Controller
 	{
 		$data['judul']   = 'Form Tambah Data';
 		$data['user']    = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$this->db->order_by('nama_ruangan', 'asc');
 		$data['ruangan'] = $this->db->get('tb_ruangan')->result();
 
 		$this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');
@@ -87,7 +88,10 @@ class Kelas extends CI_Controller
 
 		$id               = decrypt_url($id_kelas);
 		$data['tb_kelas'] = $this->Kelas_model->IdentitasDatakelas($id);
-
+		$data['inputSelect'] = $this->Kelas_model->inputSelectDatakelas($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
+		
+		$this->db->order_by('nama_ruangan', 'asc');
 		$data['ruangan']  = $this->db->get('tb_ruangan')->result();
 
 		$this->form_validation->set_rules('nama_kelas', 'Nama Kelas', 'required');

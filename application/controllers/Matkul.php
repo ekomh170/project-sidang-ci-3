@@ -88,10 +88,11 @@ class Matkul extends CI_Controller
 
 		$id = decrypt_url($id_matkul);
 		$data['tb_matkul'] = $this->Matkul_model->IdentitasDataMatkul($id);
-
+		$data['inputSelect'] = $this->Matkul_model->inputSelectDataMatkul($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
+		
 		$this->db->order_by('nama_jurusan', 'asc');
 		$data['jurusan'] = $this->db->get('tb_jurusan')->result();
-
 
 		$this->form_validation->set_rules('nama_matkul', 'Nama', 'required');
 		$this->form_validation->set_rules('id_jurusan', 'Nama Jurusan', 'required');

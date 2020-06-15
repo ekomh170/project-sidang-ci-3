@@ -38,7 +38,7 @@
                 <td><?= $jrs->id_jurusan; ?></td>
                 <td><?= $jrs->nama_jurusan; ?></td>
                 <td><?= $jrs->nama_fakultas; ?></td>
-                <td><?= $jrs->nama_jp; ?></td>
+                <td><?= $jrs->nama_lengkap_jp; ?> (<?= $jrs->nama_jp; ?>)</td>
                 <td class="text-center">
                   <a href="<?= base_url(); ?>Jurusan/ubah/<?= encrypt_url($jrs->id_jurusan); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></a> <b>|</b>
                   <a href="<?= base_url(); ?>Jurusan/hapus/<?= encrypt_url($jrs->id_jurusan); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>

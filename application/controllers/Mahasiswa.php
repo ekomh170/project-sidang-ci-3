@@ -121,6 +121,8 @@ class Mahasiswa extends CI_Controller
 
 		$id                = decrypt_url($nim_mhs);
 		$data['mahasiswa'] = $this->Mahasiswa_model->IdentitasDataMahasiswa($id);
+		$data['inputSelect'] = $this->Mahasiswa_model->inputSelectDataMahasiswa($id);
+		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
 		$this->db->order_by('nama_jurusan', 'asc');
 		$data['jurusan']        = $this->db->get('tb_jurusan')->result();
@@ -208,43 +210,3 @@ class Mahasiswa extends CI_Controller
 		redirect(base_url('mahasiswa'));
 	}
 }
-
-	// public function penilaian($nim_mhs){
-	// 	$data_mhs  = $this->db->get_where('mahasiswa', ['nim_mhs' => $nim_mhs])->row_array();
-	// 	$count_krs = $this->db->count_all('krs_detail');
-	// 	$helper    = 1 + $count_krs;
-	// 	$date      = date('s');
-
-	// 	if (!$data_mhs['id_krs']) { 
-	// 		$id_krs = "KRS" . "-" . $helper . "-" . $date;
-	// 	}
-
-	// 	if ($data_mhs['id_krs']) { 
-	// 		$id_krs = $data_mhs['id_krs'];
-	// 	}
-
-	// 	$data = array(
-	// 		'id_krs'      => $id_krs,
-	// 		'nim_mhs_mhs' => $data_mhs['nim_mhs'],
-	// 		'id_jurusan'  => $data_mhs['id_jurusan'],
-	// 		'id_matkul'   => $this->session->userdata('id_matkul'),
-	// 		'id_dosen'    => $this->session->userdata('id_dosen'),
-	// 		'status'      => "Tidak Aktif"
-	// 	);
-
-	// 	$this->db->insert('krs_detail', $data);
-
-	// 	$data_update_mhs = array(
-	// 		'id_krs' => $id_krs
-	// 	);
-	// 	$this->db->where(array('nim_mhs' => $nim_mhs));
-	// 	$this->db->update('mahasiswa' , $data_update_mhs);
-	// 	$this->session->set_flashdata('berhasil', 'DiIzinkan Akses');
-
-	// 	if ($this->session->userdata('id_role') == 3) { 
-	// 		redirect(base_url('KrsDetailDsn/') . $this->session->userdata('id_dosen') );
-	// 	}
-	// 	// if ($this->session->userdata('id_role') == 1) { 
-	// 	// 	redirect(base_url('KrsDetail'));
-	// 	// }
-	// }

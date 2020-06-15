@@ -26,7 +26,7 @@
           <option value="">--Pilih Jenjang Pendidikan--</option>
           <?php foreach ($jenjang_pendidikan as $value) { ?>
             <?php if ($value->status == "Aktif") { ?>
-              <option value="<?= $value->id_jenjang_pendidikan ?>"><?= $value->nama_jp ?></option>
+              <option value="<?= $value->id_jenjang_pendidikan ?>"><?= $value->nama_lengkap_jp ?></option>
           <?php }
           } ?>
         </select>

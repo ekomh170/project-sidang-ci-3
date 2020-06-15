@@ -18,85 +18,89 @@
           <label for="id_matkul"><b>Mata Kuliah :</b></label>
           <select class="form-control" id="id_matkul" name="id_matkul">
             <option value="">--Pilih Mata Kuliah--</option>
+            <?php if ($inputSelect['id_matkul']) { ?>
+              <option selected value="<?= $inputSelect['id_matkul'] ?>"><?= $inputSelect['nama_matkul'] ?></option>
+            <?php } ?>
             <?php foreach ($tb_matkul as $value) { ?>
-              <?php if ($value->status == "Aktif") { ?>
-                <option value="<?= $value->id_matkul ?>"><?= $value->nama_matkul ?></option>
-            <?php }
-            } ?>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('id_matkul') ?></u></b></small>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0"><b>Jenis Kelamin :</b></legend>
-          </div>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Laki-Laki" checked>
-              <label class="form-check-label" for="jenis_kelamin">
-                Laki - Laki
-              </label>
+              <?php if ($value->id_matkul != $inputSelect['id_matkul']) { ?>
+                <?php if ($value->status == "Aktif") { ?>
+                  <option value="<?= $value->id_matkul ?>"><?= $value->nama_matkul ?></option>
+                <?php } } } ?>
+              </select>
+              <small class="form-text text-danger"><b><u><?= form_error('id_matkul') ?></u></b></small>
             </div>
-          </div>
-          <div class="form-check">
-            <div class="col-sm-10">
-              <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Perempuan">
-              <label class="form-check-label" for="jenis_kelamin">
-                Perempuan
-              </label>
+            <div class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0"><b>Jenis Kelamin :</b></legend>
+              </div>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Laki-Laki" checked>
+                  <label class="form-check-label" for="jenis_kelamin">
+                    Laki - Laki
+                  </label>
+                </div>
+              </div>
+              <div class="form-check">
+                <div class="col-sm-10">
+                  <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Perempuan">
+                  <label class="form-check-label" for="jenis_kelamin">
+                    Perempuan
+                  </label>
+                </div>
+                <small class="form-text text-danger"><b><u><?= form_error('jenis_kelamin') ?></u></b></small>
+              </div>
             </div>
-            <small class="form-text text-danger"><b><u><?= form_error('jenis_kelamin') ?></u></b></small>
+            <div class="form-group">
+              <label for="agama"><b>Agama :</b></label>
+              <select class="form-control" id="agama" name="agama">
+                <option value="">--Pilih Agama--</option>
+                <?php if ($inputSelect['id_matkul']) { ?>
+                  <option selected value="<?= $inputSelect['agama'] ?>"><?= $inputSelect['agama'] ?></option>
+                <?php } ?>
+                <?php foreach ($inputSelectAgama as $agama => $data) { ?>
+                  <?php if ($data != $inputSelect['agama']) { ?>
+                    <option value="Islam"><?= $data ?></option>
+                  <?php } } ?>
+                </select>
+                <small class="form-text text-danger"><b><u><?= form_error('agama') ?></u></b></small>
+              </div>
+              <div class="form-group">
+                <label for="tmpt_lahir"><b>Tempat Lahir :</b></label>
+                <input type="text" class="form-control" id="tmpt_lahir" name="tmpt_lahir" value="<?= $tb_dosen['tmpt_lahir'] ?>" placeholder="Masukan Tempat Lahir">
+                <small class="form-text text-danger"><b><u><?= form_error('tmpt_lahir') ?></u></b></small>
+              </div>
+              <div class="form-group">
+                <label for="tanggal_lahir"><b>Tanggal Lahir :</b></label>
+                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= $tb_dosen['tanggal_lahir'] ?>" placeholder="Masukan Tanggal Lahir">
+                <small class="form-text text-danger"><b><u><?= form_error('tanggal_lahir') ?></u></b></small>
+              </div>
+              <div class="form-group">
+                <label for="no_telp"><b>No Telpon :</b></label>
+                <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?= $tb_dosen['no_telp'] ?>" placeholder="Masukan Nomer Telpon">
+                <small class="form-text text-danger"><b><u><?= form_error('no_telp') ?></u></b></small>
+              </div>
+              <div class="form-group">
+                <label for="alamat"><b>Alamat :</b></label>
+                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $tb_dosen['alamat'] ?>" placeholder="Masukan Alamat">
+                <small class="form-text text-danger"><b><u><?= form_error('alamat') ?></u></b></small>
+              </div>
+              <b>
+                <p>Upload Foto :</p>
+              </b>
+              <div class="custom-file">
+                <input type="file" name="image" required>
+                <small class="form-text text-danger"><b><u><?= form_error('image') ?></u></b></small>
+              </div>
+              <br>
+              <br>
+              <span style="float: left;">
+                <button type="submit" name="edit" value="edit" class="btn btn-success">Ubah</button>
+              </span>
+            </form>
+            <span style="float: right">
+              <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('dosen/index'); ?>">Kembali</a></button>
+            </span>
           </div>
         </div>
-        <div class="form-group">
-          <label for="agama"><b>Agama :</b></label>
-          <select class="form-control" id="agama" name="agama">
-            <option value="">--Pilih Agama--</option>
-            <option value="Islam">Islam</option>
-            <option value="Kristen">Kristen</option>
-            <option value="Katolik">Katolik</option>
-            <option value="Hindu">Hindu</option>
-            <option value="Buddha">Buddha</option>
-            <option value="Konghucu">Konghucu</option>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('agama') ?></u></b></small>
-        </div>
-        <div class="form-group">
-          <label for="tmpt_lahir"><b>Tempat Lahir :</b></label>
-          <input type="text" class="form-control" id="tmpt_lahir" name="tmpt_lahir" value="<?= $tb_dosen['tmpt_lahir'] ?>" placeholder="Masukan Tempat Lahir">
-          <small class="form-text text-danger"><b><u><?= form_error('tmpt_lahir') ?></u></b></small>
-        </div>
-        <div class="form-group">
-          <label for="tanggal_lahir"><b>Tanggal Lahir :</b></label>
-          <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= $tb_dosen['tanggal_lahir'] ?>" placeholder="Masukan Tanggal Lahir">
-          <small class="form-text text-danger"><b><u><?= form_error('tanggal_lahir') ?></u></b></small>
-        </div>
-        <div class="form-group">
-          <label for="no_telp"><b>No Telpon :</b></label>
-          <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?= $tb_dosen['no_telp'] ?>" placeholder="Masukan Nomer Telpon">
-          <small class="form-text text-danger"><b><u><?= form_error('no_telp') ?></u></b></small>
-        </div>
-        <div class="form-group">
-          <label for="alamat"><b>Alamat :</b></label>
-          <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $tb_dosen['alamat'] ?>" placeholder="Masukan Alamat">
-          <small class="form-text text-danger"><b><u><?= form_error('alamat') ?></u></b></small>
-        </div>
-        <b>
-          <p>Upload Foto :</p>
-        </b>
-        <div class="custom-file">
-          <input type="file" name="image" required>
-          <small class="form-text text-danger"><b><u><?= form_error('image') ?></u></b></small>
-        </div>
-        <br>
-        <br>
-        <span style="float: left;">
-          <button type="submit" name="edit" value="edit" class="btn btn-success">Ubah</button>
-        </span>
-      </form>
-      <span style="float: right">
-        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('dosen/index'); ?>">Kembali</a></button>
-      </span>
-    </div>
-  </div>
-</div>
+      </div>

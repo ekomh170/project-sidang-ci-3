@@ -27,11 +27,11 @@
         <div class="col-sm-10">
           <div class="row">
             <div class="col-sm-3">
-              <img src="<?= base_url('assets/img/') . $user['image']; ?>" class="img-thumbnail img-profile rounded-circle">
+              <img src="<?= base_url('assets/foto/users/') . $user['image']; ?>" class="img-thumbnail img-profile rounded-circle">
             </div>
             <div class="col-sm-9">
               <div class="custom-file">
-                <input type="file" src="<?= $user['image']; ?>" id="image" name="image">
+                <input type="file" src="<?= base_url('assets/foto/users/') . $user['image']; ?>" id="image" name="image" required>
               </div>
             </div>
             <div class="form-group row justify-content-end">

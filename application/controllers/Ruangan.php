@@ -54,6 +54,8 @@ class Ruangan extends CI_Controller
 	{
 		$data['judul'] = 'Form Tambah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->db->order_by('nama_jr', 'asc');
 		$data['jenis_ruangan'] = $this->db->get('tb_ruangan_jenis')->result();
 
 		$this->form_validation->set_rules('nama_ruangan', 'Nama Ruangan', 'required');
@@ -106,7 +108,10 @@ class Ruangan extends CI_Controller
 
 		$id              = decrypt_url($id_ruangan);
 		$data['ruangan'] = $this->Ruangan_model->IdentitasDataRuangan($id);
+		$data['inputSelect'] = $this->Ruangan_model->inputSelectDataRuangan($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
+		$this->db->order_by('nama_jr', 'asc');
 		$data['jenis_ruangan'] = $this->db->get('tb_ruangan_jenis')->result();
 
 		$this->form_validation->set_rules('nama_ruangan', 'Nama Ruangan', 'required');

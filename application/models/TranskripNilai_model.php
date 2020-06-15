@@ -122,7 +122,6 @@ class TranskripNilai_model extends CI_Model
 		}
 	}
 
-
 	public function UbahDataTranskripNilai()
 	{
 		$data = [
@@ -142,5 +141,16 @@ class TranskripNilai_model extends CI_Model
 		} else {
 			return false;
 		}
+	}
+
+	public function inputSelectDataTranskripNilai($id_transkrip_nilai)
+	{
+	    $this->db->select('*');
+		$this->db->from('tb_transkrip_nilai');
+		$this->db->join('mahasiswa', 'tb_transkrip_nilai.nim_mhs = mahasiswa.nim_mhs', 'left');
+		$this->db->where('tb_transkrip_nilai.id_transkrip_nilai', $id_transkrip_nilai);
+		
+		$query = $this->db->get();
+		return $query->row_array();
 	}
 }

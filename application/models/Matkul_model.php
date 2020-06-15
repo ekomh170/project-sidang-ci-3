@@ -83,6 +83,17 @@ class matkul_model extends CI_Model
 		return $this->db->get_where('tb_matkul', ['id_matkul' => $id_matkul])->row_array();
 	}
 
+	public function inputSelectDataMatkul($id_matkul)
+	{
+	    $this->db->select('*');
+		$this->db->from('tb_matkul');
+		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = tb_matkul.id_jurusan', 'left');
+		$this->db->where('tb_matkul.id_matkul', $id_matkul);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function CariDataMatkul()
 	{
 		$cari = $this->input->post('cari', true);

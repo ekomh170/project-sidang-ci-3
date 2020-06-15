@@ -101,5 +101,19 @@ class Tambahan_model extends CI_Model
 		$this->db->where('krs_detail.nim_mhs', $nim_mhs);
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+/// STATUS INPUT SELECT
+	public function inputSelectDataStatus()
+	{
+		$datastatus = array("Aktif", "Tidak Aktif");
+		return $datastatus;
+
+	}
+
+	public function inputSelectDataAgama()
+	{
+		$dataagama = array("Islam", "Protestan", "Katolik", "Hindu", "Buddha", "Khonghucu");
+		return $dataagama;
 	}	
 }

@@ -7,11 +7,10 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Waktu/Tanggal Loin</th>
+              <th>Waktu/Tanggal Login</th>
               <th>Pengguna/User</th>
               <th>Role</th>
               <th>Aktifitas</th>
-              <th>Status</th>
               <th>Hapus</th>
             </tr>
           </thead>
@@ -26,7 +25,6 @@
                 <td><?= $lg->log_user; ?></td>
                 <td><?= $lg->role; ?></td>
                 <td><?= $lg->log_tipe; ?></td>
-                <td><?= $lg->log_status; ?></td>
                 <td class="text-center">
                   <a href="<?= base_url(); ?>Log/deletelogin/<?= $lg->id_log; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ??');"><button type="button" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i></button></a>
                 </td>

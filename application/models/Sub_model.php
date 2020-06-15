@@ -87,6 +87,17 @@ class Sub_model extends CI_Model
 		return $this->db->get_where('user_sub_menu', ['id' => $id])->row_array();
 	}
 
+	public function inputSelectDataSub($id)
+	{
+	    $this->db->select('*');
+		$this->db->from('user_sub_menu');
+		$this->db->join('user_menu', 'user_sub_menu.id_menu = user_menu.id', 'right');
+		$this->db->where('user_sub_menu.id', $id);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 
 	public function CariDataSub()
 	{

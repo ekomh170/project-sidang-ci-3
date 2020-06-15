@@ -92,6 +92,8 @@ class Sub extends CI_Controller
 
 		$id_sub                = decrypt_url($id);
 		$data['user_sub_menu'] = $this->Sub_model->IdentitasDataSub($id_sub);
+		$data['inputSelect'] = $this->Sub_model->inputSelectDataSub($id_sub);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		$this->form_validation->set_rules('id_menu', 'Nama Menu', 'required');
 		$this->form_validation->set_rules('title', 'Nama Sub', 'required');

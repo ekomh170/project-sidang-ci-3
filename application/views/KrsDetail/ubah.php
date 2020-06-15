@@ -17,37 +17,45 @@
           <label for="id_dosen"><b>Nama Dosen : </b></label>
           <select class="form-control" id="id_dosen" name="id_dosen">
             <option value="">--Pilih Dosen--</option>
+            <?php if ($inputSelect['id_dosen']) { ?>
+              <option selected value="<?= $inputSelect['id_dosen']?>"><?= $inputSelect['nama_dosen']?></option>
+            <?php } ?>
             <?php foreach ($dosen as $dosen) { ?>
-              <?php if ($dosen->status == "Aktif") { ?>
-                <option value="<?= $dosen->id_dosen ?>"><?= $dosen->nama_dosen ?></option>
-            <?php }
-            } ?>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('id_dosen') ?></u></b></small>
-        </div>
-        <div class="form-group">
-          <label for="nilai_krs"><b>Nilai SKS :</b></label>
-          <input type="number" min="0" max="4" class="form-control" id="nilai_krs" name="nilai_krs" placeholder="Masukan Nilai SKS" value="<?= $data['nilai_krs'] ?>">
-          <small class="form-text text-danger"><b><u><?= form_error('nilai_krs') ?></u></b></small>
-        </div>
-        <?php if ($this->session->userdata('id_role') == "1") { ?>
-          <div class="form-group">
-            <label for="status"><b>Status :</b></label>
-            <select class="form-control" id="status" name="status">
-              <option value="">--Pilih Status--</option>
-              <option value="Aktif">Aktif</option>
-              <option value="Tidak Aktif">Tidak Aktif</option>
-            </select>
-            <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
+              <?php if ($dosen->id_dosen != $inputSelect['id_dosen']) { ?>
+                <?php if ($dosen->status == "Aktif") { ?>
+                  <option value="<?= $dosen->id_dosen ?>"><?= $dosen->nama_dosen ?></option>
+                <?php } } } ?>
+              </select>
+              <small class="form-text text-danger"><b><u><?= form_error('id_dosen') ?></u></b></small>
+            </div>
+            <div class="form-group">
+              <label for="nilai_krs"><b>Nilai SKS :</b></label>
+              <input type="number" min="0" max="4" class="form-control" id="nilai_krs" name="nilai_krs" placeholder="Masukan Nilai SKS" value="<?= $data['nilai_krs'] ?>">
+              <small class="form-text text-danger"><b><u><?= form_error('nilai_krs') ?></u></b></small>
+            </div>
+            <?php if ($this->session->userdata('id_role') == "1") { ?>
+              <div class="form-group">
+                <label for="status"><b>Status :</b></label>
+                <select class="form-control" id="status" name="status">
+                  <option value="">--Pilih Status--</option>
+                  <?php if ($data['status']) { ?>
+                    <option selected value="<?= $data['status']?>"><?= $data['status']?></option>
+                  <?php } ?>
+                  <?php foreach ($inputSelectStatus as $status => $isi) { ?>
+                    <?php if ($isi != $data['status']) { ?>
+                      <option value="<?= $isi ?>"><?= $isi ?></option>
+                    <?php } } ?>
+                  </select>
+                  <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
+                </div>
+              <?php } ?>
+              <span style="float: left;">
+                <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
+              </span>
+            </form>
+            <span style="float: right;">
+              <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('KrsDetail/detail/') . encrypt_url($data['nim_mhs']); ?>">Kembali</a></button>
+            </span>
           </div>
-        <?php } ?>
-        <span style="float: left;">
-          <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
-        </span>
-      </form>
-      <span style="float: right;">
-        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('KrsDetail/detail/') . encrypt_url($data['nim_mhs']); ?>">Kembali</a></button>
-      </span>
-    </div>
-  </div>
-</div>
+        </div>
+      </div>

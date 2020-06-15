@@ -79,6 +79,9 @@ class TranskripNilai extends CI_Controller
 
 		$id           = decrypt_url($id_transkrip_nilai);
 		$data['data'] = $this->db->get_where('tb_transkrip_nilai', ['id_transkrip_nilai' => $id])->row_array();
+		$data['inputSelect'] = $this->TranskripNilai_model->inputSelectDataTranskripNilai($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
+
 		$data['mahasiswa'] = $this->db->get('mahasiswa')->result();
 
 		$this->form_validation->set_rules('nim_mhs', 'Nama Mahasiswa', 'required|is_unique[tb_transkrip_nilai.nim_mhs]');
@@ -105,8 +108,6 @@ class TranskripNilai extends CI_Controller
 		$id           = decrypt_url($id_transkrip_nilai);
 		$data['data'] = $this->TranskripNilai_model->DetailDataTranskripNilai($id);
 		$data['nilai'] = $this->TranskripNilai_model->NilaiDataTranskripNilai($id);
-		// print_r($data['nilai']);
-		// die();
 		$data['ipk'] = $this->TranskripNilai_model->IpkDataTranskripNilai($id);
 
 		$this->load->view('templates/tb_header', $data);

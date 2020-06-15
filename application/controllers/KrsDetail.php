@@ -43,7 +43,6 @@ class KrsDetail extends CI_Controller
 		$data['offset'] = $this->uri->segment(3);
 		$data['data']   = $this->KrsDetail_model->GetDataKrsDetail($limit, $offset, $text_krs);
 
-
 		$this->load->view('templates/tb_header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
@@ -87,6 +86,8 @@ class KrsDetail extends CI_Controller
 
 		$id            = decrypt_url($id_krs);
 		$data['data']  = $this->Tambahan_model->UbahKrsMhsForm($id);
+		$data['inputSelect']  = $this->KrsDetail_model->inputSelectDataKrsDetail($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		//get id mhs
 		$ls = $this->Tambahan_model->UbahKrsMhsForm($id);

@@ -56,7 +56,9 @@ class Jurusan extends CI_Controller
 		$data['judul']              = 'Form Tambah Data';
 		$data['user']               = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+		$this->db->order_by('nama_fakultas', 'asc');
 		$data['fakultas']           = $this->db->get('tb_fakultas')->result();
+		$this->db->order_by('nama_lengkap_jp', 'asc');
 		$data['jenjang_pendidikan'] = $this->db->get('tb_jenjang_pendidikan')->result();
 
 		$this->form_validation->set_rules('nama_jurusan', 'Nama', 'required');
@@ -93,8 +95,12 @@ class Jurusan extends CI_Controller
 
 		$id                 = decrypt_url($id_jurusan);
 		$data['tb_jurusan'] = $this->Jurusan_model->IdentitasDataJurusan($id);
+		$data['inputSelect'] = $this->Jurusan_model->inputSelectDataJurusan($id);
+		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
+		$this->db->order_by('nama_fakultas', 'asc');
 		$data['fakultas']           = $this->db->get('tb_fakultas')->result();
+		$this->db->order_by('nama_lengkap_jp', 'asc');
 		$data['jenjang_pendidikan'] = $this->db->get('tb_jenjang_pendidikan')->result();
 
 		$this->form_validation->set_rules('nama_jurusan', 'Nama', 'required');

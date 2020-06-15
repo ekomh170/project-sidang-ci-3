@@ -145,7 +145,7 @@ class Dosen_model extends CI_Model
 	{
 		$id_dosen       = $this->input->post('id_dosen', true);
 		$image          = $_FILES['image'];
-		$nama_dosen           = $this->input->post('nama_dosen', true);
+		$nama_dosen     = $this->input->post('nama_dosen', true);
 		$nama_panggilan = $this->input->post('nama_panggilan', true);
 		$jenis_kelamin  = $this->input->post('jenis_kelamin', true);
 		$agama          = $this->input->post('agama', true);
@@ -156,8 +156,8 @@ class Dosen_model extends CI_Model
 		$id_matkul      = $this->input->post('id_matkul', true);
 		if ($image = '') {
 		} else {
-			$config['upload_path']   = 'assets/img/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['upload_path']   = 'assets/foto/dosen/';
+			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite']     = true;
 			$config['max_filename']  = 255;
 			$config['max_size']      = 25600;

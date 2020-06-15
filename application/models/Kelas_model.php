@@ -84,6 +84,17 @@ class Kelas_model extends CI_Model
 		return $this->db->get_where('tb_kelas', ['id_kelas' => $id_kelas])->row_array();
 	}
 
+	public function inputSelectDataKelas($id_kelas)
+	{
+	    $this->db->select('*');
+		$this->db->from('tb_kelas');
+		$this->db->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_kelas.id_ruangan', 'left');
+		$this->db->where('tb_kelas.id_kelas', $id_kelas);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function CariDataKelas()
 	{
 		$cari = $this->input->post('cari', true);

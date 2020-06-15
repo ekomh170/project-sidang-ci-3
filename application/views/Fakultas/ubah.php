@@ -18,18 +18,23 @@
           <label for="status"><b>Status:</b></label>
           <select class="form-control" id="status" name="status">
             <option value="">--Pilih Status--</option>
-            <option value="Aktif">Aktif</option>
-            <option value="Tidak Aktif">Tidak Aktif</option>
-          </select>
-          <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
-        </div>
-        <span style="float: left;">
-          <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
+            <?php if ($tb_fakultas['status']) { ?>
+              <option selected value="<?= $tb_fakultas['status']?>"><?= $tb_fakultas['status']?></option>
+            <?php } ?>
+            <?php foreach ($inputSelectStatus as $status => $data) { ?>
+              <?php if ($data != $tb_fakultas['status']) { ?>
+                <option value="<?= $data ?>"><?= $data ?></option>
+              <?php } } ?>
+            </select>
+            <small class="form-text text-danger"><b><u><?= form_error('status') ?></u></b></small>
+          </div>
+          <span style="float: left;">
+            <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
+          </span>
+        </form>
+        <span style="float: right;">
+          <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Fakultas/index'); ?>">Kembali</a></button>
         </span>
-      </form>
-      <span style="float: right;">
-        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Fakultas/index'); ?>">Kembali</a></button>
-      </span>
+      </div>
     </div>
   </div>
-</div>

@@ -14,24 +14,24 @@
 
 		 <!-- Sweet Alert 2-->
 		 <script type="text/javascript">
-		 	const flashData = $('.flash-data').data('flashdata');
+//		 	const flashData = $('.flash-data').data('flashdata');
 
-		 	if (flashData) {
-		 		Swal.fire({
-		 			icon: 'success',
-		 			title: "Logout Berhasil",
-		 			text: "Anda Berhasil " + flashData,
+//		 	if (flashData) {
+//		 		Swal.fire({
+//		 			icon: 'success',
+//		 			title: "Logout Berhasil",
+//		 			text: "Anda Berhasil " + flashData,
 				    // timer: 1500,
-				    showConfirmButton: true,
-				    type: 'success',
-				});
-		 	}
+//				    showConfirmButton: true,
+//				    type: 'success',
+//				});
+//		 	}
 
-		 </script>
-		 <!-- Sweet Alert 2-->
+</script>
+<!-- Sweet Alert 2-->
 
-		 <?php if ($this->uri->segment('4') == "loginhome") { ?>
-		 	<script src="<?= base_url('assets/'); ?>home/js/creative.min.js"></script>
-		 <?php } ?>
+	<?php if ($this->uri->segment('4') == "loginhome") { ?>
+		<script src="<?= base_url('assets/'); ?>home/js/creative.min.js"></script>
+	<?php } ?>
 	</body>
 </html>
