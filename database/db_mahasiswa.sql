@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jun 2020 pada 19.12
+-- Waktu pembuatan: 15 Jun 2020 pada 15.26
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.31
 
@@ -81,7 +81,7 @@ INSERT INTO `mahasiswa` (`nim_mhs`, `image`, `nama`, `nama_panggilan`, `jenis_ke
 (100406204, 'IMG_20200223_164959.jpg', 'Coba ', 'Coba', 'Laki-Laki', 'Islam', '29', '2003-12-05', 'ASAS', '08212', '', 'Tidak Aktif', 0, 'JR-08-07', 'KLS-07-36', 'TA-355'),
 (101106205, 'module_table_bottom.png', 'Testing', 'Test', 'Laki-Laki', 'Kristen', 'Bogor', '2003-01-30', 'Kampung', '0827218921', '', 'Tidak Aktif', 0, 'JR-02-42', 'KLS-06-26', 'TA-218'),
 (102505202, 'index.jpg', 'Cahaya Melati Mutiara', 'Cahaya', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Sanja', '083764862347', 'Cahaya013@tazkia.ac.id', 'Aktif', 2, 'JR-04-51', 'KLS-01-23', 'TA-218'),
-(102604201, 'file.jpg', 'Eko Muchamad Haryono', 'Amano', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Test', '087823122121', 'Amano012@tazkia.ac.id', 'Aktif', 2, 'JR-02-42', 'KLS-02-33', 'TA-425'),
+(102604201, 'IMG_20200223_164959.jpg', 'Eko Muchamad Haryono', 'Amano', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Test', '087823122121', 'Amano012@tazkia.ac.id', 'Aktif', 2, 'JR-02-42', 'KLS-02-33', 'TA-425'),
 (102905203, 'Capture.PNG', 'Percobaan', 'Coba', 'Laki-Laki', 'Islam', 'Jakarta', '2003-12-31', 'Cibinong', '08446603179', 'Coba014@tazkia.ac.id', 'Aktif', 2, 'JR-08-07', 'KLS-07-36', 'TA-355');
 
 -- --------------------------------------------------------
@@ -192,13 +192,13 @@ CREATE TABLE `tb_jenjang_pendidikan` (
 --
 
 INSERT INTO `tb_jenjang_pendidikan` (`id_jenjang_pendidikan`, `nama_lengkap_jp`, `nama_jp`, `status`) VALUES
-(1, '', 'D1', 'Tidak Aktif'),
-(2, '', 'D2', 'Tidak Aktif'),
-(3, '', 'D3', 'Aktif'),
-(4, '', 'D4', 'Tidak Aktif'),
-(5, '', 'S1', 'Aktif'),
-(6, '', 'S2', 'Aktif'),
-(7, '', 'S3', 'Tidak Aktif'),
+(1, 'Diploma Satu', 'D1', 'Tidak Aktif'),
+(2, 'Diploma Dua', 'D2', 'Tidak Aktif'),
+(3, 'Diploma Tiga', 'D3', 'Aktif'),
+(4, 'Diploma Empat', 'D4', 'Tidak Aktif'),
+(5, 'Sarjana Satu', 'S1', 'Aktif'),
+(6, 'Sarjana Dua', 'S2', 'Aktif'),
+(7, 'Sarjana Tiga', 'S3', 'Tidak Aktif'),
 (8, 'Belum Di isi', 'Kosong', 'Aktif');
 
 -- --------------------------------------------------------
@@ -249,10 +249,10 @@ CREATE TABLE `tb_kelas` (
 --
 
 INSERT INTO `tb_kelas` (`id_kelas`, `nama_kelas`, `status`, `id_ruangan`) VALUES
-('KLS-01-23', 'MBS - 01', 'Aktif', 'RGN-01-37'),
-('KLS-02-33', 'AKS - 01', 'Aktif', 'RGN-02-58'),
-('KLS-03-45', 'MBS - 02', 'Aktif', 'RGN-03-17'),
-('KLS-04-04', 'AKS - 02', 'Aktif', 'RGN-04-33'),
+('KLS-01-23', 'MBS - 01', 'Aktif', 'RGN-120'),
+('KLS-02-33', 'AKS - 01', 'Aktif', 'RGN-313'),
+('KLS-03-45', 'MBS - 02', 'Aktif', 'RGN-207'),
+('KLS-04-04', 'AKS - 02', 'Aktif', 'RGN-120'),
 ('KLS-05-15', 'MBS - 03', 'Aktif', 'RGN-05-47'),
 ('KLS-06-26', 'AKS - 03', 'Aktif', 'RGN-06-03'),
 ('KLS-07-36', 'AKS - 00', 'Aktif', 'RGN-01-37'),
@@ -436,7 +436,12 @@ INSERT INTO `tb_log` (`id_log`, `log_time`, `log_user`, `log_role`, `log_tipe`, 
 (153, '2020-06-11 16:07:50', 'ekomh13@gmail.com', 1, 'Data Menu', 'Hapus Data', '22', '', ''),
 (154, '2020-06-11 16:07:54', 'ekomh13@gmail.com', 1, 'Data Menu', 'Hapus Data', '21', '', ''),
 (155, '2020-06-11 16:47:31', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
-(156, '2020-06-11 16:48:30', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', '');
+(156, '2020-06-11 16:48:30', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
+(157, '2020-06-15 09:20:51', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '102604201', '', ''),
+(158, '2020-06-15 10:15:39', 'ekomh13@gmail.com', 1, 'Data Kelas', 'Ubah Data', 'KLS-01-23', '', ''),
+(159, '2020-06-15 10:17:00', 'ekomh13@gmail.com', 1, 'Data Kelas', 'Ubah Data', 'KLS-02-33', '', ''),
+(160, '2020-06-15 10:24:01', 'ekomh13@gmail.com', 1, 'Data Kelas', 'Ubah Data', 'KLS-03-45', '', ''),
+(161, '2020-06-15 10:24:19', 'ekomh13@gmail.com', 1, 'Data Kelas', 'Ubah Data', 'KLS-04-04', '', '');
 
 -- --------------------------------------------------------
 
@@ -658,7 +663,30 @@ INSERT INTO `tb_log_login` (`id_log`, `log_time`, `log_user`, `log_tipe`, `log_r
 (197, '2020-06-11 16:12:22', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
 (198, '2020-06-11 16:12:28', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
 (199, '2020-06-11 16:12:39', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
-(200, '2020-06-11 16:12:46', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna');
+(200, '2020-06-11 16:12:46', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(201, '2020-06-12 06:05:57', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(202, '2020-06-12 06:06:04', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(203, '2020-06-12 06:06:10', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(204, '2020-06-12 10:07:06', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(205, '2020-06-12 12:58:38', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(206, '2020-06-12 14:35:34', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(207, '2020-06-13 11:59:33', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(208, '2020-06-13 17:20:28', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(209, '2020-06-14 03:03:41', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(210, '2020-06-14 16:20:38', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(211, '2020-06-14 16:23:00', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(212, '2020-06-14 16:23:15', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(213, '2020-06-14 16:24:19', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(214, '2020-06-14 16:34:09', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(215, '2020-06-15 09:00:44', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(216, '2020-06-15 09:37:48', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(217, '2020-06-15 09:37:56', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(218, '2020-06-15 09:38:46', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(219, '2020-06-15 09:38:51', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(220, '2020-06-15 09:39:29', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(221, '2020-06-15 09:39:35', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(222, '2020-06-15 09:42:31', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(223, '2020-06-15 09:42:36', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna');
 
 -- --------------------------------------------------------
 
@@ -839,7 +867,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nama`, `nama_panggilan`, `email`, `image`, `password`, `password_asli`, `id_role`, `status`, `data_created`) VALUES
 (53, 'Amano Keita', 'Amano', 'AmanoKeita@tazkia.ac.id', 'foto.png', '$2y$10$3/W9gdAO93dzAJ99lD2pi.HxM541lRJaGpiJ1cQc0PzS0bUTO3zwK', '12345', 2, 'Aktif', '2019-12-25 23:54:19'),
-(56, 'Eko Muchamad Haryono', 'Amano29', 'ekomh13@gmail.com', 'index.jpg', '$2y$10$swL/vw8PBtKqJwIItyBtcuxHWhuBMRYx5BfV1WXifMSdrEWbO1o92', '12345', 1, 'Aktif', '2019-12-26 13:54:37'),
+(56, 'Eko Muchamad Haryono', 'Amano29', 'ekomh13@gmail.com', 'IMG_20200223_164959.jpg', '$2y$10$swL/vw8PBtKqJwIItyBtcuxHWhuBMRYx5BfV1WXifMSdrEWbO1o92', '12345', 1, 'Aktif', '2019-12-26 13:54:37'),
 (58, 'Sakura Haruno1', 'Sakura NESC', 'SakuraNESC0@dosentazkia.ac.id', 'Mnil.jpg', '$2y$10$GYd6YxfN2QndWsrUtk/fUu8YaQnqtdt1AfopVfT3I7GlrMJ1DYNbK', '1234', 3, 'Aktif', '2020-01-02 09:23:23'),
 (60, 'Souta Yoshiraku', 'Souta', 'Souta07@tazkia.ac.id', 'Mnil.jpg', '$2y$10$hTkTDfNvRWsOKVVijyPo1.5CqjF5WZcKMm.35IISCJ2J5BvLO/tRG', '1234', 2, 'Aktif', '2020-01-03 14:40:43'),
 (61, 'Souta Yoshiraku', 'Souta', 'Souta08@tazkia.ac.id', 'Mnil.jpg', '$2y$10$XAhVtR3k3LfLOon/4aIjWOJ0eG5WAgM8EHxp0vwXX5/9wSnMKZWpK', '1234', 2, 'Aktif', '2020-01-03 14:42:15'),
@@ -847,7 +875,7 @@ INSERT INTO `user` (`id`, `nama`, `nama_panggilan`, `email`, `image`, `password`
 (63, 'Sakura Haruno1', 'Sakura NESC', 'SakuraNESC010@dosentazkia.ac.id', 'Mnil.jpg', '$2y$10$BH9fumsVu/q1uHYkMyegEeaRbPpnLsPeT/C8UgRRINpgv.8axHULu', '1234', 3, 'Aktif', '2020-01-03 14:48:18'),
 (64, 'Krito', '', '011@dosentazkia.ac.id', 'foto.png', '$2y$10$y5kP.jQb5Glq0/9XB6ayNuXf6sHcjGM1ZJ3DV3k.QHpmxhkLl8wKO', '12345', 3, 'Aktif', '2020-01-03 14:49:02'),
 (65, 'Hinata Hyuga', '', '012@dosentazkia.ac.id', 'foto.png', '$2y$10$HVbW2JXyDIOfbDK8Eu1MFOCxFeY/zQZoTmHBA8d17H0DMvUo9kzXG', '1234', 3, 'Aktif', '2020-01-03 14:49:05'),
-(68, 'Amano Keita 12', 'Amano29', 'ekomh13@gmail.com', 'index.jpg', '$2y$10$tgtv5jVAmmoaprPJTV4sS.XWMigeg9henHjbindJZ.DMkzdQSdFT2', '12345', 1, 'Aktif', '2020-03-23 22:55:32'),
+(68, 'Amano Keita 12', 'Amano29', 'ekomh13@gmail.com', 'IMG_20200223_164959.jpg', '$2y$10$tgtv5jVAmmoaprPJTV4sS.XWMigeg9henHjbindJZ.DMkzdQSdFT2', '12345', 1, 'Aktif', '2020-03-23 22:55:32'),
 (71, 'Cahaya Melati Mutiara', 'Cahaya', 'Cek29@gmail.com', 'index.png', '$2y$10$GE49UXGRSTV55t3k2ZEUEuf0DFGjpRBQ1AHdZE53N5UObEupT8Yom', '12345', 5, 'Aktif', '2020-05-25 17:35:49'),
 (72, 'Eko Muchamad Haryono', 'Amano', 'Amano012@tazkia.ac.id', 'file.jpg', '$2y$10$HcpnnmM3/wPksZzGocSR3upaYnyI4QDdUzxTkpTSkNjElCfsTDSzG', '$2y$10$wtkQbwtoRH8uWdN7G9PjeuDwPOLVBskdvJS2WKFLFaehoYa.Iu5bO', 2, 'Aktif', '2020-05-25 22:49:35'),
 (73, 'Cahaya Melati Mutiara', 'Cahaya', 'Cahaya013@tazkia.ac.id', 'index.jpg', '$2y$10$iXL5anxY9sDjcDhblN.20OHsBRcQ8aicrtuLaXU4hPr4k8quxeRQq', '$2y$10$6c08eFlm/9IxVe1V45W2zOtP6KNNISbSdjWXyL56O/0L5nxBFtAaS', 2, 'Aktif', '2020-05-25 22:49:36'),
@@ -1156,13 +1184,13 @@ ALTER TABLE `tb_jenjang_pendidikan`
 -- AUTO_INCREMENT untuk tabel `tb_log`
 --
 ALTER TABLE `tb_log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_log_login`
 --
 ALTER TABLE `tb_log_login`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -1174,7 +1202,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user_akses_menu`
 --
 ALTER TABLE `user_akses_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
