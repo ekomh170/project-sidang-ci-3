@@ -57,11 +57,11 @@ class Dosen extends CI_Controller
 		$data['judul'] = 'Form Tambah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->db->order_by('nama_matkul', 'asc');
+		$this->db->order_by('nama_dosen_matkul', 'asc');
 		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
 
-		$this->form_validation->set_rules('nama_dosen', 'Nama', 'required');
-		$this->form_validation->set_rules('nama_panggilan', 'Nama Panggilan', 'required');
+		$this->form_validation->set_rules('nama_dosen_dosen', 'nama_dosen', 'required');
+		$this->form_validation->set_rules('nama_dosen_panggilan', 'nama_dosen Panggilan', 'required');
 		$this->form_validation->set_rules('id_matkul', 'Mata Kuliah', 'required');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis_kelamin', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
@@ -116,13 +116,13 @@ class Dosen extends CI_Controller
 		$data['inputSelect'] = $this->Dosen_model->InfoDataDetail($id);
 		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
-		$this->db->order_by('nama_matkul', 'asc');
+		$this->db->order_by('nama_dosen_matkul', 'asc');
 		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
 
-		$this->form_validation->set_rules('nama_dosen', 'Nama', 'required');
-		$this->form_validation->set_rules('nama_panggilan', 'Nama Panggilan', 'required');
+		$this->form_validation->set_rules('nama_dosen_dosen', 'nama_dosen', 'required');
+		$this->form_validation->set_rules('nama_dosen_panggilan', 'nama_dosen Panggilan', 'required');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis kelamin', 'required');
-		$this->form_validation->set_rules('id_matkul', 'Nama Matkul', 'required');
+		$this->form_validation->set_rules('id_matkul', 'nama_dosen Matkul', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
 		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
 		$this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
@@ -150,9 +150,8 @@ class Dosen extends CI_Controller
 		$stripped    = str_replace(' ', '', $data_dsn['nama_panggilan'] . "0" . $helper);
 		$email       = $stripped . '@dosentazkia.ac.id';
 
-
 		$data = array(
-			'nama'           => $data_dsn['nama'],
+			'nama'     => $data_dsn['nama_dosen'],
 			'nama_panggilan' => $data_dsn['nama_panggilan'],
 			'email'          => $email,
 			'image'          => $data_dsn['image'],
@@ -173,7 +172,6 @@ class Dosen extends CI_Controller
 
 		$this->db->where(array('id_dosen' => $id_dosen));
 		$this->db->update('tb_dosen', $data_update_user);
-		($data_update_user);
 		$this->session->set_flashdata('berhasil', 'Data Telah Dizinkan');
 		redirect('Dosen');
 	}
@@ -182,17 +180,16 @@ class Dosen extends CI_Controller
 	{
 		$data_dsn = $this->db->get_where('tb_dosen', ['id_dosen' => $id_dosen])->row_array();
 
-		$stripped = str_replace('', '', $data_dsn['nama']);
+		$stripped = str_replace('', '', $data_dsn['nama_dosen']);
 		$email = $stripped . '@tazkia.ac.id';
 
 		$data = array(
 			'email'   => '',
-			'status'  => '0',
+			'status'  => 'Tidak Aktif',
 			'id_role' => '0'
 		);
 		$this->db->where(array('id_dosen' => $id_dosen));
 		$this->db->update('tb_dosen', $data);
-		($data);
 		$this->session->set_flashdata('berhasil', 'Data Dinonaktifkan');
 		redirect(base_url('Dosen'));
 	}

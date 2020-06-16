@@ -33,7 +33,7 @@
 					<tbody>
 						<?php
 						foreach ($join as $mhs) :
-						?>
+							?>
 							<tr>
 								<td><?= ++$offset; ?></td>
 								<td><?= $mhs->nim_mhs; ?></td>
@@ -43,6 +43,15 @@
 								<td><?= $mhs->nama_kelas; ?></td>
 								<!-- td><?= $mhs->jenis_kelamin; ?></td> -->
 								<td class="text-center">
+									<!--izin Akses-->
+									<?php if ($mhs->status == 'Tidak Aktif') { ?>
+										<?= anchor(base_url('mahasiswa/user/') . $mhs->nim_mhs, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-lock"></i></button>') ?> <b> | </b>
+									<?php } ?>
+									<!--nonaktif-->
+									<?php if ($mhs->status == 'Aktif') { ?>
+										<?= anchor(base_url('mahasiswa/nonaktif/') . $mhs->nim_mhs, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-ban"></i></button>') ?> <b>|</b>
+									<?php } ?>
+
 									<?php if ($this->session->userdata('id_role') == "1") { ?>
 										<!--crud-->
 										<a href="<?= base_url(); ?>Mahasiswa/detail/<?= encrypt_url($mhs->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-fw fa-info-circle"></i></button></a> <b>|</b>

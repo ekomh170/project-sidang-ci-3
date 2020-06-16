@@ -14,7 +14,7 @@
                 <!-- <h6 class="card-text"><b>Status : </b><?= $this->session->userdata('is_active'); ?></h6> -->
                 <!-- <h6 class="card-text"><b>Kapan Di Buat : </b><?= $this->session->userdata('data_created'); ?></h6> -->
                 <br>
-                <h6 class="card-text text-center"><img src="<?= base_url('assets/img/') . $user['image']; ?>" height="200" width="200" class="img-profile rounded-circle"></h6>
+                <h6 class="card-text text-center"><img src="<?= base_url('assets/foto/users/') . $user['image']; ?>" height="200" width="200" class="img-profile rounded-circle"></h6>
                 <br>
                 <a href="<?= base_url('Profile/edit') ?>" class="btn btn-info"> Ubah Profile </a>
               </div>
@@ -39,9 +39,8 @@
                 <h6 class="card-text"><b>Tempat Lahir : </b><?= $this->session->userdata('tmpt_lahir'); ?></h6>
                 <h6 class="card-text"><b>Tanggal Lahir : </b><?= $this->session->userdata('tanggal_lahir'); ?></h6>
                 <h6 class="card-text"><b>Nomer Telpon : </b><?= $this->session->userdata('no_telp'); ?></h6>
-                <!-- <h6 class="card-text"><b>Kapan Di Buat : </b><?= $this->session->userdata('data_created'); ?></h6> -->
                 <br>
-                <h6 class="card-text text-center"><img src="<?= base_url('assets/img/') . $user['image']; ?>" height="200" width="200" class="img-profile rounded-circle"></h6>
+                <h6 class="card-text text-center"><img src="<?= base_url('assets/foto/mahasiswa/') . $user['image']; ?>" height="200" width="200" class="img-profile rounded-circle"></h6>
                 <br>
                 <a href="<?= base_url('Profile/edit') ?>" class="btn btn-info"> Ubah Profile </a>
               </div>
@@ -62,9 +61,8 @@
                 <h6 class="card-text"><b>Email : </b><?= $this->session->userdata('email'); ?></h6>
                 <h6 class="card-text"><b>Kode Dosen : </b><?= $this->session->userdata('id_dosen'); ?></h6>
                 <h6 class="card-text"><b>Kode Mata Kuliah : </b><?= $this->session->userdata('id_matkul') ?></h6>
-                <!--  <h6 class="card-text"><b>Kapan Di Buat : </b><?= $this->session->userdata('data_created'); ?></h6> -->
                 <br>
-                <h6 class="card-text text-center"><img src="<?= base_url('assets/img/') . $user['image']; ?>" height="200" width="200" class="img-profile rounded-circle"></h6>
+                <h6 class="card-text text-center"><img src="<?= base_url('assets/foto/dosen/') . $user['image']; ?>" height="200" width="200" class="img-profile rounded-circle"></h6>
                 <br>
                 <a href="<?= base_url('Profile/edit') ?>" class="btn btn-info"> Ubah Profile </a>
               </div>
