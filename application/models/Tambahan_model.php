@@ -78,7 +78,7 @@ class Tambahan_model extends CI_Model
 		return $query->row_array();
 	}
 //// KRS TO IPK
- 
+
 /// FORM NILAI SELECT KRS == DOSEN 
 	public function selectKrsDosen($nim_mhs)
 	{
@@ -91,7 +91,7 @@ class Tambahan_model extends CI_Model
 		return $query->result();
 	}
 /// FORM NILAI SELECT KRS == DOSEN
- 
+
 /// PERHITUNG TABEL IPK 
 	public function aritmatikaIpk($nim_mhs)
 	{
@@ -115,5 +115,42 @@ class Tambahan_model extends CI_Model
 	{
 		$dataagama = array("Islam", "Protestan", "Katolik", "Hindu", "Buddha", "Khonghucu");
 		return $dataagama;
-	}	
+	}
+
+/// MAHASISWA AUTH
+	public function DataProfileMahasiswa($email)
+	{
+		$this->db->select('mahasiswa.nim_mhs, tb_jurusan.nama_jurusan, tb_kelas.nama_kelas, tb_tahun_akademik.nama_tahun_akademik, mahasiswa.jenis_kelamin, mahasiswa.agama, mahasiswa.tmpt_lahir, mahasiswa.tanggal_lahir, mahasiswa.alamat, mahasiswa.no_telp');
+		$this->db->from('mahasiswa');
+		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan');
+		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas');
+		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik');
+		$this->db->where('email', $email);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+/// DOSEN AUTH
+	public function DataProfileDosen($email)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_dosen');
+		$this->db->join('tb_matkul', 'tb_dosen.id_matkul = tb_matkul.id_matkul', 'left');
+		$this->db->where('email', $email);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+/// FULL USER  
+	public function DataProfileUser($email)
+	{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('user_role', 'user_role.id = user.id_role');;
+		$this->db->where('email', $email);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}		
 }

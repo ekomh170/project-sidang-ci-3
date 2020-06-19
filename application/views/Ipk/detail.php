@@ -12,9 +12,11 @@
               <h6 class="card-text text-left"><span class="font-weight-bold">Nama Jurusan : </span><?= $data['nama_jurusan']; ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Tahun Akademik : </span><?= $data['nama_tahun_akademik']; ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Status : </span><?= $data['status']; ?></h6>
-              <span style="float: right;">
-                <a href="<?= base_url(); ?>Ipk" class="btn btn-info"> Kembali </a>
-              </span>
+              <?php if ($this->session->userdata('id_role') != "2"): ?>
+                <span style="float: right;">
+                  <a href="<?= base_url(); ?>Ipk" class="btn btn-info"> Kembali </a>
+                </span>
+              <?php endif ?>
             </div>
           </div>
         </div>
@@ -34,7 +36,9 @@
                 <th>Nilai Seluruh Sks</th>
                 <th>Nilai Total Bobot</th>
                 <th>Nilai Ipk</th>
-                <th>Aksi</th>
+                <?php if ($this->session->userdata('id_role') != "2"): ?>
+                  <th>Aksi</th>
+                <?php endif ?>
               </tr>
             </thead>
             <tbody>
@@ -47,19 +51,19 @@
                 <td><?= $nl->nilai_total_sks; ?></td>
                 <td><?= $nl->bobot_total; ?></td>
                 <td><?= $nl->ipk; ?></td>
-                <td>
-                  <a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($nl->id_ipk); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                  <a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($nl->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-                </td>
-            </tbody>
-            <?php $no++ ?>
-          <?php endforeach; ?>
+                <?php if ($this->session->userdata('id_role') != "2"): ?>
+                  <td>
+                    <a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($nl->id_ipk); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($nl->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                  </td>
+                <?php endif ?>
+              </tbody>
+              <?php $no++ ?>
+            <?php endforeach; ?>
           </table>
           <?php echo $this->pagination->create_links(); ?>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>

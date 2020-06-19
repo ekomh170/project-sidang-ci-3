@@ -4,12 +4,12 @@ class TranskripNilai extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
 		$this->load->model('TranskripNilai_model');
 	}
 
 	public function index($offset = NULL)
 	{
+		cek_login_role();
 		$text_tn = "";
 		if ($this->input->post('submit') != NULL) {
 			$text_tn = $this->input->post('cari_tn');
@@ -49,6 +49,7 @@ class TranskripNilai extends CI_Controller
 
 	public function tambah()
 	{
+		cek_login_role();
 		$data['judul'] = 'Form Tambah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -74,6 +75,7 @@ class TranskripNilai extends CI_Controller
 
 	public function ubah($id_transkrip_nilai)
 	{
+		cek_login_role();
 		$data['judul'] = 'Form Ubah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -102,6 +104,7 @@ class TranskripNilai extends CI_Controller
 
 	public function detail($id_transkrip_nilai)
 	{
+		cek_login();
 		$data['judul'] = 'Hasil Penilaian Transkrip Nilai';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -119,6 +122,7 @@ class TranskripNilai extends CI_Controller
 
 	public function hapus($id_transkrip_nilai)
 	{
+		cek_login_role();
 		$id = decrypt_url($id_transkrip_nilai);
 		$this->TranskripNilai_model->HapusDataTranskripNilai($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');

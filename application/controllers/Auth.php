@@ -25,9 +25,12 @@ class Auth extends CI_Controller
 		$email    = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$user     = $this->db->get_where('user', ['email' => $email])->row_array();
-		$data_mhs = $this->db->get_where('mahasiswa', ['email' => $email])->row_array();
-		$data_dsn = $this->db->get_where('tb_dosen', ['email' => $email])->row_array();
+		$user     = $this->Tambahan_model->DataProfileUser($email);
+		if ($user['id_role'] == '2') {
+			$data_mhs = $this->Tambahan_model->DataProfileMahasiswa($email);
+		} elseif($user['id_role'] == '3') {
+			$data_dsn = $this->Tambahan_model->DataProfileDosen($email);
+		}
 
 		// jika usernya ada
 		if ($user) {
@@ -44,27 +47,46 @@ class Auth extends CI_Controller
 						'image'          => $user['image'],
 						'id_role'        => $user['id_role'],
 						'id'             => $user['id'],
-						'password_asli'  => $user['password_asli'],
-						'id_role'        => $user['id_role'],
+						'role'        	 => $user['role'],
 						'status'         => $user['status'],
-						'data_created'   => $user['data_created'],
-
-						//data table mahasiswa
-						'nim_mhs'       => isset($data_mhs['nim_mhs']),
-						'id_krs'        => isset($data_mhs['id_krs']),
-						'id_kelas'      => isset($data_mhs['id_kelas']),
-						'jenis_kelamin' => isset($data_mhs['jenis_kelamin']),
-						'agama'         => isset($data_mhs['agama']),
-						'tmpt_lahir'    => isset($data_mhs['tmpt_lahir']),
-						'tanggal_lahir' => isset($data_mhs['tanggal_lahir']),
-						'alamat'        => isset($data_mhs['alamat']),
-						'no_telp'       => isset($data_mhs['no_telp']),
-
-						//data table dosen
-						'id_dosen'      => isset($data_dsn['id_dosen']),
-						'id_matkul'     => isset($data_dsn['id_matkul']),
 					];
+
+					if ($user['id_role'] == 2) {
+						$data_mhs = [
+						//data table mahasiswa
+							'nim_mhs'       => $data_mhs['nim_mhs'],
+							'nama_jurusan'  => $data_mhs['nama_jurusan'],
+							'nama_kelas'    => $data_mhs['nama_kelas'],
+							'nama_tahun_akademik' => $data_mhs['nama_tahun_akademik
+							'],
+							'jenis_kelamin' => $data_mhs['jenis_kelamin'],
+							'agama'         => $data_mhs['agama'],
+							'tmpt_lahir'    => $data_mhs['tmpt_lahir'],
+							'tanggal_lahir' => $data_mhs['tanggal_lahir'],
+							'alamat'        => $data_mhs['alamat'],
+							'no_telp'       => $data_mhs['no_telp'],
+						];
+
+					}elseif ($user['id_role'] == 3) {
+						$data_dsn = [
+						//data table dosen
+							'nama_dosen' 	=> $data_dsn['nama_dosen'],
+							'nama_matkul' 	=> $data_dsn['nama_matkul'],
+							'jenis_kelamin' => $data_dsn['jenis_kelamin'],
+							'tmpt_lahir'    => $data_dsn['tmpt_lahir'],
+							'tanggal_lahir' => $data_dsn['tanggal_lahir'],
+							'no_telp'       => $data_dsn['no_telp'],
+						];
+					}
+					
 					$this->session->set_userdata($data);
+
+					if ($user['id_role'] == 2) {
+						$this->session->set_userdata($data_mhs);
+					} elseif ($user['id_role'] == 3){
+						$this->session->set_userdata($data_dsn);
+					}
+
 					login_helper("Login", "Login");
 					if ($user['id_role'] == 1) {
 						$this->session->set_flashdata('berhasil', 'Mendapatkan Hak Akses Login');
@@ -73,8 +95,8 @@ class Auth extends CI_Controller
 						if ($user['password_asli'] == '1234') {
 							redirect('Auth/resetpassword');
 						} else {
-							$this->session->set_flashdata('berhasil', 'Login');
-							redirect('User');
+							$this->session->set_flashdata('berhasil', 'Mengganti Password Dan Mendapatkan Hak Akses Login');
+							redirect('Profile');
 						}
 					}
 				} else {
@@ -126,8 +148,8 @@ class Auth extends CI_Controller
 			];
 
 			$this->db->insert('user', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat Anda Berhasil Membuat Akun!.Silahkan Login</div>');
-			redirect('Auth');
+			$this->session->set_flashdata('berhasil', 'Selamat Anda Berhasil Membuat Akun!.Silahkan Login');
+			redirect('Dashboard');
 		}
 	}
 

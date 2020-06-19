@@ -6,12 +6,12 @@ class Nilai extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
 		$this->load->model('Nilai_model');
 	}
 
 	public function index($offset = NULL)
 	{
+		cek_login_role();
 		$text_krs = "";
 		if ($this->input->post('submit') != NULL) {
 			$text_krs = $this->input->post('cari_krs');
@@ -53,6 +53,7 @@ class Nilai extends CI_Controller
 
 	public function tambah($nim_mhs)
 	{
+		cek_login_role();
 		$data['judul']     = 'Form Tambah Data';
 		$data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -82,6 +83,7 @@ class Nilai extends CI_Controller
 
 	public function ubah($id_nilai)
 	{
+		cek_login_role();
 		$data['judul'] = 'Form Ubah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -122,6 +124,7 @@ class Nilai extends CI_Controller
 
 	public function hapus($id_nilai)
 	{
+		cek_login_role();
 		$id = decrypt_url($id_nilai);
 
 		// getdatamhs
@@ -137,6 +140,7 @@ class Nilai extends CI_Controller
 
 	public function detail($nim_mhs)
 	{
+		cek_login();
 		$data['judul'] = 'Hasil Penilaian Nilai Akhir';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 

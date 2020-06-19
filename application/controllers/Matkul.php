@@ -37,7 +37,7 @@ class Matkul extends CI_Controller
 		//initialize
 		$pagination = $this->pagination->initialize($config);
 
-		$data['judul']     = 'Data Mata Kuliah';
+		$data['judul']     = 'Data Matkul';
 		$data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['offset']    = $this->uri->segment(3);
 		$data['tb_matkul'] = $this->Matkul_model->GetDataMatkul($limit, $offset, $text_mtl);

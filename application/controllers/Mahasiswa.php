@@ -173,7 +173,7 @@ class Mahasiswa extends CI_Controller
 			'email'          => $email,
 			'image'          => $data_mhs['image'],
 			'password'       => password_hash('1234', PASSWORD_DEFAULT),
-			'password_asli'  => password_hash('1234', PASSWORD_DEFAULT),
+			'password_asli'  => '1234',
 			'id_role'        => '2',
 			'status'         => 'Aktif',
 			'data_created'   => date('Y-m-d H:i:s')

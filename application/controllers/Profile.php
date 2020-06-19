@@ -6,8 +6,9 @@ class Profile extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login();
+		cek_login_role();
 	}
+	
 	public function index()
 	{
 		$data['judul'] = 'Profile';
@@ -41,7 +42,7 @@ class Profile extends CI_Controller
 			if ($image = '') {
 			} else {
 				$config['upload_path']   = 'assets/foto/users';
-				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+				$config['allowed_types'] = 'jpg|png|jpeg';
 				$config['overwrite']     = true;
 				$config['max_filename']  = 255;
 				$config['max_size']      = 25600;

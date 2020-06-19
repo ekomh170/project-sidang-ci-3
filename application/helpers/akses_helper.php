@@ -19,7 +19,7 @@ function cek_login_role()
 		$id_role = $ci->session->userdata('id_role');
 		$menu = $ci->uri->segment(1);
 
-		$queryMenu = $ci->db->get('user_menu', ['menu' => $menu])->row_array();
+		$queryMenu = $ci->db->get_where('user_menu', ['menu' => $menu])->row_array();
 		$id_menu = $queryMenu['id'];
 
 		$akses = $ci->db->get_where('user_akses_menu', [
@@ -63,6 +63,6 @@ function cek_login_1()
 	$ci = get_instance();
 
 	if ($ci->session->userdata('email')) {
-		redirect('Dashboard');
+		redirect('Eror');
 	}
 }

@@ -54,60 +54,47 @@
           <?php endforeach ?>
 
         <?php endforeach; ?>
-        <?php if ($this->session->userdata('id_role') == "1") { ?>
+        
+        <?php if ($this->session->userdata('id_role') == "2") { ?>
           <li class="nav-item">
-            <a class="nav-link collapsed pb-1" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              <i class="fas fa-fw fa-table"></i>
-              <span><b>Master Data</b></span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-heade text-dark">
-                  <h5 class="text-center">Kumpulan Menu</h5>
-                </h6>
-                <a class="collapse-item" href="<?= base_url(); ?>Mahasiswa">Mahasiswa</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Dosen">Dosen</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Fakultas">Fakultas</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Jurusan">Jurusan</a>
-                <a class="collapse-item" href="<?= base_url(); ?>TahunAkademik">Tahun Akademik</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Matkul">Mata Kuliah</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Kelas">Kelas</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Ruangan">Ruangan</a>
-              </div>
-            </div>
-          </li>
-          <hr class="sidebar-divider">
-          <li class="nav-item">
-            <a class="nav-link collapsed pb-1" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              <i class="fas fa-fw fa-folder"></i>
-              <span><b>Menu Control Akses</b></span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-heade text-dark">
-                  <h5 class="text-center">Kumpulan Menu</h5>
-                </h6>
-                <a class="collapse-item" href="<?= base_url(); ?>Menu">Pengaturan Menu</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Role">Pengaturan Role</a>
-                <a class="collapse-item" href="<?= base_url(); ?>Sub">Pengaturan Sub</a>
-              </div>
-            </div>
-          </li>
-        <?php } ?>
-        <hr class="sidebar-divider">
-        <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('Dokumentasi'); ?>">
-            <i class="fas fa-fw fa-book"></i>
-            <span><b>Dokumentasi</b></span></a>
-          </li>
-          <hr class="sidebar-divider">
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Auth/logout'); ?>">
-              <i class="fas fa-fw fa-sign-out-alt"></i>
-              <span><b>Keluar</b></span></a>
+            <a class="nav-link pb-1" href="<?= base_url('KrsDetail/detail/') . encrypt_url($this->session->userdata('nim_mhs')); ?>">
+              <i class="fas fa-fw fa-tasks"></i>
+              <span><b>Hasil Krs Detail</b></span></a>
+              <hr class="sidebar-divider">
             </li>
-            <hr class="sidebar-divider d-none d-md-block">
-            <div class="text-center d-none d-md-inline">
-              <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-          </ul>
+            <li class="nav-item">
+              <a class="nav-link pb-1" href="<?= base_url('TranskripNilai/detail/') . encrypt_url($this->session->userdata('nim_mhs')); ?>">
+                <i class="fas fa-fw fa-tasks"></i>
+                <span><b>Hasil Transkrip Nilai</b></span></a>
+                <hr class="sidebar-divider">
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pb-1" href="<?= base_url('Nilai/detail/') . encrypt_url($this->session->userdata('nim_mhs')); ?>">
+                  <i class="fas fa-fw fa-tasks"></i>
+                  <span><b>Hasil Nilai</b></span></a>
+                  <hr class="sidebar-divider">
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pb-1" href="<?= base_url('Ipk/detail/') . encrypt_url($this->session->userdata('nim_mhs')); ?>">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span><b>Hasil Ipk</b></span></a>
+                    <hr class="sidebar-divider">
+                  </li>
+                <?php } ?>
+                <!-- 
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= base_url('Dokumentasi'); ?>">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span><b>Dokumentasi</b></span></a>
+                  </li> 
+                  <hr class="sidebar-divider"> --> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('Auth/logout'); ?>">
+                      <i class="fas fa-fw fa-sign-out-alt"></i>
+                      <span><b>Keluar</b></span></a>
+                    </li>
+                    <hr class="sidebar-divider d-none d-md-block">
+                    <div class="text-center d-none d-md-inline">
+                      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                    </div>
+                  </ul>

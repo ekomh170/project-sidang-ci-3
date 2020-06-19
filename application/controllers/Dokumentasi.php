@@ -6,7 +6,6 @@ class Dokumentasi extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
 		$this->load->model('Dashboard_model');
 	}
 
