@@ -30,10 +30,12 @@
                 Laporan Aktifitas
               </a>
             <?php } ?>
+            <?php if ($this->session->userdata('id_role') == "1") { ?>
             <a class="dropdown-item" href="<?= base_url('Log/LogLogin') ?>">
               <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
               Laporan Aktif
             </a>
+          <?php } ?>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

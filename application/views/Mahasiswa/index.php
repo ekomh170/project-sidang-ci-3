@@ -26,8 +26,9 @@
 							<th>Tahun Akademik</th>
 							<th width="14%">Jurusan</th>
 							<th width="13%">Kelas</th>
-							<!-- <th width="15%">Jenis Kelamin</th> -->
-							<th witdh="18%" class="text-center">Aksi</th>
+							<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+								<th witdh="18%" class="text-center">Aksi</th>
+							<?php } ?>
 						</tr>
 					</thead>
 					<tbody>
@@ -41,25 +42,24 @@
 								<td><?= $mhs->nama_tahun_akademik; ?></td>
 								<td><?= $mhs->nama_jurusan; ?></td>
 								<td><?= $mhs->nama_kelas; ?></td>
-								<!-- td><?= $mhs->jenis_kelamin; ?></td> -->
-								<td class="text-center">
-									<!--izin Akses-->
-									<?php if ($mhs->status == 'Tidak Aktif') { ?>
-										<?= anchor(base_url('mahasiswa/user/') . $mhs->nim_mhs, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-lock"></i></button>') ?> <b> | </b>
-									<?php } ?>
-									<!--nonaktif-->
-									<?php if ($mhs->status == 'Aktif') { ?>
-										<?= anchor(base_url('mahasiswa/nonaktif/') . $mhs->nim_mhs, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-ban"></i></button>') ?> <b>|</b>
-									<?php } ?>
-
-									<?php if ($this->session->userdata('id_role') == "1") { ?>
+								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+									<td class="text-center">
+										<!--izin Akses-->
+										<?php if ($mhs->status == 'Tidak Aktif') { ?>
+											<?= anchor(base_url('mahasiswa/user/') . $mhs->nim_mhs, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-lock"></i></button>') ?> <b> | </b>
+										<?php } ?>
+										<!--nonaktif-->
+										<?php if ($mhs->status == 'Aktif') { ?>
+											<?= anchor(base_url('mahasiswa/nonaktif/') . $mhs->nim_mhs, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-ban"></i></button>') ?> <b>|</b>
+										<?php } ?>
 										<!--crud-->
 										<a href="<?= base_url(); ?>Mahasiswa/detail/<?= encrypt_url($mhs->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-fw fa-info-circle"></i></button></a> <b>|</b>
 										<a href="<?= base_url(); ?>Mahasiswa/edit/<?= encrypt_url($mhs->nim_mhs); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
 										<a href="<?= base_url(); ?>Mahasiswa/hapus/<?= encrypt_url($mhs->nim_mhs); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
 										<!--crud-->
-									<?php } ?>
-								</td>
+
+									</td>
+								<?php } ?>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

@@ -30,11 +30,12 @@
                             <tr>
                                 <td><?= ++$offset; ?></td>
                                 <td><?= $rl->role; ?></td>
-                                <td class="text-center">
-                                    <a href="<?= base_url(); ?>Role/roleAccess/<?= $rl->id; ?>"><button type="button" class="btn btn-warning btn-circle"><i class="fas fa-fw fa-lock"></i></button></a> <b>|</b>
-                                    <a href="<?= base_url(); ?>Role/ubah/<?= $rl->id; ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                                    <a href="<?= base_url(); ?>Role/hapus/<?= $rl->id; ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle" class="tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
-                                </td>
+                                <?php if ($this->session->userdata('id_role') == "1") { ?>
+                                    <td class="text-center">
+                                        <a href="<?= base_url(); ?>Role/ubah/<?= encrypt_url($rl->id); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
+                                        <a href="<?= base_url(); ?>Role/hapus/<?= encrypt_url($rl->id); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle" class="tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

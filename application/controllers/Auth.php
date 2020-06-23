@@ -115,7 +115,8 @@ class Auth extends CI_Controller
 
 	public function register()
 	{
-		cek_login_role();
+		cek_login();
+		check_role_admin();
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nama_panggilan', 'Nama Panggilan', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
@@ -156,6 +157,7 @@ class Auth extends CI_Controller
 
 	public function resetpassword()
 	{
+		cek_login();
 		//validasi
 		$this->form_validation->set_rules('password_lama', 'Password Lama', 'required|trim');
 		$this->form_validation->set_rules('password_baru', 'Password Baru', 'required|trim');

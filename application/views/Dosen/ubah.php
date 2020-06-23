@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id_dosen" value="<?= $tb_dosen['id_dosen']; ?> required">
+        <input type="hidden" name="id_dosen" value="<?= $tb_dosen['id_dosen']; ?>" required>
         <div class="form-group">
           <label for="nama_dosen"><b>Nama Dosen :</b></label>
           <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" placeholder="Masukan Nama Dosen" value="<?= $tb_dosen['nama_dosen'] ?>">
@@ -55,12 +55,12 @@
               <label for="agama"><b>Agama :</b></label>
               <select class="form-control" id="agama" name="agama">
                 <option value="">--Pilih Agama--</option>
-                <?php if ($inputSelect['id_matkul']) { ?>
+                <?php if ($inputSelect['agama']) { ?>
                   <option selected value="<?= $inputSelect['agama'] ?>"><?= $inputSelect['agama'] ?></option>
                 <?php } ?>
                 <?php foreach ($inputSelectAgama as $agama => $data) { ?>
                   <?php if ($data != $inputSelect['agama']) { ?>
-                    <option value="Islam"><?= $data ?></option>
+                    <option value="<?= $data ?>"><?= $data ?></option>
                   <?php } } ?>
                 </select>
                 <small class="form-text text-danger"><b><u><?= form_error('agama') ?></u></b></small>
@@ -88,18 +88,22 @@
               <b>
                 <p>Upload Foto :</p>
               </b>
-              <div class="custom-file">
-                <input type="file" name="image" required>
-                <small class="form-text text-danger"><b><u><?= form_error('image') ?></u></b></small>
+              <div class="col-sm-2">
+                <img src="<?= base_url('assets/foto/dosen/') . $tb_dosen['image'] ?>" class="img-thumbnail img-profile rounded-circle">
               </div>
-              <br>
-              <br>
+              <div class="col-mb-2">
+                <div class="custom-file mb-2">
+                  <input type="file" name="image" class="mb-2">
+                  <small class="form-text text-dark"><u>Note : Jika Tidak Ingin Mengubah Gambar Kosong Kan Saja Form Upload Foto</u></small>
+                </div>
+              </div>
+              <div class="mb-3"></div>
               <span style="float: left;">
                 <button type="submit" name="edit" value="edit" class="btn btn-success">Ubah</button>
               </span>
             </form>
             <span style="float: right">
-              <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('dosen/index'); ?>">Kembali</a></button>
+              <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Dosen/index'); ?>">Kembali</a></button>
             </span>
           </div>
         </div>

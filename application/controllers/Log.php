@@ -9,7 +9,8 @@ class Log extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
+		cek_login();
+		check_role_admin();
 		$this->load->model('Log_model');
 		$this->load->model('LogLogin_model');
 	}

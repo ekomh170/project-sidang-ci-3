@@ -21,31 +21,35 @@
 							<th>Nim Mahasiswa</th>
 							<th>Nama Mahasiswa</th>
 							<th>Nama Jurusan</th>
-							<th witdh="18%" class="text-center">Aksi</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						$no = 1;
-						foreach ($data as $krs) :
-						?>
-							<tr>
-								<td><?= ++$offset; ?></td>
-								<td><?= $krs->nim_mhs; ?></td>
-								<td><?= $krs->nama; ?></td>
-								<td><?= $krs->nama_jurusan; ?></td>
-								<td class="text-center">
-									<!--crud-->
-									<a href="<?= base_url(); ?>KrsDetail/detail/<?= encrypt_url($krs->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info-circle"></i></button></a>
-									<!--crud-->
-								</td>
+							<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+								<th witdh="18%" class="text-center">Aksi</th>
+							<?php } ?>
 							</tr>
-							<?php $no++ ?>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
-				<?php echo $this->pagination->create_links(); ?>
+						</thead>
+						<tbody>
+							<?php
+							$no = 1;
+							foreach ($data as $krs) :
+								?>
+								<tr>
+									<td><?= ++$offset; ?></td>
+									<td><?= $krs->nim_mhs; ?></td>
+									<td><?= $krs->nama; ?></td>
+									<td><?= $krs->nama_jurusan; ?></td>
+									<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+										<td class="text-center">
+											<!--crud-->
+											<a href="<?= base_url(); ?>KrsDetail/detail/<?= encrypt_url($krs->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info-circle"></i></button></a>
+											<!--crud-->
+										</td>
+									<?php } ?>
+								</tr>
+								<?php $no++ ?>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+					<?php echo $this->pagination->create_links(); ?>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>

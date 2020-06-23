@@ -6,7 +6,8 @@ class Mahasiswa extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
+		cek_login();
+		check_role_admin_op_pendataan();
 		$this->load->model('Mahasiswa_model');
 	}
 

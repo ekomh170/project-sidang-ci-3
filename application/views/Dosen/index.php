@@ -26,7 +26,7 @@
               <th>Nama Dosen</th>
               <th>Mata Kuliah</th>
               <th>Jenis Kelamin</th>
-              <?php if ($this->session->userdata('id_role') == "1") { ?>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                 <th class="text-center">Aksi</th>
               <?php } ?>
             </tr>
@@ -34,14 +34,14 @@
           <tbody>
             <?php
             foreach ($join as $dsn) :
-            ?>
+              ?>
               <tr>
                 <td><?= ++$offset; ?></td>
                 <td><?= $dsn->id_dosen; ?></td>
                 <td><?= $dsn->nama_dosen; ?></td>
                 <td><?= $dsn->nama_matkul; ?></td>
                 <td><?= $dsn->jenis_kelamin; ?></td>
-                <?php if ($this->session->userdata('id_role') == "1") { ?>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <!--izin Akses-->
                     <?php if ($dsn->status == 'Tidak Aktif') { ?>
@@ -51,7 +51,6 @@
                     <?php if ($dsn->status == 'Aktif') { ?>
                       <?= anchor(base_url('dosen/nonaktif/') . $dsn->id_dosen, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-ban"></i></button>') ?> <b>|</b>
                     <?php } ?>
-
                     <!--CRUD-->
                     <a href="<?= base_url(); ?>dosen/detail/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-fw fa-info-circle"></i></button></a> <b>|</b>
                     <a href="<?= base_url(); ?>dosen/edit/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>

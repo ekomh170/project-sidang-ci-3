@@ -2,12 +2,6 @@
 
 class Pengguna_model extends CI_Model
 {
-	public function GetData()
-	{
-		$query = $this->db->get('user');
-		return $query->result_array();
-	}
-
 	public function GetDataPengguna($limit, $offset, $cari_usr = '')
 	{
 		$this->db->select('user.id, user.nama, user.nama_panggilan, user.email, user.image, user.password, user.password_asli, user.password_asli, user_role.role, user.status, user.data_created');
@@ -53,5 +47,16 @@ class Pengguna_model extends CI_Model
 		} else {
 			return false;
 		}
+	}
+
+	public function GetUsers($id_user)
+	{
+		$this->db->select('user.id, user.nama, user.nama_panggilan, user.email, user.image, user.password, user.password_asli, user.password_asli, user_role.role, user.status, user.data_created');
+		$this->db->from('user');
+		$this->db->join('user_role', 'user_role.id = user.id_role');
+		$this->db->where('user.id_role', $id_user);
+
+		$query = $this->db->get();
+		return $query->row();
 	}
 }

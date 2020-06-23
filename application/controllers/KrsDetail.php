@@ -6,12 +6,13 @@ class KrsDetail extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		cek_login();
 		$this->load->model('KrsDetail_model');
 	}
 
 	public function index($offset = NULL)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$text_krs = "";
 		if ($this->input->post('submit') != NULL) {
 			$text_krs = $this->input->post('cari_krs');
@@ -52,7 +53,7 @@ class KrsDetail extends CI_Controller
 
 	public function tambah($nim_mhs)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$data['judul']     = 'Form Tambah Data';
 		$data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -82,7 +83,7 @@ class KrsDetail extends CI_Controller
 
 	public function ubah($id_krs)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$data['judul'] = 'Form Ubah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -120,7 +121,7 @@ class KrsDetail extends CI_Controller
 
 	public function hapus($id_krs)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$id = decrypt_url($id_krs);
 
 		//get id mhs
@@ -136,7 +137,6 @@ class KrsDetail extends CI_Controller
 
 	public function detail($nim_mhs)
 	{
-		cek_login();
 		$data['judul'] = 'Hasil Penilaian KRS';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 

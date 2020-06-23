@@ -51,6 +51,7 @@ class Mahasiswa_model extends CI_Model
 		$count_mahasiswa   = $this->db->count_all('mahasiswa');
 		$helper            = 1 + $count_mahasiswa;
 		$date              = date('d' . 'm' . 'y');
+		$dateimage         = date('d' . '-' . 'm' . '-' . 'y');
 
 		$nim_mhs           = "10" . $date . $helper;
 		$image             = $_FILES['image'];
@@ -68,13 +69,14 @@ class Mahasiswa_model extends CI_Model
 		$status            = "Tidak Aktif";
 		if ($image = '') {
 		} else {
-			$config['upload_path']   = 'assets/foto/mahasiswa';
+			$config['upload_path']   = 'assets/foto/mahasiswa/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite']     = true;
 			$config['max_filename']  = 255;
 			$config['max_size']      = 25600;
 			$config['width']         = '100';
 			$config['height']        = '100';
+			$config['file_name']     =  $nama . '-' . $dateimage;
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('image')) {
@@ -146,7 +148,7 @@ class Mahasiswa_model extends CI_Model
 
 	public function inputSelectDataMahasiswa($nim_mhs)
 	{
-	    $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('mahasiswa');
 		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
 		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
@@ -159,6 +161,7 @@ class Mahasiswa_model extends CI_Model
 
 	public function UbahDataMahasiswa()
 	{
+		$dateimage         = date('d' . '-' . 'm' . '-' . 'y');	
 		$nim_mhs           = $this->input->post('nim_mhs', true);
 		$image             = $_FILES['image'];
 		$nama              = $this->input->post('nama', true);
@@ -172,6 +175,9 @@ class Mahasiswa_model extends CI_Model
 		$alamat            = $this->input->post('alamat', true);
 		$tanggal_lahir     = $this->input->post('tanggal_lahir', true);
 		$no_telp           = $this->input->post('no_telp', true);
+
+		$mahasiswa  	   = $this->Mahasiswa_model->IdentitasDataMahasiswa($nim_mhs);
+
 		if ($image = '') {
 		} else {
 			$config['upload_path']   = 'assets/foto/mahasiswa/';
@@ -181,13 +187,17 @@ class Mahasiswa_model extends CI_Model
 			$config['max_size']      = 2560000;
 			$config['width']         = '100';
 			$config['height']        = '100';
+			$config['file_name']     =  $nama . '-' . $dateimage;
 
 			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('image')) {
-				echo "Upload Gagal";
-				die();
+			if (@$_FILES['image']['name'] != null) {
+				if (!$this->upload->do_upload('image')) {
+					echo "Upload Gagal";
+				} else {
+					$image = $this->upload->data('file_name');
+				}
 			} else {
-				$image = $this->upload->data('file_name');
+				$image = $mahasiswa['image'];
 			}
 
 			$data = array(

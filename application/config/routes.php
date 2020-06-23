@@ -49,6 +49,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+// SYSTEM AWAL
 $route['default_controller'] = 'Home';
 $route['404_override'] = 'Eror';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = TRUE;
+// SYSTEM AWAL
+
+// ROUTEKU
+$route['Mhs-CI'] = "Mahasiswa";
+$route['Dsn-CI'] = "Dosen";
+$route['Fks-CI'] = "Fakultas";
+$route['Jrs-CI'] = "Jurusan";
+$route['Ta-CI']  = "TahunAkademik";
+$route['Ma-CI']  = "Matkul";
+$route['Kls-CI'] = "Kelas";
+$route['Rgn-CI'] = "Ruangan";
+
+$route['Ipk-CI'] = "Ipk";
+$route['Krs-CI'] = "KrsDetail";
+$route['Transkrip-CI'] = "TranskripNilai";
+$route['Nilai-CI'] = "Nilai";
+
+$route['Dashboard-CI'] = "Dashboard";
+$route['Pengguna-CI'] = "Pengguna";
+$route['Profile-CI'] = "Profile";
+
+$route['Role-CI'] = "Role";
+
+$route['Regis-CI'] = "Auth/register";
+// ROUTEKU

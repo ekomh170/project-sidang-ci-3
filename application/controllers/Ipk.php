@@ -4,12 +4,13 @@ class Ipk extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		cek_login();
 		$this->load->model('Ipk_model');
 	}
 
 	public function index($offset = NULL)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$text_ipk = "";
 		if ($this->input->post('submit') != NULL) {
 			$text_ipk = $this->input->post('cari_ipk');
@@ -49,7 +50,7 @@ class Ipk extends CI_Controller
 
 	public function tambah()
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$data['judul']     = 'Form Tambah Data';
 		$data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->db->order_by('nama', 'asc');
@@ -73,7 +74,7 @@ class Ipk extends CI_Controller
 
 	public function hapus($id_ipk)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$id = decrypt_url($id_ipk);
 		$this->Ipk_model->HapusDataIpk($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -83,7 +84,7 @@ class Ipk extends CI_Controller
 
 	public function ubah($id_ipk)
 	{
-		cek_login_role();
+		check_role_dosen_op_penilaian();
 		$data['judul'] = 'Form Ubah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -110,7 +111,6 @@ class Ipk extends CI_Controller
 	}
 	public function detail($nim_mhs)
 	{
-		cek_login();
 		$data['judul'] = 'Hasil Penilaian Ipk';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 

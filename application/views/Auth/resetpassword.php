@@ -24,6 +24,8 @@
                   Reset Password
                 </button>
               </form>
+              <hr>
+              <button onclick="backpageror()" class="btn btn-danger btn-user btn-block">Kembali</button>
             </div>
           </div>
         </div>

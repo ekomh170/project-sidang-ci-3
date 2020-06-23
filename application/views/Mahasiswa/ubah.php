@@ -114,8 +114,14 @@
                         <small class="form-text text-danger"><b><u><?= form_error('no_telp') ?></u></b></small>
                       </div>
                       <p><b>Upload Foto :</b></p>
-                      <div class="custom-file mb-2">
-                        <input type="file" name="image" required>
+                      <div class="col-sm-2">
+                        <img src="<?= base_url('assets/foto/mahasiswa/') . $mahasiswa['image'] ?>" class="img-thumbnail img-profile rounded-circle">
+                      </div>
+                      <div class="col-mb-2">
+                        <div class="custom-file mb-2">
+                          <button type="text"><input type="file" name="image"></button>
+                          <small class="form-text text-dark"><u>Note : Jika Tidak Ingin Mengubah Gambar Kosong Kan Saja Form Upload Foto</u></small>
+                        </div>
                       </div>
                       <span style="float: left;">
                         <button type="submit" name="edit" value="edit" class="btn btn-success">Ubah</button>

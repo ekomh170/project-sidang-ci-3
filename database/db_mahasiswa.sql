@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2020 pada 14.48
+-- Waktu pembuatan: 21 Jun 2020 pada 18.14
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.31
 
@@ -78,8 +78,8 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`nim_mhs`, `image`, `nama`, `nama_panggilan`, `jenis_kelamin`, `agama`, `tmpt_lahir`, `tanggal_lahir`, `alamat`, `no_telp`, `email`, `status`, `id_role`, `id_jurusan`, `id_kelas`, `id_tahun_akademik`) VALUES
-(100406204, 'IMG_20200223_164959.jpg', 'Coba ', 'Coba', 'Laki-Laki', 'Islam', '29', '2003-12-05', 'ASAS', '08212', '', 'Tidak Aktif', 0, 'JR-08-07', 'KLS-07-36', 'TA-355'),
-(101106205, 'module_table_bottom.png', 'Testing', 'Test', 'Laki-Laki', 'Kristen', 'Bogor', '2003-01-30', 'Kampung', '0827218921', '', 'Tidak Aktif', 2, 'JR-02-42', 'KLS-06-26', 'TA-218'),
+(100406204, 'Coba_-21-06-20.jpg', 'Coba ', 'Coba', 'Laki-Laki', 'Islam', '29', '2003-12-05', 'ASAS', '08212', '', 'Tidak Aktif', 0, 'JR-08-07', 'KLS-07-36', 'TA-355'),
+(101106205, 'Testing-21-06-20.jpg', 'Testing', 'Test', 'Laki-Laki', 'Kristen', 'Bogor', '2003-01-30', 'Kampung', '0827218921', '', 'Tidak Aktif', 2, 'JR-02-42', 'KLS-06-26', 'TA-218'),
 (101606206, 'IMG_20200223_165036.jpg', 'coba1', 'coba1', 'Laki-Laki', 'Islam', 'skjasjaksasj', '1000-12-01', 'wqwwqwq', '11221', '', 'Tidak Aktif', 2, 'JR-02-42', 'KLS-07-36', 'TA-355'),
 (102505202, 'index.jpg', 'Cahaya Melati Mutiara', 'Cahaya', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Sanja', '083764862347', 'Cahaya03@tazkia.ac.id', 'Aktif', 2, 'JR-04-51', 'KLS-01-23', 'TA-218'),
 (102604201, 'IMG_20200223_164959.jpg', 'Eko Muchamad Haryono', 'Amano', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Test', '087823122121', 'Amano04@tazkia.ac.id', 'Aktif', 2, 'JR-02-42', 'KLS-02-33', 'TA-425'),
@@ -113,9 +113,10 @@ CREATE TABLE `tb_dosen` (
 --
 
 INSERT INTO `tb_dosen` (`id_dosen`, `nama_dosen`, `nama_panggilan`, `jenis_kelamin`, `agama`, `tmpt_lahir`, `tanggal_lahir`, `alamat`, `no_telp`, `image`, `email`, `status`, `id_role`, `id_matkul`) VALUES
-('0201011731', 'Dr. Luqyan Tamanni, M.Ec', 'Luqyan ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-29', 'Bogor', '0811021317318', 'POSTER_GC.jpg', 'Luqyan04@dosentazkia.ac.id', 'Tidak Aktif', 3, 'MK-02-08'),
-('02011011701', 'Dr. Murniati Mukhlisin, M.Acc.', 'Murniati ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-28', 'Bogor', '083817123612', 'foto.png', 'Murniati017@dosentazkia.ac.id', 'Tidak Aktif', 3, '--Pilih Mata Kuliah--'),
+('0201011731', 'Dr. Luqyan Tamanni, M.Ec', 'Luqyan ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-29', 'Bogor', '0811021317318', '-21-06-20.jpg', '', 'Tidak Aktif', 0, 'MK-02-08'),
+('02011011701', 'Dr. Murniati Mukhlisin, M.Acc.', 'Murniati ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-28', 'Bogor', '083817123612', 'foto.png', 'Murniati09@dosentazkia.ac.id', 'Tidak Aktif', 3, '--Pilih Mata Kuliah--'),
 ('02012011744', 'Dr. Sugiyarti Fatma Laela, M.Buss. Acc., CMA. CIBA', 'Fatma ', 'Laki-Laki', 'Islam', 'Bogor', '2019-02-18', 'Bogor', '083813271326', 'foto.png', '', 'Tidak Aktif', 0, '--Pilih Mata Kuliah--'),
+('02012062126', 'DIA ', 'KAMU', 'Laki-Laki', 'Khonghucu', 'TESTING', '2020-12-31', 'TESTING', '404', 'IMG_20200223_164959.jpg', '', 'Tidak Aktif', 0, 'MK-01-14'),
 ('0202011745', 'Dr. Indra, S.Si, M.Si', 'Indra', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-29', 'Bogor', '0983082912', 'foto.png', 'Indra019@dosentazkia.ac.id', 'Tidak Aktif', 3, '--Pilih Mata Kuliah--'),
 ('0203011739', 'Dr. Bayu Taufiq Possummah, M.A.', 'Bayu ', 'Laki-Laki', 'Kristen', 'Bogor', '2020-01-16', 'Bogor', '086125312615', 'POSTER_SKNU.jpg', '', 'Tidak Aktif', 0, 'MK-01-14'),
 ('0204011728', ' Dr. Erwandi Tarmizi Anwar, MA.', 'Erwandi ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-23', 'Bogor', '081287381371', 'foto.png', '', 'Tidak Aktif', 0, '--Pilih Mata Kuliah--'),
@@ -147,9 +148,9 @@ INSERT INTO `tb_fakultas` (`id_fakultas`, `nama_fakultas`, `keterangan`, `status
 ('FKS-02-11', 'Fakultas Hukum', 'Hukum', 'Aktif'),
 ('FKS-03-57', 'Fakultas Pendidikan', 'Pendidikan Syariah', 'Aktif'),
 ('FKS-04-30', 'Belum Diisi', 'Tidak Memiliki Fakultas', 'Aktif'),
-('FKS-05-55', 'Test', 'Test', 'Aktif'),
 ('FKS-0648', 'Percobaan', 'Percobaan', 'Aktif'),
-('FKS-0753', 'CContoh ', 'Contoh', 'Aktif');
+('FKS-0736', 'TEST', 'TEST', 'Tidak Aktif'),
+('FKS-0753', 'Contoh ', 'Contoh PERCOBAAN', 'Tidak Aktif');
 
 -- --------------------------------------------------------
 
@@ -227,9 +228,9 @@ INSERT INTO `tb_jurusan` (`id_jurusan`, `nama_jurusan`, `id_jenjang_pendidikan`,
 ('JR-03-09', 'Managemen Bisnis Syariah', '3', 'Manajemen Bisnis Syariah Adalah', 'Aktif', 'FKS-01-24'),
 ('JR-04-51', 'Hukum Ekonomi Syariah', '6', 'Hukum Ekonomi Syariah Adalah', 'Aktif', 'FKS-02-11'),
 ('JR-05-32', 'Tadris Ilmu Pengetahuan Sosial', '3', 'Tadris Ilmu Pengetahuan Sosial', 'Aktif', 'FKS-03-57'),
-('JR-06-13', 'Belum Diisi', '8', 'Kosong', 'Aktif', 'FKS-04-30'),
-('JR-07-38', 'Test', '3', 'Test', 'Aktif', 'FKS-05-55'),
-('JR-08-07', 'Coba', '3', 'Coba', 'Aktif', 'FKS-05-55'),
+('JR-06-13', 'Belum Diisi', '8', 'Bagi Data Yang Masih Bingung Saat Mengisi nya\r\n', 'Aktif', 'FKS-04-30'),
+('JR-07-38', 'Test', '8', 'Test hanya TESTING', 'Tidak Aktif', 'FKS-04-30'),
+('JR-08-07', 'Coba', '8', 'Coba Hanya Percobaan', 'Tidak Aktif', 'FKS-04-30'),
 ('JR-09-56', 'Percobaan', '8', 'Percobaan', 'Tidak Aktif', 'FKS-0648');
 
 -- --------------------------------------------------------
@@ -469,7 +470,27 @@ INSERT INTO `tb_log` (`id_log`, `log_time`, `log_user`, `log_role`, `log_tipe`, 
 (185, '2020-06-18 15:12:52', 'ekomh13@gmail.com', 1, 'Data Menu', 'Menambahkan Data', 'Role', '', ''),
 (186, '2020-06-18 15:16:05', 'ekomh13@gmail.com', 1, 'Data Sub', 'Menambah Data', '23', '', ''),
 (187, '2020-06-18 15:16:42', 'ekomh13@gmail.com', 1, 'Data Sub', 'Menambah Data', '24', '', ''),
-(188, '2020-06-18 15:17:22', 'ekomh13@gmail.com', 1, 'Data Sub', 'Menambah Data', '25', '', '');
+(188, '2020-06-18 15:17:22', 'ekomh13@gmail.com', 1, 'Data Sub', 'Menambah Data', '25', '', ''),
+(189, '2020-06-21 01:14:05', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
+(190, '2020-06-21 01:35:58', 'ekomh13@gmail.com', 1, 'Data Pengguna', 'Hapus Data', '88', '', ''),
+(191, '2020-06-21 01:36:04', 'ekomh13@gmail.com', 1, 'Data Pengguna', 'Hapus Data', '87', '', ''),
+(192, '2020-06-21 01:36:13', 'ekomh13@gmail.com', 1, 'Data Pengguna', 'Hapus Data', '86', '', ''),
+(193, '2020-06-21 01:38:27', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Menambah Data', '02012062126', '', ''),
+(194, '2020-06-21 01:43:49', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Ubah Data', '02012062126', '', ''),
+(195, '2020-06-21 01:45:22', 'ekomh13@gmail.com', 1, 'Data Fakultas', 'Hapus Data', 'FKS-05-55', '', ''),
+(196, '2020-06-21 01:45:36', 'ekomh13@gmail.com', 1, 'Data Fakultas', 'Menambah Data', 'FKS-0736', '', ''),
+(197, '2020-06-21 01:45:45', 'ekomh13@gmail.com', 1, 'Data Mata Kuliah', 'Ubah Data', 'FKS-0736', '', ''),
+(198, '2020-06-21 01:45:53', 'ekomh13@gmail.com', 1, 'Data Mata Kuliah', 'Ubah Data', 'FKS-0736', '', ''),
+(199, '2020-06-21 01:46:14', 'ekomh13@gmail.com', 1, 'Data Mata Kuliah', 'Ubah Data', 'FKS-0753', '', ''),
+(200, '2020-06-21 01:46:54', 'ekomh13@gmail.com', 1, 'Data Jurusan', 'Ubah Data', 'JR-08-07', '', ''),
+(201, '2020-06-21 01:47:44', 'ekomh13@gmail.com', 1, 'Data Jurusan', 'Ubah Data', 'JR-07-38', '', ''),
+(202, '2020-06-21 01:48:51', 'ekomh13@gmail.com', 1, 'Data Jurusan', 'Ubah Data', 'JR-06-13', '', ''),
+(203, '2020-06-21 02:43:51', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Ubah Data', '0201011731', '', ''),
+(204, '2020-06-21 13:28:53', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
+(205, '2020-06-21 14:04:40', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
+(206, '2020-06-21 14:05:03', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
+(207, '2020-06-21 14:09:33', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '101106205', '', ''),
+(208, '2020-06-21 14:15:11', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Ubah Data', '0201011731', '', '');
 
 -- --------------------------------------------------------
 
@@ -872,7 +893,148 @@ INSERT INTO `tb_log_login` (`id_log`, `log_time`, `log_user`, `log_tipe`, `log_r
 (378, '2020-06-19 06:27:41', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
 (379, '2020-06-19 06:28:11', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
 (380, '2020-06-19 06:28:29', 'Amano04@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
-(381, '2020-06-19 12:42:04', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna');
+(381, '2020-06-19 12:42:04', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(382, '2020-06-20 02:08:43', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(383, '2020-06-20 02:58:57', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(384, '2020-06-20 02:59:08', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(385, '2020-06-20 03:00:16', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(386, '2020-06-20 03:00:24', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(387, '2020-06-20 03:00:35', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(388, '2020-06-20 03:01:02', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(389, '2020-06-20 03:01:14', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(390, '2020-06-20 10:08:42', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(391, '2020-06-20 10:21:02', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(392, '2020-06-20 10:21:09', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(393, '2020-06-20 10:22:15', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(394, '2020-06-20 10:22:31', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(395, '2020-06-20 10:49:43', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(396, '2020-06-20 10:49:51', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(397, '2020-06-20 10:49:54', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(398, '2020-06-20 10:50:00', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(399, '2020-06-20 10:51:01', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(400, '2020-06-20 10:51:07', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(401, '2020-06-20 10:55:35', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(402, '2020-06-20 10:55:47', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(403, '2020-06-20 11:00:18', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(404, '2020-06-20 11:00:27', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(405, '2020-06-20 11:01:02', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(406, '2020-06-20 11:01:12', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(407, '2020-06-20 11:03:35', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(408, '2020-06-20 11:03:41', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(409, '2020-06-20 11:05:43', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(410, '2020-06-20 11:05:49', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(411, '2020-06-20 11:07:12', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(412, '2020-06-20 11:07:18', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(413, '2020-06-20 11:08:00', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(414, '2020-06-20 11:08:15', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(415, '2020-06-20 12:36:30', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(416, '2020-06-20 12:36:36', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(417, '2020-06-20 12:37:02', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(418, '2020-06-20 12:37:10', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(419, '2020-06-20 12:45:38', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(420, '2020-06-20 12:45:45', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(421, '2020-06-20 12:53:35', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(422, '2020-06-20 12:53:42', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(423, '2020-06-20 12:55:04', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(424, '2020-06-20 13:01:15', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(425, '2020-06-20 13:01:39', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(426, '2020-06-20 13:01:47', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(427, '2020-06-20 13:04:26', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(428, '2020-06-20 13:04:32', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(429, '2020-06-20 13:28:59', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(430, '2020-06-20 13:29:07', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(431, '2020-06-20 13:29:16', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(432, '2020-06-20 13:29:23', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(433, '2020-06-20 13:30:47', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(434, '2020-06-20 13:31:00', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(435, '2020-06-20 13:33:18', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(436, '2020-06-20 13:33:34', 'Amano04@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(437, '2020-06-20 13:33:59', 'Amano04@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(438, '2020-06-20 13:35:33', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(439, '2020-06-20 13:36:25', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(440, '2020-06-20 13:36:31', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(441, '2020-06-20 13:37:27', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(442, '2020-06-20 13:37:45', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(443, '2020-06-20 13:39:22', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(444, '2020-06-20 13:39:30', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(445, '2020-06-20 13:39:41', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(446, '2020-06-20 13:39:48', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(447, '2020-06-20 13:40:57', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(448, '2020-06-20 13:41:03', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(449, '2020-06-20 14:09:05', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(450, '2020-06-20 14:09:27', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(451, '2020-06-20 14:09:53', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(452, '2020-06-20 14:10:10', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(453, '2020-06-20 14:42:07', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(454, '2020-06-20 14:42:14', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(455, '2020-06-20 15:48:05', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(456, '2020-06-20 15:53:43', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(457, '2020-06-20 17:37:12', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(458, '2020-06-20 17:37:49', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(459, '2020-06-20 17:37:53', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(460, '2020-06-20 17:37:59', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(461, '2020-06-20 22:59:09', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(462, '2020-06-20 23:43:14', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(463, '2020-06-20 23:45:54', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(464, '2020-06-20 23:54:29', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(465, '2020-06-20 23:54:35', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(466, '2020-06-21 00:00:26', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(467, '2020-06-21 00:00:35', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(468, '2020-06-21 00:02:31', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(469, '2020-06-21 00:02:36', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(470, '2020-06-21 00:03:13', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(471, '2020-06-21 00:03:20', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(472, '2020-06-21 00:10:25', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(473, '2020-06-21 00:10:33', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(474, '2020-06-21 00:15:15', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(475, '2020-06-21 00:15:22', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(476, '2020-06-21 00:18:44', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(477, '2020-06-21 00:18:53', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(478, '2020-06-21 00:19:04', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(479, '2020-06-21 00:25:39', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(480, '2020-06-21 00:33:08', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(481, '2020-06-21 00:34:31', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(482, '2020-06-21 00:34:42', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(483, '2020-06-21 00:36:01', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(484, '2020-06-21 00:37:55', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(485, '2020-06-21 00:41:33', 'nanda201@gmail.com', 'login', 4, 'Login', 'pengguna'),
+(486, '2020-06-21 00:42:53', 'nanda201@gmail.com', 'logout', 4, 'Logout', 'pengguna'),
+(487, '2020-06-21 00:43:00', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(488, '2020-06-21 00:43:31', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(489, '2020-06-21 00:43:44', 'nanda201@gmail.com', 'login', 4, 'Login', 'pengguna'),
+(490, '2020-06-21 00:44:27', 'nanda201@gmail.com', 'logout', 4, 'Logout', 'pengguna'),
+(491, '2020-06-21 00:44:33', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(492, '2020-06-21 00:44:45', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(493, '2020-06-21 00:44:53', 'nanda201@gmail.com', 'login', 4, 'Login', 'pengguna'),
+(494, '2020-06-21 00:56:13', 'nanda201@gmail.com', 'logout', 4, 'Logout', 'pengguna'),
+(495, '2020-06-21 00:56:18', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(496, '2020-06-21 00:59:49', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(497, '2020-06-21 01:00:07', 'syahira29@gmail.com', 'login', 5, 'Login', 'pengguna'),
+(498, '2020-06-21 01:00:47', 'syahira29@gmail.com', 'logout', 5, 'Logout', 'pengguna'),
+(499, '2020-06-21 01:01:34', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(500, '2020-06-21 01:02:15', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(501, '2020-06-21 01:02:34', 'ekomh020@gmail.com', 'login', 6, 'Login', 'pengguna'),
+(502, '2020-06-21 01:07:00', 'ekomh020@gmail.com', 'logout', 6, 'Logout', 'pengguna'),
+(503, '2020-06-21 01:07:12', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(504, '2020-06-21 02:04:07', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(505, '2020-06-21 02:04:14', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(506, '2020-06-21 02:09:12', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(507, '2020-06-21 02:10:42', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(508, '2020-06-21 02:40:58', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(509, '2020-06-21 02:41:08', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(510, '2020-06-21 13:04:12', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(511, '2020-06-21 14:38:01', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(512, '2020-06-21 14:38:08', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(513, '2020-06-21 15:04:02', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(514, '2020-06-21 15:04:12', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(515, '2020-06-21 15:04:51', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(516, '2020-06-21 15:05:05', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(517, '2020-06-21 15:05:33', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(518, '2020-06-21 15:05:48', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(519, '2020-06-21 15:05:58', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(520, '2020-06-21 15:06:19', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(521, '2020-06-21 15:06:24', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(522, '2020-06-21 15:06:50', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna');
 
 -- --------------------------------------------------------
 
@@ -1057,110 +1219,8 @@ INSERT INTO `user` (`id`, `nama`, `nama_panggilan`, `email`, `image`, `password`
 (81, 'Dr. Luqyan Tamanni, M.Ec', 'Luqyan ', 'Luqyan04@dosentazkia.ac.id', 'IMG_20200223_165103.jpg', '$2y$10$2ZJsQOmxz9b/pSBKwcc10.aCQc.OVkD8qc5H.YYz6LFazgOBsB7JC', '$2y$10$2ZJsQOmxz9b/pSBKwcc10.aCQc.OVkD8qc5H.YYz6LFazgOBsB7JC', 3, 'Aktif', '2020-06-17 07:58:52'),
 (82, 'Eko Muchamad Haryono', 'Amano', 'Amano04@tazkia.ac.id', 'IMG_20200223_164959.jpg', '$2y$10$5pnhFof2U3RoFRoT/Rpl5uBcTHY1sZ2jzFsWwjz0AY2kh1syM12VW', '$2y$10$5pnhFof2U3RoFRoT/Rpl5uBcTHY1sZ2jzFsWwjz0AY2kh1syM12VW', 2, 'Aktif', '2020-06-19 13:27:53'),
 (83, 'Renanda Liana Putri', 'Nanda', 'nanda201@gmail.com', 'index.png', '$2y$10$afcQWSFoO3vuQKTDexDFCu0DnAzvFFRmBQwuIb5kt/voQ3caUhnie', '12345', 4, 'Aktif', '2020-06-19 19:44:48'),
-(84, 'Syahira Laila Mutiara', 'Syahira', 'syahira29@gmail.com', 'index.png', '$2y$10$69.3wGLJu143b1Mz0xtse.Op.sxkAszJy3jNsk0BuSYFocYF3fWfG', '12345', 5, 'Aktif', '2020-06-19 19:45:55');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user_akses_menu`
---
-
-CREATE TABLE `user_akses_menu` (
-  `id` int(11) NOT NULL,
-  `id_role` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `user_akses_menu`
---
-
-INSERT INTO `user_akses_menu` (`id`, `id_role`, `id_menu`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(9, 1, 13),
-(23, 3, 3),
-(24, 1, 15),
-(25, 1, 24),
-(26, 1, 25),
-(29, 1, 14),
-(30, 1, 12),
-(31, 4, 1),
-(32, 4, 2),
-(33, 4, 6),
-(34, 4, 7),
-(35, 4, 8),
-(36, 4, 5),
-(37, 4, 9),
-(38, 4, 10),
-(39, 4, 11),
-(40, 4, 3),
-(41, 5, 1),
-(43, 5, 2),
-(44, 5, 3),
-(45, 5, 12),
-(46, 5, 13),
-(47, 5, 14),
-(48, 3, 5),
-(53, 3, 12),
-(54, 3, 13),
-(58, 1, 17),
-(59, 3, 1),
-(61, 5, 17),
-(62, 2, 3),
-(65, 3, 14),
-(66, 3, 17),
-(67, 3, 7),
-(68, 3, 8),
-(69, 3, 9),
-(70, 3, 11),
-(71, 3, 6),
-(72, 3, 10),
-(73, 1, 11),
-(74, 1, 5),
-(75, 1, 6),
-(76, 1, 7),
-(77, 1, 8),
-(78, 1, 9),
-(79, 1, 10),
-(80, 1, 23);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user_menu`
---
-
-CREATE TABLE `user_menu` (
-  `id` int(11) NOT NULL,
-  `menu` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `user_menu`
---
-
-INSERT INTO `user_menu` (`id`, `menu`) VALUES
-(1, 'Dashboard'),
-(2, 'Pengguna'),
-(3, 'Profile'),
-(4, 'Auth'),
-(5, 'Mahasiswa'),
-(6, 'Dosen'),
-(7, 'Fakultas'),
-(8, 'Jurusan'),
-(9, 'Matkul'),
-(10, 'Kelas'),
-(11, 'Ruangan'),
-(12, 'Ipk'),
-(13, 'KrsDetail'),
-(14, 'TranskripNilai'),
-(17, 'Nilai'),
-(23, 'Menu'),
-(24, 'Sub'),
-(25, 'Role');
+(84, 'Syahira Laila Mutiara', 'Syahira', 'syahira29@gmail.com', 'index.png', '$2y$10$69.3wGLJu143b1Mz0xtse.Op.sxkAszJy3jNsk0BuSYFocYF3fWfG', '12345', 5, 'Aktif', '2020-06-19 19:45:55'),
+(85, 'Eko Haryono', 'Haryono', 'ekomh020@gmail.com', 'index.png', '$2y$10$7uuUZwcevjAFccgjP4Gu1.UPhY8gkH8/DkWlvknNF2YscBOrnDSiG', '12345', 6, 'Aktif', '2020-06-21 08:02:08');
 
 -- --------------------------------------------------------
 
@@ -1185,47 +1245,6 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 (5, 'Operator Penilaian'),
 (6, 'Kepala Bagian (Kabag)'),
 (7, 'Belum Diset');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user_sub_menu`
---
-
-CREATE TABLE `user_sub_menu` (
-  `id` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL,
-  `title` varchar(128) NOT NULL,
-  `url` varchar(128) NOT NULL,
-  `icon` varchar(128) NOT NULL,
-  `keterangan` text NOT NULL,
-  `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `user_sub_menu`
---
-
-INSERT INTO `user_sub_menu` (`id`, `id_menu`, `title`, `url`, `icon`, `keterangan`, `status`) VALUES
-(1, 1, 'Dashboard', 'Dashboard', 'tachometer-alt', 'coba', 'Aktif'),
-(2, 2, 'Data Users', 'Pengguna', 'user', '', 'Aktif'),
-(3, 3, 'Profile', 'Profile', 'user', '', 'Aktif'),
-(4, 4, 'Register Admin', 'Auth/register', 'user-plus', '', 'Aktif'),
-(5, 5, 'Data Mahasiswa', 'Mahasiswa', 'table', '', 'Aktif'),
-(6, 6, 'Data Dosen', 'Dosen', 'table', '', 'Aktif'),
-(7, 7, 'Data Fakultas', 'Fakultas', 'table', '', 'Aktif'),
-(8, 8, 'Data Jurusan', 'Jurusan', 'table', '', 'Aktif'),
-(9, 9, 'Data Matkul', 'Matkul', 'table', '', 'Aktif'),
-(10, 10, 'Data Kelas', 'Kelas', 'table', '', 'Aktif'),
-(11, 11, 'Data Ruangan', 'Ruangan', 'table', '', 'Aktif'),
-(12, 12, 'Penilaian IPK', 'Ipk', 'tasks', '', 'Aktif'),
-(13, 13, 'Penilaian KRS', 'KrsDetail', 'tasks', '', 'Aktif'),
-(14, 14, 'Transkrip Nilai', 'TranskripNilai', 'tasks', '', 'Aktif'),
-(15, 17, 'Penilaian Nilai Akhir', 'Nilai', 'fas fa-tasks', '', 'Aktif'),
-(16, 15, 'Penjadwalan Mengajar Dosen', 'Jadwal', 'clipboard-list', 'Test\r\n', 'Tidak Aktif'),
-(22, 23, 'Pengaturan Menu', 'Menu', 'fa fa-cog', 'Pengaturan Menu Berfungsi ', 'Aktif'),
-(23, 24, 'Pengaturan Sub Menu', 'Sub', 'fa fa-cog', 'Pengaturan Sub Menu Berfungsi', 'Aktif'),
-(24, 25, 'Pengaturan Role', 'Role', 'fa fa-cog', 'Pengaturan Role Berfungsi,', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -1336,27 +1355,9 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_akses_menu`
---
-ALTER TABLE `user_akses_menu`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `user_menu`
---
-ALTER TABLE `user_menu`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `user_sub_menu`
---
-ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1373,43 +1374,25 @@ ALTER TABLE `tb_jenjang_pendidikan`
 -- AUTO_INCREMENT untuk tabel `tb_log`
 --
 ALTER TABLE `tb_log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_log_login`
 --
 ALTER TABLE `tb_log_login`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=382;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=523;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
-
---
--- AUTO_INCREMENT untuk tabel `user_akses_menu`
---
-ALTER TABLE `user_akses_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
---
--- AUTO_INCREMENT untuk tabel `user_menu`
---
-ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT untuk tabel `user_sub_menu`
---
-ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

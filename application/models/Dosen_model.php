@@ -52,6 +52,7 @@ class Dosen_model extends CI_Model
 		$month       = date('m');
 		$day         = date('d');
 		$second      = date('s');
+		$dateimage   = date('d' . '-' . 'm' . '-' . 'y');
 
 		$id_dosen       = "0" . "20" . $helper . $month . $day . $second;
 		$nama_dosen     = $this->input->post('nama_dosen', true);
@@ -74,6 +75,7 @@ class Dosen_model extends CI_Model
 			$config['max_size']      = 25600;
 			$config['width']         = '100';
 			$config['height']        = '100';
+			$config['file_name']     =  $nama . '-' . $dateimage;
 
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('image')) {
@@ -82,7 +84,6 @@ class Dosen_model extends CI_Model
 			} else {
 				$image = $this->upload->data('file_name');
 			}
-
 
 			$data = array(
 				'id_dosen'       => $id_dosen,
@@ -143,6 +144,7 @@ class Dosen_model extends CI_Model
 
 	public function UbahDataDosen()
 	{
+		$dateimage   	= date('d' . '-' . 'm' . '-' . 'y');
 		$id_dosen       = $this->input->post('id_dosen', true);
 		$image          = $_FILES['image'];
 		$nama_dosen     = $this->input->post('nama_dosen', true);
@@ -154,6 +156,9 @@ class Dosen_model extends CI_Model
 		$no_telp        = $this->input->post('no_telp', true);
 		$tanggal_lahir  = $this->input->post('tanggal_lahir', true);
 		$id_matkul      = $this->input->post('id_matkul', true);
+
+		$dosen 			= $this->Dosen_model->IdentitasDataDosen($id_dosen);
+
 		if ($image = '') {
 		} else {
 			$config['upload_path']   = 'assets/foto/dosen/';
@@ -163,13 +168,17 @@ class Dosen_model extends CI_Model
 			$config['max_size']      = 25600;
 			$config['width']         = '100';
 			$config['height']        = '100';
+			$config['file_name']     =  $nama . '-' . $dateimage;
 
 			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('image')) {
-				echo "Upload Gagal";
-				die();
+			if (@$_FILES['image']['name'] != null) {
+				if (!$this->upload->do_upload('image')) {
+					echo "Upload Gagal";
+				} else {
+					$image = $this->upload->data('file_name');
+				}
 			} else {
-				$image = $this->upload->data('file_name');
+				$image = $dosen['image'];
 			}
 
 			$data = array(
@@ -187,7 +196,7 @@ class Dosen_model extends CI_Model
 			);
 		}
 
-		$this->db->where('id_dosen',  $this->input->post('id_dosen'));
+		$this->db->where('id_dosen',  $id_dosen);
 		$this->db->update('tb_dosen', $data);
 		$id_dosen = $this->input->post('id_dosen');
 		if ($this->db->affected_rows() > 0) {

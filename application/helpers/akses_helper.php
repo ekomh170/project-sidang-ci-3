@@ -9,54 +9,49 @@ function cek_login()
 	}
 }
 
-function cek_login_role()
+function check_role_admin()
 {
-	$ci = get_instance();
+	$ci =& get_instance();
 
-	if (!$ci->session->userdata('email')) {
-		redirect('Auth/index');
-	} else {
-		$id_role = $ci->session->userdata('id_role');
-		$menu = $ci->uri->segment(1);
+	$ci->load->model('Tambahan_model');
+	$userData = $ci->Tambahan_model->getUserData();
 
-		$queryMenu = $ci->db->get_where('user_menu', ['menu' => $menu])->row_array();
-		$id_menu = $queryMenu['id'];
+	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "6";
 
-		$akses = $ci->db->get_where('user_akses_menu', [
-			'id_role' => $id_role,
-			'id_menu' => $id_menu
-		]);
+	if ($cek_id_role == FALSE) {
+		redirect('Profile');
+	}
 
-		if ($akses->num_rows() < 1) {
-			redirect('Eror');
-		}
+}
+
+function check_role_dosen_op_penilaian()
+{
+	$ci =& get_instance();
+
+	$ci->load->model('Tambahan_model');
+	$userData = $ci->Tambahan_model->getUserData();
+
+	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "3" || $userData['id_role'] == "5" || $userData['id_role'] == "6";
+
+	if ($cek_id_role == FALSE) {
+		redirect('Profile');
 	}
 }
 
-function check_access($id_role, $id_menu)
+function check_role_admin_op_pendataan()
 {
-	$ci = get_instance();
+	$ci =& get_instance();
 
-	$ci->db->where('id_role', $id_role);
-	$ci->db->where('id_menu', $id_menu);
-	$result = $ci->db->get('user_akses_menu');
+	$ci->load->model('Tambahan_model');
+	$userData = $ci->Tambahan_model->getUserData();
 
-	if ($result->num_rows() > 0) {
-		return "checked='checked'";
+	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "4" || $userData['id_role'] == "6";
+	
+	if ($cek_id_role == FALSE) {
+		redirect('Profile');
 	}
+
 }
-
-// function cek_login_reset_password()
-// {
-// 	$ci = get_instance();
-// 	// $email = $this->input->post('email');
-// 	$data = $ci->db->get('tb_user')->result();
-
-// 	if (!$data) {
-// 		redirect('Auth');
-// 	}	
-
-// }
 
 function cek_login_1()
 {

@@ -34,6 +34,7 @@
 								<td><?= $ipk->nim_mhs; ?></td>
 								<td><?= $ipk->nama; ?></td>
 								<td><?= $ipk->nama_jurusan; ?></td>
+								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
 								<td class="text-center">
 									<!--crud-->
 									<a href="<?= base_url(); ?>Ipk/detail/<?= encrypt_url($ipk->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info-circle"></i></button></a><b> | </b>
@@ -41,6 +42,7 @@
 									<a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($ipk->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
 									<!--crud-->
 								</td>
+							<?php } ?>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

@@ -6,7 +6,8 @@ class Role extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
+		cek_login();
+		check_role_admin();
 		$this->load->model('Role_model');
 	}
 
@@ -50,44 +51,6 @@ class Role extends CI_Controller
 		$this->load->view('templates/tb_footer');
 	}
 
-	public function roleAccess($id)
-	{
-		$data['judul'] = 'Role Akses';
-		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['role']  = $this->db->get_where('user_role', ['id' => $id])->row_array();
-
-		$this->db->where('status =', "Aktif");
-		$data['menu'] = $this->db->get('user_sub_menu')->result_array();
-
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('Role/roleAccess', $data);
-		$this->load->view('templates/tb_footer');
-	}
-
-	public function changeAccess()
-	{
-		$id_role = $this->input->post('roleId');
-		$id_menu = $this->input->post('menuId');
-
-		$data = [
-			'id_role' => $id_role,
-			'id_menu' => $id_menu
-		];
-
-		//cek data di database tb user akses menu
-		$result = $this->db->get_where('user_akses_menu', $data);
-
-		if ($result->num_rows() < 1) {
-			//ini Insert data database tb user akses menu
-			$this->db->insert('user_akses_menu', $data);
-		} else {
-			//ini delete data database tb user akses menu
-			$this->db->delete('user_akses_menu', $data);
-		}
-	}
-
 	public function tambah()
 	{
 		$data['judul'] = 'Form Tambah Data';
@@ -110,7 +73,8 @@ class Role extends CI_Controller
 
 	public function hapus($id)
 	{
-		$this->Role_model->HapusDataRole($id);
+		$id_role = decrypt_url($id);
+		$this->Role_model->HapusDataRole($id_role);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
 		redirect('Role');
 	}
@@ -119,7 +83,8 @@ class Role extends CI_Controller
 	{
 		$data['judul'] = 'Form Ubah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['user_role'] = $this->Role_model->IdentitasDataRole($id);
+		$id_role = decrypt_url($id);
+		$data['user_role'] = $this->Role_model->IdentitasDataRole($id_role);
 
 		$this->form_validation->set_rules('role', 'Nama', 'required');
 

@@ -36,9 +36,9 @@
                 <th>Nilai Seluruh Sks</th>
                 <th>Nilai Total Bobot</th>
                 <th>Nilai Ipk</th>
-                <?php if ($this->session->userdata('id_role') != "2"): ?>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                   <th>Aksi</th>
-                <?php endif ?>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -51,12 +51,12 @@
                 <td><?= $nl->nilai_total_sks; ?></td>
                 <td><?= $nl->bobot_total; ?></td>
                 <td><?= $nl->ipk; ?></td>
-                <?php if ($this->session->userdata('id_role') != "2"): ?>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                   <td>
                     <a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($nl->id_ipk); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
                     <a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($nl->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
                   </td>
-                <?php endif ?>
+                <?php } ?>
               </tbody>
               <?php $no++ ?>
             <?php endforeach; ?>

@@ -25,26 +25,30 @@
 							<th>Nim Mahasiswa</th>
 							<th>Nama Mahasiswa</th>
 							<th>Nama Jurusan</th>
-							<th witdh="18%" class="text-center">Aksi</th>
+							<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+								<th witdh="18%" class="text-center">Aksi</th>
+							<?php } ?>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$no = 1;
 						foreach ($data as $tn) :
-						?>
+							?>
 							<tr>
 								<td><?= ++$offset; ?></td>
 								<td><?= $tn->nim_mhs; ?></td>
 								<td><?= $tn->nama; ?></td>
 								<td><?= $tn->nama_jurusan; ?></td>
-								<td class="text-center">
-									<!--crud-->
-									<a href="<?= base_url(); ?>TranskripNilai/detail/<?= encrypt_url($tn->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info-circle"></i></button></a><b> | </b>
-									<a href="<?= base_url(); ?>TranskripNilai/ubah/<?= encrypt_url($tn->id_transkrip_nilai); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-check-circle"></i></button></a><b> | </b>
-									<a href="<?= base_url(); ?>TranskripNilai/hapus/<?= encrypt_url($tn->id_transkrip_nilai); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-									<!--crud-->
-								</td>
+								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+									<td class="text-center">
+										<!--crud-->
+										<a href="<?= base_url(); ?>TranskripNilai/detail/<?= encrypt_url($tn->nim_mhs); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info-circle"></i></button></a><b> | </b>
+										<a href="<?= base_url(); ?>TranskripNilai/ubah/<?= encrypt_url($tn->id_transkrip_nilai); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-check-circle"></i></button></a><b> | </b>
+										<a href="<?= base_url(); ?>TranskripNilai/hapus/<?= encrypt_url($tn->id_transkrip_nilai); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+										<!--crud-->
+									</td>
+								<?php } ?>
 							</tr>
 							<?php $no++ ?>
 						<?php endforeach; ?>

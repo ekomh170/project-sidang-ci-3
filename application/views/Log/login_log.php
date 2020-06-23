@@ -11,23 +11,27 @@
               <th>Pengguna/User</th>
               <th>Role</th>
               <th>Aktifitas</th>
-              <th>Hapus</th>
+              <?php if ($this->session->userdata('id_role') == "1") { ?>
+                <th>Aksi</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
             <?php
             $no = 1;
             foreach ($tb_log_login as $lg) :
-            ?>
+              ?>
               <tr>
                 <td><?= $lg->id_log; ?></td>
                 <td><?= $lg->log_time; ?></td>
                 <td><?= $lg->log_user; ?></td>
                 <td><?= $lg->role; ?></td>
                 <td><?= $lg->log_tipe; ?></td>
-                <td class="text-center">
-                  <a href="<?= base_url(); ?>Log/deletelogin/<?= $lg->id_log; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ??');"><button type="button" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i></button></a>
-                </td>
+                <?php if ($this->session->userdata('id_role') == "1") { ?>
+                  <td class="text-center">
+                    <a href="<?= base_url(); ?>Log/deletelogin/<?= $lg->id_log; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ??');"><button type="button" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i></button></a>
+                  </td>
+                <?php } ?>
               </tr>
               <?php $no++ ?>
             <?php endforeach; ?>

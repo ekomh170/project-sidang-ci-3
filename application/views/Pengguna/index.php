@@ -11,9 +11,6 @@
           <button class="btn btn-outline-info my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
-      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Pengguna/tambah" class="btn btn-block btn-dark bg-info"><b>+ Data Baru</b></a>
-      </div>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -26,7 +23,9 @@
               <th class="text-center">Role</th>
               <th class="text-center">Status</th>
               <th class="text-center">Dibuat</th>
-              <th class="text-center">Aksi</th>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                <th class="text-center">Aksi</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
@@ -38,26 +37,26 @@
                 <td class="text-center"><?= $du->role; ?></td>
                 <td class="text-center"><?= $du->status; ?></td>
                 <td class="text-center"><?= $du->data_created; ?></td>
-                <td class="text-center">
-                  <!--Izin Akses-->
-                  <?php if ($this->session->userdata('id_role') == "1") { ?>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                  <td class="text-center">
+                    <!--Izin Akses-->
                     <?php if ($du->status == 'Tidak Aktif') { ?>
                       <?= anchor(base_url('Pengguna/aktif/') . $du->id, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-lock"></i></button>') ?>
                     <?php } ?>
                     <!--nonaktif-->
                     <?php if ($du->status == 'Aktif') { ?>
                       <?= anchor(base_url('Pengguna/nonaktif/') . $du->id, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-ban"></i></button>') ?>
-                  <?php }
-                  } ?> <b>|</b>
-                  <!--Hapus-->
-                  <a href="<?= base_url(); ?>Pengguna/hapus/<?= encrypt_url($du->id); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-                </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-        <?php echo $this->pagination->create_links(); ?>
+                      <?php } ?> <b>|</b>
+                      <!--Hapus-->
+                      <a href="<?= base_url(); ?>Pengguna/hapus/<?= encrypt_url($du->id); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                    </td>
+                  <?php } ?>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          <?php echo $this->pagination->create_links(); ?>
+        </div>
       </div>
     </div>
   </div>
-</div>

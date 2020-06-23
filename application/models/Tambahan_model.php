@@ -20,8 +20,8 @@ class Tambahan_model extends CI_Model
 		$this->db->select('krs_detail.id_krs, krs_detail.nim_mhs, mahasiswa.nama, krs_detail.nilai_krs, krs_detail.status');
 		$this->db->from('krs_detail');
 		$this->db->join('mahasiswa', 'krs_detail.nim_mhs = mahasiswa.nim_mhs', 'left');
-
 		$this->db->where('krs_detail.id_krs', $id_krs);
+		
 		$query = $this->db->get();
 		return $query->row_array();
 	}
@@ -153,4 +153,12 @@ class Tambahan_model extends CI_Model
 		$query = $this->db->get();
 		return $query->row_array();
 	}		
+
+/// SESSION MENU SIDEBAR
+	public function getUserData()
+	{
+		$userData = $this->session->userdata();
+
+		return $userData;
+	}
 }

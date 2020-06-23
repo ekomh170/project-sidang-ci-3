@@ -24,7 +24,9 @@
               <th>Kode matkul</th>
               <th class="text-center">Nama Mata Kuliah</th>
               <th class="text-center">Nama Matkul Jurusan</th>
-              <th class="text-center">Aksi</th>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                <th class="text-center">Aksi</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
@@ -34,16 +36,18 @@
                 <td><?= $mpl->id_matkul; ?></td>
                 <td><?= $mpl->nama_matkul; ?></td>
                 <td><?= $mpl->nama_jurusan; ?></td>
-                <td class="text-center">
-                  <a href="<?= base_url(); ?>matkul/ubah/<?= encrypt_url($mpl->id_matkul); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></a> <b>|</b>
-                  <a href="<?= base_url(); ?>matkul/hapus/<?= encrypt_url($mpl->id_matkul); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
-                </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-        <?php echo $this->pagination->create_links(); ?>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                  <td class="text-center">
+                    <a href="<?= base_url(); ?>matkul/ubah/<?= encrypt_url($mpl->id_matkul); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></a> <b>|</b>
+                    <a href="<?= base_url(); ?>matkul/hapus/<?= encrypt_url($mpl->id_matkul); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
+                  </td>
+                <?php } ?>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          <?php echo $this->pagination->create_links(); ?>
+        </div>
       </div>
     </div>
   </div>
-</div>

@@ -6,7 +6,8 @@ class Dosen extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
+		cek_login();
+		check_role_admin_op_pendataan();
 		$this->load->model('Dosen_model');
 	}
 
@@ -57,11 +58,11 @@ class Dosen extends CI_Controller
 		$data['judul'] = 'Form Tambah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->db->order_by('nama_dosen_matkul', 'asc');
+		$this->db->order_by('nama_matkul', 'asc');
 		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
 
-		$this->form_validation->set_rules('nama_dosen_dosen', 'nama_dosen', 'required');
-		$this->form_validation->set_rules('nama_dosen_panggilan', 'nama_dosen Panggilan', 'required');
+		$this->form_validation->set_rules('nama_dosen', 'nama_dosen', 'required');
+		$this->form_validation->set_rules('nama_panggilan', 'nama_dosen Panggilan', 'required');
 		$this->form_validation->set_rules('id_matkul', 'Mata Kuliah', 'required');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis_kelamin', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
@@ -116,13 +117,13 @@ class Dosen extends CI_Controller
 		$data['inputSelect'] = $this->Dosen_model->InfoDataDetail($id);
 		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
-		$this->db->order_by('nama_dosen_matkul', 'asc');
+		$this->db->order_by('nama_matkul', 'asc');
 		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
 
-		$this->form_validation->set_rules('nama_dosen_dosen', 'nama_dosen', 'required');
-		$this->form_validation->set_rules('nama_dosen_panggilan', 'nama_dosen Panggilan', 'required');
+		$this->form_validation->set_rules('nama_dosen', 'nama_dosen', 'required');
+		$this->form_validation->set_rules('nama_panggilan', 'nama_dosen Panggilan', 'required');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis kelamin', 'required');
-		$this->form_validation->set_rules('id_matkul', 'nama_dosen Matkul', 'required');
+		$this->form_validation->set_rules('id_matkul', 'Nama Matkul', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
 		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
 		$this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
@@ -166,7 +167,7 @@ class Dosen extends CI_Controller
 
 		$data_update_user = array(
 			'email'   => $email,
-			'status'  => 'Tidak Aktif',
+			'status'  => 'Aktif',
 			'id_role' => '3'
 		);
 

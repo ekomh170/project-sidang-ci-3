@@ -75,8 +75,6 @@ class Role_model extends CI_Model
 		return $this->db->get_where('user_role', ['id' => $id])->row_array();
 	}
 
-
-
 	public function CariDataRole()
 	{
 		$cari = $this->input->post('cari', true);

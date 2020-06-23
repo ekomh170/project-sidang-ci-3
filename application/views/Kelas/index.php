@@ -25,23 +25,27 @@
               <th>Nama Kelas</th>
               <th>Nama Ruangan</th>
               <th>Status</th>
-              <th class="text-center">Aksi</th>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                <th class="text-center">Aksi</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
             <?php
             foreach ($tb_kelas as $kelas) :
-            ?>
+              ?>
               <tr>
                 <td><?= ++$offset; ?></td>
                 <td><?= $kelas->id_kelas; ?></td>
                 <td><?= $kelas->nama_kelas; ?></td>
                 <td><?= $kelas->nama_ruangan; ?></td>
                 <td><?= $kelas->status; ?></td>
-                <td class="text-center">
-                  <a href="<?= base_url(); ?>kelas/ubah/<?= encrypt_url($kelas->id_kelas); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                  <a href="<?= base_url(); ?>kelas/hapus/<?= encrypt_url($kelas->id_kelas); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-                </td>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                  <td class="text-center">
+                    <a href="<?= base_url(); ?>kelas/ubah/<?= encrypt_url($kelas->id_kelas); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>kelas/hapus/<?= encrypt_url($kelas->id_kelas); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                  </td>
+                <?php } ?>
               </tr>
             <?php endforeach; ?>
           </tbody>

@@ -36,16 +36,18 @@
                                 <td><?= $ta->nama_tahun_akademik; ?></td>
                                 <td><?= $ta->semester; ?></td>
                                 <td><?= $ta->status; ?></td>
-                                <td class="text-center">
-                                    <a href="<?= base_url(); ?>TahunAkademik/ubah/<?= encrypt_url($ta->id_tahun_akademik); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></i></a> <b>|</b>
-                                    <a href="<?= base_url(); ?>TahunAkademik/hapus/<?= encrypt_url($ta->id_tahun_akademik); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <?php echo $this->pagination->create_links(); ?>
+                                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                                    <td class="text-center">
+                                        <a href="<?= base_url(); ?>TahunAkademik/ubah/<?= encrypt_url($ta->id_tahun_akademik); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></i></a> <b>|</b>
+                                        <a href="<?= base_url(); ?>TahunAkademik/hapus/<?= encrypt_url($ta->id_tahun_akademik); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
+                                    </td>
+                                <?php } ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <?php echo $this->pagination->create_links(); ?>
+                </div>
             </div>
         </div>
     </div>
-</div>

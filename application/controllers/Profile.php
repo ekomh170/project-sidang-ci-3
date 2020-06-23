@@ -6,7 +6,7 @@ class Profile extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login_role();
+		cek_login();
 	}
 	
 	public function index()
@@ -35,26 +35,34 @@ class Profile extends CI_Controller
 			$this->load->view('Profile/edit', $data);
 			$this->load->view('templates/tb_footer');
 		} else {
+			$dateimage   	= date('d' . '-' . 'm' . '-' . 'y');
 			$email          = $this->input->post('email');
 			$nama           = $this->input->post('nama');
 			$nama_panggilan = $this->input->post('nama_panggilan');
 			$image          = $_FILES['image'];
+
+			$user  			= $this->db->get_where('user', ['email' => $email])->row_array();
+
 			if ($image = '') {
 			} else {
-				$config['upload_path']   = 'assets/foto/users';
-				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['upload_path']   = 'assets/foto/users/';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 				$config['overwrite']     = true;
 				$config['max_filename']  = 255;
 				$config['max_size']      = 25600;
 				$config['width']         = '100';
 				$config['height']        = '100';
-
+				$config['file_name']     =  $nama . '-' . $dateimage;
 
 				$this->load->library('upload', $config);
-				if (!$this->upload->do_upload('image')) {
-					echo "Upload Gagal";
-				} else {
-					$image = $this->upload->data('file_name');
+				if (@$_FILES['image']['name'] != null) {
+					if (!$this->upload->do_upload('image')) {
+						echo "Upload Gagal";
+					} else {
+						$image = $this->upload->data('file_name');
+					}
+				}else{
+					$image = $user['image'];
 				}
 			}
 

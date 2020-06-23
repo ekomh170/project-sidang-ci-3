@@ -24,7 +24,9 @@
               <th>Nama Fakultas</th>
               <th>Keterangan</th>
               <th>Status</th>
-              <th class="text-center">Aksi</th>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                <th class="text-center">Aksi</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
@@ -34,11 +36,13 @@
                 <td><?= $fks->nama_fakultas; ?></td>
                 <td><?= $fks->keterangan; ?></td>
                 <td><?= $fks->status; ?></td>
-                <td class="text-center">
-                  <a href="<?= base_url(); ?>Fakultas/ubah/<?= encrypt_url($fks->id_fakultas); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                  <a href="<?= base_url(); ?>Fakultas/hapus/<?= encrypt_url($fks->id_fakultas); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
-                </td>
-              </tr>
+                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                  <td class="text-center">
+                    <a href="<?= base_url(); ?>Fakultas/ubah/<?= encrypt_url($fks->id_fakultas); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Fakultas/hapus/<?= encrypt_url($fks->id_fakultas); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
+                  </td>
+                  <?php } ?>
+                </tr>
             <?php endforeach; ?>
           </tbody>
         </table>

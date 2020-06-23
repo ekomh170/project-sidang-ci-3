@@ -31,12 +31,17 @@
             </div>
             <div class="col-sm-9">
               <div class="custom-file">
-                <input type="file" src="<?= base_url('assets/foto/users/') . $user['image']; ?>" id="image" name="image" required>
+                <input type="file" src="<?= base_url('assets/foto/users/') . $user['image']; ?>" id="image" name="image">
+                <small class="form-text text-dark"><u>Note : Jika Tidak Ingin Mengubah Gambar Kosong Kan Saja Form Upload Foto</u></small>
               </div>
             </div>
             <div class="form-group row justify-content-end">
-              <div class="col-sm-10">
+              <div class="col-sm-9">
                 <button type="submit" class="btn btn-info">Ubah</button>
+              </div>
+              <?= form_close(); ?>
+              <div class="col-sm-1">
+                <button type="kembali" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Profile/index'); ?>">Kembali</a></button>
               </div>
             </div>
           </div>
