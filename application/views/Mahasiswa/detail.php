@@ -20,7 +20,7 @@
                 <h6 class="card-text text-left mb-4"><span class="font-weight-bold">Nomer Telpon : </span><?= $mahasiswa['no_telp']; ?></h6>
                 <h6 class="card-text text-center mb-4"><img class="rounded-circle" src="<?= base_url('assets/foto/mahasiswa/') . $mahasiswa['image'] ?>" height="200" width="200"></h6>
                 <span style="float:right;">
-                  <a href="<?= base_url(); ?>mahasiswa" class="btn btn-info"> Kembali </a>
+                  <a href="<?= base_url(); ?>Mahasiswa" class="btn btn-info"> Kembali </a>
                 </span>
               </div>
             </div>

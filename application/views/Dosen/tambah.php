@@ -89,7 +89,7 @@
       </span>
       <?= form_close(); ?>
       <span style="float: right">
-        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('dosen/index'); ?>">Kembali</a></button>
+        <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Dosen'); ?>">Kembali</a></button>
       </span>
     </div>
   </div>

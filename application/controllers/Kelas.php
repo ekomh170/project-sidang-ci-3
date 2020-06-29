@@ -70,7 +70,7 @@ class Kelas extends CI_Controller
 		} else {
 			$this->Kelas_model->TambahDatakelas();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
-			redirect('kelas');
+			redirect('Kelas');
 		}
 	}
 
@@ -79,7 +79,7 @@ class Kelas extends CI_Controller
 		$id = decrypt_url($id_kelas);
 		$this->Kelas_model->HapusDatakelas($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
-		redirect('kelas');
+		redirect('Kelas');
 	}
 
 	public function ubah($id_kelas)
@@ -108,7 +108,7 @@ class Kelas extends CI_Controller
 		} else {
 			$this->Kelas_model->UbahDatakelas();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
-			redirect('kelas');
+			redirect('Kelas');
 		}
 	}
 }

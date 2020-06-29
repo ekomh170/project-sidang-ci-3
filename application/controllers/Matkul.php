@@ -70,7 +70,7 @@ class Matkul extends CI_Controller
 		} else {
 			$this->Matkul_model->TambahDataMatkul();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
-			redirect('matkul');
+			redirect('Matkul');
 		}
 	}
 
@@ -79,7 +79,7 @@ class Matkul extends CI_Controller
 		$id = decrypt_url($id_matkul);
 		$this->Matkul_model->HapusDataMatkul($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
-		redirect('matkul');
+		redirect('Matkul');
 	}
 
 	public function ubah($id_matkul)
@@ -108,7 +108,7 @@ class Matkul extends CI_Controller
 		} else {
 			$this->Matkul_model->UbahDataMatkul();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
-			redirect('matkul');
+			redirect('Matkul');
 		}
 	}
 }

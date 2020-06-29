@@ -43,7 +43,7 @@
               </span>
             </form>
             <span style="float: right;">
-              <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('matkul/index'); ?>">Kembali</a></button>
+              <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Matkul'); ?>">Kembali</a></button>
             </span>
           </div>
         </div>

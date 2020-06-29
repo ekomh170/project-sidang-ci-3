@@ -80,7 +80,7 @@ class Dosen extends CI_Controller
 		} else {
 			$this->Dosen_model->TambahDataDosen();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
-			redirect('dosen');
+			redirect('Dosen');
 		}
 	}
 
@@ -104,7 +104,7 @@ class Dosen extends CI_Controller
 		$id = decrypt_url($id_dosen);
 		$this->Dosen_model->HapusDataDosen($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
-		redirect('dosen');
+		redirect('Dosen');
 	}
 
 	public function edit($id_dosen)
@@ -139,7 +139,7 @@ class Dosen extends CI_Controller
 		} else {
 			$this->Dosen_model->UbahDataDosen();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
-			redirect('dosen');
+			redirect('Dosen');
 		}
 	}
 

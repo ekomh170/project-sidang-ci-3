@@ -33,7 +33,7 @@
           </span>
         </form>
         <span style="float: right">
-          <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('TahunAkademik/index'); ?>">Kembali</a></button>
+          <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('TahunAkademik'); ?>">Kembali</a></button>
         </span>
       </div>
     </div>

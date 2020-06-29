@@ -41,7 +41,7 @@
               </div>
               <?= form_close(); ?>
               <div class="col-sm-1">
-                <button type="kembali" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Profile/index'); ?>">Kembali</a></button>
+                <button type="kembali" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Profile'); ?>">Kembali</a></button>
               </div>
             </div>
           </div>

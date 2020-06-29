@@ -78,3 +78,79 @@ $route['Role-CI'] = "Role";
 
 $route['Regis-CI'] = "Auth/register";
 // ROUTEKU
+
+///////////////////////////////////////////////////ROUTES SESUAI ROLE KU //////////////////////////////////////
+
+//Mahasiswa ROUTE
+$route['Mahasiswa/:any'] = "Mahasiswa/ubah/$1";
+$route['Mahasiswa/:any'] = "Mahasiswa/ubah/$1";
+$route['Mahasiswa/:any'] = "Mahasiswa/ubah/$1";
+$route['Mahasiswa/:any'] = "Mahasiswa/ubah/$1";
+//Mahasiswa ROUTE
+
+//DOSEN ROUTE
+$route['Dosen/:any'] = "Dosen/ubah/$1";
+$route['Dosen/:any'] = "Dosen/ubah/$1";
+$route['Dosen/:any'] = "Dosen/ubah/$1";
+$route['Dosen/:any'] = "Dosen/ubah/$1";
+//DOSEN ROUTE
+
+//Fakultas ROUTE
+$route['Fakultas/:any'] = "Fakultas/ubah/$1";
+$route['Fakultas/:any'] = "Fakultas/ubah/$1";
+//Fakultas ROUTE
+
+//Jurusan ROUTE
+$route['Jurusan/:any'] = "Jurusan/ubah/$1";
+$route['Jurusan/:any'] = "Jurusan/ubah/$1";
+//Jurusan ROUTE
+
+//TahunAkademik ROUTE
+$route['TahunAkademik/:any'] = "TahunAkademik/ubah/$1";
+$route['TahunAkademik/:any'] = "TahunAkademik/ubah/$1";
+//TahunAkademik ROUTE
+
+//Matkul ROUTE
+$route['Matkul/:any'] = "Matkul/ubah/$1";
+$route['Matkul/:any'] = "Matkul/ubah/$1";
+//Matkul ROUTE
+
+//Kelas ROUTE
+$route['Kelas/:any'] = "Kelas/ubah/$1";
+$route['Kelas/:any'] = "Kelas/ubah/$1";
+//Kelas ROUTE
+
+//Ruangan ROUTE
+$route['Ruangan/:any'] = "Ruangan/ubah/$1";
+$route['Ruangan/:any'] = "Ruangan/ubah/$1";
+$route['Ruangan/:any'] = "Ruangan/ubah/$1";
+//Ruangan ROUTE
+
+//Role ROUTE
+$route['Role/:any'] = "Role/ubah/$1";
+$route['Role/:any'] = "Role/ubah/$1";
+//Role ROUTE
+
+//Ipk ROUTE
+$route['Ipk/:any'] = "Ipk/ubah/$1";
+$route['Ipk/:any'] = "Ipk/ubah/$1";
+$route['Ipk/:any'] = "Ipk/ubah/$1";
+//Ipk ROUTE
+
+//KrsDetail ROUTE
+$route['KrsDetail/:any'] = "KrsDetail/ubah/$1";
+$route['KrsDetail/:any'] = "KrsDetail/ubah/$1";
+$route['KrsDetail/:any'] = "KrsDetail/ubah/$1";
+//KrsDetail ROUTE
+
+//TranskripNilai ROUTE
+$route['TranskripNilai/:any'] = "TranskripNilai/ubah/$1";
+$route['TranskripNilai/:any'] = "TranskripNilai/ubah/$1";
+$route['TranskripNilai/:any'] = "TranskripNilai/ubah/$1";
+//TranskripNilai ROUTE
+
+//Nilai ROUTE
+$route['Nilai/:any'] = "Nilai/ubah/$1";
+$route['Nilai/:any'] = "Nilai/ubah/$1";
+$route['Nilai/:any'] = "Nilai/ubah/$1";
+//Nilai ROUTE

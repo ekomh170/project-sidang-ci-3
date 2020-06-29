@@ -87,7 +87,7 @@ class Mahasiswa extends CI_Controller
 		} else {
 			$this->Mahasiswa_model->TambahDataMahasiswa();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
-			redirect('mahasiswa');
+			redirect('Mahasiswa');
 		}
 	}
 
@@ -97,7 +97,7 @@ class Mahasiswa extends CI_Controller
 		$id = decrypt_url($nim_mhs);
 		$this->Mahasiswa_model->HapusDataMahasiswa($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
-		redirect('mahasiswa');
+		redirect('Mahasiswa');
 	}
 
 	public function detail($nim_mhs)
@@ -192,7 +192,7 @@ class Mahasiswa extends CI_Controller
 		$this->db->update('mahasiswa', $data_update_user);
 		($data_update_user);
 		$this->session->set_flashdata('berhasil', 'DiIzinkan Akses');
-		redirect(base_url('mahasiswa'));
+		redirect(base_url('Mahasiswa'));
 	}
 
 	public function nonaktif($nim_mhs)
@@ -208,6 +208,6 @@ class Mahasiswa extends CI_Controller
 		$this->db->where(array('nim_mhs' => $nim_mhs));
 		$this->db->update('mahasiswa', $data);
 		$this->session->set_flashdata('berhasil', 'Data Dinonaktifkan');
-		redirect(base_url('mahasiswa'));
+		redirect(base_url('Mahasiswa'));
 	}
 }
