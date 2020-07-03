@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jun 2020 pada 18.14
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.2.31
+-- Generation Time: Jul 03, 2020 at 05:19 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `krs_detail`
+-- Table structure for table `krs_detail`
 --
 
 CREATE TABLE `krs_detail` (
@@ -37,7 +37,7 @@ CREATE TABLE `krs_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `krs_detail`
+-- Dumping data for table `krs_detail`
 --
 
 INSERT INTO `krs_detail` (`id_krs`, `nim_mhs`, `id_dosen`, `nilai_krs`, `grade`, `status`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `krs_detail` (`id_krs`, `nim_mhs`, `id_dosen`, `nilai_krs`, `grade`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -74,21 +74,22 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`nim_mhs`, `image`, `nama`, `nama_panggilan`, `jenis_kelamin`, `agama`, `tmpt_lahir`, `tanggal_lahir`, `alamat`, `no_telp`, `email`, `status`, `id_role`, `id_jurusan`, `id_kelas`, `id_tahun_akademik`) VALUES
-(100406204, 'Coba_-21-06-20.jpg', 'Coba ', 'Coba', 'Laki-Laki', 'Islam', '29', '2003-12-05', 'ASAS', '08212', '', 'Tidak Aktif', 0, 'JR-08-07', 'KLS-07-36', 'TA-355'),
+(100406204, 'Coba_-21-06-20.jpg', 'Coba ', 'Coba', 'Laki-Laki', 'Islam', '29', '2003-12-05', 'ASAS', '08212', '', 'Tidak Aktif', 2, 'JR-08-07', 'KLS-07-36', 'TA-355'),
 (101106205, 'Testing-21-06-20.jpg', 'Testing', 'Test', 'Laki-Laki', 'Kristen', 'Bogor', '2003-01-30', 'Kampung', '0827218921', '', 'Tidak Aktif', 2, 'JR-02-42', 'KLS-06-26', 'TA-218'),
 (101606206, 'IMG_20200223_165036.jpg', 'coba1', 'coba1', 'Laki-Laki', 'Islam', 'skjasjaksasj', '1000-12-01', 'wqwwqwq', '11221', '', 'Tidak Aktif', 2, 'JR-02-42', 'KLS-07-36', 'TA-355'),
-(102505202, 'index.jpg', 'Cahaya Melati Mutiara', 'Cahaya', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Sanja', '083764862347', 'Cahaya03@tazkia.ac.id', 'Aktif', 2, 'JR-04-51', 'KLS-01-23', 'TA-218'),
-(102604201, 'IMG_20200223_164959.jpg', 'Eko Muchamad Haryono', 'Amano', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Test', '087823122121', 'Amano04@tazkia.ac.id', 'Aktif', 2, 'JR-02-42', 'KLS-02-33', 'TA-425'),
-(102905203, 'Capture.PNG', 'Percobaan', 'Coba', 'Laki-Laki', 'Islam', 'Jakarta', '2003-12-31', 'Cibinong', '08446603179', '', 'Tidak Aktif', 2, 'JR-08-07', 'KLS-07-36', 'TA-355');
+(102505202, 'index.png', 'Cahaya Melati Mutiara', 'Cahaya', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Sanja', '083764862347', 'Cahaya03@tazkia.ac.id', 'Aktif', 2, 'JR-04-51', 'KLS-01-23', 'TA-218'),
+(102604201, '', 'Eko Muchamad Haryono', 'Amano', 'Laki-Laki', 'Islam', 'Bogor', '2004-01-01', 'Test', '087823122121', 'Amano04@tazkia.ac.id', 'Aktif', 2, 'JR-02-42', 'KLS-02-33', 'TA-425'),
+(102905203, 'Capture.PNG', 'Percobaan', 'Coba', 'Laki-Laki', 'Islam', 'Jakarta', '2003-12-31', 'Cibinong', '08446603179', '', 'Tidak Aktif', 2, 'JR-08-07', 'KLS-07-36', 'TA-355'),
+(103006207, 'index.png', 'TESTING', 'TESTING', 'Laki-Laki', 'Islam', 'TESTING', '2003-12-31', 'TESTING', '404', '', 'Tidak Aktif', 0, 'JR-06-13', 'KLS-07-36', 'TA-542');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_dosen`
+-- Table structure for table `tb_dosen`
 --
 
 CREATE TABLE `tb_dosen` (
@@ -109,14 +110,15 @@ CREATE TABLE `tb_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_dosen`
+-- Dumping data for table `tb_dosen`
 --
 
 INSERT INTO `tb_dosen` (`id_dosen`, `nama_dosen`, `nama_panggilan`, `jenis_kelamin`, `agama`, `tmpt_lahir`, `tanggal_lahir`, `alamat`, `no_telp`, `image`, `email`, `status`, `id_role`, `id_matkul`) VALUES
 ('0201011731', 'Dr. Luqyan Tamanni, M.Ec', 'Luqyan ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-29', 'Bogor', '0811021317318', '-21-06-20.jpg', '', 'Tidak Aktif', 0, 'MK-02-08'),
 ('02011011701', 'Dr. Murniati Mukhlisin, M.Acc.', 'Murniati ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-28', 'Bogor', '083817123612', 'foto.png', 'Murniati09@dosentazkia.ac.id', 'Tidak Aktif', 3, '--Pilih Mata Kuliah--'),
 ('02012011744', 'Dr. Sugiyarti Fatma Laela, M.Buss. Acc., CMA. CIBA', 'Fatma ', 'Laki-Laki', 'Islam', 'Bogor', '2019-02-18', 'Bogor', '083813271326', 'foto.png', '', 'Tidak Aktif', 0, '--Pilih Mata Kuliah--'),
-('02012062126', 'DIA ', 'KAMU', 'Laki-Laki', 'Khonghucu', 'TESTING', '2020-12-31', 'TESTING', '404', 'IMG_20200223_164959.jpg', '', 'Tidak Aktif', 0, 'MK-01-14'),
+('02012062126', 'DIA ', 'KAMU', 'Laki-Laki', 'Khonghucu', 'TESTING', '2020-12-31', 'TESTING', '404', 'IMG_20200223_164959.jpg', 'KAMU09@dosentazkia.ac.id', 'Aktif', 3, 'MK-01-14'),
+('02013063021', 'TESTING', 'TESTING', 'Laki-Laki', 'Islam', 'TESTING', '2020-12-31', 'TESTING', '404', 'index.png', '', 'Tidak Aktif', 0, 'MK-02-08'),
 ('0202011745', 'Dr. Indra, S.Si, M.Si', 'Indra', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-29', 'Bogor', '0983082912', 'foto.png', 'Indra019@dosentazkia.ac.id', 'Tidak Aktif', 3, '--Pilih Mata Kuliah--'),
 ('0203011739', 'Dr. Bayu Taufiq Possummah, M.A.', 'Bayu ', 'Laki-Laki', 'Kristen', 'Bogor', '2020-01-16', 'Bogor', '086125312615', 'POSTER_SKNU.jpg', '', 'Tidak Aktif', 0, 'MK-01-14'),
 ('0204011728', ' Dr. Erwandi Tarmizi Anwar, MA.', 'Erwandi ', 'Laki-Laki', 'Islam', 'Bogor', '2020-01-23', 'Bogor', '081287381371', 'foto.png', '', 'Tidak Aktif', 0, '--Pilih Mata Kuliah--'),
@@ -129,7 +131,7 @@ INSERT INTO `tb_dosen` (`id_dosen`, `nama_dosen`, `nama_panggilan`, `jenis_kelam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_fakultas`
+-- Table structure for table `tb_fakultas`
 --
 
 CREATE TABLE `tb_fakultas` (
@@ -140,7 +142,7 @@ CREATE TABLE `tb_fakultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_fakultas`
+-- Dumping data for table `tb_fakultas`
 --
 
 INSERT INTO `tb_fakultas` (`id_fakultas`, `nama_fakultas`, `keterangan`, `status`) VALUES
@@ -155,7 +157,7 @@ INSERT INTO `tb_fakultas` (`id_fakultas`, `nama_fakultas`, `keterangan`, `status
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_ipk`
+-- Table structure for table `tb_ipk`
 --
 
 CREATE TABLE `tb_ipk` (
@@ -168,7 +170,7 @@ CREATE TABLE `tb_ipk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_ipk`
+-- Dumping data for table `tb_ipk`
 --
 
 INSERT INTO `tb_ipk` (`id_ipk`, `nim_mhs`, `sks_total`, `bobot_total`, `nilai_total_sks`, `ipk`) VALUES
@@ -179,7 +181,7 @@ INSERT INTO `tb_ipk` (`id_ipk`, `nim_mhs`, `sks_total`, `bobot_total`, `nilai_to
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_jenjang_pendidikan`
+-- Table structure for table `tb_jenjang_pendidikan`
 --
 
 CREATE TABLE `tb_jenjang_pendidikan` (
@@ -190,7 +192,7 @@ CREATE TABLE `tb_jenjang_pendidikan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_jenjang_pendidikan`
+-- Dumping data for table `tb_jenjang_pendidikan`
 --
 
 INSERT INTO `tb_jenjang_pendidikan` (`id_jenjang_pendidikan`, `nama_lengkap_jp`, `nama_jp`, `status`) VALUES
@@ -206,7 +208,7 @@ INSERT INTO `tb_jenjang_pendidikan` (`id_jenjang_pendidikan`, `nama_lengkap_jp`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_jurusan`
+-- Table structure for table `tb_jurusan`
 --
 
 CREATE TABLE `tb_jurusan` (
@@ -219,7 +221,7 @@ CREATE TABLE `tb_jurusan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_jurusan`
+-- Dumping data for table `tb_jurusan`
 --
 
 INSERT INTO `tb_jurusan` (`id_jurusan`, `nama_jurusan`, `id_jenjang_pendidikan`, `penjelasan`, `status`, `id_fakultas`) VALUES
@@ -236,7 +238,7 @@ INSERT INTO `tb_jurusan` (`id_jurusan`, `nama_jurusan`, `id_jenjang_pendidikan`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_kelas`
+-- Table structure for table `tb_kelas`
 --
 
 CREATE TABLE `tb_kelas` (
@@ -247,7 +249,7 @@ CREATE TABLE `tb_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_kelas`
+-- Dumping data for table `tb_kelas`
 --
 
 INSERT INTO `tb_kelas` (`id_kelas`, `nama_kelas`, `status`, `id_ruangan`) VALUES
@@ -263,7 +265,7 @@ INSERT INTO `tb_kelas` (`id_kelas`, `nama_kelas`, `status`, `id_ruangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_log`
+-- Table structure for table `tb_log`
 --
 
 CREATE TABLE `tb_log` (
@@ -279,7 +281,7 @@ CREATE TABLE `tb_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_log`
+-- Dumping data for table `tb_log`
 --
 
 INSERT INTO `tb_log` (`id_log`, `log_time`, `log_user`, `log_role`, `log_tipe`, `log_aksi`, `log_item`, `log_assign_to`, `log_assign_type`) VALUES
@@ -490,12 +492,15 @@ INSERT INTO `tb_log` (`id_log`, `log_time`, `log_user`, `log_role`, `log_tipe`, 
 (205, '2020-06-21 14:04:40', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
 (206, '2020-06-21 14:05:03', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '100406204', '', ''),
 (207, '2020-06-21 14:09:33', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '101106205', '', ''),
-(208, '2020-06-21 14:15:11', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Ubah Data', '0201011731', '', '');
+(208, '2020-06-21 14:15:11', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Ubah Data', '0201011731', '', ''),
+(209, '2020-06-30 13:59:17', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Menambah Data', '103006207', '', ''),
+(210, '2020-06-30 14:11:22', 'ekomh13@gmail.com', 1, 'Data Dosen', 'Menambah Data', '02013063021', '', ''),
+(211, '2020-06-30 14:13:15', 'ekomh13@gmail.com', 1, 'Data Mahasiswa', 'Ubah Data', '102505202', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_log_login`
+-- Table structure for table `tb_log_login`
 --
 
 CREATE TABLE `tb_log_login` (
@@ -509,7 +514,7 @@ CREATE TABLE `tb_log_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_log_login`
+-- Dumping data for table `tb_log_login`
 --
 
 INSERT INTO `tb_log_login` (`id_log`, `log_time`, `log_user`, `log_tipe`, `log_role`, `log_desc`, `log_status`) VALUES
@@ -1034,12 +1039,108 @@ INSERT INTO `tb_log_login` (`id_log`, `log_time`, `log_user`, `log_tipe`, `log_r
 (519, '2020-06-21 15:05:58', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
 (520, '2020-06-21 15:06:19', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
 (521, '2020-06-21 15:06:24', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
-(522, '2020-06-21 15:06:50', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna');
+(522, '2020-06-21 15:06:50', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(523, '2020-06-22 04:06:07', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(524, '2020-06-28 04:47:51', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(525, '2020-06-28 05:04:15', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(526, '2020-06-28 05:07:48', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(527, '2020-06-28 05:41:45', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(528, '2020-06-28 05:41:51', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(529, '2020-06-28 05:42:46', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(530, '2020-06-29 09:10:07', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(531, '2020-06-29 09:10:27', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(532, '2020-06-29 09:10:34', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(533, '2020-06-29 09:10:38', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(534, '2020-06-30 06:03:03', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(535, '2020-06-30 06:15:51', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(536, '2020-06-30 06:31:16', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(537, '2020-06-30 07:10:30', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(538, '2020-06-30 07:12:11', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(539, '2020-06-30 07:43:09', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(540, '2020-06-30 07:43:21', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(541, '2020-06-30 07:43:24', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(542, '2020-06-30 07:43:55', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(543, '2020-06-30 07:43:58', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(544, '2020-06-30 07:44:23', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(545, '2020-06-30 07:45:56', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(546, '2020-06-30 07:46:03', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(547, '2020-06-30 09:48:01', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(548, '2020-06-30 09:48:13', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(549, '2020-06-30 09:48:29', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(550, '2020-06-30 09:49:12', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(551, '2020-06-30 09:50:13', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(552, '2020-06-30 09:50:20', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(553, '2020-06-30 09:56:22', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(554, '2020-06-30 09:56:29', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(555, '2020-06-30 09:57:31', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(556, '2020-06-30 09:57:37', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(557, '2020-06-30 10:02:31', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(558, '2020-06-30 10:02:37', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(559, '2020-06-30 10:10:04', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(560, '2020-06-30 10:10:10', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(561, '2020-06-30 10:10:17', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(562, '2020-06-30 10:10:22', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(563, '2020-06-30 10:10:25', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(564, '2020-06-30 10:13:18', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(565, '2020-06-30 10:15:55', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(566, '2020-06-30 10:16:06', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(567, '2020-06-30 10:16:10', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(568, '2020-06-30 10:16:33', 'Luqyan04@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(569, '2020-06-30 10:17:48', 'Luqyan04@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(570, '2020-06-30 10:17:54', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(571, '2020-06-30 10:18:08', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(572, '2020-06-30 10:18:35', 'KAMU09@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(573, '2020-06-30 10:21:30', 'KAMU09@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(574, '2020-06-30 10:21:39', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(575, '2020-06-30 10:21:45', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(576, '2020-06-30 10:21:53', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(577, '2020-06-30 10:50:41', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(578, '2020-06-30 10:50:52', 'KAMU09@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(579, '2020-06-30 10:54:43', 'KAMU09@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(580, '2020-06-30 10:55:02', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(581, '2020-06-30 10:55:30', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(582, '2020-06-30 10:55:36', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(583, '2020-06-30 10:57:40', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(584, '2020-06-30 10:57:47', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(585, '2020-06-30 10:58:05', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(586, '2020-06-30 10:58:11', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(587, '2020-06-30 10:58:13', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(588, '2020-06-30 10:58:24', 'KAMU09@dosentazkia.ac.id', 'login', 3, 'Login', 'pengguna'),
+(589, '2020-06-30 10:58:56', 'KAMU09@dosentazkia.ac.id', 'logout', 3, 'Logout', 'pengguna'),
+(590, '2020-06-30 10:59:01', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(591, '2020-06-30 11:19:23', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna');
+INSERT INTO `tb_log_login` (`id_log`, `log_time`, `log_user`, `log_tipe`, `log_role`, `log_desc`, `log_status`) VALUES
+(592, '2020-06-30 11:19:30', 'Cahaya03@tazkia.ac.id', 'login', 2, 'Login', 'pengguna'),
+(593, '2020-06-30 11:20:52', 'Cahaya03@tazkia.ac.id', 'logout', 2, 'Logout', 'pengguna'),
+(594, '2020-06-30 11:20:59', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(595, '2020-06-30 11:22:19', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(596, '2020-06-30 11:23:32', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(597, '2020-06-30 11:23:40', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(598, '2020-06-30 13:12:45', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(599, '2020-06-30 14:15:12', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(600, '2020-06-30 14:15:18', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(601, '2020-06-30 14:17:23', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(602, '2020-06-30 14:17:28', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(603, '2020-06-30 14:18:04', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(604, '2020-06-30 14:18:10', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(605, '2020-06-30 14:21:19', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(606, '2020-06-30 14:21:26', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(607, '2020-06-30 14:24:46', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(608, '2020-06-30 14:25:05', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(609, '2020-06-30 14:25:16', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(610, '2020-06-30 14:26:30', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(611, '2020-06-30 14:27:41', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(612, '2020-06-30 14:27:46', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(613, '2020-06-30 14:28:34', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(614, '2020-06-30 14:28:39', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(615, '2020-06-30 15:09:27', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna'),
+(616, '2020-07-01 14:52:38', 'ekomh13@gmail.com', 'login', 1, 'Login', 'pengguna'),
+(617, '2020-07-01 15:11:20', 'ekomh13@gmail.com', 'logout', 1, 'Logout', 'pengguna');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_matkul`
+-- Table structure for table `tb_matkul`
 --
 
 CREATE TABLE `tb_matkul` (
@@ -1050,7 +1151,7 @@ CREATE TABLE `tb_matkul` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_matkul`
+-- Dumping data for table `tb_matkul`
 --
 
 INSERT INTO `tb_matkul` (`id_matkul`, `nama_matkul`, `status`, `id_jurusan`) VALUES
@@ -1066,7 +1167,7 @@ INSERT INTO `tb_matkul` (`id_matkul`, `nama_matkul`, `status`, `id_jurusan`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_nilai`
+-- Table structure for table `tb_nilai`
 --
 
 CREATE TABLE `tb_nilai` (
@@ -1084,7 +1185,7 @@ CREATE TABLE `tb_nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_nilai`
+-- Dumping data for table `tb_nilai`
 --
 
 INSERT INTO `tb_nilai` (`id_nilai`, `nim_mhs`, `nilai_presensi`, `nilai_tugas`, `nilai_uts`, `nilai_uas`, `total_nilai`, `nilai_akhir`, `grade`, `status`, `id_krs`) VALUES
@@ -1098,7 +1199,7 @@ INSERT INTO `tb_nilai` (`id_nilai`, `nim_mhs`, `nilai_presensi`, `nilai_tugas`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_ruangan`
+-- Table structure for table `tb_ruangan`
 --
 
 CREATE TABLE `tb_ruangan` (
@@ -1112,7 +1213,7 @@ CREATE TABLE `tb_ruangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_ruangan`
+-- Dumping data for table `tb_ruangan`
 --
 
 INSERT INTO `tb_ruangan` (`id_ruangan`, `nama_ruangan`, `lantai`, `kapasitas`, `keterangan`, `status`, `id_jenis_ruangan`) VALUES
@@ -1123,7 +1224,7 @@ INSERT INTO `tb_ruangan` (`id_ruangan`, `nama_ruangan`, `lantai`, `kapasitas`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_ruangan_jenis`
+-- Table structure for table `tb_ruangan_jenis`
 --
 
 CREATE TABLE `tb_ruangan_jenis` (
@@ -1133,7 +1234,7 @@ CREATE TABLE `tb_ruangan_jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_ruangan_jenis`
+-- Dumping data for table `tb_ruangan_jenis`
 --
 
 INSERT INTO `tb_ruangan_jenis` (`id_jenis_ruangan`, `nama_jr`, `status`) VALUES
@@ -1147,7 +1248,7 @@ INSERT INTO `tb_ruangan_jenis` (`id_jenis_ruangan`, `nama_jr`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_tahun_akademik`
+-- Table structure for table `tb_tahun_akademik`
 --
 
 CREATE TABLE `tb_tahun_akademik` (
@@ -1158,7 +1259,7 @@ CREATE TABLE `tb_tahun_akademik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_tahun_akademik`
+-- Dumping data for table `tb_tahun_akademik`
 --
 
 INSERT INTO `tb_tahun_akademik` (`id_tahun_akademik`, `nama_tahun_akademik`, `semester`, `status`) VALUES
@@ -1172,7 +1273,7 @@ INSERT INTO `tb_tahun_akademik` (`id_tahun_akademik`, `nama_tahun_akademik`, `se
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_transkrip_nilai`
+-- Table structure for table `tb_transkrip_nilai`
 --
 
 CREATE TABLE `tb_transkrip_nilai` (
@@ -1182,7 +1283,7 @@ CREATE TABLE `tb_transkrip_nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_transkrip_nilai`
+-- Dumping data for table `tb_transkrip_nilai`
 --
 
 INSERT INTO `tb_transkrip_nilai` (`id_transkrip_nilai`, `nim_mhs`, `status`) VALUES
@@ -1193,7 +1294,7 @@ INSERT INTO `tb_transkrip_nilai` (`id_transkrip_nilai`, `nim_mhs`, `status`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -1210,22 +1311,24 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `nama_panggilan`, `email`, `image`, `password`, `password_asli`, `id_role`, `status`, `data_created`) VALUES
-(56, 'Eko Muchamad Haryono', 'Amano29', 'ekomh13@gmail.com', 'IMG_20200223_164959.jpg', '$2y$10$swL/vw8PBtKqJwIItyBtcuxHWhuBMRYx5BfV1WXifMSdrEWbO1o92', '12345', 1, 'Aktif', '2019-12-26 13:54:37'),
+(56, 'Eko Muchamad Haryono', 'Amano29', 'ekomh13@gmail.com', 'Eko_Muchamad_Haryono-30-06-20.PNG', '$2y$10$swL/vw8PBtKqJwIItyBtcuxHWhuBMRYx5BfV1WXifMSdrEWbO1o92', '12345', 1, 'Aktif', '2019-12-26 13:54:37'),
 (80, 'Cahaya Melati Mutiara', 'Cahaya', 'Cahaya03@tazkia.ac.id', 'index.jpg', '$2y$10$s5vQJncxx4CZic6CcOrm8OeXd8GXAQk.b9bXJH9wub4npASXgzsIm', '12345', 2, 'Aktif', '2020-06-17 07:53:49'),
 (81, 'Dr. Luqyan Tamanni, M.Ec', 'Luqyan ', 'Luqyan04@dosentazkia.ac.id', 'IMG_20200223_165103.jpg', '$2y$10$2ZJsQOmxz9b/pSBKwcc10.aCQc.OVkD8qc5H.YYz6LFazgOBsB7JC', '$2y$10$2ZJsQOmxz9b/pSBKwcc10.aCQc.OVkD8qc5H.YYz6LFazgOBsB7JC', 3, 'Aktif', '2020-06-17 07:58:52'),
-(82, 'Eko Muchamad Haryono', 'Amano', 'Amano04@tazkia.ac.id', 'IMG_20200223_164959.jpg', '$2y$10$5pnhFof2U3RoFRoT/Rpl5uBcTHY1sZ2jzFsWwjz0AY2kh1syM12VW', '$2y$10$5pnhFof2U3RoFRoT/Rpl5uBcTHY1sZ2jzFsWwjz0AY2kh1syM12VW', 2, 'Aktif', '2020-06-19 13:27:53'),
+(82, 'Eko Muchamad Haryono', 'Amano', 'Amano04@tazkia.ac.id', '', '$2y$10$5pnhFof2U3RoFRoT/Rpl5uBcTHY1sZ2jzFsWwjz0AY2kh1syM12VW', '$2y$10$5pnhFof2U3RoFRoT/Rpl5uBcTHY1sZ2jzFsWwjz0AY2kh1syM12VW', 2, 'Aktif', '2020-06-19 13:27:53'),
 (83, 'Renanda Liana Putri', 'Nanda', 'nanda201@gmail.com', 'index.png', '$2y$10$afcQWSFoO3vuQKTDexDFCu0DnAzvFFRmBQwuIb5kt/voQ3caUhnie', '12345', 4, 'Aktif', '2020-06-19 19:44:48'),
 (84, 'Syahira Laila Mutiara', 'Syahira', 'syahira29@gmail.com', 'index.png', '$2y$10$69.3wGLJu143b1Mz0xtse.Op.sxkAszJy3jNsk0BuSYFocYF3fWfG', '12345', 5, 'Aktif', '2020-06-19 19:45:55'),
-(85, 'Eko Haryono', 'Haryono', 'ekomh020@gmail.com', 'index.png', '$2y$10$7uuUZwcevjAFccgjP4Gu1.UPhY8gkH8/DkWlvknNF2YscBOrnDSiG', '12345', 6, 'Aktif', '2020-06-21 08:02:08');
+(85, 'Eko Haryono', 'Haryono', 'ekomh020@gmail.com', '', '$2y$10$7uuUZwcevjAFccgjP4Gu1.UPhY8gkH8/DkWlvknNF2YscBOrnDSiG', '12345', 6, 'Aktif', '2020-06-21 08:02:08'),
+(89, 'Coba ', 'Coba', 'Coba08@tazkia.ac.id', 'Coba_-21-06-20.jpg', '$2y$10$nvdtDzMu7nEM1Ko/0g6dqeyAQPvNorB6/DNppYnHuSqOQiFlK4FeW', '1234', 2, 'Aktif', '2020-06-28 12:07:57'),
+(90, 'DIA ', 'KAMU', 'KAMU09@dosentazkia.ac.id', 'IMG_20200223_164959.jpg', '$2y$10$OsF7bzAVftb65ebGfmsvFezxCdWRu1kIdJ8IHE89Ot.joS7fKh6zK', '$2y$10$OsF7bzAVftb65ebGfmsvFezxCdWRu1kIdJ8IHE89Ot.joS7fKh6zK', 3, 'Aktif', '2020-06-30 17:18:04');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -1234,7 +1337,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -1251,145 +1354,145 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 --
 
 --
--- Indeks untuk tabel `krs_detail`
+-- Indexes for table `krs_detail`
 --
 ALTER TABLE `krs_detail`
   ADD PRIMARY KEY (`id_krs`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`nim_mhs`);
 
 --
--- Indeks untuk tabel `tb_dosen`
+-- Indexes for table `tb_dosen`
 --
 ALTER TABLE `tb_dosen`
   ADD PRIMARY KEY (`id_dosen`);
 
 --
--- Indeks untuk tabel `tb_fakultas`
+-- Indexes for table `tb_fakultas`
 --
 ALTER TABLE `tb_fakultas`
   ADD PRIMARY KEY (`id_fakultas`);
 
 --
--- Indeks untuk tabel `tb_ipk`
+-- Indexes for table `tb_ipk`
 --
 ALTER TABLE `tb_ipk`
   ADD PRIMARY KEY (`id_ipk`),
   ADD UNIQUE KEY `nim_mhs` (`nim_mhs`);
 
 --
--- Indeks untuk tabel `tb_jenjang_pendidikan`
+-- Indexes for table `tb_jenjang_pendidikan`
 --
 ALTER TABLE `tb_jenjang_pendidikan`
   ADD PRIMARY KEY (`id_jenjang_pendidikan`);
 
 --
--- Indeks untuk tabel `tb_jurusan`
+-- Indexes for table `tb_jurusan`
 --
 ALTER TABLE `tb_jurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
--- Indeks untuk tabel `tb_kelas`
+-- Indexes for table `tb_kelas`
 --
 ALTER TABLE `tb_kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indeks untuk tabel `tb_log`
+-- Indexes for table `tb_log`
 --
 ALTER TABLE `tb_log`
   ADD PRIMARY KEY (`id_log`);
 
 --
--- Indeks untuk tabel `tb_log_login`
+-- Indexes for table `tb_log_login`
 --
 ALTER TABLE `tb_log_login`
   ADD PRIMARY KEY (`id_log`);
 
 --
--- Indeks untuk tabel `tb_matkul`
+-- Indexes for table `tb_matkul`
 --
 ALTER TABLE `tb_matkul`
   ADD PRIMARY KEY (`id_matkul`);
 
 --
--- Indeks untuk tabel `tb_nilai`
+-- Indexes for table `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
   ADD PRIMARY KEY (`id_nilai`);
 
 --
--- Indeks untuk tabel `tb_ruangan`
+-- Indexes for table `tb_ruangan`
 --
 ALTER TABLE `tb_ruangan`
   ADD PRIMARY KEY (`id_ruangan`);
 
 --
--- Indeks untuk tabel `tb_ruangan_jenis`
+-- Indexes for table `tb_ruangan_jenis`
 --
 ALTER TABLE `tb_ruangan_jenis`
   ADD PRIMARY KEY (`id_jenis_ruangan`);
 
 --
--- Indeks untuk tabel `tb_tahun_akademik`
+-- Indexes for table `tb_tahun_akademik`
 --
 ALTER TABLE `tb_tahun_akademik`
   ADD PRIMARY KEY (`id_tahun_akademik`);
 
 --
--- Indeks untuk tabel `tb_transkrip_nilai`
+-- Indexes for table `tb_transkrip_nilai`
 --
 ALTER TABLE `tb_transkrip_nilai`
   ADD PRIMARY KEY (`id_transkrip_nilai`),
   ADD UNIQUE KEY `nim_mhs` (`nim_mhs`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_jenjang_pendidikan`
+-- AUTO_INCREMENT for table `tb_jenjang_pendidikan`
 --
 ALTER TABLE `tb_jenjang_pendidikan`
   MODIFY `id_jenjang_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_log`
+-- AUTO_INCREMENT for table `tb_log`
 --
 ALTER TABLE `tb_log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_log_login`
+-- AUTO_INCREMENT for table `tb_log_login`
 --
 ALTER TABLE `tb_log_login`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=523;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=618;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
--- AUTO_INCREMENT untuk tabel `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;

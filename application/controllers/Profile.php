@@ -1,16 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile extends CI_Controller
-{
-	public function __construct()
-	{
+class Profile extends CI_Controller {
+	public function __construct() {
 		parent::__construct();
 		cek_login();
 	}
-	
-	public function index()
-	{
+
+	public function index() {
 		$data['judul'] = 'Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -21,10 +18,9 @@ class Profile extends CI_Controller
 		$this->load->view('templates/tb_footer');
 	}
 
-	public function edit()
-	{
+	public function edit() {
 		$data['judul'] = 'Ubah Profile';
-		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 
@@ -35,24 +31,24 @@ class Profile extends CI_Controller
 			$this->load->view('Profile/edit', $data);
 			$this->load->view('templates/tb_footer');
 		} else {
-			$dateimage   	= date('d' . '-' . 'm' . '-' . 'y');
-			$email          = $this->input->post('email');
-			$nama           = $this->input->post('nama');
+			$dateimage = date('d' . '-' . 'm' . '-' . 'y');
+			$email = $this->input->post('email');
+			$nama = $this->input->post('nama');
 			$nama_panggilan = $this->input->post('nama_panggilan');
-			$image          = $_FILES['image'];
+			$image = $_FILES['image'];
 
-			$user  			= $this->db->get_where('user', ['email' => $email])->row_array();
+			$user = $this->db->get_where('user', ['email' => $email])->row_array();
 
 			if ($image = '') {
 			} else {
-				$config['upload_path']   = 'assets/foto/users/';
+				$config['upload_path'] = 'assets/foto/users/';
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
-				$config['overwrite']     = true;
-				$config['max_filename']  = 255;
-				$config['max_size']      = 25600;
-				$config['width']         = '100';
-				$config['height']        = '100';
-				$config['file_name']     =  $nama . '-' . $dateimage;
+				$config['overwrite'] = true;
+				$config['max_filename'] = 255;
+				$config['max_size'] = 25600;
+				$config['width'] = '100';
+				$config['height'] = '100';
+				$config['file_name'] = $nama . '-' . $dateimage;
 
 				$this->load->library('upload', $config);
 				if (@$_FILES['image']['name'] != null) {
@@ -61,8 +57,12 @@ class Profile extends CI_Controller
 					} else {
 						$image = $this->upload->data('file_name');
 					}
-				}else{
-					$image = $user['image'];
+				} else {
+					if ($user['image'] != null) {
+						$image = $user['image'];
+					} else {
+						$image = 'index.png';
+					}
 				}
 			}
 
@@ -70,8 +70,8 @@ class Profile extends CI_Controller
 			$this->db->set('nama_panggilan', $nama_panggilan);
 			$this->db->where('email', $email);
 			$this->db->update('user');
-			$this->session->set_flashdata('berhasil', 'Profile Telah Diubah');
-			redirect('Auth/logout');
+			$this->session->set_flashdata('berhasil', 'Profile Telah Berhasil Diubah');
+			redirect('Profile');
 		}
 	}
 }

@@ -1,7 +1,9 @@
   </div>
   <footer class="bg-white sticky-footer">
     <div class="container my-auto">
-      <div class="h1 text-center my-auto copyright text-dark"><span>Copyright : Eko Muchamad Haryono</span></div>
+      <div class="text-center my-auto copyright"><span>Copyright : Eko Muchamad Haryono</span></div>
+      <div class="text-left my-auto copyright"><span>Hubungi : 082246105463</span></div>
+      <div class="text-right my-auto copyright"><span>Email : ekomh020@gmail.com</span></div>
     </div>
   </footer>
 </div>
@@ -21,7 +23,7 @@
       </div>
       <div class="modal-body text-danger"><b>Anda Ingin Keluar?? Tekan Yes</b></div>
       <div class="modal-footer">
-        <a class="btn btn-danger" href="<?= base_url('Auth/logout'); ?>">Yes</a>
+        <a class="btn btn-danger" href="<?=base_url('Auth/logout');?>">Yes</a>
         <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">No</button>
       </div>
     </div>
@@ -29,58 +31,58 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/templates/'); ?>vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url('assets/templates/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>vendor/jquery/jquery.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="<?= base_url('assets/templates/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets/templates/'); ?>js/sb-admin-2.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="<?= base_url('assets/templates/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= base_url('assets/templates/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url('assets/templates/'); ?>js/demo/datatables-demo.js"></script>
+<script src="<?=base_url('assets/templates/');?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>js/demo/datatables-demo.js"></script>
 
 <!-- Sweet Alret 2-->
-<script src="<?= base_url('assets/templates/'); ?>vendor/sweetalret2/dist/sweetalert2.min.js"></script>
+<script src="<?=base_url('assets/templates/');?>vendor/sweetalret2/dist/sweetalert2.min.js"></script>
 <!-- Sweet Alert 2-->
 
 <!-- Js-->
-<script src="<?= base_url('assets/myassets/'); ?>js/realodpage.js"></script>
-<script src="<?= base_url('assets/myassets/'); ?>js/loadscreen.js"></script>
+<script src="<?=base_url('assets/myassets/');?>js/realodpage.js"></script>
+<script src="<?=base_url('assets/myassets/');?>js/loadscreen.js"></script>
 <!-- Js-->
 
 <!-- Sweet Alert -->
 <script type="text/javascript">
-  <?php if ($this->uri->segment('1') != "Dashboard") { ?>
+  <?php if ($this->uri->segment('1') != "Dashboard") {?>
     const flashData = $('.flash-data').data('flashdata');
 
     if (flashData) {
       Swal.fire({
         icon: 'success',
-        title: "<?= $judul ?>",
+        title: "<?=$judul?>",
         text: "Berhasil " + flashData,
         showConfirmButton: true,
       });
     }
-  <?php } ?>
+  <?php }?>
 
-  <?php if ($this->uri->segment('1') == "Dashboard") { ?>
+  <?php if ($this->uri->segment('1') == "Dashboard") {?>
     const flashData = $('.flash-data').data('flashdata');
 
     if (flashData) {
       Swal.fire({
         icon: 'success',
-        title: "<?= $judul2 ?>",
+        title: "<?=$judul2?>",
         text: "Berhasil " + flashData,
         showConfirmButton: true,
       });
     }
-  <?php } ?>
+  <?php }?>
 
-      //Tombol Hapus 
+      //Tombol Hapus
       $('.tombol-hapus').on('click', function(e) {
 
         e.preventDefault();
@@ -88,7 +90,7 @@
 
         Swal.fire({
           title: 'Apakah Anda Yakin ?',
-          text: "<?= $judul ?> Yang di Pilih Akan " + "di Hapus !",
+          text: "<?=$judul?> Yang di Pilih Akan " + "di Hapus !",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -107,9 +109,9 @@
     <!-- Waktu -->
     <script type="text/javascript">
       //set timezone
-      <?php date_default_timezone_set('Asia/Jakarta'); ?>
+      <?php date_default_timezone_set('Asia/Jakarta');?>
       //buat object date berdasarkan waktu di server
-      var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
+      var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0');?>);
       //buat object date berdasarkan waktu di client
       var clientTime = new Date();
       //hitung selisih

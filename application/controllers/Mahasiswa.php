@@ -1,19 +1,15 @@
 <?php
 
-class Mahasiswa extends CI_Controller
-{
+class Mahasiswa extends CI_Controller {
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 		cek_login();
 		check_role_admin_op_pendataan();
 		$this->load->model('Mahasiswa_model');
 	}
 
-
-	public function index($offset = NULL)
-	{
+	public function index($offset = NULL) {
 		$text_mhs = "";
 		if ($this->input->post('submit') != NULL) {
 			$text_mhs = $this->input->post('cari_mhs');
@@ -31,19 +27,19 @@ class Mahasiswa extends CI_Controller
 
 		//config
 		$config['uri_segment'] = 3;
-		$config['base_url']    = base_url().'Mahasiswa/index';
-		$config['total_rows']  = $this->Mahasiswa_model->CountAllMahasiswa($text_mhs);
-		$config['per_page']    = $limit;
-		$config['num_links']   = 3;
+		$config['base_url'] = base_url() . 'Mahasiswa/index';
+		$config['total_rows'] = $this->Mahasiswa_model->CountAllMahasiswa($text_mhs);
+		$config['per_page'] = $limit;
+		$config['num_links'] = 3;
 
 		//initialize
 		$pagination = $this->pagination->initialize($config);
 
-		$data['judul']  = 'Data Mahasiswa';
-		$data['user']   = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['judul'] = 'Data Mahasiswa';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['offset'] = $this->uri->segment(3);
-		$data['join']   = $this->Mahasiswa_model->getMahasiswa($limit, $offset, $text_mhs);
-		$data['krs']    = $this->db->get('krs_detail')->result();
+		$data['join'] = $this->Mahasiswa_model->getMahasiswa($limit, $offset, $text_mhs);
+		$data['krs'] = $this->db->get('krs_detail')->result();
 		//PENUTUP PAGINATION
 
 		$this->load->view('templates/tb_header', $data);
@@ -53,15 +49,13 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('templates/tb_footer');
 	}
 
-
-	public function tambah()
-	{
-		$data['judul']          = 'Form Tambah Data';
-		$data['user']           = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+	public function tambah() {
+		$data['judul'] = 'Form Tambah Data';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->db->order_by('nama_jurusan', 'asc');
-		$data['jurusan']        = $this->db->get('tb_jurusan')->result();
+		$data['jurusan'] = $this->db->get('tb_jurusan')->result();
 		$this->db->order_by('nama_kelas', 'asc');
-		$data['kelas']          = $this->db->get('tb_kelas')->result();
+		$data['kelas'] = $this->db->get('tb_kelas')->result();
 		$this->db->order_by('nama_tahun_akademik', 'asc');
 		$data['tahun_akademik'] = $this->db->get('tb_tahun_akademik')->result();
 
@@ -70,13 +64,12 @@ class Mahasiswa extends CI_Controller
 		$this->form_validation->set_rules('id_jurusan', 'Jurusan', 'required');
 		$this->form_validation->set_rules('id_kelas', 'Kelas', 'required');
 		$this->form_validation->set_rules('id_tahun_akademik', 'Tahun Akademik', 'required');
-		$this->form_validation->set_rules('jenis_kelamin', 'Jenis_Kelamin', 'required');
-		$this->form_validation->set_rules('tmpt_lahir', 'tmpt_lahir', 'required');
+		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
 		$this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
-		$this->form_validation->set_rules('tanggal_lahir', 'tanggal_lahir Lahir', 'required');
+		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
-		$this->form_validation->set_rules('no_telp', 'No_telp', 'required|numeric');
+		$this->form_validation->set_rules('no_telp', 'Nomer Telepon', 'required|numeric');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('templates/tb_header', $data);
@@ -91,21 +84,18 @@ class Mahasiswa extends CI_Controller
 		}
 	}
 
-
-	public function hapus($nim_mhs)
-	{
+	public function hapus($nim_mhs) {
 		$id = decrypt_url($nim_mhs);
 		$this->Mahasiswa_model->HapusDataMahasiswa($id);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
 		redirect('Mahasiswa');
 	}
 
-	public function detail($nim_mhs)
-	{
+	public function detail($nim_mhs) {
 		$data['judul'] = 'Data Lengkap Mahasiswa';
-		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$id                = decrypt_url($nim_mhs);
+		$id = decrypt_url($nim_mhs);
 		$data['mahasiswa'] = $this->Mahasiswa_model->InfoDataDetail($id);
 
 		$this->load->view('templates/tb_header', $data);
@@ -115,20 +105,19 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('templates/tb_footer');
 	}
 
-	public function edit($nim_mhs)
-	{
+	public function edit($nim_mhs) {
 		$data['judul'] = 'Form Ubah Data';
-		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$id                = decrypt_url($nim_mhs);
+		$id = decrypt_url($nim_mhs);
 		$data['mahasiswa'] = $this->Mahasiswa_model->IdentitasDataMahasiswa($id);
 		$data['inputSelect'] = $this->Mahasiswa_model->inputSelectDataMahasiswa($id);
 		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
 		$this->db->order_by('nama_jurusan', 'asc');
-		$data['jurusan']        = $this->db->get('tb_jurusan')->result();
+		$data['jurusan'] = $this->db->get('tb_jurusan')->result();
 		$this->db->order_by('nama_kelas', 'asc');
-		$data['kelas']          = $this->db->get('tb_kelas')->result();
+		$data['kelas'] = $this->db->get('tb_kelas')->result();
 		$this->db->order_by('nama_tahun_akademik', 'asc');
 		$data['tahun_akademik'] = $this->db->get('tb_tahun_akademik')->result();
 
@@ -136,13 +125,13 @@ class Mahasiswa extends CI_Controller
 		$this->form_validation->set_rules('nama_panggilan', 'Nama Panggilan', 'required');
 		$this->form_validation->set_rules('id_jurusan', 'Jurusan', 'required');
 		$this->form_validation->set_rules('id_kelas', 'Kelas', 'required');
+		$this->form_validation->set_rules('id_tahun_akademik', 'Tahun Akademik', 'required');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis_Kelamin', 'required');
-		$this->form_validation->set_rules('tmpt_lahir', 'tmpt_lahir', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
 		$this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
 		$this->form_validation->set_rules('tanggal_lahir', 'tanggal_lahir Lahir', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
-		$this->form_validation->set_rules('no_telp', 'No_telp', 'required|numeric');
+		$this->form_validation->set_rules('no_telp', 'Nomer Telepon', 'required|numeric');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('templates/tb_header', $data);
@@ -157,8 +146,7 @@ class Mahasiswa extends CI_Controller
 		}
 	}
 
-	public function user($nim_mhs)
-	{
+	public function user($nim_mhs) {
 		$data_mhs = $this->db->get_where('mahasiswa', ['nim_mhs' => $nim_mhs])->row_array();
 
 		$count_mahasiswa = $this->db->count_all('user');
@@ -167,25 +155,24 @@ class Mahasiswa extends CI_Controller
 		$stripped = str_replace('', '', $data_mhs['nama_panggilan'] . "0" . $helper);
 		$email = $stripped . '@tazkia.ac.id';
 
-
 		$data = array(
-			'nama'           => $data_mhs['nama'],
+			'nama' => $data_mhs['nama'],
 			'nama_panggilan' => $data_mhs['nama_panggilan'],
-			'email'          => $email,
-			'image'          => $data_mhs['image'],
-			'password'       => password_hash('1234', PASSWORD_DEFAULT),
-			'password_asli'  => '1234',
-			'id_role'        => '2',
-			'status'         => 'Aktif',
-			'data_created'   => date('Y-m-d H:i:s')
+			'email' => $email,
+			'image' => $data_mhs['image'],
+			'password' => password_hash('1234', PASSWORD_DEFAULT),
+			'password_asli' => '1234',
+			'id_role' => '2',
+			'status' => 'Aktif',
+			'data_created' => date('Y-m-d H:i:s'),
 		);
 
 		$this->db->insert('user', $data);
 
 		$data_update_user = array(
-			'email'   => $email,
-			'status'  => 'Aktif',
-			'id_role' => '2'
+			'email' => $email,
+			'status' => 'Aktif',
+			'id_role' => '2',
 		);
 
 		$this->db->where(array('nim_mhs' => $nim_mhs));
@@ -195,14 +182,13 @@ class Mahasiswa extends CI_Controller
 		redirect(base_url('Mahasiswa'));
 	}
 
-	public function nonaktif($nim_mhs)
-	{
+	public function nonaktif($nim_mhs) {
 		$data_mhs = $this->db->get_where('mahasiswa', ['nim_mhs' => $nim_mhs])->row_array();
 
 		$data = array(
-			'email'   => '',
-			'status'  => 'Tidak Aktif',
-			'id_role' => '2'
+			'email' => '',
+			'status' => 'Tidak Aktif',
+			'id_role' => '2',
 		);
 
 		$this->db->where(array('nim_mhs' => $nim_mhs));

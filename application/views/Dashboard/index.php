@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="flash-data" data-flashdata="<?= $this->session->flashdata('berhasil'); ?>"></div>
-  <?php if ($this->session->flashdata('berhasil')) : ?>
-  <?php endif; ?>
+  <div class="flash-data" data-flashdata="<?=$this->session->flashdata('berhasil');?>"></div>
+  <?php if ($this->session->flashdata('berhasil')): ?>
+  <?php endif;?>
   <h2 class="text-dark text-center font-weight-bold">Data Informasi Mahasiswa dan Penilaian Mahasiswa</h2>
   <hr>
   <div class="row">
@@ -10,11 +10,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?= base_url('Mahasiswa'); ?>">Jumlah Data Mahasiswa</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $mahasiswa ?></div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?=base_url('Mahasiswa');?>">Jumlah Data Mahasiswa</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$mahasiswa?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a href="<?=base_url('Mahasiswa');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -25,11 +25,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?= base_url('Dosen'); ?>">Jumlah Data Dosen</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $dosen ?></div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?=base_url('Dosen');?>">Jumlah Data Dosen</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$dosen?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a href="<?=base_url('Dosen');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -40,11 +40,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a class="text-xs font-weight-bold text-success text-uppercase" style="text-decoration: none;" href="<?= base_url('Fakultas'); ?>">Jumlah Data Fakultas</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $fakultas ?></div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a class="text-xs font-weight-bold text-success text-uppercase" style="text-decoration: none;" href="<?=base_url('Fakultas');?>">Jumlah Data Fakultas</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$fakultas?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-success" href="<?=base_url('Fakultas');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -55,11 +55,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a class="text-xs font-weight-bold text-success text-uppercase" style="text-decoration: none;" href="<?= base_url('Jurusan'); ?>">Jumlah Data Jurusan</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jurusan ?></div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a class="text-xs font-weight-bold text-success text-uppercase" style="text-decoration: none;" href="<?=base_url('Jurusan');?>">Jumlah Data Jurusan</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$jurusan?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-success" href="<?=base_url('Jurusan');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -70,11 +70,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a class="text-xs font-weight-bold text-danger text-uppercase" style="text-decoration: none;" href="<?= base_url('Pengguna'); ?>">Jumlah User Telah Tedaftar</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $pengguna ?></div>
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a class="text-xs font-weight-bold text-danger text-uppercase" style="text-decoration: none;" href="<?=base_url('Pengguna');?>">Jumlah User Telah Tedaftar</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$pengguna?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-danger" href="<?=base_url('Pengguna');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -85,11 +85,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a class="text-xs font-weight-bold text-danger text-uppercase" style="text-decoration: none;" href="<?= base_url('Matkul'); ?>">Jumlah Data Mata kuliah</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $matkul ?></div>
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a class="text-xs font-weight-bold text-danger text-uppercase" style="text-decoration: none;" href="<?=base_url('Matkul');?>">Jumlah Data Mata kuliah</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$matkul?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-danger" href="<?=base_url('Matkul');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -100,11 +100,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a class="text-xs font-weight-bold text-warning text-uppercase" style="text-decoration: none;" href="<?= base_url('Kelas'); ?>">Jumlah Data Kelas</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $kelas ?></div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a class="text-xs font-weight-bold text-warning text-uppercase" style="text-decoration: none;" href="<?=base_url('Kelas');?>">Jumlah Data Kelas</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$kelas?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-warning" href="<?=base_url('Kelas');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -115,11 +115,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a class="text-xs font-weight-bold text-warning text-uppercase" style="text-decoration: none;" href="<?= base_url('Ruangan'); ?>">Jumlah Data Ruangan</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ruangan ?></div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a class="text-xs font-weight-bold text-warning text-uppercase" style="text-decoration: none;" href="<?=base_url('Ruangan');?>">Jumlah Data Ruangan</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$ruangan?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-warning" href="<?=base_url('Ruangan');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -130,11 +130,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a class="text-xs font-weight-bold text-success text-uppercase" style="text-decoration: none;" href="<?= base_url('TranskripNilai'); ?>">Jumlah Data Transkrip Nilai</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $tn ?></div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a class="text-xs font-weight-bold text-success text-uppercase" style="text-decoration: none;" href="<?=base_url('TranskripNilai');?>">Jumlah Data Transkrip Nilai</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$tn?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-success" href="<?=base_url('TranskripNilai');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -145,11 +145,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a class="text-xs font-weight-bold text-warning text-uppercase" style="text-decoration: none;" href="<?= base_url('Ipk'); ?>">Jumlah Data Ipk</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ipk ?></div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a class="text-xs font-weight-bold text-warning text-uppercase" style="text-decoration: none;" href="<?=base_url('Ipk');?>">Jumlah Data Ipk</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$ipk?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-warning" href="<?=base_url('Ipk');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -160,11 +160,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?= base_url('KrsDetail'); ?>">Jumlah Data KRS</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $krs ?></div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?=base_url('KrsDetail');?>">Jumlah Data KRS</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$krs?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a href="<?=base_url('KrsDetail');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -175,11 +175,11 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a class="text-xs font-weight-bold text-danger text-uppercase" style="text-decoration: none;" href="<?= base_url('Nilai'); ?>">Jumlah Data Nilai</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $nilai ?></div>
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a class="text-xs font-weight-bold text-danger text-uppercase" style="text-decoration: none;" href="<?=base_url('Nilai');?>">Jumlah Data Nilai</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$nilai?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a class="text-danger" href="<?=base_url('Nilai');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
@@ -191,15 +191,16 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?= base_url('TahunAkademik'); ?>">Jumlah Data Tahun Akademik</a></div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ta ?></div>
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-xs font-weight-bold text-primary text-uppercase" style="text-decoration: none;" href="<?=base_url('TahunAkademik');?>">Jumlah Data Tahun Akademik</a></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$ta?></div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-file fa-2x text-dark-300"></i>
+              <a href="<?=base_url('TahunAkademik');?>"><i class="fas fa-file fa-2x text-dark-300"></i></a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
