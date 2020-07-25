@@ -32,10 +32,10 @@
                         <?php foreach ($TahunAkademik as $ta) : ?>
                             <tr>
                                 <td><?= ++$offset ?></td>
-                                <td><?= $ta->id_tahun_akademik; ?></td>
-                                <td><?= $ta->nama_tahun_akademik; ?></td>
-                                <td><?= $ta->semester; ?></td>
-                                <td><?= $ta->status; ?></td>
+                                <td><?= cetak($ta->id_tahun_akademik); ?></td>
+                                <td><?= cetak($ta->nama_tahun_akademik); ?></td>
+                                <td><?= cetak($ta->semester); ?></td>
+                                <td><?= cetak($ta->status); ?></td>
                                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                                     <td class="text-center">
                                         <a href="<?= base_url(); ?>TahunAkademik/ubah/<?= encrypt_url($ta->id_tahun_akademik); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></i></a> <b>|</b>

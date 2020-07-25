@@ -3,22 +3,22 @@
   <div class="card">
     <div class="card-body">
       <?=form_open_multipart('Dosen/tambah');?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nama_dosen" class="font-weight-bold">Nama Dosen :</label>
-        <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" placeholder="Masukan Nama Dosen">
+        <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" placeholder="Masukan Nama Dosen" value="<?= set_value('nama_dosen'); ?>">
         <small class="form-text text-danger"><b><u><?=form_error('nama_dosen')?></u></b></small>
       </div>
       <div class="form-group">
         <label for="nama_panggilan" class="font-weight-bold">Nama Panggilan :</label>
-        <input type="text" class="form-control" id="nama_panggilan" name="nama_panggilan" placeholder="Masukan Nama Panggilan">
+        <input type="text" class="form-control" id="nama_panggilan" name="nama_panggilan" placeholder="Masukan Nama Panggilan" value="<?= set_value('nama_panggilan'); ?>">
         <small class="form-text text-danger"><b><u><?=form_error('nama_panggilan')?></u></b></small>
       </div>
       <div class="form-group">
         <label for="id_matkul" class="font-weight-bold">Mata Kuliah :</label>
         <select class="form-control" id="id_matkul" name="id_matkul">
           <option value="">--Pilih Mata Kuliah--</option>
-          <?php foreach ($tb_matkul as $value) {
-	?>
+          <?php foreach ($tb_matkul as $value) { ?>
             <?php if ($value->status == "Aktif") {?>
               <option value="<?=$value->id_matkul?>"><?=$value->nama_matkul?></option>
           <?php }
@@ -63,22 +63,22 @@
       </div>
       <div class="form-group">
         <label for="tmpt_lahir" class="font-weight-bold">Tempat Lahir :</label>
-        <input type="text" class="form-control" id="tmpt_lahir" name="tmpt_lahir" placeholder="Masukan Tempat Lahir">
+        <input type="text" class="form-control" id="tmpt_lahir" name="tmpt_lahir" placeholder="Masukan Tempat Lahir" value="<?= set_value('tmpt_lahir'); ?>">
         <small class="form-text text-danger"><b><u><?=form_error('tmpt_lahir')?></u></b></small>
       </div>
       <div class="form-group">
         <label for="tanggal_lahir" class="font-weight-bold">Tanggal Lahir :</label>
-        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan Tanggal Lahir">
+        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukan Tanggal Lahir" value="<?= set_value('tanggal_lahir'); ?>">
         <small class="form-text text-danger"><b><u><?=form_error('tanggal_lahir')?></u></b></small>
       </div>
       <div class="form-group">
         <label for="no_telp" class="font-weight-bold">Nomer Telpon :</label>
-        <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukan Nomor Telpon">
+        <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukan Nomor Telpon" value="<?= set_value('no_telp'); ?>">
         <small class="form-text text-danger"><b><u><?=form_error('no_telp')?></u></b></small>
       </div>
       <div class="form-group">
         <label for="alamat" class="font-weight-bold">Alamat :</label>
-        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat">
+        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat" value="<?= set_value('alamat'); ?>">
         <small class="form-text text-danger"><b><u><?=form_error('alamat')?></u></b></small>
       </div>
       <p class="font-weight-bold">Upload Foto :</p>

@@ -29,7 +29,7 @@
                         <?php foreach ($role as $rl) : ?>
                             <tr>
                                 <td><?= ++$offset; ?></td>
-                                <td><?= $rl->role; ?></td>
+                                <td><?= cetak($rl->role); ?></td>
                                 <?php if ($this->session->userdata('id_role') == "1") { ?>
                                     <td class="text-center">
                                         <a href="<?= base_url(); ?>Role/ubah/<?= encrypt_url($rl->id); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>

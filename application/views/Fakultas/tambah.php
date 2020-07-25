@@ -3,14 +3,15 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('Fakultas/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nama_Fakultas"><b>Nama Fakultas :</b></label>
-        <input type="text" class="form-control" id="nama_fakultas" name="nama_fakultas" placeholder="Masukan Nama Fakultas">
+        <input type="text" class="form-control" id="nama_fakultas" name="nama_fakultas" placeholder="Masukan Nama Fakultas" value="<?= set_value('nama_fakultas'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('nama_fakultas') ?></u></b></small>
       </div>
       <div class="form-group">
         <label for="nama_Fakultas"><b>Keterangan :</b></label>
-        <textarea class="form-control" aria-label="With textarea" id="keterangan" name="keterangan" placeholder="Masukan Keterangan"></textarea>
+        <textarea class="form-control" aria-label="With textarea" id="keterangan" name="keterangan" placeholder="Masukan Keterangan"><?= set_value('keterangan'); ?></textarea>
         <small class="form-text text-danger"><b><u><?= form_error('keterangan') ?></u></b></small>
       </div>
       <div class="form-group">

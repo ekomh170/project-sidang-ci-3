@@ -37,10 +37,10 @@
               ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td><?= $dsn->id_dosen; ?></td>
-                <td><?= $dsn->nama_dosen; ?></td>
-                <td><?= $dsn->nama_matkul; ?></td>
-                <td><?= $dsn->jenis_kelamin; ?></td>
+                <td><?= cetak($dsn->id_dosen); ?></td>
+                <td><?= cetak($dsn->nama_dosen); ?></td>
+                <td><?= cetak($dsn->nama_matkul); ?></td>
+                <td><?= cetak($dsn->jenis_kelamin); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <!--izin Akses-->

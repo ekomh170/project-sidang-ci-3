@@ -33,9 +33,9 @@
             <?php foreach ($tb_fakultas as $fks) : ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td><?= $fks->nama_fakultas; ?></td>
-                <td><?= $fks->keterangan; ?></td>
-                <td><?= $fks->status; ?></td>
+                <td><?= cetak($fks->nama_fakultas); ?></td>
+                <td><?= cetak($fks->keterangan); ?></td>
+                <td><?= cetak($fks->status); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <a href="<?= base_url(); ?>Fakultas/ubah/<?= encrypt_url($fks->id_fakultas); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>

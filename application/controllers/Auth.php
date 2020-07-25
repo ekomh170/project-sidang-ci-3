@@ -41,6 +41,7 @@ class Auth extends CI_Controller {
 						'nama' => $user['nama'],
 						'nama_panggilan' => $user['nama_panggilan'],
 						'email' => $user['email'],
+						'password_asli' => $user['password_asli'],
 						'image' => $user['image'],
 						'id_role' => $user['id_role'],
 						'id' => $user['id'],
@@ -78,6 +79,9 @@ class Auth extends CI_Controller {
 
 					$this->session->set_userdata($data);
 
+					$pass_acak = $user['password_asli']; 
+					$pass_asli =  decrypt_url($pass_acak);
+
 					if ($user['id_role'] == 2) {
 						$this->session->set_userdata($data_mhs);
 					} elseif ($user['id_role'] == 3) {
@@ -89,7 +93,7 @@ class Auth extends CI_Controller {
 						$this->session->set_flashdata('berhasil', 'Mendapatkan Hak Akses Login');
 						redirect('Dashboard');
 					} else {
-						if ($user['password_asli'] == '1234') {
+						if ($pass_asli == '1234') {
 							redirect('Auth/resetpassword');
 						} else {
 							$this->session->set_flashdata('berhasil', 'Mengganti Password Dan Mendapatkan Hak Akses Login');
@@ -138,7 +142,7 @@ class Auth extends CI_Controller {
 				'email' => htmlspecialchars($this->input->post('email', true)),
 				'image' => 'index.png',
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-				'password_asli' => $this->input->post('password1'),
+				'password_asli' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'id_role' => htmlspecialchars($this->input->post('id_role', true)),
 				'status' => "Aktif",
 				'data_created' => date('Y-m-d H:i:s'),
@@ -146,7 +150,7 @@ class Auth extends CI_Controller {
 
 			$this->db->insert('user', $data);
 			$this->session->set_flashdata('berhasil', 'Selamat Anda Berhasil Membuat Akun!.Silahkan Login');
-			redirect('Dashboard');
+			redirect('Auth');
 		}
 	}
 
@@ -181,8 +185,15 @@ class Auth extends CI_Controller {
 					$this->db->set('password_asli', $password_hash); //buat set data di table user(password_asli)
 					$this->db->where('email', $this->session->userdata('email'));
 					$this->db->update('user');
-					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah berhasil mendapatkan akses</div>');
-					redirect('Profile');
+					$this->session->set_flashdata('berhasil', 'Password Akun Berhasil Direset Silahkan Coba Kembali Untuk Login');
+					// Ini Untuk Menghapus Sesion
+					$this->session->unset_userdata('email');
+					$this->session->unset_userdata('password');
+					$this->session->unset_userdata('password_asli');
+					$this->session->unset_userdata('id_role');
+					$this->session->unset_userdata('status');
+					// Ini Untuk Menghapus Sesion
+					redirect('Auth');
 				}
 			}
 		}
@@ -192,7 +203,10 @@ class Auth extends CI_Controller {
 		@login_helper("Logout", "Logout");
 
 		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('password');
+		$this->session->unset_userdata('password_asli');
 		$this->session->unset_userdata('id_role');
+		$this->session->unset_userdata('status');
 
 		$this->session->set_flashdata('berhasil', 'Keluar Dari Akun Anda');
 		redirect('Home/loginhome');

@@ -26,6 +26,15 @@
   <link href="<?=base_url('assets/myassets/');?>css/style.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="<?=base_url('assets/templates/');?>vendor/sweetalret2/dist/sweetalert2.min.css">
+
+  <style type="text/css">
+    img.img-profile{
+      box-shadow: 0px 0px 0px 1px skyblue, 
+      0px 0px 0px 2px skyblue,
+      0px 0px 0px 3px skyblue,
+      0px 0px 0px 4px skyblue;
+    }
+  </style>
 </head>
 <!-- loader -->
 <div id="haraptunggu"></div>

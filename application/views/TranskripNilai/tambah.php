@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('TranskripNilai/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nim_mhs"><b>Nama Mahasiswa : </b></label>
         <select class="form-control" id="nim_mhs" name="nim_mhs">

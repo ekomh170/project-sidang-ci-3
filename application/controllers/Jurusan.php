@@ -8,6 +8,8 @@ class Jurusan extends CI_Controller
 		parent::__construct();
 		cek_login();
 		check_role_admin_op_pendataan();
+		pass_block();
+
 		$this->load->model('Jurusan_model');
 	}
 

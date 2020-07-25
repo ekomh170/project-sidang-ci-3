@@ -6,6 +6,8 @@ class Dosen extends CI_Controller {
 		parent::__construct();
 		cek_login();
 		check_role_admin_op_pendataan();
+		pass_block();
+
 		$this->load->model('Dosen_model');
 	}
 
@@ -149,7 +151,7 @@ class Dosen extends CI_Controller {
 			'email' => $email,
 			'image' => $data_dsn['image'],
 			'password' => password_hash('1234', PASSWORD_DEFAULT),
-			'password_asli' => '1234',
+			'password_asli' => encrypt_url('1234'),
 			'id_role' => '3',
 			'status' => 'Aktif',
 			'data_created' => date('Y-m-d H:i:s'),

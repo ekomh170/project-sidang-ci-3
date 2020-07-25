@@ -5,6 +5,8 @@ class Ipk extends CI_Controller
 	{
 		parent::__construct();
 		cek_login();
+		pass_block();
+
 		$this->load->model('Ipk_model');
 	}
 

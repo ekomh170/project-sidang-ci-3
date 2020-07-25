@@ -6,12 +6,12 @@
           <div class="card">
             <h4 class="card-header text-center font-weight-bold"><?= $judul; ?></h4>
             <div class="card-body">
-              <h4 class="card-text text-left"><span class="font-weight-bold">NIM Mahasiswa : </span><?= $data['nim_mhs']; ?></h4>
-              <h6 class="card-text text-left"><span class="font-weight-bold">Nama Mahasiswa : </span><?= $data['nama']; ?></h6>
-              <h6 class="card-text text-left"><span class="font-weight-bold">Nama Fakultas : </span><?= $data['nama_fakultas']; ?></h6>
-              <h6 class="card-text text-left"><span class="font-weight-bold">Nama Jurusan : </span><?= $data['nama_jurusan']; ?></h6>
-              <h6 class="card-text text-left"><span class="font-weight-bold">Tahun Akademik : </span><?= $data['nama_tahun_akademik']; ?></h6>
-              <h6 class="card-text text-left"><span class="font-weight-bold">Status : </span><?= $data['status']; ?></h6>
+              <h4 class="card-text text-left"><span class="font-weight-bold">NIM Mahasiswa : </span><?= cetak($data['nim_mhs']); ?></h4>
+              <h6 class="card-text text-left"><span class="font-weight-bold">Nama Mahasiswa : </span><?= cetak($data['nama']); ?></h6>
+              <h6 class="card-text text-left"><span class="font-weight-bold">Nama Fakultas : </span><?= cetak($data['nama_fakultas']); ?></h6>
+              <h6 class="card-text text-left"><span class="font-weight-bold">Nama Jurusan : </span><?= cetak($data['nama_jurusan']); ?></h6>
+              <h6 class="card-text text-left"><span class="font-weight-bold">Tahun Akademik : </span><?= cetak($data['nama_tahun_akademik']); ?></h6>
+              <h6 class="card-text text-left"><span class="font-weight-bold">Status : </span><?= cetak($data['status']); ?></h6>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
                 <span style="float: right;">
                   <a href="<?= base_url(); ?>Ipk" class="btn btn-info"> Kembali </a>
@@ -46,11 +46,11 @@
               $no = 1;
               foreach ($nilai as $nl) : ?>
                 <td><?= $no; ?></td>
-                <td><?= $nl->id_ipk; ?></td>
-                <td><?= $nl->sks_total; ?></td>
-                <td><?= $nl->nilai_total_sks; ?></td>
-                <td><?= $nl->bobot_total; ?></td>
-                <td><?= $nl->ipk; ?></td>
+                <td><?= cetak($nl->id_ipk); ?></td>
+                <td><?= cetak($nl->sks_total); ?></td>
+                <td><?= cetak($nl->nilai_total_sks); ?></td>
+                <td><?= cetak($nl->bobot_total); ?></td>
+                <td><?= cetak($nl->ipk); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                   <td>
                     <a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($nl->id_ipk); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>

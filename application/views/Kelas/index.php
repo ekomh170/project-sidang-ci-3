@@ -36,10 +36,10 @@
               ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td><?= $kelas->id_kelas; ?></td>
-                <td><?= $kelas->nama_kelas; ?></td>
-                <td><?= $kelas->nama_ruangan; ?></td>
-                <td><?= $kelas->status; ?></td>
+                <td><?= cetak($kelas->id_kelas); ?></td>
+                <td><?= cetak($kelas->nama_kelas); ?></td>
+                <td><?= cetak($kelas->nama_ruangan); ?></td>
+                <td><?= cetak($kelas->status); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <a href="<?= base_url(); ?>kelas/ubah/<?= encrypt_url($kelas->id_kelas); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>

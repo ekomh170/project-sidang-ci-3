@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="id_ipk" value="<?= $data['id_ipk']; ?>" required>
         <div class="form-group">
           <label for="nim_mhs"><b>Nim Mahasiswa :</b></label>

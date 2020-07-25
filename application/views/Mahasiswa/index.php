@@ -37,11 +37,11 @@
 							?>
 							<tr>
 								<td><?= ++$offset; ?></td>
-								<td><?= $mhs->nim_mhs; ?></td>
-								<td><?= $mhs->nama; ?></td>
-								<td><?= $mhs->nama_tahun_akademik; ?></td>
-								<td><?= $mhs->nama_jurusan; ?></td>
-								<td><?= $mhs->nama_kelas; ?></td>
+								<td><?= cetak($mhs->nim_mhs); ?></td>
+								<td><?= cetak($mhs->nama); ?></td>
+								<td><?= cetak($mhs->nama_tahun_akademik); ?></td>
+								<td><?= cetak($mhs->nama_jurusan); ?></td>
+								<td><?= cetak($mhs->nama_kelas); ?></td>
 								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
 									<td class="text-center">
 										<!--izin Akses-->

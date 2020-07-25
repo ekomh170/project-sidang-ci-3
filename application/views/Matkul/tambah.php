@@ -3,9 +3,10 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('matkul/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nama_matkul"><b>Nama matkul :</b></label>
-        <input type="text" class="form-control" id="nama_matkul" name="nama_matkul" placeholder="Masukan Nama Mata Kuliah">
+        <input type="text" class="form-control" id="nama_matkul" name="nama_matkul" placeholder="Masukan Nama Mata Kuliah" value="<?= set_value('nama_matkul'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('nama_matkul') ?></u></b></small>
       </div>
       <div class="form-group">

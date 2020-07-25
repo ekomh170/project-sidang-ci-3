@@ -53,11 +53,25 @@ function check_role_admin_op_pendataan()
 
 }
 
+function pass_block()
+{
+	$ci =& get_instance();
+	
+	$ci->load->model('Tambahan_model');
+	$userData = $ci->Tambahan_model->getUserData();
+
+	$pass_block = decrypt_url($userData['password_asli']) == '1234';
+
+	if ($pass_block == TRUE) {
+		redirect('Auth/resetpassword');
+	}
+}
+
 function cek_login_1()
 {
 	$ci = get_instance();
 
 	if ($ci->session->userdata('email')) {
-		redirect('Eror');
+		redirect('Dashboard');
 	}
 }

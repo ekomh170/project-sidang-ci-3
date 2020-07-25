@@ -3,7 +3,7 @@
   <?php if ($this->session->flashdata('berhasil')): ?>
   <?php endif;?>
   <h2 class="text-dark text-center font-weight-bold">Data Informasi Mahasiswa dan Penilaian Mahasiswa</h2>
-  <hr>
+  <hr class="sidebar-divider">
   <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card border-left-primary shadow h-100 py-2">

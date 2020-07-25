@@ -24,10 +24,21 @@
   <link href="<?=base_url('assets/myassets/');?>css/style.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="<?=base_url('assets/templates/');?>vendor/sweetalret2/dist/sweetalert2.min.css">
+  
+  <style type="text/css">
+    body {
+      background-image: url('<?= base_url("assets/background/bg-1.jpg");?>'); 
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
+    div .card{
+      background-image: linear-gradient(red,white, #eaeaea );
+    }
+  </style>
 </head>
 <!-- loader -->
 <div id="haraptunggu"></div>
 <!-- loader -->
 
-<body class="bg-gradient-info">
+<body>

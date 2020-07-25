@@ -71,6 +71,18 @@ class Tambahan_model extends CI_Model {
 	}
 //// KRS TO IPK
 
+//// Nilai TO IPK
+
+	public function CountNilai($nim_mhs) {
+		$this->db->select('count(*) as allcount');
+		$this->db->from('tb_nilai');
+		$this->db->Where('tb_nilai.nim_mhs', $nim_mhs);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+//// Nilai TO IPK
+
 /// FORM NILAI SELECT KRS == DOSEN
 	public function selectKrsDosen($nim_mhs) {
 		$this->db->select('krs_detail.id_krs, tb_dosen.id_dosen ,tb_dosen.nama_dosen, tb_matkul.nama_matkul, tb_dosen.status');
@@ -82,16 +94,6 @@ class Tambahan_model extends CI_Model {
 		return $query->result();
 	}
 /// FORM NILAI SELECT KRS == DOSEN
-
-/// PERHITUNG TABEL IPK
-	public function aritmatikaIpk($nim_mhs) {
-		$kill = (int) 3;
-		$this->db->select('krs_detail.nilai_krs,', $kill);
-		$this->db->from('krs_detail');
-		$this->db->where('krs_detail.nim_mhs', $nim_mhs);
-		$query = $this->db->get();
-		return $query->result();
-	}
 
 /// STATUS INPUT SELECT
 	public function inputSelectDataStatus() {
@@ -143,7 +145,7 @@ class Tambahan_model extends CI_Model {
 /// SESSION MENU SIDEBAR
 	public function getUserData() {
 		$userData = $this->session->userdata();
-
+		
 		return $userData;
 	}
 }

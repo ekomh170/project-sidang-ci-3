@@ -33,9 +33,9 @@
             <?php foreach ($tb_matkul as $mpl) : ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td><?= $mpl->id_matkul; ?></td>
-                <td><?= $mpl->nama_matkul; ?></td>
-                <td><?= $mpl->nama_jurusan; ?></td>
+                <td><?= cetak($mpl->id_matkul); ?></td>
+                <td><?= cetak($mpl->nama_matkul); ?></td>
+                <td><?= cetak($mpl->nama_jurusan); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <a href="<?= base_url(); ?>matkul/ubah/<?= encrypt_url($mpl->id_matkul); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></a> <b>|</b>

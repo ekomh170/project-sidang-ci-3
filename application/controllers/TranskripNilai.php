@@ -3,6 +3,8 @@ class TranskripNilai extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		cek_login();
+		pass_block();
+
 		$this->load->model('TranskripNilai_model');
 	}
 

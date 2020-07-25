@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="<?= base_url('TahunAkademik/ubah/') . $TahunAkademik['id_tahun_akademik'] ?>" method="post">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="id_tahun_akademik" value="<?= $TahunAkademik['id_tahun_akademik']; ?>">
         <div class="form-group">
           <label for="nama_tahun_akademik"><b>Nama Tahun Akademik :</b></label>

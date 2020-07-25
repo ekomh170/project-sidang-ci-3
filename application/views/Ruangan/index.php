@@ -36,10 +36,10 @@
               ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td><?= $rg->id_ruangan; ?></td>
-                <td><?= $rg->nama_ruangan; ?></td>
-                <td><?= $rg->nama_jr; ?></td>
-                <td><?= $rg->nama_ruangan; ?></td>
+                <td><?= cetak($rg->id_ruangan); ?></td>
+                <td><?= cetak($rg->nama_ruangan); ?></td>
+                <td><?= cetak($rg->nama_jr); ?></td>
+                <td><?= cetak($rg->nama_ruangan); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <!--crud-->

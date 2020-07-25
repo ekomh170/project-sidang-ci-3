@@ -37,10 +37,10 @@
               ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td><?= $jrs->id_jurusan; ?></td>
-                <td><?= $jrs->nama_jurusan; ?></td>
-                <td><?= $jrs->nama_fakultas; ?></td>
-                <td><?= $jrs->nama_lengkap_jp; ?> (<?= $jrs->nama_jp; ?>)</td>
+                <td><?= cetak($jrs->id_jurusan); ?></td>
+                <td><?= cetak($jrs->nama_jurusan); ?></td>
+                <td><?= cetak($jrs->nama_fakultas); ?></td>
+                <td><?= cetak($jrs->nama_lengkap_jp); ?> (<?= $jrs->nama_jp; ?>)</td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <a href="<?= base_url(); ?>Jurusan/ubah/<?= encrypt_url($jrs->id_jurusan); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></a> <b>|</b>

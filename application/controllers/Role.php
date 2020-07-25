@@ -8,6 +8,8 @@ class Role extends CI_Controller
 		parent::__construct();
 		cek_login();
 		check_role_admin();
+		pass_block();
+
 		$this->load->model('Role_model');
 	}
 

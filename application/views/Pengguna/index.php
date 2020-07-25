@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>No</th>
@@ -32,11 +32,11 @@
             <?php foreach ($data_user as $du) : ?>
               <tr>
                 <td><?= ++$offset; ?></td>
-                <td class="text-center"><?= $du->nama; ?></td>
-                <td class="text-center"><?= $du->email; ?></td>
-                <td class="text-center"><?= $du->role; ?></td>
-                <td class="text-center"><?= $du->status; ?></td>
-                <td class="text-center"><?= $du->data_created; ?></td>
+                <td class="text-center"><?= cetak($du->nama); ?></td>
+                <td class="text-center"><?= cetak($du->email); ?></td>
+                <td class="text-center"><?= cetak($du->role); ?></td>
+                <td class="text-center"><?= cetak($du->status); ?></td>
+                <td class="text-center"><?= cetak($du->data_created); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <!--Izin Akses-->

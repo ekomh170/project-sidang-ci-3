@@ -75,6 +75,20 @@ class Nilai_model extends CI_Model
 		$id_krs  = $this->input->post('id_krs', true);
 		$status  = $this->input->post('status', true);
 
+		$dosen_nilai = $this->db->get_where('tb_nilai',
+			['nim_mhs' => $nim_mhs,
+			'id_krs'  => $id_krs 
+		])->row_array();
+
+		$isi_dosen = $dosen_nilai['id_krs'] == null;
+		if ($isi_dosen == false) {
+			$data = $dosen_nilai['id_krs'] == $id_krs;
+			if ($data = true) {
+				echo "File Dosen dan Mata Kuliah Tidak Boleh Double di setiap Data Krs Mahasiswa!!";
+				die;
+			}
+		}
+
 		$data = array(
 			'id_nilai'   => $id_nilai,
 			'nim_mhs'    => $nim_mhs,
@@ -84,14 +98,15 @@ class Nilai_model extends CI_Model
 
 		$this->db->insert('tb_nilai', $data);
 
-		// $data_krs_detail = array(
-		// 	'id_krs'   => $id_nilai,
-		// 	'nim_mhs'    => $nim_mhs,
-		// 	'id_dosen'   => $id_dosen,
-		// 	'status'   	 => $status,
-		// );
+		$count_nln_2 = $this->Tambahan_model->CountNilai($nim_mhs);
+		$count_nln = implode($count_nln_2);
 
-		// $this->db->insert('krs_detail', $data_krs_detail);
+		$data_nln_to_ipk = [
+			'bobot_total' => $count_nln,
+		];
+
+		$this->db->where('nim_mhs', $nim_mhs);
+		$this->db->update('tb_ipk', $data_nln_to_ipk);
 
 		if ($this->db->affected_rows() > 0) {
 			$assign_to   = '';
@@ -106,6 +121,17 @@ class Nilai_model extends CI_Model
 	public function HapusDataKrsDetail($id_nilai)
 	{
 		$this->db->delete('tb_nilai', ['id_nilai' => $id_nilai]);
+
+		$count_nln_2 = $this->Tambahan_model->CountNilai($nim_mhs);
+		$count_nln = implode($count_nln_2);
+
+		$data_nln_to_ipk = [
+			'bobot_total' => $count_nln,
+		];
+
+		$this->db->where('nim_mhs', $nim_mhs);
+		$this->db->update('tb_ipk', $data_nln_to_ipk);
+
 		if ($this->db->affected_rows() > 0) {
 			$assign_to   = '';
 			$assign_type = '';
@@ -140,10 +166,18 @@ class Nilai_model extends CI_Model
 			$grade = "E";
 		}
 
+		// $dosen_nilai = $this->db->get_where('tb_nilai',['nim_mhs' => $nim_mhs]);
+		// $data = $dosen_nilai['id_krs'] == $id_krs; 
+
+		// if ($data = true) {
+		// 	echo "File Dosen dan Mata Kuliah Tidak Boleh Double di setiap Data Krs Mahasiswa!!";
+		// 	die;
+		// }
+
 		$data = [
-			"id_nilai"   => $id_nilai,
-			"nim_mhs"    => $nim_mhs,
-			"id_krs"   => $id_krs,
+			"id_nilai"   	 => $id_nilai,
+			"nim_mhs"    	 => $nim_mhs,
+			"id_krs"   		 => $id_krs,
 			"nilai_presensi" => $a,
 			"nilai_tugas"    => $b,
 			"nilai_uts"      => $c,
@@ -151,12 +185,23 @@ class Nilai_model extends CI_Model
 			"total_nilai"    => $jumlah,
 			"nilai_akhir"    => $data_jmlh,
 			"grade"          => $grade,
-			"status"   	 => $status,
+			"status"   	 	 => $status,
 		];
 
 
 		$this->db->where('id_nilai',  $this->input->post('id_nilai'));
 		$this->db->update('tb_nilai', $data);
+
+		$count_nln_2 = $this->Tambahan_model->CountNilai($nim_mhs);
+		$count_nln = implode($count_nln_2);
+
+		$data_nln_to_ipk = [
+			'bobot_total' => $count_nln,
+		];
+
+		$this->db->where('nim_mhs', $nim_mhs);
+		$this->db->update('tb_ipk', $data_nln_to_ipk);
+
 		$id_nilai = $this->input->post('id_nilai', true);
 		if ($this->db->affected_rows() > 0) {
 			$assign_to   = '';
@@ -170,10 +215,11 @@ class Nilai_model extends CI_Model
 
 	public function inputSelectDataKrsDetail($id)
 	{
-	    $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('tb_nilai');
 		$this->db->join('krs_detail', 'tb_nilai.id_krs = krs_detail.id_krs', 'left');
 		$this->db->join('tb_dosen', 'krs_detail.id_dosen = tb_dosen.id_dosen', 'left');
+		$this->db->join('tb_matkul', 'tb_dosen.id_matkul = tb_matkul.id_matkul', 'left');
 		$this->db->where('tb_nilai.id_nilai', $id);
 
 		$query = $this->db->get();

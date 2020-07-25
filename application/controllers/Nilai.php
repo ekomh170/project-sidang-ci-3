@@ -88,9 +88,9 @@ class Nilai extends CI_Controller
 		$data['judul'] = 'Form Ubah Data';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$id            = decrypt_url($id_nilai);
-		$data['data']  = $this->Tambahan_model->UbahNilaiMhsForm($id);
-		$data['inputSelect']  = $this->Nilai_model->inputSelectDataKrsDetail($id);
+		$id            			   = decrypt_url($id_nilai);
+		$data['data']  			   = $this->Tambahan_model->UbahNilaiMhsForm($id);
+		$data['inputSelect']  	   = $this->Nilai_model->inputSelectDataKrsDetail($id);
 		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		// getdatamhs
@@ -152,5 +152,50 @@ class Nilai extends CI_Controller
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('Nilai/detail', $data);
 		$this->load->view('templates/tb_footer');
+	}
+
+	public function tmbltambah($nim_mhs)
+	{
+		$id_mhs = decrypt_url($nim_mhs);
+		$data_dsn = $this->db->get_where('tb_dosen', ['nama_dosen' => $this->session->userdata('nama_dosen')])->row_array();
+		$dsn_cek = $this->db->get_where('tb_nilai', ['nim_mhs' => $id_mhs])->row_array();
+		if ($dsn_cek['id_krs'] == null) {
+			$krs_data = $this->db->get_where('krs_detail', [
+				'id_dosen' => $data_dsn['id_dosen'],
+				'nim_mhs' => $id_mhs,
+			])->row_array();
+
+			if ($krs_data['id_krs'] == null) {
+				redirect(base_url('Nilai/detail/') . $nim_mhs);
+			}
+
+			$count_nil = $this->db->count_all('tb_nilai');
+			$helper    = 1 + $count_nil;
+			$date      = date('s');
+
+			$id_nilai    = "NLI" . "-" . $helper . $date;
+
+			$data = [
+				'id_nilai' => $id_nilai,
+				'nim_mhs'  => $id_mhs,
+				'id_krs'   => $krs_data['id_krs'],
+				'status'   => "Aktif"
+			];
+
+			$this->db->insert('tb_nilai', $data);
+			$this->session->set_flashdata('berhasil', 'Berhasil Menambah Data:)');
+			redirect(base_url('Nilai/detail/') . $nim_mhs);
+
+			if ($this->db->affected_rows() > 0) {
+				$assign_to   = '';
+				$assign_type = '';
+				activity_log("Data Krs", "Menambah Data", $krs_data['id_krs'], $assign_to, $assign_type);
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			redirect(base_url('KrsDetail/detail/') . $nim_mhs);
+		}
 	}
 }

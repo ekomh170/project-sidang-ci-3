@@ -9,11 +9,11 @@
           <div class="card">
             <h4 class="card-header text-center"><b><?= $judul; ?></b></h4>
             <div class="card-body">
-              <h4 class="card-text text-left"><b>NIM Mahasiswa : </b><?= $data['nim_mhs']; ?></h4>
-              <h6 class="card-text text-left"><b>Nama Mahasiswa : </b><?= $data['nama']; ?></h6>
-              <h6 class="card-text text-left"><b>Nama Fakultas : </b><?= $data['nama_fakultas']; ?></h6>
-              <h6 class="card-text text-left"><b>Nama Jurusan : </b><?= $data['nama_jurusan']; ?></h6>
-              <h6 class="card-text text-left"><b>Tahun Akademik : </b><?= $data['nama_tahun_akademik']; ?></h6>
+              <h4 class="card-text text-left"><b>NIM Mahasiswa : </b><?= cetak($data['nim_mhs']); ?></h4>
+              <h6 class="card-text text-left"><b>Nama Mahasiswa : </b><?= cetak($data['nama']); ?></h6>
+              <h6 class="card-text text-left"><b>Nama Fakultas : </b><?= cetak($data['nama_fakultas']); ?></h6>
+              <h6 class="card-text text-left"><b>Nama Jurusan : </b><?= cetak($data['nama_jurusan']); ?></h6>
+              <h6 class="card-text text-left"><b>Tahun Akademik : </b><?= cetak($data['nama_tahun_akademik']); ?></h6>
               <h6 class="card-text text-left"><b>Status: </b><?= $data['status']; ?></h6>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
                 <span style="float: right;">
@@ -30,9 +30,14 @@
 <div class="container">
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-     <?php if ($this->session->userdata('id_role') != "2"): ?>
+      <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
       <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
         <a href="<?= base_url(); ?>KrsDetail/tambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark bg-info"><b>+ Data Baru</b></a>
+      </div>
+    <?php endif ?>
+    <?php if ($this->session->userdata('id_role') == "3"): ?>
+      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+        <a href="<?= base_url(); ?>KrsDetail/tmbltambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark bg-info"><b>+ Tambah Nilai</b></a>
       </div>
     <?php endif ?>
   </div>
@@ -50,7 +55,7 @@
                 <th>Predikat</th>
                 <th>Status</th>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
-                  <th>Aksi</th>
+                  <th class="text-center">Aksi</th>
                 <?php } ?>
               </tr>
             </thead>
@@ -60,11 +65,11 @@
                 $no = 1;
                 foreach ($nilai as $nl) : ?>
                   <td><?= $no; ?></td>
-                  <td><?= $nl->nama_dosen; ?></td>
-                  <td><?= $nl->nama_matkul; ?></td>
-                  <td><?= $nl->nilai_krs; ?></td>
-                  <td><?= $nl->grade; ?></td>
-                  <td><?= $nl->status; ?></td>
+                  <td><?= cetak($nl->nama_dosen); ?></td>
+                  <td><?= cetak($nl->nama_matkul); ?></td>
+                  <td><?= cetak($nl->nilai_krs); ?></td>
+                  <td><?= cetak($nl->grade); ?></td>
+                  <td><?= cetak($nl->status); ?></td>
                   <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                     <td>
                       <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>

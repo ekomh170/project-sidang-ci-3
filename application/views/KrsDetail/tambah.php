@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <div class="form-group">
           <label for="nim_mhs"><b>Nim Mahasiswa :</b></label>
           <input type="text" class="form-control" id="nim_mhs" name="nim_mhs" placeholder="Masukan Nim Mahasiswa" value="<?= $data['nim_mhs']; ?>" readonly>
@@ -13,12 +14,12 @@
           <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Mahasiswa" value="<?= $data['nama']; ?>" readonly>
         </div>
         <div class="form-group">
-          <label for="id_dosen"><b>Nama Dosen : </b></label>
+          <label for="id_dosen"><b>Nama Dosen / Mata Kuliah :</b></label>
           <select class="form-control" id="id_dosen" name="id_dosen">
-            <option value="">--Pilih Dosen--</option>
+            <option value="">--Pilih Dosen / Mata Kuliah--</option>
             <?php foreach ($dosen as $dosen) { ?>
               <?php if ($dosen->status == "Aktif") { ?>
-                <option value="<?= $dosen->id_dosen ?>"><?= $dosen->nama_dosen ?></option>
+                <option value="<?= $dosen->id_dosen ?>"><?= $dosen->nama_dosen ?> / <?= $dosen->nama_matkul ?></option>
             <?php }
             } ?>
           </select>

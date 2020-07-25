@@ -3,14 +3,15 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('TahunAkademik/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nama_tahun_akademik"><b>Nama Tahun Akademik :</b></label>
-        <input type="text" class="form-control" id="nama_tahun_akademik" name="nama_tahun_akademik" placeholder="Masukan Nama">
+        <input type="text" class="form-control" id="nama_tahun_akademik" name="nama_tahun_akademik" placeholder="Masukan Nama" value="<?= set_value('nama_tahun_akademik'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('nama_tahun_akademik') ?></u></b></small>
       </div>
       <div class="form-group">
         <label for="semester"><b>Semester :</b></label>
-        <input type="text" class="form-control" id="semester" name="semester" placeholder="Masukan Semester">
+        <input type="text" class="form-control" id="semester" name="semester" placeholder="Masukan Semester" value="<?= set_value('semester'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('semester') ?></u></b></small>
       </div>
       <div class="form-group">

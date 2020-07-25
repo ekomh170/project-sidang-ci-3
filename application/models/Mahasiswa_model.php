@@ -65,7 +65,7 @@ class Mahasiswa_model extends CI_Model {
 		$status = "Tidak Aktif";
 		if ($image = '') {
 		} else {
-			$config['upload_path'] = 'assets/foto/mahasiswa/';
+			$config['upload_path'] = 'assets/foto/users/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite'] = true;
 			$config['max_filename'] = 255;
@@ -175,7 +175,7 @@ class Mahasiswa_model extends CI_Model {
 
 		if ($image = '') {
 		} else {
-			$config['upload_path'] = 'assets/foto/mahasiswa/';
+			$config['upload_path'] = 'assets/foto/users/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite'] = true;
 			$config['max_filename'] = 255;

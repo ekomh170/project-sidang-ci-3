@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="nim_mhs" value="<?=$mahasiswa['nim_mhs'];?>" required>
         <div class="form-group">
           <label for="nama"><b>Nama :</b></label>
@@ -115,7 +116,7 @@
                       </div>
                       <p><b>Upload Foto :</b></p>
                       <div class="col-sm-2">
-                        <img src="<?=base_url('assets/foto/mahasiswa/') . $mahasiswa['image']?>" class="img-thumbnail img-profile rounded-circle">
+                        <img src="<?=base_url('assets/foto/users/') . $mahasiswa['image']?>" class="img-thumbnail img-profile rounded-circle">
                       </div>
                       <div class="col-mb-2">
                         <div class="custom-file mb-2">

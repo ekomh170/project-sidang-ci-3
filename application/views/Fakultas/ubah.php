@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="id_fakultas" value="<?= $tb_fakultas['id_fakultas']; ?>" required>
         <div class="form-group">
           <label for="nama_fakultas"><b>Nama Fakultas :</b></label>

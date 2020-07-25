@@ -3,10 +3,11 @@
   <div class="card">
     <div class="card-body">
       <form action="<?= base_url('kelas/ubah/') . $tb_kelas['id_kelas'] ?>" method="post">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="id_kelas" value="<?= $tb_kelas['id_kelas']; ?>">
         <div class="form-group">
           <label for="nama_kelas"><b>Nama kelas :</b></label>
-          <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukan Nama" value="<?= $tb_kelas['nama_kelas'] ?>">
+          <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukan Nama Kelas" value="<?= $tb_kelas['nama_kelas'] ?>">
           <small class="form-text text-danger"><b><u><?= form_error('nama_kelas') ?></u></b></small>
         </div>
         <div class="form-group">

@@ -63,14 +63,14 @@ class Dosen_model extends CI_Model {
 		$image = $_FILES['image'];
 		if ($image = '') {
 		} else {
-			$config['upload_path'] = 'assets/foto/dosen/';
+			$config['upload_path'] = 'assets/foto/users/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite'] = true;
 			$config['max_filename'] = 255;
 			$config['max_size'] = 25600;
 			$config['width'] = '100';
 			$config['height'] = '100';
-			$config['file_name'] = $nama . '-' . $dateimage;
+			$config['file_name'] = $nama_dosen . '-' . $dateimage;
 
 			$this->load->library('upload', $config);
 			if (@$_FILES['image']['name'] != null) {
@@ -155,14 +155,14 @@ class Dosen_model extends CI_Model {
 
 		if ($image = '') {
 		} else {
-			$config['upload_path'] = 'assets/foto/dosen/';
+			$config['upload_path'] = 'assets/foto/users/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite'] = true;
 			$config['max_filename'] = 255;
 			$config['max_size'] = 25600;
 			$config['width'] = '100';
 			$config['height'] = '100';
-			$config['file_name'] = $nama . '-' . $dateimage;
+			$config['file_name'] = $nama_dosen . '-' . $dateimage;
 
 			$this->load->library('upload', $config);
 			if (@$_FILES['image']['name'] != null) {

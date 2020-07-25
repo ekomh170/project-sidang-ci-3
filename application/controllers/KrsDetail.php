@@ -7,6 +7,8 @@ class KrsDetail extends CI_Controller
 	{
 		parent::__construct();
 		cek_login();
+		pass_block();
+
 		$this->load->model('KrsDetail_model');
 	}
 
@@ -149,5 +151,41 @@ class KrsDetail extends CI_Controller
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('KrsDetail/detail', $data);
 		$this->load->view('templates/tb_footer');
+	}
+
+	public function tmbltambah($nim_mhs)
+	{
+		$id_mhs = decrypt_url($nim_mhs);
+		$data_cek = $this->db->get_where('tb_dosen', ['nama_dosen' => $this->session->userdata('nama_dosen')])->row_array();
+		$dsn_cek = $this->db->get_where('krs_detail', ['nim_mhs' => $id_mhs])->row_array();
+		if ($dsn_cek['id_dosen'] == null) {
+			$count_krs = $this->db->count_all('krs_detail');
+			$helper    = 1 + $count_krs;
+			$date      = date('s');
+
+			$id_krs    = "KRS" . "-" . $helper . $date;
+
+			$data = [
+				'id_krs'   => $id_krs,
+				'nim_mhs'  => $id_mhs,
+				'id_dosen' => $data_cek['id_dosen'],
+				'status'   => "Aktif"
+			];
+
+			$this->db->insert('krs_detail', $data);
+			$this->session->set_flashdata('berhasil', 'Berhasil Menambah Data:)');
+			redirect(base_url('KrsDetail/detail/') . $nim_mhs);
+
+			if ($this->db->affected_rows() > 0) {
+				$assign_to   = '';
+				$assign_type = '';
+				activity_log("Data Krs", "Menambah Data", $id_krs, $assign_to, $assign_type);
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			redirect(base_url('KrsDetail/detail/') . $nim_mhs);
+		}
 	}
 }

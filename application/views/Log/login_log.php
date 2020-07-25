@@ -22,11 +22,11 @@
             foreach ($tb_log_login as $lg) :
               ?>
               <tr>
-                <td><?= $lg->id_log; ?></td>
-                <td><?= $lg->log_time; ?></td>
-                <td><?= $lg->log_user; ?></td>
-                <td><?= $lg->role; ?></td>
-                <td><?= $lg->log_tipe; ?></td>
+                <td><?= $no; ?></td>
+                <td><?= cetak($lg->log_time); ?></td>
+                <td><?= cetak($lg->log_user); ?></td>
+                <td><?= cetak($lg->role); ?></td>
+                <td><?= cetak($lg->log_tipe); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1") { ?>
                   <td class="text-center">
                     <a href="<?= base_url(); ?>Log/deletelogin/<?= $lg->id_log; ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ??');"><button type="button" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i></button></a>

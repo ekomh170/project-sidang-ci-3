@@ -3,9 +3,10 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('Ruangan/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nama_ruangan"><b>Nama Ruangan :</b></label>
-        <input type="text" class="form-control" id="nama_ruangan" name="nama_ruangan" placeholder="Masukan Nama">
+        <input type="text" class="form-control" id="nama_ruangan" name="nama_ruangan" placeholder="Masukan Nama" value="<?= set_value('nama_ruangan'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('nama_ruangan') ?></u></b></small>
       </div>
       <div class="form-group">
@@ -22,17 +23,17 @@
       </div>
       <div class="form-group">
         <label for="nama_panggilan"><b>Lantai :</b></label>
-        <input type="text" class="form-control" id="lantai" name="lantai" placeholder="Masukan Lokasi Lantai">
+        <input type="text" class="form-control" id="lantai" name="lantai" placeholder="Masukan Lokasi Lantai" value="<?= set_value('lantai'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('lantai') ?></u></b></small>
       </div>
       <div class="form-group">
         <label for="nama_panggilan"><b>Kapasitas :</b></label>
-        <input type="text" class="form-control" id="kapasitas" name="kapasitas" placeholder="Masukan Berapa Jumlah Kapasitas">
+        <input type="text" class="form-control" id="kapasitas" name="kapasitas" placeholder="Masukan Berapa Jumlah Kapasitas" value="<?= set_value('kapasitas'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('kapasitas') ?></u></b></small>
       </div>
       <div class="form-group">
         <label for="keterangan"><b>Keterangan :</b></label>
-        <textarea class="form-control" aria-label="With textarea" id="keterangan" name="keterangan" placeholder="Masukan Keterangan"></textarea>
+        <textarea class="form-control" aria-label="With textarea" id="keterangan" name="keterangan" placeholder="Masukan Keterangan"><?= set_value('keterangan'); ?></textarea>
         <small class="form-text text-danger"><b><u><?= form_error('keterangan') ?></u></b></small>
       </div>
       <div class="form-group">

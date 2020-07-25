@@ -3,9 +3,10 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('Role/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="role"><b>Nama Role :</b></label>
-        <input type="text" class="form-control" id="role" name="role" placeholder="Masukan Nama Role">
+        <input type="text" class="form-control" id="role" name="role" placeholder="Masukan Nama Role" value="<?= set_value('role'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('role') ?></u></b></small>
       </div>
       <span style="float: left;">

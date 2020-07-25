@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-body">
       <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="id_dosen" value="<?= $tb_dosen['id_dosen']; ?>" required>
         <div class="form-group">
           <label for="nama_dosen"><b>Nama Dosen :</b></label>
@@ -89,7 +90,7 @@
                 <p>Upload Foto :</p>
               </b>
               <div class="col-sm-2">
-                <img src="<?= base_url('assets/foto/dosen/') . $tb_dosen['image'] ?>" class="img-thumbnail img-profile rounded-circle">
+                <img src="<?= base_url('assets/foto/users/') . $tb_dosen['image'] ?>" class="img-thumbnail img-profile rounded-circle">
               </div>
               <div class="col-mb-2">
                 <div class="custom-file mb-2">

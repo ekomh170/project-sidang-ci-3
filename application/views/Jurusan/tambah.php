@@ -3,9 +3,10 @@
   <div class="card">
     <div class="card-body">
       <?= form_open_multipart('Jurusan/tambah'); ?>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="form-group">
         <label for="nama_jurusan"><b>Nama Jurusan :</b></label>
-        <input type="text" class="form-control" id="nama_jurusan" name="nama_jurusan" placeholder="Masukan Nama">
+        <input type="text" class="form-control" id="nama_jurusan" name="nama_jurusan" placeholder="Masukan Nama" value="<?= set_value('nama_jurusan'); ?>">
         <small class="form-text text-danger"><b><u><?= form_error('nama_jurusan') ?></u></b></small>
       </div>
       <div class="form-group">
@@ -34,7 +35,7 @@
       </div>
       <div class="form-group">
         <label for="penjelasan"><b>Isi Penjelasan :</b></label>
-        <textarea class="form-control" id="penjelasan" name="penjelasan" placeholder="Masukan Isi Penjelasan" rows="3"></textarea>
+        <textarea class="form-control" id="penjelasan" name="penjelasan" placeholder="Masukan Isi Penjelasan" rows="3"><?= set_value('penjelasan'); ?></textarea>
         <small class="form-text text-danger"><b><u><?= form_error('penjelasan') ?></u></b></small>
       </div>
       <div class="form-group">

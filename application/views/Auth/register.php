@@ -5,11 +5,12 @@
         <div class="col-lg">
           <div class="p-5">
             <div class="text-center">
-              <img src="<?= base_url('assets/img/logo3.png') ?>" class="img-responsive center-block mb-2" width="150" height="150" alt="logo">
+              <img src="<?= base_url('assets/img/logo3.png') ?>" class="img-responsive center-block mb-2 rounded-circle" width="150" height="150" alt="logo">
               <h4 class="text-gray-900 mb-4 font-weight-bold"><?= $judul; ?></h4>
             </div>
             <form class="user" method="post" action="<?= base_url('Auth/register') ?>">
               <div class="form-group">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Nama Lengkap" value="<?= set_value('nama'); ?>">
                 <?= form_error('nama', '<small class="form-text text-danger pl-3">', '</small>'); ?>
               </div>

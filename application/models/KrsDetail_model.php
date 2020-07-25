@@ -45,11 +45,26 @@ class KrsDetail_model extends CI_Model
 		$count_krs = $this->db->count_all('krs_detail');
 		$helper    = 1 + $count_krs;
 		$date      = date('s');
-
+		
 		$id_krs    = "KRS" . "-" . $helper . $date;
 		$nim_mhs   = $this->input->post('nim_mhs', true);
 		$id_dosen  = $this->input->post('id_dosen', true);
 		$status  = $this->input->post('status', true);
+
+		$dosen_krs = $this->db->get_where('krs_detail',
+			['nim_mhs' => $nim_mhs,
+			'id_dosen' => $id_dosen]
+		)->row_array();
+
+		$isi_dosen = $dosen_krs['id_dosen'] == null;
+		if ($isi_dosen == false) {
+			$data = $dosen_krs['id_dosen'] == $id_dosen;
+			if ($data = true) {
+				$id_mhs = encrypt_url($nim_mhs);
+				$this->session->set_flashdata('gagal', 'File Dosen dan Mata Kuliah Tidak Boleh Sama');
+				redirect(base_url('KrsDetail/detail/') . $id_mhs);
+			}
+		}
 
 		$data = array(
 			'id_krs'   => $id_krs,
@@ -60,40 +75,33 @@ class KrsDetail_model extends CI_Model
 
 		$this->db->insert('krs_detail', $data);
 
-		//data ubah data tb_ipk
-		//total nilai sks
 		$total_nilai_sks = $this->Tambahan_model->TotalNilaiSks($nim_mhs);
 		$nilai_total_sks = implode($total_nilai_sks);
-		//total nilai sks
-		//jumlah sks
+
 		$count_krs_2 = $this->Tambahan_model->CountKrs($nim_mhs);
 		$count_krs = implode($count_krs_2);
-		//jumlah sks
-		//data ubah data tb_ipk
-		
-		$sql = $this->db->query("SELECT SUM(nilai_krs) * 3 FROM krs_detail WHERE nim_mhs = '$nim_mhs'")->row_array();
-		$sql2 = implode($sql);
-		$sql3 = $sql2 / $nilai_total_sks;
 
+		if ($nilai_total_sks == $nilai_total_sks) {
+			$sql = $this->db->query("SELECT SUM(nilai_krs) * 3 FROM krs_detail WHERE nim_mhs = '$nim_mhs'")->row_array();
+			$sql2 = implode($sql);
+			$sql3 = $sql2 / $nilai_total_sks;
+			$data_krs_detail = [
+				'sks_total' => $count_krs,
+				'nilai_total_sks' => $nilai_total_sks,
+				'ipk' => $sql3
+			];
+		}
 
-		$data_krs_detail = [
-			'sks_total' => $count_krs,
-			'nilai_total_sks' => $nilai_total_sks,
-			'ipk' => $sql3
-		];
+		if (!$nilai_total_sks) {
+			$data_krs_detail = [
+				'sks_total' => $count_krs,
+				'nilai_total_sks' => $nilai_total_sks
+			];
+		}
 
 		$this->db->where('nim_mhs', $nim_mhs);
 		$this->db->update('tb_ipk', $data_krs_detail);
 
-		// $data_nilai = array(
-		// 	'id_krs'   => $id_krs,
-		// 	'nim_mhs'  => $nim_mhs,
-		// 	'id_dosen' => $id_dosen,
-		// 	'status' => $status,
-
-		// );
-
-		// $this->db->insert('tb_nilai', $data_nilai);
 		if ($this->db->affected_rows() > 0) {
 			$assign_to   = '';
 			$assign_type = '';
@@ -108,26 +116,30 @@ class KrsDetail_model extends CI_Model
 	{
 		$this->db->delete('krs_detail', ['id_krs' => $id_krs]);
 
-		//data ubah data tb_ipk
-		//total nilai sks
 		$total_nilai_sks = $this->Tambahan_model->TotalNilaiSks($nim_mhs);
 		$nilai_total_sks = implode($total_nilai_sks);
-		//total nilai sks
-		//jumlah sks
+
 		$count_krs_2 = $this->Tambahan_model->CountKrs($nim_mhs);
 		$count_krs = implode($count_krs_2);
-		//jumlah sks
-		//data ubah data tb_ipk
-		
-		$sql = $this->db->query("SELECT SUM(nilai_krs) * 3 FROM krs_detail WHERE nim_mhs = '$nim_mhs'")->row_array();
-		$sql2 = implode($sql);
-		$sql3 = $sql2 / $nilai_total_sks;
 
-		$data_krs_detail = [
-			'sks_total' => $count_krs,
-			'nilai_total_sks' => $nilai_total_sks,
-			'ipk' => $sql3
-		];
+		if ($nilai_total_sks == $nilai_total_sks) {
+			$sql = $this->db->query("SELECT SUM(nilai_krs) * 3 FROM krs_detail WHERE nim_mhs = '$nim_mhs'")->row_array();
+			$sql2 = implode($sql);
+			$sql3 = $sql2 / $nilai_total_sks;
+
+			$data_krs_detail = [
+				'sks_total' => $count_krs,
+				'nilai_total_sks' => $nilai_total_sks,
+				'ipk' => $sql3
+			];
+		}
+
+		if (!$nilai_total_sks) {
+			$data_krs_detail = [
+				'sks_total' => $count_krs,
+				'nilai_total_sks' => $nilai_total_sks
+			];
+		}
 
 		$this->db->where('nim_mhs', $nim_mhs);
 		$this->db->update('tb_ipk', $data_krs_detail);
@@ -163,6 +175,20 @@ class KrsDetail_model extends CI_Model
 			$grade = 'E';
 		}
 
+		// $dosen_krs = $this->db->get_where('krs_detail',
+		// 	['nim_mhs' => $nim_mhs,
+		// 	'id_dosen' => $id_dosen]
+		// )->row_array();
+
+		// $isi_dosen = $dosen_krs['id_dosen'] == null;
+		// if ($isi_dosen == false) {
+		// 	$data = $dosen_krs['id_dosen'] == $id_dosen;
+		// 	if ($data = true) {
+		// 		log_message('error','File Dosen dan Mata Kuliah Tidak Boleh Double di setiap Data Krs Mahasiswa!!');
+		// 		die;
+		// 	}
+		// }
+
 		$data = [
 			"id_krs" => $id_krs,
 			"nim_mhs"  => $nim_mhs,
@@ -175,27 +201,29 @@ class KrsDetail_model extends CI_Model
 		$this->db->where('id_krs', $id_krs);
 		$this->db->update('krs_detail', $data);
 
-		//data ubah data tb_ipk
-		//total nilai sks
 		$total_nilai_sks = $this->Tambahan_model->TotalNilaiSks($nim_mhs);
 		$nilai_total_sks = implode($total_nilai_sks);
-		//total nilai sks
-		//jumlah sks
+
 		$count_krs_2 = $this->Tambahan_model->CountKrs($nim_mhs);
 		$count_krs = implode($count_krs_2);
-		//jumlah sks
-		//data ubah data tb_ipk
-		
-		$sql = $this->db->query("SELECT SUM(nilai_krs) * 3 FROM krs_detail WHERE nim_mhs = '$nim_mhs'")->row_array();
-		$sql2 = implode($sql);
-		// $data_krs_ipk = $this->Tambahan_model->aritmatikaIpk($nim_mhs);
-		$sql3 = $sql2 / $nilai_total_sks;
 
-		$data_krs_detail = [
-			'sks_total' => $count_krs,
-			'nilai_total_sks' => $nilai_total_sks,
-			'ipk' => $sql3
-		];
+		if ($nilai_total_sks == $nilai_total_sks) {
+			$sql = $this->db->query("SELECT SUM(nilai_krs) * 3 FROM krs_detail WHERE nim_mhs = '$nim_mhs'")->row_array();
+			$sql2 = implode($sql);
+			$sql3 = $sql2 / $nilai_total_sks;
+			$data_krs_detail = [	
+				'sks_total' => $count_krs,
+				'nilai_total_sks' => $nilai_total_sks,
+				'ipk' => $sql3
+			];
+		}
+
+		if (!$nilai_total_sks) {
+			$data_krs_detail = [	
+				'sks_total' => $count_krs,
+				'nilai_total_sks' => $nilai_total_sks
+			];
+		}
 
 		$this->db->where('nim_mhs', $nim_mhs);
 		$this->db->update('tb_ipk', $data_krs_detail);
@@ -239,9 +267,10 @@ class KrsDetail_model extends CI_Model
 
 	public function inputSelectDataKrsDetail($id_krs)
 	{
-	 	 $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('krs_detail');
 		$this->db->join('tb_dosen', 'tb_dosen.id_dosen = krs_detail.id_dosen', 'left');
+		$this->db->join('tb_matkul', 'tb_matkul.id_matkul = tb_dosen.id_matkul', 'left');
 		$this->db->where('krs_detail.id_krs', $id_krs);
 
 		$query = $this->db->get();

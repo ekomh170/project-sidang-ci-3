@@ -23,14 +23,12 @@
 		 	if (flashData) {
 		 		Swal.fire({
 		 			icon: 'success',
-		 			title: "Logout Berhasil",
-		 			text: "Berhasil" + flashData,
-		          	// timer: 1500,
-		          	showConfirmButton: true,
-		          	type: 'success',
-		          });
+		 			title: "<?=$judul?>",
+		 			text: "Berhasil " + flashData,
+		 			showConfirmButton: true,
+		 		});
 		 	}
 
 		 </script>
 		</body>
-	</html>
+		</html>

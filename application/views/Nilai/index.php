@@ -33,9 +33,9 @@
 							?>
 							<tr>
 								<td><?= ++$offset; ?></td>
-								<td><?= $krs->nim_mhs; ?></td>
-								<td><?= $krs->nama; ?></td>
-								<td><?= $krs->nama_jurusan; ?></td>
+								<td><?= cetak($krs->nim_mhs); ?></td>
+								<td><?= cetak($krs->nama); ?></td>
+								<td><?= cetak($krs->nama_jurusan); ?></td>
 								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
 									<td class="text-center">
 										<!--crud-->
