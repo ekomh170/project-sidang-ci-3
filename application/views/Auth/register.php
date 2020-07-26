@@ -5,7 +5,7 @@
         <div class="col-lg">
           <div class="p-5">
             <div class="text-center">
-              <img src="<?= base_url('assets/img/logo3.png') ?>" class="img-responsive center-block mb-2 rounded-circle" width="150" height="150" alt="logo">
+              <img src="<?= base_url('assets/img/icon/register.png') ?>" class="img-responsive center-block mb-2 rounded-circle bg-white" width="150" height="150" alt="logo">
               <h4 class="text-gray-900 mb-4 font-weight-bold"><?= $judul; ?></h4>
             </div>
             <form class="user" method="post" action="<?= base_url('Auth/register') ?>">

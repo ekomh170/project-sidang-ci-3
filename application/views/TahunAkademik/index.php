@@ -21,11 +21,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Tahun</th>
-                            <th>Nama Tahun</th>
-                            <th>Semester</th>
+                            <th>Kode Tahun Akademik</th>
+                            <th>Nama Tahun Akademik</th>
                             <th>Status</th>
-                            <th witdh="40%" class="text-center">Aksi</th>
+                            <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+                                <th witdh="40%" class="text-center">Aksi</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +35,6 @@
                                 <td><?= ++$offset ?></td>
                                 <td><?= cetak($ta->id_tahun_akademik); ?></td>
                                 <td><?= cetak($ta->nama_tahun_akademik); ?></td>
-                                <td><?= cetak($ta->semester); ?></td>
                                 <td><?= cetak($ta->status); ?></td>
                                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                                     <td class="text-center">
@@ -42,12 +42,12 @@
                                         <a href="<?= base_url(); ?>TahunAkademik/hapus/<?= encrypt_url($ta->id_tahun_akademik); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
                                     </td>
                                 <?php } ?>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                    <?php echo $this->pagination->create_links(); ?>
-                </div>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>
+</div>

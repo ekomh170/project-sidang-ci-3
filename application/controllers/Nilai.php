@@ -8,6 +8,7 @@ class Nilai extends CI_Controller
 		parent::__construct();
 		cek_login();
 		$this->load->model('Nilai_model');
+		$this->load->model('KrsDetail_model');
 	}
 
 	public function index($offset = NULL)
@@ -45,11 +46,11 @@ class Nilai extends CI_Controller
 		$data['data']   = $this->Nilai_model->GetDataNilai($limit, $offset, $text_krs);
 
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Nilai/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah($nim_mhs)
@@ -69,11 +70,11 @@ class Nilai extends CI_Controller
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Nilai/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Nilai_model->TambahDataKrsDetail();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -111,11 +112,11 @@ class Nilai extends CI_Controller
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Nilai/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Nilai_model->UbahDataKrsDetail();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
@@ -145,13 +146,22 @@ class Nilai extends CI_Controller
 
 		$id            = decrypt_url($nim_mhs);
 		$data['data']  = $this->Nilai_model->DetailDataNilai($id);
-		$data['nilai'] = $this->Nilai_model->NilaiDataNilai($id);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		if ($this->session->userdata('id_role') != "3") {
+			$data['nilai'] = $this->Nilai_model->NilaiDataNilai($id);
+		}
+
+		if ($this->session->userdata('id_role') == "3") {
+			$id_dosen = $this->session->userdata('nama_dosen');
+			$data['nilai'] = $this->Nilai_model->NilaiDataNilaiDosen($id,$this->session->userdata('nama_dosen'));
+		}
+		
+
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Nilai/detail', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tmbltambah($nim_mhs)

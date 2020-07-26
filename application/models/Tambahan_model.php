@@ -148,4 +148,20 @@ class Tambahan_model extends CI_Model {
 		
 		return $userData;
 	}
+
+////
+	public function KrsDataKrsDetailDosen($nim_mhs,$id_dosen)
+	{
+		$this->db->select('krs_detail.id_krs, mahasiswa.nim_mhs, mahasiswa.nama, tb_dosen.nama_dosen, tb_jurusan.nama_jurusan, tb_matkul.nama_matkul, krs_detail.nilai_krs, krs_detail.grade, krs_detail.status');
+		$this->db->from('krs_detail');
+		$this->db->join('mahasiswa', 'mahasiswa.nim_mhs = krs_detail.nim_mhs', 'left');
+		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = mahasiswa.id_jurusan', 'left');
+		$this->db->join('tb_dosen', 'tb_dosen.id_dosen = krs_detail.id_dosen', 'left');
+		$this->db->join('tb_matkul', 'tb_matkul.id_matkul = tb_dosen.id_matkul', 'left');
+		$this->db->where('krs_detail.nim_mhs', $nim_mhs);
+		$this->db->where('tb_dosen.nama_dosen', $id_dosen);
+
+		$query = $this->db->get();
+		return $query->row_array();
+	}	
 }

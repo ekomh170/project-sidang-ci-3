@@ -45,11 +45,11 @@ class TahunAkademik extends CI_Controller
 		$data['TahunAkademik'] = $this->TahunAkademik_model->GetDataTahunAkademik($limit, $offset, $text_ta);
 		$data['offset']        = $this->uri->segment(3);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('TahunAkademik/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah()
@@ -58,15 +58,14 @@ class TahunAkademik extends CI_Controller
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->form_validation->set_rules('nama_tahun_akademik', 'Nama Tahun Akademik', 'required');
-		$this->form_validation->set_rules('semester', 'Semester', 'required');
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('TahunAkademik/tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->TahunAkademik_model->TambahDataTahunAkademik();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -92,15 +91,14 @@ class TahunAkademik extends CI_Controller
 		$data['inputSelectStatus'] = $this->Tambahan_model->inputSelectDataStatus();
 
 		$this->form_validation->set_rules('nama_tahun_akademik', 'Nama Tahun Akademik', 'required');
-		$this->form_validation->set_rules('semester', 'Semester', 'required');
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('TahunAkademik/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->TahunAkademik_model->UbahDataTahunAkademik();
 			$this->session->set_flashdata('berhasil', 'DiUbah');

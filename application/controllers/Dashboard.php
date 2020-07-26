@@ -32,10 +32,10 @@ class Dashboard extends CI_Controller
 		$data['tn']        = $this->Dashboard_model->hitungJumlahTranskripNilai();
 		$data['ta']        = $this->Dashboard_model->hitungJumlahTahunAkademik();
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Dashboard/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 }

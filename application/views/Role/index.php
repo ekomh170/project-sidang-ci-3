@@ -22,7 +22,9 @@
                         <tr>
                             <th width="6%">No</th>
                             <th width="40%" class="text-center">Role</th>
-                            <th witdh="40%" class="text-center">Aksi</th>
+                            <?php if ($this->session->userdata('id_role') == "1") { ?>
+                                <th witdh="40%" class="text-center">Aksi</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>

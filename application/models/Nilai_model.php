@@ -63,6 +63,23 @@ class Nilai_model extends CI_Model
 		return $query->result();
 	}
 
+	public function NilaiDataNilaiDosen($nim_mhs,$id_dosen)
+	{
+		$data = $this->Tambahan_model->KrsDataKrsDetailDosen($nim_mhs,$id_dosen);		
+		$this->db->select('tb_nilai.id_nilai, mahasiswa.nim_mhs, mahasiswa.nama, tb_dosen.nama_dosen, tb_jurusan.nama_jurusan, tb_matkul.nama_matkul, tb_nilai.nilai_presensi ,tb_nilai.nilai_tugas, tb_nilai.nilai_uts, tb_nilai.nilai_uas, tb_nilai.total_nilai, tb_nilai.nilai_akhir, tb_nilai.grade, tb_nilai.status');
+		$this->db->from('tb_nilai');
+		$this->db->join('mahasiswa', 'mahasiswa.nim_mhs = tb_nilai.nim_mhs', 'left');
+		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = mahasiswa.id_jurusan', 'left');
+		$this->db->join('krs_detail', 'tb_nilai.id_krs = krs_detail.id_krs', 'left');
+		$this->db->join('tb_dosen', 'krs_detail.id_dosen = tb_dosen.id_dosen', 'left');
+		$this->db->join('tb_matkul', 'tb_matkul.id_matkul = tb_dosen.id_matkul', 'left');
+		$this->db->where('tb_nilai.nim_mhs', $nim_mhs);
+		$this->db->where('tb_nilai.id_krs', $data['id_krs']);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 
 	public function TambahDataKrsDetail()
 	{

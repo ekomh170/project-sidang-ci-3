@@ -45,11 +45,11 @@ class Pengguna extends CI_Controller
 		$data['offset']    = $this->uri->segment(3);
 		$data['data_user'] = $this->Pengguna_model->GetDataPengguna($limit, $offset, $text_usr);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Pengguna/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function hapus($id)

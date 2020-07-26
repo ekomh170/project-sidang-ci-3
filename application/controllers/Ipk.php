@@ -43,11 +43,11 @@ class Ipk extends CI_Controller
 		$data['offset'] = $this->uri->segment(3);
 		$data['data']   = $this->Ipk_model->GetDataIpk($limit, $offset, $text_ipk);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Ipk/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah()
@@ -62,11 +62,11 @@ class Ipk extends CI_Controller
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Ipk/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Ipk_model->TambahDataIpk();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -100,11 +100,11 @@ class Ipk extends CI_Controller
 		$this->form_validation->set_rules('ipk', 'Nama Mahasiswa', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Ipk/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Ipk_model->UbahDataIpk();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
@@ -120,10 +120,10 @@ class Ipk extends CI_Controller
 		$data['data']  = $this->Ipk_model->DetailDataIpk($id);
 		$data['nilai']  = $this->Ipk_model->NilaiDataIpk($id);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Ipk/detail', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 }

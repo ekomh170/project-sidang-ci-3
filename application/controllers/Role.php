@@ -46,11 +46,11 @@ class Role extends CI_Controller
 		$data['offset'] = $this->uri->segment(3);
 		$data['role']   = $this->Role_model->GetDataRole($limit, $offset, $text_rl);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Role/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah()
@@ -61,11 +61,11 @@ class Role extends CI_Controller
 		$this->form_validation->set_rules('role', 'Role', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Role/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Role_model->TambahDataRole();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -91,11 +91,11 @@ class Role extends CI_Controller
 		$this->form_validation->set_rules('role', 'Nama', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Role/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Role_model->UbahDataRole();
 			$this->session->set_flashdata('berhasil', 'DiUbah');

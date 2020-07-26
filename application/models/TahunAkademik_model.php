@@ -25,7 +25,6 @@ class TahunAkademik_model extends CI_Model
 
 		if ($cari_ta != '') {
 			$this->db->like('nama_tahun_akademik', $cari_ta);
-			$this->db->or_like('semester', $cari_ta);
 			$this->db->or_like('status', $cari_ta);
 		}
 
@@ -42,13 +41,11 @@ class TahunAkademik_model extends CI_Model
 
 		$id_tahun_akademik   = "TA" . '-' . $helper . $date;
 		$nama_tahun_akademik = $this->input->post('nama_tahun_akademik', true);
-		$semester            = $this->input->post('semester', true);
 		$status              = $this->input->post('status', true);
 
 		$data = array(
 			'id_tahun_akademik'   => $id_tahun_akademik,
 			'nama_tahun_akademik' => $nama_tahun_akademik,
-			'semester'            => $semester,
 			'status'              => $status
 		);
 
@@ -65,7 +62,7 @@ class TahunAkademik_model extends CI_Model
 
 	public function HapusDataTahunAkademik($id_tahun_akademik)
 	{
-		$this->db->delete('user_menu', ['id_tahun_akademik' => $id_tahun_akademik]);
+		$this->db->delete('tb_tahun_akademik', ['id_tahun_akademik' => $id_tahun_akademik]);
 		if ($this->db->affected_rows() > 0) {
 			$assign_to   = '';
 			$assign_type = '';
@@ -84,10 +81,8 @@ class TahunAkademik_model extends CI_Model
 	public function UbahDataTahunAkademik()
 	{
 		$data = [
-			"nama_tahun_akademik" => $this->input->post('nama_tahun_akademik', true),
 			"id_tahun_akademik"   => $this->input->post('id_tahun_akademik', true),
 			"nama_tahun_akademik" => $this->input->post('nama_tahun_akademik', true),
-			"semester" => $this->input->post('semester', true),
 			"status" => $this->input->post('status', true),
 		];
 

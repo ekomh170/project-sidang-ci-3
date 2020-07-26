@@ -45,11 +45,11 @@ class Kelas extends CI_Controller
 		$data['offset']   = $this->uri->segment(3);
 		$data['tb_kelas'] = $this->Kelas_model->GetDatakelas($limit, $offset, $text_kls);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('kelas/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah()
@@ -64,11 +64,11 @@ class Kelas extends CI_Controller
 		$this->form_validation->set_rules('id_ruangan', 'Nama Ruang', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('kelas/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Kelas_model->TambahDatakelas();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -102,11 +102,11 @@ class Kelas extends CI_Controller
 		$this->form_validation->set_rules('id_ruangan', 'Nama Ruang', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('kelas/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Kelas_model->UbahDatakelas();
 			$this->session->set_flashdata('berhasil', 'DiUbah');

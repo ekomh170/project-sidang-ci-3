@@ -40,11 +40,11 @@ class TranskripNilai extends CI_Controller {
 		$data['offset'] = $this->uri->segment(3);
 		$data['data'] = $this->TranskripNilai_model->GetDataTranskripNilai($limit, $offset, $text_tn);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('TranskripNilai/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah() {
@@ -59,11 +59,11 @@ class TranskripNilai extends CI_Controller {
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('TranskripNilai/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->TranskripNilai_model->TambahDataTranskripNilai();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -87,11 +87,11 @@ class TranskripNilai extends CI_Controller {
 		$this->form_validation->set_rules('status', 'Nama Mahasiswa', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('TranskripNilai/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->TranskripNilai_model->UbahDataTranskripNilai();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
@@ -108,11 +108,11 @@ class TranskripNilai extends CI_Controller {
 		$data['nilai'] = $this->TranskripNilai_model->NilaiDataTranskripNilai($id);
 		$data['ipk'] = $this->TranskripNilai_model->IpkDataTranskripNilai($id);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('TranskripNilai/detail', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function hapus($id_transkrip_nilai) {

@@ -11,7 +11,7 @@
               <h3 class="card-header"><b><?=$judul?></b></h3>
               <div class="card-body">
                 <h4 class="card-title"><b>Nama Lengkap : </b><?= cetak($this->session->userdata('nama'))?></h4>
-                <h6 class="card-text"><b>Nama Panggilan : </b><?= cetak($this->session->userdata('nama_panggilan'))?></h6>
+                <h6 class="card-text"><b>Nama Panggilan : </b><?=cetak($user['nama_panggilan']);?></h6>
                 <h6 class="card-text"><b>Email : </b><?= cetak($this->session->userdata('email'))?></h6>
                 <h6 class="card-text"><b>Nama Role : </b><?= cetak($this->session->userdata('role'))?></h6>
                 <br>
@@ -32,7 +32,7 @@
               <h3 class="card-header"><b><?=$judul?></b></h3>
               <div class="card-body">
                 <h4 class="card-title"><b>Nama Lengkap : </b><?= cetak($this->session->userdata('nama'))?></h4>
-                <h6 class="card-text"><b>Nama Panggilan : </b><?= cetak($this->session->userdata('nama_panggilan'))?></h6>
+                <h6 class="card-text"><b>Nama Panggilan : </b><?=cetak($user['nama_panggilan']);?></h6>
                 <h6 class="card-text"><b>Email : </b><?= cetak($this->session->userdata('email'))?></h6>
                 <h6 class="card-text"><b>Jenis Kelamin : </b><?= cetak($this->session->userdata('jenis_kelamin'))?></h6>
                 <h6 class="card-text"><b>Tempat Lahir : </b><?= cetak($this->session->userdata('tmpt_lahir'))?></h6>
@@ -61,14 +61,14 @@
               <h3 class="card-header"><b><?=$judul?></b></h3>
               <div class="card-body">
                 <h4 class="card-title"><b>Nama Lengkap : </b><?= cetak($this->session->userdata('nama'))?></h4>
-                <h6 class="card-title"><b>Nama Panggilan : </b><?= cetak($this->session->userdata('nama_panggilan'))?></h6>
+                <h6 class="card-title"><b>Nama Panggilan : </b><?=cetak($user['nama_panggilan']);?></h6>
+                <h6 class="card-text"><b>Nama Mata Kuliah : </b><?= cetak($this->session->userdata('nama_matkul'))?></h6>
                 <h6 class="card-text"><b>Email : </b><?= cetak($this->session->userdata('email'))?></h6>
                 <h6 class="card-text"><b>Jenis Kelamin : </b><?= cetak($this->session->userdata('jenis_kelamin'))?></h6>
                 <h6 class="card-text"><b>Tempat Lahir : </b><?= cetak($this->session->userdata('tmpt_lahir'))?></h6>
                 <h6 class="card-text"><b>Tanggal Lahir : </b><?= cetak($this->session->userdata('tanggal_lahir'))?></h6>
                 <h6 class="card-text"><b>Nomer Telpon : </b><?= cetak($this->session->userdata('no_telp'))?></h6>
-                <h6 class="card-text text-light"><b>Nama Mata Kuliah : </b><?= cetak($this->session->userdata('nama_matkul'))?></h6>
-                <h6 class="card-text text-light"><b>Nama Role : </b><?= cetak($this->session->userdata('role'))?></h6>
+                <h6 class="card-text"><b>Nama Role : </b><?= cetak($this->session->userdata('role'))?></h6>
               </div>
               <br>
               <h6 class="card-text text-center"><img src="<?=base_url('assets/foto/users/') . $user['image']?>" height="200" width="200" class="img-profile rounded-circle"></h6>

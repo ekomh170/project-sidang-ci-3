@@ -6,7 +6,7 @@
           <div class="col-lg">
             <div class="p-5">
               <div class="text-center">
-                <img src="<?= base_url('assets/img/logo3.png') ?>" class="img-responsive center-block mb-2 rounded-circle" width="150" height="150" alt="logo">
+                <img src="<?= base_url('assets/img/icon/refresh2.png') ?>" class="img-responsive center-block mb-2 rounded-circle" width="150" height="150" alt="logo">
                 <h1 class="h4 text-gray-900 mb-2"><b><?= $judul; ?></b></h1>
                 <p class="mb-4"><b>Reset Password</b> agar anda bisa mengakses akun anda</p>
                 <?= $this->session->flashdata('message'); ?>

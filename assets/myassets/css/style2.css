@@ -1,0 +1,17 @@
+body{
+	background-image: url('../../img/bg/bg-2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+div .text{
+	line-height: 30px;
+}
+
+div .text2{
+	line-height: 20px;
+}
+
+img {
+	margin-bottom: 15px;
+}

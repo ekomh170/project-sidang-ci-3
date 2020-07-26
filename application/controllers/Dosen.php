@@ -45,11 +45,11 @@ class Dosen extends CI_Controller {
 
 		//PENUTUP PAGINATION
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Dosen/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah() {
@@ -70,11 +70,11 @@ class Dosen extends CI_Controller {
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Dosen/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Dosen_model->TambahDataDosen();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -89,11 +89,11 @@ class Dosen extends CI_Controller {
 		$id = decrypt_url($id_dosen);
 		$data['tb_dosen'] = $this->Dosen_model->InfoDataDetail($id);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Dosen/detail', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function hapus($id_dosen) {
@@ -126,11 +126,11 @@ class Dosen extends CI_Controller {
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('dosen/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Dosen_model->UbahDataDosen();
 			$this->session->set_flashdata('berhasil', 'DiUbah');

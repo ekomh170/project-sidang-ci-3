@@ -44,11 +44,11 @@ class Mahasiswa extends CI_Controller {
 		$data['krs'] = $this->db->get('krs_detail')->result();
 		//PENUTUP PAGINATION
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Mahasiswa/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah() {
@@ -74,11 +74,11 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('no_telp', 'Nomer Telepon', 'required|numeric');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Mahasiswa/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Mahasiswa_model->TambahDataMahasiswa();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -100,11 +100,11 @@ class Mahasiswa extends CI_Controller {
 		$id = decrypt_url($nim_mhs);
 		$data['mahasiswa'] = $this->Mahasiswa_model->InfoDataDetail($id);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Mahasiswa/detail', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function edit($nim_mhs) {
@@ -136,11 +136,11 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('no_telp', 'Nomer Telepon', 'required|numeric');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Mahasiswa/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->Mahasiswa_model->UbahDataMahasiswa();
 			$this->session->set_flashdata('berhasil', 'DiUbah');

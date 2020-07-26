@@ -46,11 +46,11 @@ class KrsDetail extends CI_Controller
 		$data['offset'] = $this->uri->segment(3);
 		$data['data']   = $this->KrsDetail_model->GetDataKrsDetail($limit, $offset, $text_krs);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('KrsDetail/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tambah($nim_mhs)
@@ -70,11 +70,11 @@ class KrsDetail extends CI_Controller
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('KrsDetail/Tambah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->KrsDetail_model->TambahDataKrsDetail();
 			$this->session->set_flashdata('berhasil', 'Ditambahkan');
@@ -109,11 +109,11 @@ class KrsDetail extends CI_Controller
 		$this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('KrsDetail/ubah', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$this->KrsDetail_model->UbahDataKrsDetail();
 			$this->session->set_flashdata('berhasil', 'DiUbah');
@@ -144,13 +144,20 @@ class KrsDetail extends CI_Controller
 
 		$id            = decrypt_url($nim_mhs);
 		$data['data']  = $this->KrsDetail_model->DetailDataKrsDetail($id);
-		$data['nilai'] = $this->KrsDetail_model->krsDataKrsDetail($id);
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		if ($this->session->userdata('id_role') != "3") {
+			$data['nilai'] = $this->KrsDetail_model->krsDataKrsDetail($id);
+		}
+
+		if ($this->session->userdata('id_role') == "3") {
+			$data['nilai'] = $this->KrsDetail_model->krsDataKrsDetailDosen($id,$this->session->userdata('nama_dosen'));
+		}
+
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('KrsDetail/detail', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function tmbltambah($nim_mhs)

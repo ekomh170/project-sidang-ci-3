@@ -24,11 +24,11 @@ class Log extends CI_Controller
 		$this->db->order_by('id_log', 'desc');
 		$data['tb_log'] = $this->Log_model->AmbilDataLog();
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Log/log_aktifitas', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function AllDelete()
@@ -52,11 +52,11 @@ class Log extends CI_Controller
 		$this->db->order_by('id_log', 'desc');
 		$data['tb_log_login'] = $this->LogLogin_model->AmbilDataLogLogin();
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Log/login_log', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function AllDeleteLogin()

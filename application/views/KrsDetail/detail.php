@@ -72,18 +72,20 @@
                   <td><?= cetak($nl->status); ?></td>
                   <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                     <td>
-                      <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                      <a href="<?= base_url(); ?>KrsDetail/hapus/<?= encrypt_url($nl->id_krs); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-                    </td>
-                  <?php } ?>
-                </tr>
-              </tbody>
-              <?php $no++ ?>
-            <?php endforeach; ?>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+                     <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
+                     <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
+                     <a href="<?= base_url(); ?>KrsDetail/hapus/<?= encrypt_url($nl->id_krs); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                   <?php endif ?>
+                 </td>
+               <?php } ?>
+             </tr>
+           </tbody>
+           <?php $no++ ?>
+         <?php endforeach; ?>
+       </table>
+     </div>
+   </div>
+ </div>
+</div>
 </div>
 </div>

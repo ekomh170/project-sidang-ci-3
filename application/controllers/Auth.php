@@ -9,9 +9,9 @@ class Auth extends CI_Controller {
 
 		if ($this->form_validation->run() == false) {
 			$data['judul'] = 'Form Login';
-			$this->load->view('templates/auth_header', $data);
+			$this->load->view('layout/auth_header', $data);
 			$this->load->view('Auth/login');
-			$this->load->view('templates/auth_footer');
+			$this->load->view('layout/auth_footer');
 		} else {
 			//Jika Validasi Berhasil
 			$this->login();
@@ -132,9 +132,9 @@ class Auth extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE) {
 			$data['judul'] = 'Form Buat Akun';
-			$this->load->view('templates/auth_header', $data);
+			$this->load->view('layout/auth_header', $data);
 			$this->load->view('Auth/register');
-			$this->load->view('templates/auth_footer');
+			$this->load->view('layout/auth_footer');
 		} else {
 			$data = [
 				'nama' => htmlspecialchars($this->input->post('nama', true)),
@@ -163,9 +163,9 @@ class Auth extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$data['judul'] = 'Form Reset Password';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-			$this->load->view('templates/auth_header', $data);
+			$this->load->view('layout/auth_header', $data);
 			$this->load->view('Auth/resetpassword', $data);
-			$this->load->view('templates/auth_footer');
+			$this->load->view('layout/auth_footer');
 		} else {
 			//buat input data si lama dana baru
 			$password_lama = $this->input->post('password_lama');
@@ -209,6 +209,6 @@ class Auth extends CI_Controller {
 		$this->session->unset_userdata('status');
 
 		$this->session->set_flashdata('berhasil', 'Keluar Dari Akun Anda');
-		redirect('Home/loginhome');
+		redirect('Home');
 	}
 }

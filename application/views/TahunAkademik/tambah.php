@@ -10,11 +10,6 @@
         <small class="form-text text-danger"><b><u><?= form_error('nama_tahun_akademik') ?></u></b></small>
       </div>
       <div class="form-group">
-        <label for="semester"><b>Semester :</b></label>
-        <input type="text" class="form-control" id="semester" name="semester" placeholder="Masukan Semester" value="<?= set_value('semester'); ?>">
-        <small class="form-text text-danger"><b><u><?= form_error('semester') ?></u></b></small>
-      </div>
-      <div class="form-group">
         <label for="status"><b>Status :</b></label>
         <select class="form-control" id="status" name="status">
           <option value="">--Pilih Status--</option>

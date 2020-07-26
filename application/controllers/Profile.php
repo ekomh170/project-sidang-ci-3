@@ -12,11 +12,11 @@ class Profile extends CI_Controller {
 		$data['judul'] = 'Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/tb_header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('layout/tb_header', $data);
+		$this->load->view('layout/sidebar', $data);
+		$this->load->view('layout/topbar', $data);
 		$this->load->view('Profile/index', $data);
-		$this->load->view('templates/tb_footer');
+		$this->load->view('layout/tb_footer');
 	}
 
 	public function edit() {
@@ -26,11 +26,11 @@ class Profile extends CI_Controller {
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/tb_header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
+			$this->load->view('layout/tb_header', $data);
+			$this->load->view('layout/sidebar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('Profile/edit', $data);
-			$this->load->view('templates/tb_footer');
+			$this->load->view('layout/tb_footer');
 		} else {
 			$dateimage = date('d' . '-' . 'm' . '-' . 'y');
 			$email = $this->input->post('email');
@@ -71,7 +71,7 @@ class Profile extends CI_Controller {
 			$this->db->set('nama_panggilan', $nama_panggilan);
 			$this->db->where('email', $email);
 			$this->db->update('user');
-			$this->session->set_flashdata('berhasil', 'Profile Telah Berhasil Diubah');
+			$this->session->set_flashdata('berhasil,', 'Profile Telah Berhasil Diubah');
 			redirect('Profile');
 		}
 	}
