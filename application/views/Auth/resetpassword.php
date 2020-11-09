@@ -7,8 +7,9 @@
             <div class="p-5">
               <div class="text-center">
                 <img src="<?= base_url('assets/img/icon/refresh2.png') ?>" class="img-responsive center-block mb-2 rounded-circle" width="150" height="150" alt="logo">
-                <h1 class="h4 text-gray-900 mb-2"><b><?= $judul; ?></b></h1>
-                <p class="mb-4"><b>Reset Password</b> agar anda bisa mengakses akun anda</p>
+                <h1 class="h4 text-white mb-2"><b><?= $judul; ?></b></h1>
+                <p class="text-light mb-1">Reset Password agar anda bisa mengakses akun anda </p>
+                <p class="text-light mt-1 mb-4"> Form Ini juga Berfungsi Untuk Merubah Password agar lebih aman </p>
                 <?= $this->session->flashdata('message'); ?>
               </div>
               <form class="user" action="<?= base_url('Auth/resetpassword'); ?>" method="post">
@@ -21,10 +22,12 @@
                   <input type="password" class="form-control form-control-user" id="password_baru" name="password_baru" aria-describedby="password_baru" placeholder="Masukan Password Baru">
                   <?= form_error('password_baru', '<small class="form-text text-danger pl-3">', '</small>'); ?>
                 </div>
-                <button type="sumbit" class="btn btn-info btn-user btn-block">
+                <button type="sumbit" style="background-color: orange; color: white;" class="btn btn btn-user btn-block">
                   Reset Password
                 </button>
               </form>
+              <hr>
+              <button onclick="backpageror()" class="btn btn-danger btn-user btn-block" style="text-decoration:none">Kembali</button>
             </div>
           </div>
         </div>

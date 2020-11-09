@@ -25,10 +25,10 @@
             <small class="form-text text-danger"><b><u><?= form_error('id_ruangan') ?></u></b></small>
           </div>
           <div class="form-group">
-            <label for="status"><b>Status:</b></label>
+            <label for="status"><b>Status :</b></label>
             <select class="form-control" id="status" name="status">
               <option value="">--Pilih Status--</option>
-              <?php if ($inputSelectStatus['status']) { ?>
+              <?php if ($tb_kelas['status']) { ?>
                 <option selected value="<?= $tb_kelas['status']?>"><?= $tb_kelas['status']?></option>
               <?php } ?>
               <?php foreach ($inputSelectStatus as $status => $data) { ?>
@@ -43,7 +43,7 @@
             </span>
           </form>
           <span style="float: right;">
-            <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('kelas'); ?>">Kembali</a></button>
+            <button type="submit" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?= base_url('Kelas'); ?>">Kembali</a></button>
           </span>
         </div>
       </div>

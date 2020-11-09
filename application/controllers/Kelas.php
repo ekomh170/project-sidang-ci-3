@@ -113,4 +113,10 @@ class Kelas extends CI_Controller
 			redirect('Kelas');
 		}
 	}
+	public function print(){
+		$data['kelas'] = $this->Kelas_model->getKelasPrint();
+		$data['judul'] = 'Data Kelas Institut Agama Islam Tazkia';
+
+		$this->load->view('Kelas/print', $data);
+	}
 }

@@ -4,7 +4,10 @@ class Dokumentasi_model extends CI_Model
 {
 	public function rolegetdata()
 	{
-	    $query = $this->db->get('user_role');
-	    return $query->result_array();
+		$this->db->select('*');
+		$this->db->from('user_role');
+		$this->db->where('user_role.id !=', 5);
+
+		$query = $this->db->get();
+		return $query->result_array();	}
 	}
-}

@@ -198,4 +198,19 @@ class Mahasiswa extends CI_Controller {
 		$this->session->set_flashdata('berhasil', 'Data Dinonaktifkan');
 		redirect(base_url('Mahasiswa'));
 	}
+
+	public function print(){
+		$data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaPrint();
+		$data['judul'] = 'Data Mahasiswa Institut Agama Islam Tazkia';
+
+		$this->load->view('Mahasiswa/print', $data);
+	}
+
+	public function printdetail($nim_mhs){
+		$id = decrypt_url($nim_mhs);
+		$data['mahasiswa'] = $this->Mahasiswa_model->InfoDataDetail($id);
+		$data['judul'] = 'Data Lengkap Mahasiswa Institut Agama Islam Tazkia';
+
+		$this->load->view('Mahasiswa/printdetail', $data);
+	}
 }

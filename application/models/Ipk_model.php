@@ -125,4 +125,15 @@ class Ipk_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getIpkPrint()
+	{
+		$this->db->select('tb_ipk.id_ipk, mahasiswa.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan, tb_ipk.sks_total, tb_ipk.bobot_total, tb_ipk.nilai_total_sks, tb_ipk.ipk');
+		$this->db->from('tb_ipk');
+		$this->db->join('mahasiswa', 'tb_ipk.nim_mhs = mahasiswa.nim_mhs', 'left');
+		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = mahasiswa.id_jurusan', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

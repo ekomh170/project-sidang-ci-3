@@ -103,13 +103,13 @@ class Nilai extends CI_Controller
 		$this->db->order_by('nama_dosen', 'asc');
 		$data['dosen']     = $this->Tambahan_model->selectKrsDosen($nim_mhs);
 
-		$this->form_validation->set_rules('id_krs', 'Nama Dosen', 'required');
-		$this->form_validation->set_rules('nim_mhs', 'Nama Mahasiswa', 'required');
-		$this->form_validation->set_rules('nilai_presensi', 'Nilai Presensi', 'required');
-		$this->form_validation->set_rules('nilai_tugas', 'Nilai Tugas', 'required');
-		$this->form_validation->set_rules('nilai_uts', 'Nilai UTS', 'required');
-		$this->form_validation->set_rules('nilai_uas', 'Nilai UAS', 'required');
-		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('id_krs', 'Nama Krs', 'required');
+		// $this->form_validation->set_rules('nim_mhs', 'Nama Mahasiswa', 'required');
+		// $this->form_validation->set_rules('nilai_presensi', 'Nilai Presensi', 'required');
+		// $this->form_validation->set_rules('nilai_tugas', 'Nilai Tugas', 'required');
+		// $this->form_validation->set_rules('nilai_uts', 'Nilai UTS', 'required');
+		// $this->form_validation->set_rules('nilai_uas', 'Nilai UAS', 'required');
+		// $this->form_validation->set_rules('status', 'Status', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('layout/tb_header', $data);
@@ -207,5 +207,26 @@ class Nilai extends CI_Controller
 		} else {
 			redirect(base_url('KrsDetail/detail/') . $nim_mhs);
 		}
+	}
+
+	public function print(){
+		$data['nilai'] = $this->Nilai_model->getNilaiPrint();
+		$data['judul'] = 'Data Nilai Mahasiswa Institut Agama Islam Tazkia';
+
+		$this->load->view('Nilai/print', $data);
+	}
+
+	public function printdetail($nim_mhs)
+	{
+		$id            = decrypt_url($nim_mhs);
+		$data['judul'] = 'Hasil Penilaian Nilai Akhir';
+		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['data']  = $this->Nilai_model->DetailDataNilai($id);
+
+		if ($this->session->userdata('id_role') != "3") {
+			$data['nilai'] = $this->Nilai_model->NilaiDataNilai($id);
+		}
+
+		$this->load->view('Nilai/printdetail', $data);
 	}
 }

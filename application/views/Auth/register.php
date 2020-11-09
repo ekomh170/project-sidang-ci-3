@@ -6,7 +6,7 @@
           <div class="p-5">
             <div class="text-center">
               <img src="<?= base_url('assets/img/icon/register.png') ?>" class="img-responsive center-block mb-2 rounded-circle bg-white" width="150" height="150" alt="logo">
-              <h4 class="text-gray-900 mb-4 font-weight-bold"><?= $judul; ?></h4>
+              <h4 class="text-white mb-4 font-weight-bold"><?= $judul; ?></h4>
             </div>
             <form class="user" method="post" action="<?= base_url('Auth/register') ?>">
               <div class="form-group">
@@ -41,12 +41,12 @@
                   <?= form_error('password2', '<small class="form-text text-danger pl-3">', '</small>'); ?>
                 </div>
               </div>
-              <button type="submit" class="btn btn-info btn-user btn-block">
+              <button type="submit" style="background-color: orange; color: white;"s class="btn btn btn-user btn-block">
                 Buat Akun
               </button>
             </form>
             <hr>
-            <button onclick="backpageror()" class="btn btn-danger btn-user btn-block">Kembali</button>
+            <button onclick="backpageror()" class="btn btn-danger btn-user btn-block" style="text-decoration:none">Kembali</button>
           </div>
         </div>
       </div>

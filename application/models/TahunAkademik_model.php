@@ -98,4 +98,13 @@ class TahunAkademik_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getTahunAkademikPrint()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_tahun_akademik');
+		
+		$query  = $this->db->get();
+		return $query->result();
+	}
 }

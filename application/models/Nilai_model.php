@@ -183,14 +183,6 @@ class Nilai_model extends CI_Model
 			$grade = "E";
 		}
 
-		// $dosen_nilai = $this->db->get_where('tb_nilai',['nim_mhs' => $nim_mhs]);
-		// $data = $dosen_nilai['id_krs'] == $id_krs; 
-
-		// if ($data = true) {
-		// 	echo "File Dosen dan Mata Kuliah Tidak Boleh Double di setiap Data Krs Mahasiswa!!";
-		// 	die;
-		// }
-
 		$data = [
 			"id_nilai"   	 => $id_nilai,
 			"nim_mhs"    	 => $nim_mhs,
@@ -204,7 +196,6 @@ class Nilai_model extends CI_Model
 			"grade"          => $grade,
 			"status"   	 	 => $status,
 		];
-
 
 		$this->db->where('id_nilai',  $this->input->post('id_nilai'));
 		$this->db->update('tb_nilai', $data);
@@ -241,5 +232,15 @@ class Nilai_model extends CI_Model
 
 		$query = $this->db->get();
 		return $query->row_array();
+	}
+
+	public function getNilaiPrint()
+	{
+		$this->db->select('mahasiswa.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan');
+		$this->db->from('mahasiswa');
+		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
+		
+		$query = $this->db->get();
+		return $query->result();
 	}
 }

@@ -8,11 +8,11 @@
       <span style="float: right;">
         <form method="post" action="<?= base_url() ?>Ruangan" class="form-inline">
           <input class="form-control mr-1" type="search" placeholder="Cari Data Ruangan" name="cari_rgn" aria-label="search">
-          <button class="btn btn-outline-info my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
+          <button class="btn btn-outline-dark my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
       <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Ruangan/tambah" class="btn btn-block btn-dark bg-info"><b>+ Data Baru</b></a>
+        <a href="<?= base_url(); ?>Ruangan/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
       </div>
     </div>
     <div class="card-body">
@@ -43,18 +43,25 @@
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <!--crud-->
-                    <a href="<?= base_url(); ?>Ruangan/detail/<?= encrypt_url($rg->id_ruangan); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info-circle"></i></button></a> <b>|</b>
-                    <a href="<?= base_url(); ?>Ruangan/ubah/<?= encrypt_url($rg->id_ruangan); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                    <a href="<?= base_url(); ?>Ruangan/hapus/<?= encrypt_url($rg->id_ruangan); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                    <a href="<?= base_url(); ?>Ruangan/detail/<?= encrypt_url($rg->id_ruangan); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-info-circle"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Ruangan/ubah/<?= encrypt_url($rg->id_ruangan); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Ruangan/hapus/<?= encrypt_url($rg->id_ruangan); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
                     <!--crud-->
                   </td>
                 <?php } ?>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-          <?php echo $this->pagination->create_links(); ?>
-        </div>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <?php echo $this->pagination->create_links(); ?>
       </div>
     </div>
+    <div class="card-header py-3">
+      <div class="col col-4">
+       <a href="<?= base_url(); ?>Ruangan/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+       <a href="<?= base_url(); ?>Ruangan/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+       <a href="<?= base_url(); ?>Ruangan/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
+     </div>
   </div>
+</div>
+</div>

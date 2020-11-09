@@ -17,13 +17,16 @@
                             <h6 class="card-text text-left"><span class="font-weight-bold">Alamat : </span><?= cetak($tb_dosen['alamat']); ?></h6>
                             <h6 class="card-text text-left mb-4"><span class="font-weight-bold">Nomor Telpon : </span><?= cetak($tb_dosen['no_telp']); ?></h6>
                             <h6 class="card-text text-center mb-4"><img class="rounded-circle" src="<?= base_url('assets/foto/users/') . $tb_dosen['image'] ?>" height="200" width="200"></h6>
-                            <span style="float: right;">
-                                <a href="<?= base_url(); ?>Dosen" class="btn btn-info"> Kembali </a>
-                            </span>
-                        </div>
+                            <span style="float:left;">
+                                <a href="<?= base_url(); ?>Dosen/printdetail/<?= encrypt_url($tb_dosen['id_dosen']); ?>" target="_BLANK" class="btn btn-dark" style="background-color: darkblue;"> Print </a>
+                          </span>
+                          <span style="float: right;">
+                            <a href="<?= base_url(); ?>Dosen" class="btn btn-dark" style="background-color: darkblue;"> Kembali </a>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-    </center>
+    </div>
+</center>
 </div>

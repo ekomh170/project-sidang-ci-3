@@ -122,4 +122,24 @@ class TranskripNilai extends CI_Controller {
 		$this->session->set_flashdata('berhasil', 'Dihapus');
 		redirect('TranskripNilai');
 	}
+
+	public function print(){
+		$data['transkripnilai'] = $this->TranskripNilai_model->getTnPrint();
+		$data['judul'] = 'Data Transkrip Nilai Institut Agama Islam Tazkia';
+
+		$this->load->view('TranskripNilai/print', $data);
+	}
+
+	public function printdetail($id_transkrip_nilai) {
+		$data['judul'] = 'Hasil Penilaian Transkrip Nilai';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$id = decrypt_url($id_transkrip_nilai);
+		$data['data'] = $this->TranskripNilai_model->DetailDataTranskripNilai($id);
+		$data['nilai'] = $this->TranskripNilai_model->NilaiDataTranskripNilai($id);
+		$data['ipk'] = $this->TranskripNilai_model->IpkDataTranskripNilai($id);
+
+		$this->load->view('TranskripNilai/printdetail', $data);
+	}
+
 }

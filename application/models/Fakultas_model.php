@@ -103,4 +103,13 @@ class Fakultas_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getFakultasPrint()
+	{
+		$this->db->select('tb_fakultas.id_fakultas, tb_fakultas.nama_fakultas, tb_fakultas.keterangan, tb_fakultas.status');
+		$this->db->from('tb_fakultas');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

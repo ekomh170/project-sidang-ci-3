@@ -15,9 +15,13 @@
               <h6 class="card-text text-left"><b>Nama Jurusan : </b><?= cetak($data['nama_jurusan']); ?></h6>
               <h6 class="card-text text-left"><b>Tahun Akademik : </b><?= cetak($data['nama_tahun_akademik']); ?></h6>
               <h6 class="card-text text-left"><b>Status: </b><?= $data['status']; ?></h6>
+              <br>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
+                <span style="float:left;">
+                  <a href="<?= base_url(); ?>KrsDetail/printdetail/<?= encrypt_url($data['nim_mhs']); ?>" target="_BLANK" class="btn btn-dark" style="background-color: darkblue;"> Print </a>
+                </span>
                 <span style="float: right;">
-                  <a href="<?= base_url(); ?>KrsDetail" class="btn btn-info"> Kembali </a>
+                  <a href="<?= base_url(); ?>KrsDetail" class="btn btn-dark" style="background-color: darkblue;"> Kembali </a>
                 <?php endif ?>
               </span>
             </div>
@@ -32,7 +36,7 @@
     <div class="card-header py-3">
       <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
       <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>KrsDetail/tambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark bg-info"><b>+ Data Baru</b></a>
+        <a href="<?= base_url(); ?>KrsDetail/tambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
       </div>
     <?php endif ?>
     <?php if ($this->session->userdata('id_role') == "3"): ?>
@@ -72,10 +76,12 @@
                   <td><?= cetak($nl->status); ?></td>
                   <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                     <td>
-                     <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                     <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
-                     <a href="<?= base_url(); ?>KrsDetail/hapus/<?= encrypt_url($nl->id_krs); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-                   <?php endif ?>
+                      <center>
+                       <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
+                       <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
+                       <a href="<?= base_url(); ?>KrsDetail/hapus/<?= encrypt_url($nl->id_krs); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                     <?php endif ?>
+                   </center>
                  </td>
                <?php } ?>
              </tr>

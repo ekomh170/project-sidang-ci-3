@@ -123,4 +123,15 @@ class Kelas_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getKelasPrint()
+	{
+		$this->db->select('tb_kelas.id_kelas, tb_kelas.nama_kelas, tb_kelas.status, tb_ruangan.nama_ruangan');
+		$this->db->from('tb_kelas');
+		$this->db->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_kelas.id_ruangan', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 }

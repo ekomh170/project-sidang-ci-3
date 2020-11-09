@@ -7,6 +7,7 @@
         <input type="hidden" name="id_nilai" value="<?= $data['id_nilai']; ?>" required>
         <?php if ($inputSelect['id_dosen']) { ?>
           <input type="hidden" name="id_krs" value="<?= $inputSelect['id_krs']; ?>" required>
+          <small class="form-text text-danger"><b><u><?= form_error('id_krs') ?></u></b></small>
         <?php } ?>
         <div class="form-group">
           <label for="nim_mhs"><b>Nim Mahasiswa :</b></label>
@@ -22,7 +23,6 @@
           <?php if ($inputSelect['id_dosen']) { ?>
             <input type="text" class="form-control" placeholder="Masukan Nama Dosen \ Mata Kuliah" value="<?= $inputSelect['nama_dosen']; ?>" readonly>
           <?php } ?>
-          <small class="form-text text-danger"><b><u><?= form_error('id_dosen') ?></u></b></small>
         </div>
         <div class="form-group">
           <label for="nilai_presensi"><b>Nilai Presensi :</b></label>
@@ -44,7 +44,6 @@
           <input type="text" class="form-control" id="nilai_uas" name="nilai_uas" placeholder="Masukan Nilai UAS" value="<?= $data['nilai_uas'] ?>">
           <small class="form-text text-danger"><b><u><?= form_error('nilai_uas') ?></u></b></small>
         </div>
-        <?php if ($this->session->userdata('id_role') == "1") { ?>
           <div class="form-group">
             <label for="status"><b>Status :</b></label>
             <select class="form-control" id="status" name="status">
@@ -58,7 +57,6 @@
                 <?php } } ?>                
               </select>
             </div>
-          <?php } ?>
           <span style="float: left;">
             <button type="submit" name="ubah" value="ubah" class="btn btn-success">Ubah</button>
           </span>

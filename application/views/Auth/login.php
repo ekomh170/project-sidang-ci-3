@@ -11,7 +11,7 @@
               <div class="p-5">
                 <div class="text-center">
                   <img src="<?= base_url('assets/img/icon/login.png') ?>" class="img-responsive center-block mb-2 rounded-circle bg-white" width="150" height="150" alt="logo">
-                  <h4 class=" text-gray-900 mb-4 font-weight-bold"><?= $judul; ?></h4>
+                  <h4 class="text-white mb-4 font-weight-bold"><?= $judul; ?></h4>
                 </div>
                 <?= $this->session->flashdata('message'); ?>
                 <form class="user" action="<?= base_url('Auth'); ?>" method="post">
@@ -24,10 +24,12 @@
                     <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukan Password">
                     <?= form_error('password', '<small class="form-text text-danger pl-3">', '</small>'); ?>
                   </div>
-                  <button type="sumbit" class="btn btn-info btn-user btn-block">
+                  <button type="sumbit" style="background-color: orange; color: white;" class="btn btn btn-user btn-block mb-3">
                     Login
                   </button>
                 </form>
+                <hr>
+                <a href="<?= base_url('Home')?>" style="text-decoration:none"><button class="btn btn-danger btn-user btn-block">Halaman Utama</button></a>
               </div>
             </div>
           </div>

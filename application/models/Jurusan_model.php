@@ -134,4 +134,15 @@ class Jurusan_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getJurusanPrint()
+	{
+		$this->db->select('tb_jurusan.id_jurusan, tb_jurusan.nama_jurusan, tb_fakultas.nama_fakultas, tb_jenjang_pendidikan.nama_jp, tb_jenjang_pendidikan.nama_lengkap_jp');
+		$this->db->from('tb_jurusan');
+		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_jurusan.id_fakultas', 'left');
+		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

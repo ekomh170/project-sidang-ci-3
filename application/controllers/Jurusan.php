@@ -124,4 +124,11 @@ class Jurusan extends CI_Controller
 			redirect('Jurusan');
 		}
 	}
+
+	function print(){
+		$data['jurusan'] = $this->Jurusan_model->getJurusanPrint();
+		$data['judul'] = 'Data Jurusan Institut Agama Islam Tazkia';
+
+		$this->load->view('Jurusan/print', $data);
+	}
 }

@@ -104,7 +104,7 @@ class Matkul extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('layout/tb_header', $data);
 			$this->load->view('layout/sidebar', $data);
-			$this->load->view('layout/topbar', $data);
+		$this->load->view('layout/topbar', $data);
 			$this->load->view('matkul/ubah', $data);
 			$this->load->view('layout/tb_footer');
 		} else {
@@ -112,5 +112,11 @@ class Matkul extends CI_Controller
 			$this->session->set_flashdata('berhasil', 'DiUbah');
 			redirect('Matkul');
 		}
+	}
+	function print(){
+		$data['matkul'] = $this->Matkul_model->getMatkulPrint();
+		$data['judul'] = 'Data Mata Kuliah Institut Agama Islam Tazkia';
+
+		$this->load->view('Matkul/print', $data);
 	}
 }

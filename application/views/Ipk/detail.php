@@ -12,9 +12,13 @@
               <h6 class="card-text text-left"><span class="font-weight-bold">Nama Jurusan : </span><?= cetak($data['nama_jurusan']); ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Tahun Akademik : </span><?= cetak($data['nama_tahun_akademik']); ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Status : </span><?= cetak($data['status']); ?></h6>
+              <br>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
+                <span style="float: left;">
+                  <a href="<?= base_url(); ?>Ipk/printdetail/<?= encrypt_url($data['nim_mhs'])?>" class="btn btn-dark" style="background-color: darkblue;"> Print </a>
+                </span>
                 <span style="float: right;">
-                  <a href="<?= base_url(); ?>Ipk" class="btn btn-info"> Kembali </a>
+                  <a href="<?= base_url(); ?>Ipk" class="btn btn-dark" style="background-color: darkblue;"> Kembali </a>
                 </span>
               <?php endif ?>
             </div>
@@ -53,8 +57,8 @@
                 <td><?= cetak($nl->ipk); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                   <td>
-                    <a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($nl->id_ipk); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                    <a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($nl->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                    <a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($nl->id_ipk); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($nl->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
                   </td>
                 <?php } ?>
               </tbody>

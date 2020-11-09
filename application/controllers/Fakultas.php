@@ -108,4 +108,11 @@ class Fakultas extends CI_Controller
 			redirect('Fakultas');
 		}
 	}
+
+	function print(){
+		$data['fakultas'] = $this->Fakultas_model->getFakultasPrint();
+		$data['judul'] = 'Data Fakultas Institut Agama Islam Tazkia';
+
+		$this->load->view('Fakultas/print', $data);
+	}
 }

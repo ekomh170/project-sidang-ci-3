@@ -1,9 +1,15 @@
   </div>
   <footer class="bg-white sticky-footer">
     <div class="container my-auto">
-      <div class="text-center my-auto copyright"><span>Copyright : Eko Muchamad Haryono</span></div>
-      <div class="text-left my-auto copyright"><span>Hubungi : 082246105463</span></div>
-      <div class="text-right my-auto copyright"><span>Email : ekomh020@gmail.com</span></div>
+      <center>
+        <div class="text-center my-auto copyright"><span><b>Hubungi Pengembang : Eko Muchamad Haryono</b></span></div><br>   
+        <div class="mb-4">
+          <a href="https://web.facebook.com/eko.m.haryono/" target="_BLANK"><button class="btn btn-primary"><i class="fab fa-facebook-f" aria-hidden="true"></i></button></a>
+          <a href="https://api.whatsapp.com/send?phone=6282246105463" target="_BLANK"><button class="btn btn-success"><i class="fab fa-whatsapp" aria-hidden="true"></i></button></a>
+          <a href="https://github.com/ekomh170" target="_BLANK"><button class="btn btn-dark"><i class="fab fa-github" aria-hidden="true"></i></button></a>
+          <a href="https://www.instagram.com/ekomh_29/?hl=id" target="_BLANK"><button class="btn btn-warning"><i class="fab fa-instagram" aria-hidden="true"></i></button></a>
+        </div>
+      </center>
     </div>
   </footer>
 </div>

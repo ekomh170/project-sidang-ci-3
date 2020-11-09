@@ -1,7 +1,5 @@
 body{
-	background-image: url('../../img/bg/bg-2.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-color: darkorange;
 }
 
 div .text{

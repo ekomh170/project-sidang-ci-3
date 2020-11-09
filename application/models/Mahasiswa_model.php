@@ -228,4 +228,15 @@ class Mahasiswa_model extends CI_Model {
 			return false;
 		}
 	}
+
+	public function getMahasiswaPrint() {
+		$this->db->select('mahasiswa.nim_mhs, mahasiswa.image, mahasiswa.nama, tb_jurusan.nama_jurusan, tb_kelas.nama_kelas, tb_tahun_akademik.nama_tahun_akademik, mahasiswa.jenis_kelamin, mahasiswa.status');
+		$this->db->from('mahasiswa');
+		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
+		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
+		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

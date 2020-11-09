@@ -122,4 +122,15 @@ class Ruangan_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getRuanganPrint()
+	{
+		$this->db->select('tb_ruangan.id_ruangan, tb_ruangan_jenis.nama_jr, tb_ruangan.nama_ruangan');
+		$this->db->from('tb_ruangan');
+		$this->db->join('tb_ruangan_jenis', 'tb_ruangan.id_jenis_ruangan = tb_ruangan_jenis.id_jenis_ruangan', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 }

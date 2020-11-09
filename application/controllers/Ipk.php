@@ -111,6 +111,7 @@ class Ipk extends CI_Controller
 			redirect('Ipk');
 		}
 	}
+
 	public function detail($nim_mhs)
 	{
 		$data['judul'] = 'Hasil Penilaian Ipk';
@@ -125,5 +126,24 @@ class Ipk extends CI_Controller
 		$this->load->view('layout/topbar', $data);
 		$this->load->view('Ipk/detail', $data);
 		$this->load->view('layout/tb_footer');
+	}
+
+	public function print(){
+		$data['ipk'] = $this->Ipk_model->getIpkPrint();
+		$data['judul'] = 'Data Ipk Mahasiswa Institut Agama Islam Tazkia';
+
+		$this->load->view('Ipk/print', $data);
+	}
+
+	public function printdetail($nim_mhs)
+	{
+		$data['judul'] = 'Hasil Penilaian Ipk';
+		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$id = decrypt_url($nim_mhs);
+		$data['data']  = $this->Ipk_model->DetailDataIpk($id);
+		$data['nilai']  = $this->Ipk_model->NilaiDataIpk($id);
+
+		$this->load->view('Ipk/printdetail', $data);
 	}
 }

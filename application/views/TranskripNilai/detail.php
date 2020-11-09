@@ -12,9 +12,13 @@
               <h6 class="card-text text-left"><span class="font-weight-bold">Nama Jurusan : </span><?= cetak($data['nama_jurusan']); ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Tahun Akademik : </span><?= cetak($data['nama_tahun_akademik']); ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Status: </span><?= cetak($data['status']); ?></h6>
+              <br>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
+                <span style="float: left;">
+                  <a href="<?= base_url(); ?>TranskripNilai/printdetail/<?= encrypt_url($data['nim_mhs']);?>" class="btn btn-dark"  style="background-color: darkblue;"> Print </a>
+                </span>
                 <span style="float: right;">
-                  <a href="<?= base_url(); ?>TranskripNilai" class="btn btn-info"> Kembali </a>
+                  <a href="<?= base_url(); ?>TranskripNilai" class="btn btn-dark"  style="background-color: darkblue;"> Kembali </a>
                 </span>
               <?php endif ?>
             </div>
@@ -36,7 +40,6 @@
                   <th>Nama Mata Kuliah</th>
                   <th>Nilai SKS</th>
                   <th>Nilai Akhir</th>
-                  <!-- <th>Status</th> -->
                 </tr>
               </thead>
               <tbody>

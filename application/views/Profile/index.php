@@ -18,7 +18,7 @@
                 <h6 class="card-text text-center"><img src="<?=base_url('assets/foto/users/') . $user['image']?>" height="200" width="200" class="img-profile rounded-circle"></h6>
               </div>
               <br>
-              <a href="<?=base_url('Profile/edit')?>" class="btn btn-info"> Ubah Profile </a>
+              <a href="<?=base_url('Profile/edit')?>" class="btn btn-dark" style="background-color: darkblue;"> Ubah Profile </a>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
               <br>
               <h6 class="card-text text-center"><img src="<?=base_url('assets/foto/users/') . $user['image']?>" height="200" width="200" class="img-profile rounded-circle"></h6>
               <br>
-              <a href="<?=base_url('Profile/edit')?>" class="btn btn-info"> Ubah Profile </a>
+              <a href="<?=base_url('Profile/edit')?>" class="btn btn-dark" style="background-color: darkblue;"> Ubah Profile </a>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
               <br>
               <h6 class="card-text text-center"><img src="<?=base_url('assets/foto/users/') . $user['image']?>" height="200" width="200" class="img-profile rounded-circle"></h6>
               <br>
-              <a href="<?=base_url('Profile/edit')?>" class="btn btn-info"> Ubah Profile </a>
+              <a href="<?=base_url('Profile/edit')?>" class="btn btn-dark" style="background-color: darkblue;"> Ubah Profile </a>
             </div>
           </div>
         </div>

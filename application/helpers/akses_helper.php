@@ -31,7 +31,7 @@ function check_role_dosen_op_penilaian()
 	$ci->load->model('Tambahan_model');
 	$userData = $ci->Tambahan_model->getUserData();
 
-	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "3" || $userData['id_role'] == "5" || $userData['id_role'] == "6";
+	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "3" || $userData['id_role'] == "5" || $userData['id_role'] == "4";
 
 	if ($cek_id_role == FALSE) {
 		redirect('Profile');

@@ -195,4 +195,25 @@ class KrsDetail extends CI_Controller
 			redirect(base_url('KrsDetail/detail/') . $nim_mhs);
 		}
 	}
+
+	public function print(){
+		$data['krs_detail'] = $this->KrsDetail_model->getKrsDetailPrint();
+		$data['judul'] 		= 'Data Krs Detail Institut Agama Islam Tazkia';
+
+		$this->load->view('KrsDetail/print', $data);
+	}
+
+	public function printdetail($nim_mhs)
+	{
+		$id            = decrypt_url($nim_mhs);
+		$data['judul'] = 'Hasil Penilaian KRS';
+		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['data']  = $this->KrsDetail_model->DetailDataKrsDetail($id);
+
+		if ($this->session->userdata('id_role') != "3") {
+			$data['nilai'] = $this->KrsDetail_model->krsDataKrsDetail($id);
+		}
+
+		$this->load->view('KrsDetail/printdetail', $data);
+	}
 }

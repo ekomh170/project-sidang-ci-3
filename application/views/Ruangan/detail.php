@@ -13,7 +13,7 @@
               <h6 class="card-text text-left"><span class="font-weight-bold">Kapasitas : </span><?= cetak($ruangan['kapasitas']); ?></h6>
               <h6 class="card-text text-left"><span class="font-weight-bold">Keterangan : </span><?= cetak($ruangan['keterangan']); ?></h6>
               <span style="float:right;">
-                <a href="<?= base_url(); ?>Ruangan" class="btn btn-info"> Kembali </a>
+                <a href="<?= base_url(); ?>Ruangan" class="btn btn-dark"  style="background-color: darkblue;"> Kembali </a>
               </span>
             </div>
           </div>

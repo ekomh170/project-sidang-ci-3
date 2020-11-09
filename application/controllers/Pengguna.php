@@ -89,4 +89,11 @@ class Pengguna extends CI_Controller
 		$this->session->set_flashdata('berhasil', 'Data Diaktifkan');
 		redirect(base_url('Pengguna'));
 	}
+
+	public function print(){
+		$data['data_user'] = $this->Pengguna_model->getPenggunaPrint();
+		$data['judul'] = 'Data Users Institut Agama Islam Tazkia';
+
+		$this->load->view('Pengguna/print', $data);
+	}
 }

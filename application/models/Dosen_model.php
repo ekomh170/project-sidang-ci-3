@@ -206,4 +206,13 @@ class Dosen_model extends CI_Model {
 			return false;
 		}
 	}
+
+	public function getDosenPrint() {
+		$this->db->select('tb_dosen.id_dosen, tb_dosen.nama_dosen, tb_matkul.nama_matkul,tb_dosen.jenis_kelamin, tb_dosen.status');
+		$this->db->from('tb_dosen');
+		$this->db->join('tb_matkul', 'tb_dosen.id_matkul = tb_matkul.id_matkul', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

@@ -38,11 +38,11 @@
               </div>
               <div class="form-group row justify-content-end">
                 <div class="col-sm-9">
-                  <button type="submit" class="btn btn-info">Ubah</button>
+                  <button type="submit" class="btn btn-dark" style="background-color: darkblue;">Ubah</button>
                 </div>
               </form>
               <div class="col-sm-1">
-                <button type="kembali" class="btn btn-success"><a style="text-decoration: none; color: white;" href="<?=base_url('Profile/index');?>">Kembali</a></button>
+                <button type="kembali" class="btn btn-dark" style="background-color: darkblue;"><a style="text-decoration: none; color: white;" href="<?=base_url('Profile/index');?>">Kembali</a></button>
               </div>
             </div>
           </div>

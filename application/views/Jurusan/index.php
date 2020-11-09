@@ -8,11 +8,11 @@
       <span style="float: right;">
         <form method="post" action="<?= base_url() ?>Jurusan" class="form-inline">
           <input class="form-control mr-1" type="search" placeholder="Cari Data Mahasiswa" name="cari_jrs" aria-label="search">
-          <button class="btn btn-outline-info my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
+          <button class="btn btn-outline-dark my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
       <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Jurusan/tambah" class="btn btn-block btn-dark bg-info"><b>+ Data Baru</b></a>
+        <a href="<?= base_url(); ?>Jurusan/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
       </div>
     </div>
     <div class="card-body">
@@ -32,7 +32,6 @@
           </thead>
           <tbody>
             <?php
-            $no = 1;
             foreach ($jurusan as $jrs) :
               ?>
               <tr>
@@ -43,16 +42,22 @@
                 <td><?= cetak($jrs->nama_lengkap_jp); ?> (<?= $jrs->nama_jp; ?>)</td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
-                    <a href="<?= base_url(); ?>Jurusan/ubah/<?= encrypt_url($jrs->id_jurusan); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a></a> <b>|</b>
-                    <a href="<?= base_url(); ?>Jurusan/hapus/<?= encrypt_url($jrs->id_jurusan); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
+                    <a href="<?= base_url(); ?>Jurusan/ubah/<?= encrypt_url($jrs->id_jurusan); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Jurusan/hapus/<?= encrypt_url($jrs->id_jurusan); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a></a>
                   </td>
                 <?php } ?>
               </tr>
-              <?php $no++ ?>
             <?php endforeach; ?>
           </tbody>
         </table>
         <?php echo $this->pagination->create_links(); ?>
+      </div>
+    </div>
+    <div class="card-header py-3">
+      <div class="col col-4">
+        <a href="<?= base_url(); ?>Jurusan/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+        <a href="<?= base_url(); ?>Jurusan/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+        <a href="<?= base_url(); ?>Jurusan/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
       </div>
     </div>
   </div>

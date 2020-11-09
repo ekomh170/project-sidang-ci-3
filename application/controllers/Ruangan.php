@@ -136,4 +136,11 @@ class Ruangan extends CI_Controller
 			redirect('Ruangan');
 		}
 	}
+
+	public function print(){
+		$data['ruangan'] = $this->Ruangan_model->getRuanganPrint();
+		$data['judul'] = 'Data Ruangan Institut Agama Islam Tazkia';
+
+		$this->load->view('Ruangan/print', $data);
+	}
 }

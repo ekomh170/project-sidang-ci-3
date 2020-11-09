@@ -105,4 +105,11 @@ class TahunAkademik extends CI_Controller
 			redirect('TahunAkademik');
 		}
 	}
+
+	public function print(){
+		$data['tahunakademik'] = $this->TahunAkademik_model->getTahunAkademikPrint();
+		$data['judul'] = 'Data Tahun Akademik Institut Agama Islam Tazkia';
+
+		$this->load->view('TahunAkademik/print', $data);
+	}
 }

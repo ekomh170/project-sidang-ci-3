@@ -8,12 +8,14 @@
       <span style="float: right;">
         <form method="post" action="<?= base_url() ?>Dosen" class="form-inline">
           <input class="form-control mr-1" type="search" placeholder="Cari Data Dosen" name="cari_dosen" aria-label="search">
-          <button class="btn btn-outline-info my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
+          <button class="btn btn-outline-dark my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
-      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Dosen/tambah" class="btn btn-block btn-dark bg-info"><b>+ Data Baru</b>
-        </a>
+      <div>
+        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+          <a href="<?= base_url(); ?>Dosen/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b>
+          </a>
+        </div>
       </div>
     </div>
     <div class="card-body">
@@ -45,16 +47,16 @@
                   <td class="text-center">
                     <!--izin Akses-->
                     <?php if ($dsn->status == 'Tidak Aktif') { ?>
-                      <?= anchor(base_url('dosen/user/') . $dsn->id_dosen, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-lock"></i></button>') ?> <b> | </b>
+                      <?= anchor(base_url('dosen/user/') . $dsn->id_dosen, '<button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-lock"></i></button>') ?> <b> | </b>
                     <?php } ?>
                     <!--nonaktif-->
                     <?php if ($dsn->status == 'Aktif') { ?>
-                      <?= anchor(base_url('dosen/nonaktif/') . $dsn->id_dosen, '<button type="button" class="btn btn-warning btn-circle"><i class="fas fa-ban"></i></button>') ?> <b>|</b>
+                      <?= anchor(base_url('dosen/nonaktif/') . $dsn->id_dosen, '<button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-ban"></i></button>') ?> <b>|</b>
                     <?php } ?>
                     <!--CRUD-->
-                    <a href="<?= base_url(); ?>dosen/detail/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-fw fa-info-circle"></i></button></a> <b>|</b>
-                    <a href="<?= base_url(); ?>dosen/edit/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-success btn-circle"><i class="fas fa-fw fa-check-circle"></i></button></a> <b>|</b>
-                    <a href="<?= base_url(); ?>dosen/hapus/<?= encrypt_url($dsn->id_dosen); ?>" class="tombol-hapus"><button type="button" class="btn btn-danger btn-circle tombol-hapus"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                    <a href="<?= base_url(); ?>Dosen/detail/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-info-circle"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Dosen/edit/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
+                    <a href="<?= base_url(); ?>Dosen/hapus/<?= encrypt_url($dsn->id_dosen); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
                   </td>
                 <?php } ?>
               </tr>
@@ -66,5 +68,10 @@
         ?>
       </div>
     </div>
+    <div class="card-header py-3">
+     <a href="<?= base_url(); ?>Dosen/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+     <a href="<?= base_url(); ?>Dosen/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+     <a href="<?= base_url(); ?>Dosen/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
   </div>
+</div>
 </div>

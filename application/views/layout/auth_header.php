@@ -33,7 +33,7 @@
     }
 
     div .card{
-      background-image: linear-gradient(red,white, #eaeaea );
+      background-image: linear-gradient(darkorange,darkorange,midnightblue,midnightblue);
     }
   </style>
 </head>

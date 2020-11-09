@@ -153,4 +153,17 @@ class TranskripNilai_model extends CI_Model
 		$query = $this->db->get();
 		return $query->row_array();
 	}
+
+	public function getTnPrint()
+	{
+		$this->db->select('tb_transkrip_nilai.id_transkrip_nilai, tb_transkrip_nilai.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan');
+		$this->db->from('tb_transkrip_nilai');
+		$this->db->join('mahasiswa', 'tb_transkrip_nilai.nim_mhs = mahasiswa.nim_mhs', 'left');
+		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
+		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
+		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik', 'left');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

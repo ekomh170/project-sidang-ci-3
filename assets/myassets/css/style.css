@@ -20,7 +20,7 @@
 	height: 100%;
 	position: fixed;
 	text-indent: 100%;
-	background: black url('../img/harap_tunggu.gif') no-repeat center;
+	background: black url('../../img/loadscreen/harap_tunggu.gif') no-repeat center;
 	z-index: 1;
 	opacity: 0.8;
 	background-size: 15%;

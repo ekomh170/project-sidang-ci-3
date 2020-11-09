@@ -187,4 +187,19 @@ class Dosen extends CI_Controller {
 		$this->session->set_flashdata('berhasil', 'Data Dinonaktifkan');
 		redirect(base_url('Dosen'));
 	}
+
+	function print(){
+		$data['dosen'] = $this->Dosen_model->getDosenPrint();
+		$data['judul'] = 'Data Dosen Institut Agama Islam Tazkia';
+
+		$this->load->view('Dosen/print', $data);
+	}
+
+	public function printdetail($id_dosen){
+		$id = decrypt_url($id_dosen);
+		$data['tb_dosen'] = $this->Dosen_model->InfoDataDetail($id);
+		$data['judul'] = 'Data Lengkap Dosen Institut Agama Islam Tazkia';
+
+		$this->load->view('Dosen/printdetail', $data);
+	}
 }

@@ -175,20 +175,6 @@ class KrsDetail_model extends CI_Model
 			$grade = 'E';
 		}
 
-		// $dosen_krs = $this->db->get_where('krs_detail',
-		// 	['nim_mhs' => $nim_mhs,
-		// 	'id_dosen' => $id_dosen]
-		// )->row_array();
-
-		// $isi_dosen = $dosen_krs['id_dosen'] == null;
-		// if ($isi_dosen == false) {
-		// 	$data = $dosen_krs['id_dosen'] == $id_dosen;
-		// 	if ($data = true) {
-		// 		log_message('error','File Dosen dan Mata Kuliah Tidak Boleh Double di setiap Data Krs Mahasiswa!!');
-		// 		die;
-		// 	}
-		// }
-
 		$data = [
 			"id_krs" => $id_krs,
 			"nim_mhs"  => $nim_mhs,
@@ -290,5 +276,17 @@ class KrsDetail_model extends CI_Model
 
 		$query = $this->db->get();
 		return $query->row_array();
+	}
+
+	public function getKrsDetailPrint()
+	{
+		$this->db->select('mahasiswa.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan');
+		$this->db->from('mahasiswa');
+		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
+		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
+		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik', 'left');
+		
+		$query = $this->db->get();
+		return $query->result();
 	}
 }

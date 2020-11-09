@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="<?= base_url('assets/templates/'); ?>css/styleeror.css" />
+	<link type="text/css" rel="stylesheet" href="<?= base_url('assets/layout/'); ?>css/styleeror.css" />
 
 </head>
 
