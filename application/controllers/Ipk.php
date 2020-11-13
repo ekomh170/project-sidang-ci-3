@@ -1,4 +1,8 @@
 <?php
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Ipk extends CI_Controller
 {
 	public function __construct()
@@ -130,7 +134,7 @@ class Ipk extends CI_Controller
 
 	public function print(){
 		$data['ipk'] = $this->Ipk_model->getIpkPrint();
-		$data['judul'] = 'Data Ipk Mahasiswa Institut Agama Islam Tazkia';
+		$data['judul'] = 'Data Ipk Mahasiswa Institut Agama Islam Tazkia yang sudah mulai di rekap';
 
 		$this->load->view('Ipk/print', $data);
 	}
@@ -145,5 +149,110 @@ class Ipk extends CI_Controller
 		$data['nilai']  = $this->Ipk_model->NilaiDataIpk($id);
 
 		$this->load->view('Ipk/printdetail', $data);
+	}
+
+	public function pdf(){
+		$data['ipk'] = $this->Ipk_model->getIpkPrint();
+		$data['judul'] = 'Data Ipk Mahasiswa Institut Agama Islam Tazkia yang sudah mulai di rekap';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-ipk.pdf";
+		$this->pdf->load_view('Ipk/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Nomor Induk Mahasiswa');
+		$sheet->setCellValue('C1', 'Nama Mahasiswa');
+		$sheet->setCellValue('E1', 'Nama Jurusan');
+
+		$ipk = $this->Ipk_model->getIpkPrint();
+		$array = json_decode(json_encode($ipk), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['nim_mhs']);
+			$sheet->setCellValue('C'.$baris, $row['nama']);
+			$sheet->setCellValue('E'.$baris, $row['nama_jurusan']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-ipk';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
+	}
+
+	public function pdfdetail($nim_mhs)
+	{
+		$id            = decrypt_url($nim_mhs);
+		$data['judul'] = 'Hasil Penilaian IPK';
+		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['data']  = $this->Ipk_model->DetailDataIpk($id);
+		$data['ipk']  = $this->Ipk_model->NilaiDataIpk($id);
+		$data_mhs  = $this->Ipk_model->DetailDataIpk($id);
+
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = $data_mhs['nama']. "-laporan-data-Ipk.pdf";
+		$this->pdf->load_view('Ipk/pdfdetail', $data);
+	}
+
+	public function exceldetail($nim_mhs){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+		$id = decrypt_url($nim_mhs);
+
+		$data_mhs  = $this->Ipk_model->DetailDataIpk($id);
+		$sheet->setCellValue('A1', "NIM Mahasiswa : ".  $data_mhs['nim_mhs']);
+		$sheet->setCellValue('A2', "Nama Mahasiswa : ". $data_mhs['nama']);
+		$sheet->setCellValue('A3', "Nama Fakultas : ". $data_mhs['nama_fakultas']);
+		$sheet->setCellValue('A4', "Nama Jurusan : ". $data_mhs['nama_jurusan']);
+		$sheet->setCellValue('A5', "Nama Tahun Akademik : ". $data_mhs['nama_tahun_akademik']);
+		$sheet->setCellValue('A6', "Status : ". $data_mhs['status']);
+
+		$sheet->setCellValue('A7', 'No');
+		$sheet->setCellValue('B7', 'Kode Ipk');
+		$sheet->setCellValue('C7', 'Jumlah SKS');
+		$sheet->setCellValue('D7', 'Nilai Seluruh Sks');
+		$sheet->setCellValue('E7', 'Nilai Total Bobot');
+		$sheet->setCellValue('F7', 'Nilai Ipk');
+
+		$krs = $this->KrsDetail_model->krsDataKrsDetail($id);
+		$array = json_decode(json_encode($krs), true);
+		$no = 1;
+		$baris = 8;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_ipk']);
+			$sheet->setCellValue('C'.$baris, $row['sks_total']);
+			$sheet->setCellValue('D'.$baris, $row['nilai_total_sks']);
+			$sheet->setCellValue('E'.$baris, $row['bobot_total']);
+			$sheet->setCellValue('F'.$baris, $row['ipk']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = $data_mhs['nama']. '-laporan-data-krs-detail-mahasiswa';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Ruangan extends CI_Controller
 {
 
@@ -142,5 +145,48 @@ class Ruangan extends CI_Controller
 		$data['judul'] = 'Data Ruangan Institut Agama Islam Tazkia';
 
 		$this->load->view('Ruangan/print', $data);
+	}
+
+	public function pdf(){
+		$data['ruangan'] = $this->Ruangan_model->getRuanganPrint();
+		$data['judul'] = 'Data Ruangan Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-ruangan.pdf";
+		$this->pdf->load_view('Ruangan/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Kode Ruangan');
+		$sheet->setCellValue('C1', 'Nama Ruangan');
+		$sheet->setCellValue('D1', 'Jenis Ruangan');
+
+		$mahasiswa = $this->Ruangan_model->getRuanganPrint();
+		$array = json_decode(json_encode($mahasiswa), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_ruangan']);
+			$sheet->setCellValue('C'.$baris, $row['nama_ruangan']);
+			$sheet->setCellValue('D'.$baris, $row['nama_jr']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-ruangan';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

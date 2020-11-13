@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Matkul extends CI_Controller
 {
 
@@ -104,7 +107,7 @@ class Matkul extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('layout/tb_header', $data);
 			$this->load->view('layout/sidebar', $data);
-		$this->load->view('layout/topbar', $data);
+			$this->load->view('layout/topbar', $data);
 			$this->load->view('matkul/ubah', $data);
 			$this->load->view('layout/tb_footer');
 		} else {
@@ -118,5 +121,48 @@ class Matkul extends CI_Controller
 		$data['judul'] = 'Data Mata Kuliah Institut Agama Islam Tazkia';
 
 		$this->load->view('Matkul/print', $data);
+	}
+
+	public function pdf(){
+		$data['matkul'] = $this->Matkul_model->getMatkulPrint();
+		$data['judul'] = 'Data Mata Kuliah Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-matkul.pdf";
+		$this->pdf->load_view('Matkul/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Kode Mata Kuliah');
+		$sheet->setCellValue('C1', 'Nama Mata Kuliah Nama');
+		$sheet->setCellValue('D1', 'Nama Mata Jurusan');
+
+		$matkul = $this->Matkul_model->getMatkulPrint();
+		$array = json_decode(json_encode($matkul), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_matkul']);
+			$sheet->setCellValue('C'.$baris, $row['nama_matkul']);
+			$sheet->setCellValue('D'.$baris, $row['nama_jurusan']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-mata-kuliah';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

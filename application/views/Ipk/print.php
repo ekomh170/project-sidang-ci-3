@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Print Data Mahasiswa</title>
+	<title>Print Data Ipk Mahasiswa yang sudah mulai di rekap</title>
 	<link rel="icon" href="<?=base_url('assets/favicon/')?>favicon.ico">
 	<link href="<?=base_url('assets/layout/');?>css/sb-admin-2.css" rel="stylesheet">
 </head>

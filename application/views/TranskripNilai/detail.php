@@ -14,9 +14,13 @@
               <h6 class="card-text text-left"><span class="font-weight-bold">Status: </span><?= cetak($data['status']); ?></h6>
               <br>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
-                <span style="float: left;">
-                  <a href="<?= base_url(); ?>TranskripNilai/printdetail/<?= encrypt_url($data['nim_mhs']);?>" class="btn btn-dark"  style="background-color: darkblue;"> Print </a>
-                </span>
+                <div>
+                  <span style="float:left;">
+                    <a href="<?= base_url(); ?>TranskripNilai/printdetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+                    <a href="<?= base_url(); ?>TranskripNilai/pdfdetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+                    <a href="<?= base_url(); ?>TranskripNilai/exceldetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
+                  </span>
+                </div>
                 <span style="float: right;">
                   <a href="<?= base_url(); ?>TranskripNilai" class="btn btn-dark"  style="background-color: darkblue;"> Kembali </a>
                 </span>
@@ -33,6 +37,7 @@
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" width="100%" cellspacing="0">
+              <center>
               <thead>
                 <tr>
                   <th>No</th>
@@ -46,21 +51,22 @@
                 <?php
                 $no = 1;
                 foreach ($nilai as $tn) : ?>
-                  <td><?= $no; ?></td>
-                  <td><?= cetak($tn->nama_dosen); ?></td>
-                  <td><?= cetak($tn->nama_matkul); ?></td>
-                  <td><?= cetak($tn->nilai_krs); ?></td>
-                  <td><?= cetak($tn->nilai_akhir); ?></td>
-                  <!--<td><?= $tn->status; ?></td>-->
+                  <tr>
+                    <td><?= $no; ?></td>
+                    <td><?= cetak($tn->nama_dosen); ?></td>
+                    <td><?= cetak($tn->nama_matkul); ?></td>
+                    <td><?= cetak($tn->nilai_krs); ?></td>
+                    <td><?= cetak($tn->nilai_akhir); ?></td>
+                  </tr>
                 </tbody>
                 <?php $no++ ?>
               <?php endforeach; ?>
               <?php foreach ($ipk as $value) : ?>
                 <tr>
                   <th colspan="2">Total Nilai SKS : </th>
-                  <td class="center"><?= cetak($value->sks_total); ?></td>
-                  <td class="center"><?= cetak($value->nilai_total_sks); ?></td>
-                  <td class="center"><?= cetak($value->bobot_total); ?></td>             
+                  <td><?= cetak($value->sks_total); ?></td>
+                  <td><?= cetak($value->nilai_total_sks); ?></td>
+                  <td><?= cetak($value->bobot_total); ?></td>             
                 </tr>
                 <tr>
                   <th colspan="4">Nilai Index Prestasi Kelulusan : </th>

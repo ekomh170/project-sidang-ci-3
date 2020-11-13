@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Dosen extends CI_Controller {
 
 	public function __construct() {
@@ -201,5 +204,50 @@ class Dosen extends CI_Controller {
 		$data['judul'] = 'Data Lengkap Dosen Institut Agama Islam Tazkia';
 
 		$this->load->view('Dosen/printdetail', $data);
+	}
+
+	public function pdf(){
+		$data['dosen'] = $this->Dosen_model->getDosenPrint();
+		$data['judul'] = 'Data Dosen Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-dosen.pdf";
+		$this->pdf->load_view('Dosen/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Kode Dosen');
+		$sheet->setCellValue('C1', 'Nama Dosen');
+		$sheet->setCellValue('D1', 'Mata Kuliah');
+		$sheet->setCellValue('E1', 'Jenis Kelamin');
+
+		$dosen = $this->Dosen_model->getDosenPrint();
+		$array = json_decode(json_encode($dosen), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_dosen']);
+			$sheet->setCellValue('C'.$baris, $row['nama_dosen']);
+			$sheet->setCellValue('D'.$baris, $row['nama_matkul']);
+			$sheet->setCellValue('E'.$baris, $row['jenis_kelamin']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-dosen';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

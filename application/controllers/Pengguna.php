@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Pengguna extends CI_Controller
 {
 
@@ -95,5 +98,50 @@ class Pengguna extends CI_Controller
 		$data['judul'] = 'Data Users Institut Agama Islam Tazkia';
 
 		$this->load->view('Pengguna/print', $data);
+	}
+
+	public function pdf(){
+		$data['pengguna'] = $this->Pengguna_model->getPenggunaPrint();
+		$data['judul'] = 'Data User Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-user.pdf";
+		$this->pdf->load_view('Pengguna/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Nama Mahasiswa');
+		$sheet->setCellValue('C1', 'Email');
+		$sheet->setCellValue('D1', 'Role/Hak Akses');
+		$sheet->setCellValue('E1', 'Akun Dibuat'); 
+
+		$Pengguna = $this->Pengguna_model->getPenggunaPrint();
+		$array = json_decode(json_encode($Pengguna), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['nama']);
+			$sheet->setCellValue('C'.$baris, $row['email']);
+			$sheet->setCellValue('D'.$baris, $row['role']);
+			$sheet->setCellValue('E'.$baris, $row['data_created']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-user';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

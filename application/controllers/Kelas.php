@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Kelas extends CI_Controller
 {
 
@@ -118,5 +121,50 @@ class Kelas extends CI_Controller
 		$data['judul'] = 'Data Kelas Institut Agama Islam Tazkia';
 
 		$this->load->view('Kelas/print', $data);
+	}
+
+	public function pdf(){
+		$data['kelas'] = $this->Kelas_model->getKelasPrint();
+		$data['judul'] = 'Data Kelas Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-kelas.pdf";
+		$this->pdf->load_view('Kelas/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Kode Kelas');
+		$sheet->setCellValue('C1', 'Nama Kelas');
+		$sheet->setCellValue('D1', 'Nama Ruangan');
+		$sheet->setCellValue('E1', 'Status');
+
+		$kelas = $this->Kelas_model->getKelasPrint();
+		$array = json_decode(json_encode($kelas), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_kelas']);
+			$sheet->setCellValue('C'.$baris, $row['nama_kelas']);
+			$sheet->setCellValue('D'.$baris, $row['nama_ruangan']);
+			$sheet->setCellValue('E'.$baris, $row['status']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-kelas';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

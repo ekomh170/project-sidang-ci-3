@@ -17,83 +17,87 @@
               <h6 class="card-text text-left"><span class="font-weight-bold">Status : </span><?= cetak($data['status']); ?></h6>
               <br>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
-                <span style="float: left;">
-                  <a href="<?= base_url(); ?>Nilai/printdetail/<?= encrypt_url($data['nim_mhs'])?>" class="btn btn-dark" style="background-color: darkblue;"> Print </a>
+               <div>
+                <span style="float:left;">
+                  <a href="<?= base_url(); ?>Nilai/printdetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+                  <a href="<?= base_url(); ?>Nilai/pdfdetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+                  <a href="<?= base_url(); ?>Nilai/exceldetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
                 </span>
-                <span style="float: right;">
-                  <a href="<?= base_url(); ?>Nilai" class="btn btn-dark" style="background-color: darkblue;"> Kembali </a>
-                </span>
-              <?php endif ?>
-            </div>
+              </div>
+              <span style="float: right;">
+                <a href="<?= base_url(); ?>Nilai" class="btn btn-dark" style="background-color: darkblue;"> Kembali </a>
+              </span>
+            <?php endif ?>
           </div>
         </div>
       </div>
     </div>
-  </center>
-  <div class="container">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-       <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
-       <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Nilai/tambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
-      </div>
-    <?php endif ?>
-    <?php if ($this->session->userdata('id_role') == "3"): ?>
-      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Nilai/tmbltambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Tambah Nilai</b></a>
-      </div>
-    <?php endif ?>
   </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Dosen</th>
-            <th>Mata Kuliah</th>
-            <th>Presensi</th>
-            <th>Tugas</th>
-            <th>UTS</th>
-            <th>UAS</th>
-            <th>Total Nilai</th>
-            <th>Nilai Akhir</th>
-            <th>Predikat</th>
-            <th>Status</th>
-            <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
-              <th>Aksi</th>
-            <?php } ?>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $no = 1;
-          foreach ($nilai as $nl) : ?>
-            <td><?= $no; ?></td>
-            <td><?= cetak($nl->nama_dosen); ?></td>
-            <td><?= cetak($nl->nama_matkul); ?></td>
-            <td><?= cetak($nl->nilai_presensi); ?></td>
-            <td><?= cetak($nl->nilai_tugas); ?></td>
-            <td><?= cetak($nl->nilai_uts); ?></td>
-            <td><?= cetak($nl->nilai_uas); ?></td>
-            <td><?= cetak($nl->total_nilai); ?></td>
-            <td><?= cetak($nl->nilai_akhir); ?></td>
-            <td><?= cetak($nl->grade); ?></td>
-            <td><?= cetak($nl->status); ?></td>
-            <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
-              <td>
-                <a href="<?= base_url(); ?>Nilai/ubah/<?= encrypt_url($nl->id_nilai); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
-                <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
-                <a href="<?= base_url(); ?>Nilai/hapus/<?= encrypt_url($nl->id_nilai); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
-              <?php endif ?>
-              </td>
-            <?php } ?>
-          </tbody>
-          <?php $no++ ?>
-        <?php endforeach; ?>
-      </table>
+</center>
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+     <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
+     <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+      <a href="<?= base_url(); ?>Nilai/tambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
     </div>
-  </div>
+  <?php endif ?>
+  <?php if ($this->session->userdata('id_role') == "3"): ?>
+    <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+      <a href="<?= base_url(); ?>Nilai/tmbltambah/<?= encrypt_url($data['nim_mhs']); ?>" class=" btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Tambah Nilai</b></a>
+    </div>
+  <?php endif ?>
+</div>
+<div class="card-body">
+  <div class="table-responsive">
+    <table class="table table-bordered" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Dosen</th>
+          <th>Mata Kuliah</th>
+          <th>Presensi</th>
+          <th>Tugas</th>
+          <th>UTS</th>
+          <th>UAS</th>
+          <th>Total Nilai</th>
+          <th>Nilai Akhir</th>
+          <th>Predikat</th>
+          <th>Status</th>
+          <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+            <th>Aksi</th>
+          <?php } ?>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $no = 1;
+        foreach ($nilai as $nl) : ?>
+          <td><?= $no; ?></td>
+          <td><?= cetak($nl->nama_dosen); ?></td>
+          <td><?= cetak($nl->nama_matkul); ?></td>
+          <td><?= cetak($nl->nilai_presensi); ?></td>
+          <td><?= cetak($nl->nilai_tugas); ?></td>
+          <td><?= cetak($nl->nilai_uts); ?></td>
+          <td><?= cetak($nl->nilai_uas); ?></td>
+          <td><?= cetak($nl->total_nilai); ?></td>
+          <td><?= cetak($nl->nilai_akhir); ?></td>
+          <td><?= cetak($nl->grade); ?></td>
+          <td><?= cetak($nl->status); ?></td>
+          <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+            <td>
+              <a href="<?= base_url(); ?>Nilai/ubah/<?= encrypt_url($nl->id_nilai); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
+              <a href="<?= base_url(); ?>Nilai/hapus/<?= encrypt_url($nl->id_nilai); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+            <?php endif ?>
+          </td>
+        <?php } ?>
+      </tbody>
+      <?php $no++ ?>
+    <?php endforeach; ?>
+  </table>
+</div>
+</div>
 </div>
 </div>
 </div>

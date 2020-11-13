@@ -15,7 +15,13 @@
               <br>
               <?php if ($this->session->userdata('id_role') != "2"): ?>
                 <span style="float: left;">
-                  <a href="<?= base_url(); ?>Ipk/printdetail/<?= encrypt_url($data['nim_mhs'])?>" class="btn btn-dark" style="background-color: darkblue;"> Print </a>
+                  <div>
+                    <span style="float:left;">
+                      <a href="<?= base_url(); ?>Ipk/printdetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+                      <a href="<?= base_url(); ?>Ipk/pdfdetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+                      <a href="<?= base_url(); ?>Ipk/exceldetail/<?= encrypt_url($data['nim_mhs']); ?>"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
+                    </span>
+                  </div>
                 </span>
                 <span style="float: right;">
                   <a href="<?= base_url(); ?>Ipk" class="btn btn-dark" style="background-color: darkblue;"> Kembali </a>

@@ -24,7 +24,6 @@
               <th>Kode Ruangan</th>
               <th>Nama Ruangan</th>
               <th>Jenis Ruangan</th>
-              <th>Nama Ruangan</th>
               <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                 <th class="text-center">Aksi</th>
               <?php } ?>
@@ -39,7 +38,6 @@
                 <td><?= cetak($rg->id_ruangan); ?></td>
                 <td><?= cetak($rg->nama_ruangan); ?></td>
                 <td><?= cetak($rg->nama_jr); ?></td>
-                <td><?= cetak($rg->nama_ruangan); ?></td>
                 <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                   <td class="text-center">
                     <!--crud-->

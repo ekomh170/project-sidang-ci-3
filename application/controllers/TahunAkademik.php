@@ -1,5 +1,7 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class TahunAkademik extends CI_Controller
 {
@@ -112,4 +114,48 @@ class TahunAkademik extends CI_Controller
 
 		$this->load->view('TahunAkademik/print', $data);
 	}
+
+	public function pdf(){
+		$data['tahunakademik'] = $this->TahunAkademik_model->getTahunAkademikPrint();
+		$data['judul'] = 'Data Tahun Akademik Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-tahun-akademik.pdf";
+		$this->pdf->load_view('TahunAkademik/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Kode Tahun Akademik');
+		$sheet->setCellValue('C1', 'Nama Tahun Akademik');
+		$sheet->setCellValue('D1', 'Status');
+
+		$tahunakademik = $this->TahunAkademik_model->getTahunAkademikPrint();
+		$array = json_decode(json_encode($tahunakademik), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_tahun_akademik']);
+			$sheet->setCellValue('C'.$baris, $row['nama_tahun_akademik']);
+			$sheet->setCellValue('D'.$baris, $row['status']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-tahun-akademik';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
+	}
+
 }

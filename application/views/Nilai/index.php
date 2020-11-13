@@ -18,7 +18,7 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Nim</th>
+							<th>Nim Mahasiswa</th>
 							<th>Nama Mahasiswa</th>
 							<th>Nama Jurusan</th>
 							<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>

@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Nilai extends CI_Controller
 {
 
@@ -211,7 +214,7 @@ class Nilai extends CI_Controller
 
 	public function print(){
 		$data['nilai'] = $this->Nilai_model->getNilaiPrint();
-		$data['judul'] = 'Data Nilai Mahasiswa Institut Agama Islam Tazkia';
+		$data['judul'] = 'Data Nilai Mahasiswa Institut Agama Islam Tazkia yang sudah mulai di rekap';
 
 		$this->load->view('Nilai/print', $data);
 	}
@@ -228,5 +231,122 @@ class Nilai extends CI_Controller
 		}
 
 		$this->load->view('Nilai/printdetail', $data);
+	}
+
+	public function pdf(){
+		$data['nilai'] = $this->Nilai_model->getNilaiPrint();
+		$data['judul'] = 'Data Nilai Mahasiswa Institut Agama Islam Tazkia yang sudah mulai di rekap';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-nilai.pdf";
+		$this->pdf->load_view('Nilai/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Nomor Induk Mahasiswa');
+		$sheet->setCellValue('C1', 'Nama Mahasiswa');
+		$sheet->setCellValue('E1', 'Nama Jurusan');
+
+		$nilai = $this->Nilai_model->getNilaiPrint();
+		$array = json_decode(json_encode($nilai), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['nim_mhs']);
+			$sheet->setCellValue('C'.$baris, $row['nama']);
+			$sheet->setCellValue('E'.$baris, $row['nama_jurusan']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-nilai-mahasiswa';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
+	}
+
+	public function pdfdetail($nim_mhs)
+	{
+		$id            = decrypt_url($nim_mhs);
+		$data['judul'] = 'Hasil Penilaian Nilai';
+		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['data']  = $this->Nilai_model->DetailDataNilai($id);
+		$data_mhs = $this->Nilai_model->DetailDataNilai($id);
+
+		if ($this->session->userdata('id_role') != "3") {
+			$data['nilai'] = $this->Nilai_model->NilaiDataNilai($id);
+		}
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = $data_mhs['nama']. "-laporan-data-nilai-akhir.pdf";
+		$this->pdf->load_view('Nilai/pdfdetail', $data);
+	}
+
+	public function exceldetail($nim_mhs){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+		$id = decrypt_url($nim_mhs);
+
+		$data_mhs = $this->Nilai_model->DetailDataNilai($id);
+		$sheet->setCellValue('A1', "NIM Mahasiswa : ".  $data_mhs['nim_mhs']);
+		$sheet->setCellValue('A2', "Nama Mahasiswa : ". $data_mhs['nama']);
+		$sheet->setCellValue('A3', "Nama Fakultas : ". $data_mhs['nama_fakultas']);
+		$sheet->setCellValue('A4', "Nama Jurusan : ". $data_mhs['nama_jurusan']);
+		$sheet->setCellValue('A5', "Nama Tahun Akademik : ". $data_mhs['nama_tahun_akademik']);
+		$sheet->setCellValue('A6', "Status : ". $data_mhs['status']);
+
+		$sheet->setCellValue('A7', 'No');
+		$sheet->setCellValue('B7', 'Nama Dosen');
+		$sheet->setCellValue('C7', 'Mata Kuliah');
+		$sheet->setCellValue('E7', 'Nilai Presensi');
+		$sheet->setCellValue('F7', 'Nilai Tugas');
+		$sheet->setCellValue('G7', 'Nilai UTS');
+		$sheet->setCellValue('H7', 'Nilai UAS');
+		$sheet->setCellValue('I7', 'Total Nilai');
+		$sheet->setCellValue('J7', 'Nilai Akhir');
+		$sheet->setCellValue('K7', 'Predikat');
+		$sheet->setCellValue('L7', 'Status');
+
+		$nilai = $this->Nilai_model->NilaiDataNilai($id);
+		$array = json_decode(json_encode($nilai), true);
+		$no = 1;
+		$baris = 8;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['nama_dosen']);
+			$sheet->setCellValue('C'.$baris, $row['nama_matkul']);
+			$sheet->setCellValue('E'.$baris, $row['nilai_presensi']);
+			$sheet->setCellValue('F'.$baris, $row['nilai_tugas']);
+			$sheet->setCellValue('G'.$baris, $row['nilai_uts']);
+			$sheet->setCellValue('H'.$baris, $row['nilai_uas']);
+			$sheet->setCellValue('I'.$baris, $row['total_nilai']);
+			$sheet->setCellValue('J'.$baris, $row['nilai_akhir']);
+			$sheet->setCellValue('K'.$baris, $row['grade']);
+			$sheet->setCellValue('L'.$baris, $row['status']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = $data_mhs['nama']. '-xlaporan-data-krs-detail-mahasiswa';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

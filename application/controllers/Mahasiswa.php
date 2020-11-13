@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Mahasiswa extends CI_Controller {
 
 	public function __construct() {
@@ -212,5 +215,52 @@ class Mahasiswa extends CI_Controller {
 		$data['judul'] = 'Data Lengkap Mahasiswa Institut Agama Islam Tazkia';
 
 		$this->load->view('Mahasiswa/printdetail', $data);
+	}
+
+	public function pdf(){
+		$data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaPrint();
+		$data['judul'] = 'Data Mahasiswa Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-mahasiswa.pdf";
+		$this->pdf->load_view('Mahasiswa/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Nomor Induk Mahasiswa');
+		$sheet->setCellValue('C1', 'Nama Mahasiswa');
+		$sheet->setCellValue('D1', 'Tahun Akademik');
+		$sheet->setCellValue('E1', 'Nama Jurusan');
+		$sheet->setCellValue('F1', 'Nama Kelas'); 
+
+		$mahasiswa = $this->Mahasiswa_model->getMahasiswaPrint();
+		$array = json_decode(json_encode($mahasiswa), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['nim_mhs']);
+			$sheet->setCellValue('C'.$baris, $row['nama']);
+			$sheet->setCellValue('D'.$baris, $row['nama_tahun_akademik']);
+			$sheet->setCellValue('E'.$baris, $row['nama_jurusan']);
+			$sheet->setCellValue('F'.$baris, $row['nama_kelas']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-mahasiswa';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

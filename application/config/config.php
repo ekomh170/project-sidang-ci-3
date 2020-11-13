@@ -137,8 +137,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
-
+$config['composer_autoload'] = "vendor/autoload.php";
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
@@ -476,7 +475,7 @@ $config['csrf_exclude_uris'] = array();
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

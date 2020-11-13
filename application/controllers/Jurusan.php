@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Jurusan extends CI_Controller
 {
 
@@ -130,5 +133,52 @@ class Jurusan extends CI_Controller
 		$data['judul'] = 'Data Jurusan Institut Agama Islam Tazkia';
 
 		$this->load->view('Jurusan/print', $data);
+	}
+
+	public function pdf(){
+		$data['jurusan'] = $this->Jurusan_model->getJurusanPrint();
+		$data['judul'] = 'Data Jurusan Institut Agama Islam Tazkia';
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan-data-jurusan.pdf";
+		$this->pdf->load_view('Jurusan/pdf', $data);
+	}
+
+	public function excel(){		
+		$spreadsheet = new Spreadsheet();
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'No');
+		$sheet->setCellValue('B1', 'Kode Jurusan');
+		$sheet->setCellValue('C1', 'Nama Jurusan');
+		$sheet->setCellValue('D1', 'Nama Fakultas');
+		$sheet->setCellValue('E1', 'Nama Pendidikan');
+		$sheet->setCellValue('F1', 'Nama Singkatan Pendidikan');
+
+		$jurusan = $this->Jurusan_model->getJurusanPrint();
+		$array = json_decode(json_encode($jurusan), true);
+		$no = 1;
+		$baris = 2;
+
+		foreach($array as $row) 
+		{
+			$sheet->setCellValue('A'.$baris, $no++);
+			$sheet->setCellValue('B'.$baris, $row['id_jurusan']);
+			$sheet->setCellValue('C'.$baris, $row['nama_jurusan']);
+			$sheet->setCellValue('D'.$baris, $row['nama_fakultas']);
+			$sheet->setCellValue('E'.$baris, $row['nama_lengkap_jp']);
+			$sheet->setCellValue('F'.$baris, $row['nama_jp']);
+			$baris++;
+		}
+
+		$writer = new xlsx($spreadsheet);
+		$filename = 'laporan-data-jurusan';
+
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

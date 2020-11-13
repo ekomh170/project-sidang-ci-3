@@ -18,7 +18,6 @@
 					<b>+ Data Baru</b>
 				</a>
 			</div>
-			
 		<?php endif ?>
 	</div>
 	<div class="card-body">
