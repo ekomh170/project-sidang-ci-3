@@ -28,7 +28,6 @@
 		 			showConfirmButton: true,
 		 		});
 		 	}
-
 		 </script>
 		</body>
 		</html>

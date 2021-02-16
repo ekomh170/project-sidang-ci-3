@@ -18,9 +18,9 @@
         <label for="id_jurusan"><b>Jurusan :</b></label>
         <select class="form-control" id="id_jurusan" name="id_jurusan">
           <option value="">--Pilih Jurusan--</option>
-          <?php foreach ($jurusan as $value) { ?>
+          <?php foreach ($jurusan as $key => $value) { ?>
             <?php if ($value->status == "Aktif") {?>
-              <option value="<?=$value->id_jurusan?>"><?=$value->nama_jurusan?></option>
+              <option value="<?=$value->id_jurusan?>"><?=$value->nama_jurusan?> / <?=$value->nama_jp?></option>
           <?php } } ?>
         </select>
         <small class="form-text text-danger"><b><u><?=form_error('id_jurusan')?></u></b></small>

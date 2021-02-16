@@ -6,6 +6,7 @@ class Fakultas_model extends CI_Model
 	{
 		$this->db->select('tb_fakultas.id_fakultas, tb_fakultas.nama_fakultas, tb_fakultas.keterangan, tb_fakultas.status');
 		$this->db->from('tb_fakultas');
+		$this->db->order_by('nama_fakultas', 'asc');
 
 		if ($cari_fks != '') {
 			$this->db->like('id_fakultas', $cari_fks);

@@ -44,9 +44,14 @@
                     <!--nonaktif-->
                     <?php if ($du->status == 'Aktif') { ?>
                       <?= anchor(base_url('Pengguna/nonaktif/') . $du->id, '<button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-ban"></i></button>') ?>
-                      <?php } ?> <b>|</b>
-                      <!--Hapus-->
+                      <?php } ?> 
+                    <?php } ?>
+                    <?php if ($this->session->userdata('id_role') == "1") { ?>
+                      <b>|</b>
                       <a href="<?= base_url(); ?>Pengguna/hapus/<?= encrypt_url($du->id); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
+                    <?php } ?>
+
+                    <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
                     </td>
                   <?php } ?>
                 </tr>

@@ -20,12 +20,12 @@
           <select class="form-control" id="id_matkul" name="id_matkul">
             <option value="">--Pilih Mata Kuliah--</option>
             <?php if ($inputSelect['id_matkul']) { ?>
-              <option selected value="<?= $inputSelect['id_matkul'] ?>"><?= $inputSelect['nama_matkul'] ?></option>
+              <option selected value="<?= $inputSelect['id_matkul'] ?>"><?= $inputSelect['nama_matkul'] ?> / <?= $inputSelect['nama_jurusan'] ?></option>
             <?php } ?>
             <?php foreach ($tb_matkul as $value) { ?>
               <?php if ($value->id_matkul != $inputSelect['id_matkul']) { ?>
                 <?php if ($value->status == "Aktif") { ?>
-                  <option value="<?= $value->id_matkul ?>"><?= $value->nama_matkul ?></option>
+                  <option value="<?= $value->id_matkul ?>"><?= $value->nama_matkul ?> / <?=$value->nama_jurusan?></option>
                 <?php } } } ?>
               </select>
               <small class="form-text text-danger"><b><u><?= form_error('id_matkul') ?></u></b></small>

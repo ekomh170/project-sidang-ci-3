@@ -6,6 +6,7 @@ class Jurusan_model extends CI_Model
 	{
 		$this->db->select('tb_jurusan.id_jurusan, tb_jurusan.nama_jurusan, tb_fakultas.nama_fakultas, tb_jenjang_pendidikan.nama_jp, tb_jenjang_pendidikan.nama_lengkap_jp');
 		$this->db->from('tb_jurusan');
+		$this->db->order_by('nama_jurusan', 'asc');
 		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_jurusan.id_fakultas', 'left');
 		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');
 
@@ -42,6 +43,9 @@ class Jurusan_model extends CI_Model
 
 	public function TambahDataJurusan()
 	{
+		$builder_jurusan = $this->db->get('tb_jurusan');
+		$result = $builder_jurusan->result_array();
+
 		$count_jurusan         = $this->db->count_all('tb_jurusan');
 		$helper                = 1 + $count_jurusan;
 		$date                  = date('s');
@@ -61,6 +65,19 @@ class Jurusan_model extends CI_Model
 			'penjelasan'            => $penjelasan,
 			'status'                => $status
 		);
+
+		foreach ($result as $value) {
+			if ($nama_jurusan == $value['nama_jurusan']) {
+				if ($id_jenjang_pendidikan == $value['id_jenjang_pendidikan']) {
+					echo "
+					<script>
+					alert('Data gagal ditambahkan data tidak boleh sama!!');
+					document.location.href = 'tambah';
+					</script>";
+					die;
+				}
+			}
+		}
 
 		$this->db->insert('tb_jurusan', $data);
 		if ($this->db->affected_rows() > 0) {
@@ -93,7 +110,7 @@ class Jurusan_model extends CI_Model
 
 	public function inputSelectDataJurusan($id_jurusan)
 	{
-	    $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('tb_jurusan');
 		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_jurusan.id_fakultas', 'left');
 		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');
@@ -113,6 +130,9 @@ class Jurusan_model extends CI_Model
 
 	public function UbahDataJurusan()
 	{
+		$builder_jurusan = $this->db->get('tb_jurusan');
+		$result = $builder_jurusan->result_array();
+
 		$data = [
 			"id_jurusan"            => $this->input->post('id_jurusan', true),
 			"nama_jurusan"          => $this->input->post('nama_jurusan', true),
@@ -121,6 +141,22 @@ class Jurusan_model extends CI_Model
 			"penjelasan"            => $this->input->post('penjelasan', true),
 			"status"                => $this->input->post('status', true)
 		];
+		
+		$nama_jurusan          = $this->input->post('nama_jurusan', true);
+		$id_jenjang_pendidikan = $this->input->post('id_jenjang_pendidikan', true);
+
+		foreach ($result as $value) {
+			if ($nama_jurusan == $value['nama_jurusan']) {
+				if ($id_jenjang_pendidikan == $value['id_jenjang_pendidikan']) {
+					echo "
+					<script>
+					alert('Data gagal ditambahkan data tidak boleh sama!!');
+					document.location.href = 'tambah';
+					</script>";
+					die;
+				}
+			}
+		}
 
 		$this->db->where('id_jurusan',  $this->input->post('id_jurusan'));
 		$this->db->update('tb_jurusan', $data);
@@ -137,7 +173,7 @@ class Jurusan_model extends CI_Model
 
 	public function getJurusanPrint()
 	{
-		$this->db->select('tb_jurusan.id_jurusan, tb_jurusan.nama_jurusan, tb_fakultas.nama_fakultas, tb_jenjang_pendidikan.nama_jp, tb_jenjang_pendidikan.nama_lengkap_jp');
+		$this->db->select('*');
 		$this->db->from('tb_jurusan');
 		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_jurusan.id_fakultas', 'left');
 		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');

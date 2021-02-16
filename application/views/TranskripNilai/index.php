@@ -29,7 +29,7 @@
 						<th>Nim Mahasiswa</th>
 						<th>Nama Mahasiswa</th>
 						<th>Nama Jurusan</th>
-						<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5" || $this->session->userdata('id_role') == "4") { ?>
+						<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5" || $this->session->userdata('id_role') == "4" || $this->session->userdata('id_role') == "6") { ?>
 							<th witdh="18%" class="text-center">Aksi</th>
 						<?php } ?>
 					</tr>
@@ -53,6 +53,12 @@
 									<!--crud-->
 								</td>
 							<?php } ?>
+							<?php if ($this->session->userdata('id_role') == "6") { ?>
+								<td class="text-center">
+									<a href="<?= base_url(); ?>TranskripNilai/detail/<?= encrypt_url($tn->nim_mhs); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-info-circle"></i></button></a>
+								</td>
+							<?php } ?>
+							
 						</tr>
 						<?php $no++ ?>
 					<?php endforeach; ?>

@@ -21,7 +21,7 @@
 							<th>Nim Mahasiswa</th>
 							<th>Nama Mahasiswa</th>
 							<th>Nama Jurusan</th>
-							<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+							<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5" || $this->session->userdata('id_role') == "6") { ?>
 								<th witdh="18%" class="text-center">Aksi</th>
 							<?php } ?>
 						</tr>
@@ -36,7 +36,7 @@
 								<td><?= cetak($krs->nim_mhs); ?></td>
 								<td><?= cetak($krs->nama); ?></td>
 								<td><?= cetak($krs->nama_jurusan); ?></td>
-								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
+								<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5" || $this->session->userdata('id_role') == "6") { ?>
 									<td class="text-center">
 										<!--crud-->
 										<a href="<?= base_url(); ?>KrsDetail/detail/<?= encrypt_url($krs->nim_mhs); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-info-circle"></i></button></a>
@@ -52,11 +52,13 @@
 			</div>
 		</div>
 		<div class="card-header py-3">
-			<div class="col col-4">
-				 <a href="<?= base_url(); ?>KrsDetail/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
-				<a href="<?= base_url(); ?>KrsDetail/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
-				<a href="<?= base_url(); ?>KrsDetail/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
-			</div>
+			<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "5") { ?>
+				<div class="col col-4">
+					<a href="<?= base_url(); ?>KrsDetail/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+					<a href="<?= base_url(); ?>KrsDetail/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+					<a href="<?= base_url(); ?>KrsDetail/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
+				</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

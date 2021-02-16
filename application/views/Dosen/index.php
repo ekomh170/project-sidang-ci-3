@@ -11,16 +11,18 @@
           <button class="btn btn-outline-dark my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
-      <div>
-        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-          <a href="<?= base_url(); ?>Dosen/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b>
-          </a>
+      <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+        <div>
+          <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+            <a href="<?= base_url(); ?>Dosen/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b>
+            </a>
+          </div>
         </div>
-      </div>
+      <?php } ?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table-bordered text-center" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>No</th>
@@ -28,7 +30,7 @@
               <th>Nama Dosen</th>
               <th>Mata Kuliah</th>
               <th>Jenis Kelamin</th>
-              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4" || $this->session->userdata('id_role') == "6") { ?>
                 <th class="text-center">Aksi</th>
               <?php } ?>
             </tr>
@@ -59,6 +61,11 @@
                     <a href="<?= base_url(); ?>Dosen/hapus/<?= encrypt_url($dsn->id_dosen); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
                   </td>
                 <?php } ?>
+                <?php if ($this->session->userdata('id_role') == "6") { ?>
+                  <td class="text-center">
+                    <a href="<?= base_url(); ?>Dosen/detail/<?= encrypt_url($dsn->id_dosen); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-info-circle"></i></button></a>
+                  </td>
+                <?php } ?>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -72,6 +79,6 @@
      <a href="<?= base_url(); ?>Dosen/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
      <a href="<?= base_url(); ?>Dosen/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
      <a href="<?= base_url(); ?>Dosen/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
-  </div>
-</div>
+   </div>
+ </div>
 </div>

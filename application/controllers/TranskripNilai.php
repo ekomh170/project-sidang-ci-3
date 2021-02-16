@@ -197,10 +197,12 @@ class TranskripNilai extends CI_Controller {
 		$data['data'] = $this->TranskripNilai_model->DetailDataTranskripNilai($id);
 		$data['nilai'] = $this->TranskripNilai_model->NilaiDataTranskripNilai($id);
 		$data['ipk'] = $this->TranskripNilai_model->IpkDataTranskripNilai($id);
+		$data_mhs  = $this->TranskripNilai_model->DetailDataTranskripNilai($id);
+
 
 		$this->load->library('pdf');
 		$this->pdf->setPaper('A4', 'landscape');
-		$this->pdf->filename = "laporan-data-transkrip-nilai";
+		$this->pdf->filename = $data_mhs['nama']. "-laporan-data-transkrip-nilai";
 		$this->pdf->load_view('TranskripNilai/pdfdetail', $data);
 	} 
 

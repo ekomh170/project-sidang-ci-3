@@ -4,6 +4,7 @@ class Mahasiswa_model extends CI_Model {
 	public function getMahasiswa($limit, $offset, $cari_mhs = '') {
 		$this->db->select('mahasiswa.nim_mhs, mahasiswa.image, mahasiswa.nama, tb_jurusan.nama_jurusan, tb_kelas.nama_kelas, tb_tahun_akademik.nama_tahun_akademik, mahasiswa.jenis_kelamin, mahasiswa.status');
 		$this->db->from('mahasiswa');
+		$this->db->order_by('nama', 'asc');
 		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
 		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
 		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik', 'left');
@@ -147,6 +148,8 @@ class Mahasiswa_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('mahasiswa');
 		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
+		$this->db->join('tb_matkul', 'tb_matkul.id_jurusan = tb_jurusan.id_jurusan', 'left');
+		$this->db->join('tb_jenjang_pendidikan', 'tb_jenjang_pendidikan.id_jenjang_pendidikan = tb_jurusan.id_jenjang_pendidikan', 'left');
 		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
 		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik', 'left');
 		$this->db->where('nim_mhs', $nim_mhs);

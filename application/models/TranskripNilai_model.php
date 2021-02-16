@@ -6,6 +6,7 @@ class TranskripNilai_model extends CI_Model
 	{
 		$this->db->select('tb_transkrip_nilai.id_transkrip_nilai, tb_transkrip_nilai.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan');
 		$this->db->from('tb_transkrip_nilai');
+		$this->db->order_by('nama', 'asc');
 		$this->db->join('mahasiswa', 'tb_transkrip_nilai.nim_mhs = mahasiswa.nim_mhs', 'left');
 		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
 		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
@@ -77,19 +78,18 @@ class TranskripNilai_model extends CI_Model
 		$this->db->where('tb_transkrip_nilai.nim_mhs', $nim_mhs);
 		$query = $this->db->get();
 		return $query->row_array();
-}
+	}
 
 	public function NilaiDataTranskripNilai($nim_mhs)
 	{
 		$this->db->select('krs_detail.id_krs, mahasiswa.nim_mhs, mahasiswa.nama, tb_dosen.nama_dosen, tb_jurusan.nama_jurusan, tb_matkul.nama_matkul, krs_detail.nilai_krs, tb_nilai.nilai_akhir');
-		// $this->db->distinct('krs_detail');
 		$this->db->from('krs_detail');
+		$this->db->order_by('nama_dosen', 'asc');
 		$this->db->join('mahasiswa', 'mahasiswa.nim_mhs = krs_detail.nim_mhs', 'left');
 		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = mahasiswa.id_jurusan', 'left');
 		$this->db->join('tb_dosen', 'krs_detail.id_dosen = tb_dosen.id_dosen', 'left');
 		$this->db->join('tb_nilai', 'krs_detail.id_krs = tb_nilai.id_krs', 'left');	
 		$this->db->join('tb_matkul', 'tb_matkul.id_matkul = tb_dosen.id_matkul', 'left');
-		// $this->db->join('tb_transkrip_nilai', 'tb_transkrip_nilai.nim_mhs = krs_detail.nim_mhs', 'left');
 		$this->db->where('krs_detail.nim_mhs', $nim_mhs);
 
 		$query = $this->db->get();
@@ -145,7 +145,7 @@ class TranskripNilai_model extends CI_Model
 
 	public function inputSelectDataTranskripNilai($id_transkrip_nilai)
 	{
-	    $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('tb_transkrip_nilai');
 		$this->db->join('mahasiswa', 'tb_transkrip_nilai.nim_mhs = mahasiswa.nim_mhs', 'left');
 		$this->db->where('tb_transkrip_nilai.id_transkrip_nilai', $id_transkrip_nilai);

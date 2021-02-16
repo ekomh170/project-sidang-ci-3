@@ -56,11 +56,12 @@ class Dosen extends CI_Controller {
 	}
 
 	public function tambah() {
+		$this->load->model('Matkul_model');
 		$data['judul'] = 'Form Tambah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->db->order_by('nama_matkul', 'asc');
-		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
+		$data['tb_matkul'] = $this->Matkul_model->getMatkulPrint();
 
 		$this->form_validation->set_rules('nama_dosen', 'Nama Dosen', 'required');
 		$this->form_validation->set_rules('nama_panggilan', 'Nama Panggilan Dosen', 'required');
@@ -107,6 +108,7 @@ class Dosen extends CI_Controller {
 	}
 
 	public function edit($id_dosen) {
+		$this->load->model('Matkul_model');
 		$data['judul'] = 'Form Ubah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -116,7 +118,7 @@ class Dosen extends CI_Controller {
 		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
 		$this->db->order_by('nama_matkul', 'asc');
-		$data['tb_matkul'] = $this->db->get('tb_matkul')->result();
+		$data['tb_matkul'] = $this->Matkul_model->getMatkulPrint();
 
 		$this->form_validation->set_rules('nama_dosen', 'Nama Dosen', 'required');
 		$this->form_validation->set_rules('nama_panggilan', 'Nama Panggilan Dosen', 'required');

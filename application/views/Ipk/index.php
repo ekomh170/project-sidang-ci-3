@@ -28,7 +28,7 @@
 						<th>Nim Mahasiswa</th>
 						<th>Nama Mahasiswa</th>
 						<th>Nama Jurusan</th>
-						<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5" || $this->session->userdata('id_role') == "4") { ?>
+						<?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5" || $this->session->userdata('id_role') == "4" || $this->session->userdata('id_role') == "6") { ?>
 							<th witdh="18%" class="text-center">Aksi</th>
 						<?php } ?>
 					</tr>
@@ -47,6 +47,11 @@
 									<a href="<?= base_url(); ?>Ipk/ubah/<?= encrypt_url($ipk->id_ipk); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
 									<a href="<?= base_url(); ?>Ipk/hapus/<?= encrypt_url($ipk->id_ipk); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
 									<!--crud-->
+								</td>
+							<?php } ?>
+							<?php if ($this->session->userdata('id_role') == "6") { ?>
+								<td class="text-center">
+									<a href="<?= base_url(); ?>Ipk/detail/<?= encrypt_url($ipk->nim_mhs); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-info-circle"></i></button></a>	
 								</td>
 							<?php } ?>
 						</tr>

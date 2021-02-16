@@ -18,9 +18,9 @@
         <label for="id_matkul" class="font-weight-bold">Mata Kuliah :</label>
         <select class="form-control" id="id_matkul" name="id_matkul">
           <option value="">--Pilih Mata Kuliah--</option>
-          <?php foreach ($tb_matkul as $value) { ?>
+          <?php foreach ($tb_matkul as $key => $value) { ?>
             <?php if ($value->status == "Aktif") {?>
-              <option value="<?=$value->id_matkul?>"><?=$value->nama_matkul?></option>
+              <option value="<?=$value->id_matkul?>"><?=$value->nama_matkul?> / <?=$value->nama_jurusan?></option>
           <?php }
 }?>
         </select>

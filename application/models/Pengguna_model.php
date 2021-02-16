@@ -6,6 +6,7 @@ class Pengguna_model extends CI_Model
 	{
 		$this->db->select('user.id, user.nama, user.nama_panggilan, user.email, user.image, user.password, user.password_asli, user.password_asli, user_role.role, user.status, user.data_created');
 		$this->db->from('user');
+		$this->db->order_by('nama', 'asc');
 		$this->db->join('user_role', 'user_role.id = user.id_role');
 
 		if ($cari_usr != '') {

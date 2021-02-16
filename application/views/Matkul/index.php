@@ -11,13 +11,15 @@
           <button class="btn btn-outline-dark my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
-      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Matkul/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
-      </div>
+      <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+          <a href="<?= base_url(); ?>Matkul/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
+        </div>
+      <?php } ?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table-bordered text-center" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>No</th>

@@ -10,7 +10,6 @@ class Pengguna extends CI_Controller
 	{
 		parent::__construct();
 		cek_login();
-		check_role_admin_op_pendataan();
 		pass_block();
 
 		$this->load->model('Pengguna_model');
@@ -18,6 +17,7 @@ class Pengguna extends CI_Controller
 
 	public function index($offset = NULL)
 	{
+		check_role_admin_op_pendataan();	
 		$text_usr = "";
 		if ($this->input->post('submit') != NULL) {
 			$text_usr = $this->input->post('cari_usr');
@@ -57,6 +57,7 @@ class Pengguna extends CI_Controller
 
 	public function hapus($id)
 	{
+		check_role_admin_khusus();
 		$id_akun = decrypt_url($id);
 		$this->Pengguna_model->HapusDataPengguna($id_akun);
 		$this->session->set_flashdata('berhasil', 'Dihapus');
@@ -65,6 +66,7 @@ class Pengguna extends CI_Controller
 
 	public function nonaktif($id)
 	{
+		check_role_admin_op_pendataan();
 		$data_user = $this->db->get_where('user', ['id' => $id])->row_array();
 
 		$data = array(
@@ -81,6 +83,7 @@ class Pengguna extends CI_Controller
 
 	public function aktif($id)
 	{
+		check_role_admin_op_pendataan();
 		$data_user = $this->db->get_where('user', ['id' => $id])->row_array();
 
 		$data = array(
@@ -94,6 +97,7 @@ class Pengguna extends CI_Controller
 	}
 
 	public function print(){
+		check_role_admin_op_pendataan();
 		$data['data_user'] = $this->Pengguna_model->getPenggunaPrint();
 		$data['judul'] = 'Data Users Institut Agama Islam Tazkia';
 
@@ -101,6 +105,7 @@ class Pengguna extends CI_Controller
 	}
 
 	public function pdf(){
+		check_role_admin_op_pendataan();
 		$data['pengguna'] = $this->Pengguna_model->getPenggunaPrint();
 		$data['judul'] = 'Data User Institut Agama Islam Tazkia';
 
@@ -111,6 +116,7 @@ class Pengguna extends CI_Controller
 	}
 
 	public function excel(){		
+		check_role_admin_op_pendataan();
 		$spreadsheet = new Spreadsheet();
 		$sheet = $spreadsheet->getActiveSheet();
 

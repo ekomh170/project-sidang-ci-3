@@ -20,12 +20,12 @@
           <select class="form-control" id="id_jurusan" name="id_jurusan">
             <option value="">--Pilih Jurusan--</option>
             <?php if ($inputSelect['id_jurusan']) {?>
-              <option selected value="<?=$inputSelect['id_jurusan']?>"><?=$inputSelect['nama_jurusan']?></option>
+              <option selected value="<?=$inputSelect['id_jurusan']?>"><?=$inputSelect['nama_jurusan']?> / <?=$inputSelect['nama_jp']?></option>
             <?php }?>
             <?php foreach ($jurusan as $value) {?>
               <?php if ($value->id_jurusan != $inputSelect['id_jurusan']) {?>
                 <?php if ($value->status == "Aktif") {?>
-                  <option value="<?=$value->id_jurusan?>"><?=$value->nama_jurusan?></option>
+                  <option value="<?=$value->id_jurusan?>"><?=$value->nama_jurusan?> / <?=$value->nama_jp?></option>
                 <?php }}}?>
               </select>
               <small class="form-text text-danger"><b><u><?=form_error('id_jurusan')?></u></b></small>

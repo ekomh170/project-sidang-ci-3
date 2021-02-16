@@ -53,7 +53,7 @@
     <div class="card-header py-3">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered" width="100%" cellspacing="0">
+          <table class="table table-bordered text-center" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>No</th>
@@ -81,8 +81,9 @@
                   <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "3" || $this->session->userdata('id_role') == "5") { ?>
                     <td>
                       <center>
-                       <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> <b>|</b>
-                       <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
+                       <a href="<?= base_url(); ?>KrsDetail/ubah/<?= encrypt_url($nl->id_krs); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-fw fa-edit"></i></button></a> 
+                        <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4"): ?>
+                        <b>|</b>
                        <a href="<?= base_url(); ?>KrsDetail/hapus/<?= encrypt_url($nl->id_krs); ?>" class="tombol-hapus"><button type="button" class="btn btn-dark btn-circle tombol-hapus" style="background-color: darkblue;"><i class="fas fa-fw fa-trash tombol-hapus"></i></button></a>
                      <?php endif ?>
                    </center>

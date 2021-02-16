@@ -6,6 +6,7 @@ class KrsDetail_model extends CI_Model
 	{
 		$this->db->select('mahasiswa.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan');
 		$this->db->from('mahasiswa');
+		$this->db->order_by('nama', 'asc');
 		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
 		$this->db->join('tb_kelas', 'mahasiswa.id_kelas = tb_kelas.id_kelas', 'left');
 		$this->db->join('tb_tahun_akademik', 'mahasiswa.id_tahun_akademik = tb_tahun_akademik.id_tahun_akademik', 'left');
@@ -241,6 +242,7 @@ class KrsDetail_model extends CI_Model
 	{
 		$this->db->select('krs_detail.id_krs, mahasiswa.nim_mhs, mahasiswa.nama, tb_dosen.nama_dosen, tb_jurusan.nama_jurusan, tb_matkul.nama_matkul, krs_detail.nilai_krs, krs_detail.grade, krs_detail.status');
 		$this->db->from('krs_detail');
+		$this->db->order_by('nama', 'asc');
 		$this->db->join('mahasiswa', 'mahasiswa.nim_mhs = krs_detail.nim_mhs', 'left');
 		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = mahasiswa.id_jurusan', 'left');
 		$this->db->join('tb_dosen', 'tb_dosen.id_dosen = krs_detail.id_dosen', 'left');

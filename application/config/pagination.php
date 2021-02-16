@@ -3,11 +3,11 @@
 	$config['full_tag_open'] = '<nav aria-label="Page navigation example"><ul class="pagination justify-content-end">';
 	$config['full_tag_close'] = '</ul><nav>';
 
-	$config['first_link'] = 'First';
+	$config['first_link'] = 'Pertama';
 	$config['first_tag_open'] = '<li class="page-item">';
 	$config['first_tag_close'] = '</li>';
 
-	$config['last_link'] = 'Last';
+	$config['last_link'] = 'Terakhir';
 	$config['last_tag_open'] = '<li class="page-item">';
 	$config['last_tag_close'] = '</li>';
 

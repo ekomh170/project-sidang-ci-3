@@ -6,6 +6,8 @@ class Kelas_model extends CI_Model
 	{
 		$this->db->select('tb_kelas.id_kelas, tb_kelas.nama_kelas, tb_kelas.status, tb_ruangan.nama_ruangan');
 		$this->db->from('tb_kelas');
+		$this->db->order_by('nama_kelas', 'asc');
+
 		$this->db->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_kelas.id_ruangan', 'left');
 
 		if ($cari_kls != '') {
@@ -86,7 +88,7 @@ class Kelas_model extends CI_Model
 
 	public function inputSelectDataKelas($id_kelas)
 	{
-	    $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('tb_kelas');
 		$this->db->join('tb_ruangan', 'tb_ruangan.id_ruangan = tb_kelas.id_ruangan', 'left');
 		$this->db->where('tb_kelas.id_kelas', $id_kelas);

@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item nav-link text-white"><button id="clock" style="background-color: darkblue; font-size: 12.5px;" class="btn btn text-white"><b>Pukul : </b><?php print date('H:i:s');?></button></li>
-          <li class="nav-item nav-link text-white"><button style="background-color: darkblue; font-size: 12.5px;" class="btn btn text-white"><b>Tanggal : </b><?=waktu();?></button></li>
+          <li class="nav-item nav-link text-white"><button style="background-color: darkblue; font-size: 12.5px;" class="btn btn text-white"><?=waktu();?></button></li>
           <li class="nav-item nav-link text-white"><button style="background-color: darkblue; font-size: 12.5px;" class="btn btn btn-icon-split text-white" onClick="document.location.reload(true)"><span class="icon text-white"><i class="fas fa-sync-alt"></i></span><span class="text">Refresh Halaman</span></button></li>
         </ul>
       </div>

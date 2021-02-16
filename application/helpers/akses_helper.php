@@ -9,6 +9,21 @@ function cek_login()
 	}
 }
 
+function check_role_admin_khusus()
+{
+	$ci =& get_instance();
+
+	$ci->load->model('Tambahan_model');
+	$userData = $ci->Tambahan_model->getUserData();
+
+	$cek_id_role = $userData['id_role'] == "1";
+
+	if ($cek_id_role == FALSE) {
+		redirect('Profile');
+	}
+
+}
+
 function check_role_admin()
 {
 	$ci =& get_instance();
@@ -31,7 +46,7 @@ function check_role_dosen_op_penilaian()
 	$ci->load->model('Tambahan_model');
 	$userData = $ci->Tambahan_model->getUserData();
 
-	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "3" || $userData['id_role'] == "5" || $userData['id_role'] == "4";
+	$cek_id_role = $userData['id_role'] == "1" || $userData['id_role'] == "3" || $userData['id_role'] == "5" || $userData['id_role'] == "4" || $userData['id_role'] == "6";
 
 	if ($cek_id_role == FALSE) {
 		redirect('Profile');

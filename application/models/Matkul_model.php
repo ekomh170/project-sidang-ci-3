@@ -126,7 +126,7 @@ class matkul_model extends CI_Model
 
 	public function getMatkulPrint()
 	{
-		$this->db->select('tb_matkul.id_matkul, tb_matkul.nama_matkul, tb_jurusan.nama_jurusan');
+		$this->db->select('*');
 		$this->db->from('tb_matkul');
 		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = tb_matkul.id_jurusan', 'left');
 

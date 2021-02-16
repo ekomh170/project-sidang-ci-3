@@ -11,20 +11,22 @@
           <button class="btn btn-outline-dark my-1 my-sm-0" type="submit" name="submit" value="submit"><i class="fa fa-search"></i></button>
         </form>
       </span>
-      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <a href="<?= base_url(); ?>Ruangan/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
-      </div>
+      <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+          <a href="<?= base_url(); ?>Ruangan/tambah" class="btn btn-block btn-dark" style="background-color: darkblue;"><b>+ Data Baru</b></a>
+        </div>
+      <?php } ?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table-bordered text-center" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>No</th>
               <th>Kode Ruangan</th>
               <th>Nama Ruangan</th>
               <th>Jenis Ruangan</th>
-              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4") { ?>
+              <?php if ($this->session->userdata('id_role') == "1" || $this->session->userdata('id_role') == "4" || $this->session->userdata('id_role') == "6") { ?>
                 <th class="text-center">Aksi</th>
               <?php } ?>
             </tr>
@@ -47,19 +49,24 @@
                     <!--crud-->
                   </td>
                 <?php } ?>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-        <?php echo $this->pagination->create_links(); ?>
-      </div>
-    </div>
-    <div class="card-header py-3">
-      <div class="col col-4">
-       <a href="<?= base_url(); ?>Ruangan/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
-       <a href="<?= base_url(); ?>Ruangan/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
-       <a href="<?= base_url(); ?>Ruangan/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
+                <?php if ($this->session->userdata('id_role') == "6") { ?>
+                  <td class="text-center">
+                   <a href="<?= base_url(); ?>Ruangan/detail/<?= encrypt_url($rg->id_ruangan); ?>"><button type="button" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-info-circle"></i></button></a>
+                 </td>
+               <?php } ?>
+             </tr>
+           <?php endforeach; ?>
+         </tbody>
+       </table>
+       <?php echo $this->pagination->create_links(); ?>
      </div>
-  </div>
+   </div>
+   <div class="card-header py-3">
+    <div class="col col-4">
+     <a href="<?= base_url(); ?>Ruangan/print"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-print"></i></button></a> |
+     <a href="<?= base_url(); ?>Ruangan/pdf"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-pdf"></i></button></a> |
+     <a href="<?= base_url(); ?>Ruangan/excel"><button type="button" target="_BLANK" class="btn btn-dark btn-circle" style="background-color: darkblue;"><i class="fas fa-file-excel"></i></button></a>
+   </div>
+ </div>
 </div>
 </div>

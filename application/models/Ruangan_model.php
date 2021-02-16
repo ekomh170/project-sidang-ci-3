@@ -6,6 +6,7 @@ class Ruangan_model extends CI_Model
 	{
 		$this->db->select('tb_ruangan.id_ruangan, tb_ruangan_jenis.nama_jr, tb_ruangan.nama_ruangan');
 		$this->db->from('tb_ruangan');
+		$this->db->order_by('nama_ruangan', 'asc');
 		$this->db->join('tb_ruangan_jenis', 'tb_ruangan.id_jenis_ruangan = tb_ruangan_jenis.id_jenis_ruangan', 'left');
 
 		if ($cari_rgn != '') {

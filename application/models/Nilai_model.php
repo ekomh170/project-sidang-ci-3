@@ -6,6 +6,7 @@ class Nilai_model extends CI_Model
 	{
 		$this->db->select('mahasiswa.nim_mhs, mahasiswa.nama, tb_jurusan.nama_jurusan');
 		$this->db->from('mahasiswa');
+		$this->db->order_by('nama', 'asc');
 		$this->db->join('tb_jurusan', 'mahasiswa.id_jurusan = tb_jurusan.id_jurusan', 'left');
 
 		if ($cari_krs != '') {
@@ -52,6 +53,7 @@ class Nilai_model extends CI_Model
 	{
 		$this->db->select('tb_nilai.id_nilai, mahasiswa.nim_mhs, mahasiswa.nama, tb_dosen.nama_dosen, tb_jurusan.nama_jurusan, tb_matkul.nama_matkul, tb_nilai.nilai_presensi ,tb_nilai.nilai_tugas, tb_nilai.nilai_uts, tb_nilai.nilai_uas, tb_nilai.total_nilai, tb_nilai.nilai_akhir, tb_nilai.grade, tb_nilai.status');
 		$this->db->from('tb_nilai');
+		$this->db->order_by('nama_dosen', 'asc');
 		$this->db->join('mahasiswa', 'mahasiswa.nim_mhs = tb_nilai.nim_mhs', 'left');
 		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = mahasiswa.id_jurusan', 'left');
 		$this->db->join('krs_detail', 'tb_nilai.id_krs = krs_detail.id_krs', 'left');
@@ -175,12 +177,12 @@ class Nilai_model extends CI_Model
 
 		if ($data_jmlh > 9) {
 			$grade = 'A';
-		} elseif ($data_jmlh >= 7 && $data_jmlh < 8) {
+		} elseif ($data_jmlh >= 8 && $data_jmlh > 7) {
 			$grade = "B";
 		} elseif ($data_jmlh >= 6 && $data_jmlh > 5) {
-			$grade = "D";
+			$grade = "C";
 		} else {
-			$grade = "E";
+			$grade = "D";
 		}
 
 		$data = [

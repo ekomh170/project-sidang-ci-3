@@ -55,10 +55,11 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function tambah() {
+		$this->load->model('Jurusan_model');
 		$data['judul'] = 'Form Tambah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->db->order_by('nama_jurusan', 'asc');
-		$data['jurusan'] = $this->db->get('tb_jurusan')->result();
+		$data['jurusan'] = $this->Jurusan_model->getJurusanPrint();
 		$this->db->order_by('nama_kelas', 'asc');
 		$data['kelas'] = $this->db->get('tb_kelas')->result();
 		$this->db->order_by('nama_tahun_akademik', 'asc');
@@ -111,6 +112,7 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function edit($nim_mhs) {
+		$this->load->model('Jurusan_model');
 		$data['judul'] = 'Form Ubah Data';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -120,7 +122,7 @@ class Mahasiswa extends CI_Controller {
 		$data['inputSelectAgama'] = $this->Tambahan_model->inputSelectDataAgama();
 
 		$this->db->order_by('nama_jurusan', 'asc');
-		$data['jurusan'] = $this->db->get('tb_jurusan')->result();
+		$data['jurusan'] = $this->Jurusan_model->getJurusanPrint();
 		$this->db->order_by('nama_kelas', 'asc');
 		$data['kelas'] = $this->db->get('tb_kelas')->result();
 		$this->db->order_by('nama_tahun_akademik', 'asc');

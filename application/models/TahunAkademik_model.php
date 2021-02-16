@@ -6,6 +6,7 @@ class TahunAkademik_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('tb_tahun_akademik');
+		$this->db->order_by('nama_tahun_akademik', 'asc');
 
 		if ($cari_ta != '') {
 			$this->db->like('nama_tahun_akademik', $cari_ta);

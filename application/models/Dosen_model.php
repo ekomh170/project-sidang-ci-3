@@ -9,6 +9,7 @@ class Dosen_model extends CI_Model {
 	public function getDosen($limit, $offset, $cari_dosen = '') {
 		$this->db->select('tb_dosen.id_dosen, tb_dosen.nama_dosen, tb_matkul.nama_matkul,tb_dosen.jenis_kelamin, tb_dosen.status');
 		$this->db->from('tb_dosen');
+		$this->db->order_by('nama_dosen', 'asc');
 		$this->db->join('tb_matkul', 'tb_dosen.id_matkul = tb_matkul.id_matkul', 'left');
 
 		if ($cari_dosen != '') {
@@ -127,6 +128,8 @@ class Dosen_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('tb_dosen');
 		$this->db->join('tb_matkul', 'tb_dosen.id_matkul = tb_matkul.id_matkul', 'left');
+		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = tb_matkul.id_jurusan', 'left');
+
 
 		$this->db->where('id_dosen', $id_dosen);
 		$query = $this->db->get();
@@ -208,7 +211,7 @@ class Dosen_model extends CI_Model {
 	}
 
 	public function getDosenPrint() {
-		$this->db->select('tb_dosen.id_dosen, tb_dosen.nama_dosen, tb_matkul.nama_matkul,tb_dosen.jenis_kelamin, tb_dosen.status');
+		$this->db->select('*');
 		$this->db->from('tb_dosen');
 		$this->db->join('tb_matkul', 'tb_dosen.id_matkul = tb_matkul.id_matkul', 'left');
 
