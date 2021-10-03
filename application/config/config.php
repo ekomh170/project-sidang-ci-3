@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 date_default_timezone_set("Asia/Jakarta");
 
 /*
@@ -24,7 +24,7 @@ date_default_timezone_set("Asia/Jakarta");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8080/project-sidang-ci-3/';
+$config['base_url'] = 'http://localhost:8080/Github/project-sidang-ci-3/';
 
 /*
 |--------------------------------------------------------------------------
