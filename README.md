@@ -1,4 +1,4 @@
-## Tugas Sidang : Membuat Aplikasi Berbasis Web Untuk Memenuhi Sidang Kelulusan Sekolah Menengah Kejuruan (SMK)
+## Tugas Sidang : Membuat Aplikasi Berbasis Web Untuk Memenuhi Sidang Kelulusan Sekolah Menengah Kejuruan (SMK) Dengan Tema Sesuai Tempat Praktik Kerja Lapangan (PKL)
 
 ## Aplikasi Siadawa
 
@@ -35,9 +35,9 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 ## Desain Diagram
 
 <h4>Alur Sistem</h4>
-<img src="assets/alur_desain/alur_sistem.jpg" alt="Alur_Sistem">
+<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem">
 <h4>Diagram Use Case</h4>
-<img src="assets/alur_desain/diagram_use_case.jpg" alt="Diagram_Use_Case">
+<img src="assets/alur_desain/Diagram_Use_Case.jpg" alt="Diagram_Use_Case">
 <h4>Diagram Class</h4>
 <img src="assets/alur_desain/Diagram_Class.jpg" alt="Diagram_Class">
 
