@@ -1,4 +1,6 @@
-## Tugas Sidang : Membuat Aplikasi Berbasis Web Untuk Memenuhi Sidang Kelulusan Sekolah Menengah Kejuruan (SMK) Dengan Tema Sesuai Tempat Praktik Kerja Lapangan (PKL)
+## Tugas Sidang : Membuat Aplikasi Berbasis Web Untuk Memenuhi Sidang Kelulusan Sekolah Menengah Kejuruan (SMK) Dengan Tema Sesuai Tempat Praktik Kerja Lapangan (PKL).
+
+<img src="assets/img_apps/UI_Home.PNG" alt="UI HOME">
 
 ## Aplikasi Siadawa
 
@@ -26,12 +28,6 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 <b>A</b> = Penilaian = <b>A</b><br>
 <b>WA</b> = Mahasiswa = <b>WA</b><br>
 
-## Foto Aplikasi Siadawa
-
-<img src="assets/img_apps/UI_Home.PNG" alt="Alur_Sistem">
-
-<img src="assets/img_apps/UI_SETELAH_LOGIN.PNG" alt="Alur_Sistem">
-
 ## Desain Diagram
 
 <h4>Alur Sistem</h4>
@@ -45,3 +41,9 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 
 <b>Notes : </b> Untuk Karya Tulis yang sudah dicetak dikumpulkan di sekolah SMK 1 Triple "J"
 <img src="assets/alur_desain/Karya_Tulis.jpg" alt="Diagram_Class">
+
+## Foto Aplikasi Siadawa
+
+<img src="assets/img_apps/UI_Home.PNG" alt="UI HOME">
+
+<img src="assets/img_apps/UI_SETELAH_lOGIN.PNG" alt="UI SETELAH LOGIN">
