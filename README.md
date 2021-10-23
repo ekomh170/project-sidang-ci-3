@@ -31,7 +31,7 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 ## Desain Diagram
 
 <h3>Alur Sistem</h3>
-<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem">git
+<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem">
 <h3>Diagram Use Case</h3>
 <img src="assets/alur_desain/Diagram_Use_Case.jpg" alt="Diagram_Use_Case">
 <h3>Diagram Class</h3>
@@ -47,3 +47,30 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 <img src="assets/img_apps/UI_Home.PNG" alt="UI HOME">
 
 <img src="assets/img_apps/UI_SETELAH_lOGIN.PNG" alt="UI SETELAH LOGIN">
+
+## Alat Yang Digunakan Untuk Membuat Web :
+
+A. Hardware :
+Laptop Aspire E1-472G. Speaksifikasi :
+
+- Ram : 4GB DD3 L Memory
+- Prosesor : Intel Core i5-4200U 1.6 GHz with Turbo Boost up to 2.5 GHz
+- Tipe System : 64 bit
+- VGA : NVIDIA GEFORCE GT 720M with 2GB Dedicated VRAM
+- SSD : 128 GB
+- HDD : 500 GB
+
+B. Software :
+
+- WAMP Server (Windows, Apache, MySQL, dan PHP)
+- Visual Studio Code
+- Sublime Merge
+- Git
+- Menggunakan PHP 7.2 (Agar Tidak Terjadi Masalah)
+
+C. Komponen
+
+- Codeigneter 3
+- Bootstrap 4
+- Template Tambahan :
+  - Sb Admin 2 (Bootstrap 4) (Untuk Template Admin Full)
