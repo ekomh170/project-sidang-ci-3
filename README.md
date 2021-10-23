@@ -30,11 +30,11 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 
 ## Desain Diagram
 
-<h4>Alur Sistem</h4>
-<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem">
-<h4>Diagram Use Case</h4>
+<h3>Alur Sistem</h3>
+<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem">git
+<h3>Diagram Use Case</h3>
 <img src="assets/alur_desain/Diagram_Use_Case.jpg" alt="Diagram_Use_Case">
-<h4>Diagram Class</h4>
+<h3>Diagram Class</h3>
 <img src="assets/alur_desain/Diagram_Class.jpg" alt="Diagram_Class">
 
 ## Karya Tulis
