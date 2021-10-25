@@ -1,5 +1,6 @@
 MIT License
 
+Copyright (c) 2014 - 2019, British Columbia Institute of Technology
 Copyright (c) 2020 Eko Muchamad Haryono
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
