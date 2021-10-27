@@ -1,6 +1,6 @@
 ## Tugas Sidang : Membuat Aplikasi Berbasis Web Untuk Memenuhi Sidang Kelulusan Sekolah Menengah Kejuruan (SMK) Dengan Tema Sesuai Tempat Praktik Kerja Lapangan (PKL).
 
-<img src="assets/img_apps/UI_Home.PNG" alt="UI HOME">
+<img src="assets/img_apps/UI_Home.PNG" alt="UI HOME" width="500">
 
 ## Aplikasi Siadawa
 
@@ -31,22 +31,22 @@ Aplikasi Sistem Informasi Mahasiswa Dan Penilaian Mahasiswa adalah aplikasi berb
 ## Desain Diagram
 
 <h3>Alur Sistem</h3>
-<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem">
+<img src="assets/alur_desain/Alur_Sistem.jpg" alt="Alur_Sistem" width="500">
 <h3>Diagram Use Case</h3>
-<img src="assets/alur_desain/Diagram_Use_Case.jpg" alt="Diagram_Use_Case">
+<img src="assets/alur_desain/Diagram_Use_Case.jpg" alt="Diagram_Use_Case" width="500">
 <h3>Diagram Class</h3>
-<img src="assets/alur_desain/Diagram_Class.jpg" alt="Diagram_Class">
+<img src="assets/alur_desain/Diagram_Class.jpg" alt="Diagram_Class" width="500">
 
 ## Karya Tulis
 
-<b>Notes : </b> Untuk Karya Tulis yang sudah dicetak dikumpulkan di sekolah SMK 1 Triple "J"
-<img src="assets/alur_desain/Karya_Tulis.jpg" alt="Diagram_Class">
+<b>Notes : </b> Untuk Karya Tulis yang sudah dicetak dikumpulkan di sekolah SMK 1 Triple "J"<br><br>
+<img src="assets/alur_desain/Karya_Tulis.jpg" alt="Foto_Karya_Tulis" width="500">
 
-## Foto Aplikasi Siadawa
+## Aplikasi Siadawa
 
-<img src="assets/img_apps/UI_Home.PNG" alt="UI HOME">
+<img src="assets/img_apps/UI_Home.PNG" alt="UI HOME" width="500">
 
-<img src="assets/img_apps/UI_SETELAH_lOGIN.PNG" alt="UI SETELAH LOGIN">
+<img src="assets/img_apps/UI_SETELAH_lOGIN.PNG" alt="UI SETELAH LOGIN" width="500">
 
 ## Alat Yang Digunakan Untuk Membuat Web :
 
@@ -63,10 +63,11 @@ Laptop Aspire E1-472G. Speaksifikasi :
 B. Software :
 
 - WAMP Server (Windows, Apache, MySQL, dan PHP)
-- Visual Studio Code
+- Sublime Text 3 <b>==></b> Visual Studio Code
 - Sublime Merge
 - Git
 - Menggunakan PHP 7.2 (Agar Tidak Terjadi Masalah)
+- Database : MYSQL
 
 C. Komponen
 
